@@ -1,0 +1,5 @@
+D:\study\sdf\CppCLR_WinformsProjekt1\Debug\CppCLR_WinformsProjekt1.Form1.resources
+D:\study\sdf\CppCLR_WinformsProjekt1\Debug\CppCLR_WinformsProjekt1.vcxproj.GenerateResource.cache
+D:\study\sdf\CppCLR_WinformsProjekt1\Debug\CppCLR_WinformsProjekt1.exe
+D:\study\sdf\CppCLR_WinformsProjekt1\Debug\CppCLR_WinformsProjekt1.vcxprojAssemblyReference.cache
+D:\study\sdf\CppCLR_WinformsProjekt1\Debug\CppCLR_WinformsProjekt1.Form2.resources
