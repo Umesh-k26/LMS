@@ -1,5 +1,0 @@
-﻿  sdf.cpp
-C:\Program Files\libpqxx\master_x64\include\pqxx\internal\compiler-internal-post.hxx(15,19): warning C4193: #pragma warning(pop): no matching '#pragma warning(push)'
-C:\Users\sumit\Desktop\Software Development Fundamentals\testing_project\sdf\sdf\sdf.cpp(152,9): warning C4101: 'hdc': unreferenced local variable
-C:\Users\sumit\Desktop\Software Development Fundamentals\testing_project\sdf\sdf\sdf.cpp(151,17): warning C4101: 'ps': unreferenced local variable
-  sdf.vcxproj -> C:\Users\sumit\Desktop\Software Development Fundamentals\testing_project\sdf\Debug\sdf.exe
