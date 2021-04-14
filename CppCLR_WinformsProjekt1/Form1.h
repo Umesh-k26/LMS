@@ -150,11 +150,9 @@ namespace CppCLRWinformsProjekt {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
 	{ 
-	/*
+		CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
 		this->Hide();
-		Form2 f2 = gcnew Form2();
-		Form2->ShowDialog();
-	*/
+		f2->ShowDialog();
 
 		/*MessageBox::Show(L"Your employment application appears to be incomplete"
 			 L"\nPlease complete it first before clicking Resume",
