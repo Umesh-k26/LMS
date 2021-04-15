@@ -1,0 +1,5 @@
+C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\CppCLR_WinformsProjekt1.vcxprojAssemblyReference.cache
+C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\CppCLR_WinformsProjekt1.Form1.resources
+C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\CppCLR_WinformsProjekt1.Form2.resources
+C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\CppCLR_WinformsProjekt1.vcxproj.GenerateResource.cache
+C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\CppCLR_WinformsProjekt1.exe
