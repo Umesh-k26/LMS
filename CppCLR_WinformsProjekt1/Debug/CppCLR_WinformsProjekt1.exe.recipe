@@ -2,7 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\study\sdf\CppCLR_WinformsProjekt1\Debug\CppCLR_WinformsProjekt1.exe</FullPath>
+      <FullPath>D:\study\sdf\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\CppCLR_WinformsProjekt1\Debug\CppCLR_WinformsProjekt1.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>D:\study\sdf\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\CppCLR_WinformsProjekt1\Debug\CppCLR_WinformsProjekt1.exe.config</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

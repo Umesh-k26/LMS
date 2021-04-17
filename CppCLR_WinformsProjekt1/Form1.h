@@ -1,7 +1,8 @@
 #pragma once
-#include "sdf.h"
+//#include "sdf.h"
 #include "pch.h"
 #include "Form2.h"
+
 namespace CppCLRWinformsProjekt {
 
 	using namespace System;
@@ -10,6 +11,7 @@ namespace CppCLRWinformsProjekt {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace MySql::Data::MySqlClient;
 
 	/// <summary>
 	/// Zusammenfassung für Form1
@@ -37,20 +39,32 @@ namespace CppCLRWinformsProjekt {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::Button^ login_button;
+	protected:
+
+	private: System::Windows::Forms::TextBox^ username_txt;
+	private: System::Windows::Forms::TextBox^ password_txt;
+	protected:
+
+	protected:
 
 
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label2;
+
+	private: System::Windows::Forms::Label^ username_lbl;
+
+
+
+	private: System::Windows::Forms::Label^ password_lbl;
+	private: System::Windows::Forms::GroupBox^ SignIn_box;
+
+
 	protected:
 
 	private:
 		/// <summary>
 		/// Erforderliche Designervariable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -59,96 +73,143 @@ namespace CppCLRWinformsProjekt {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
+			this->login_button = (gcnew System::Windows::Forms::Button());
+			this->username_txt = (gcnew System::Windows::Forms::TextBox());
+			this->password_txt = (gcnew System::Windows::Forms::TextBox());
+			this->username_lbl = (gcnew System::Windows::Forms::Label());
+			this->password_lbl = (gcnew System::Windows::Forms::Label());
+			this->SignIn_box = (gcnew System::Windows::Forms::GroupBox());
+			this->SignIn_box->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// button1
+			// login_button
 			// 
-			this->button1->Location = System::Drawing::Point(428, 469);
-			this->button1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(112, 35);
-			this->button1->TabIndex = 0;
-			this->button1->Text = L"Login";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+			//this->login_button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"login_button.Image")));
+			//this->login_button->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->login_button->Location = System::Drawing::Point(126, 181);
+			this->login_button->Name = L"login_button";
+			this->login_button->Size = System::Drawing::Size(76, 28);
+			this->login_button->TabIndex = 0;
+			this->login_button->Text = L"Login";
+			this->login_button->UseVisualStyleBackColor = true;
+			this->login_button->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
 			// 
-			// textBox1
+			// username_txt
 			// 
-			this->textBox1->Location = System::Drawing::Point(540, 275);
-			this->textBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(148, 26);
-			this->textBox1->TabIndex = 1;
+			this->username_txt->Location = System::Drawing::Point(182, 68);
+			this->username_txt->Name = L"username_txt";
+			this->username_txt->Size = System::Drawing::Size(100, 20);
+			this->username_txt->TabIndex = 1;
 			// 
-			// textBox2
+			// password_txt
 			// 
-			this->textBox2->Location = System::Drawing::Point(540, 352);
-			this->textBox2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->PasswordChar = '*';
-			this->textBox2->Size = System::Drawing::Size(148, 26);
-			this->textBox2->TabIndex = 2;
+			this->password_txt->Location = System::Drawing::Point(182, 118);
+			this->password_txt->Name = L"password_txt";
+			this->password_txt->PasswordChar = '*';
+			this->password_txt->Size = System::Drawing::Size(100, 20);
+			this->password_txt->TabIndex = 2;
 			// 
-			// label1
+			// username_lbl
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(375, 275);
-			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(83, 20);
-			this->label1->TabIndex = 5;
-			this->label1->Text = L"Username";
-			this->label1->Click += gcnew System::EventHandler(this, &Form1::label1_Click);
+			this->username_lbl->AutoSize = true;
+			this->username_lbl->Location = System::Drawing::Point(72, 68);
+			this->username_lbl->Name = L"username_lbl";
+			this->username_lbl->Size = System::Drawing::Size(55, 13);
+			this->username_lbl->TabIndex = 5;
+			this->username_lbl->Text = L"Username";
+			this->username_lbl->Click += gcnew System::EventHandler(this, &Form1::label1_Click);
 			// 
-			// label2
+			// password_lbl
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(375, 352);
-			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(78, 20);
-			this->label2->TabIndex = 6;
-			this->label2->Text = L"Password";
+			this->password_lbl->AutoSize = true;
+			this->password_lbl->Location = System::Drawing::Point(72, 121);
+			this->password_lbl->Name = L"password_lbl";
+			this->password_lbl->Size = System::Drawing::Size(53, 13);
+			this->password_lbl->TabIndex = 6;
+			this->password_lbl->Text = L"Password";
+			this->password_lbl->Click += gcnew System::EventHandler(this, &Form1::password_lbl_Click);
+			// 
+			// SignIn_box
+			// 
+			this->SignIn_box->Controls->Add(this->login_button);
+			this->SignIn_box->Controls->Add(this->password_lbl);
+			this->SignIn_box->Controls->Add(this->username_txt);
+			this->SignIn_box->Controls->Add(this->username_lbl);
+			this->SignIn_box->Controls->Add(this->password_txt);
+			this->SignIn_box->Location = System::Drawing::Point(149, 138);
+			this->SignIn_box->Name = L"SignIn_box";
+			this->SignIn_box->Size = System::Drawing::Size(349, 261);
+			this->SignIn_box->TabIndex = 7;
+			this->SignIn_box->TabStop = false;
+			this->SignIn_box->Text = L"Sign In";
 			// 
 			// Form1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1000, 843);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->label1);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->button1);
-			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->ClientSize = System::Drawing::Size(667, 548);
+			this->Controls->Add(this->SignIn_box);
 			this->Name = L"Form1";
 			this->Text = L"Form1";
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
+			this->SignIn_box->ResumeLayout(false);
+			this->SignIn_box->PerformLayout();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
-	{ 
-		CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
-		this->Hide();
-		f2->ShowDialog();
+	{
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
+		MySqlDataReader^ myReader;
+		try {
+			conDataBase->Open();
+			myReader = cmdDataBase->ExecuteReader();
+			int count = 0;
+			while (myReader->Read())
+			{
+				count += 1;
+			}
+			if (count == 1)
+			{
+				MessageBox::Show("Username and password is correct");
+
+				CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
+				this->Hide();
+				f2->ShowDialog();
+			}
+			else if (count > 1)
+			{
+				MessageBox::Show("Duplicate username and password ...Access denied");
+			}
+			else
+				MessageBox::Show("Username and password is incorrect ...Please try again");
+
+
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->Message);
+
+		}
+
+
+
 
 		/*MessageBox::Show(L"Your employment application appears to be incomplete"
 			 L"\nPlease complete it first before clicking Resume",
 			 L"Georgetown Dry Cleaning Services",
 			 MessageBoxButtons::OK, MessageBoxIcon::Information);
-			 */
+		*/
 	}
-private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-};
+	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void password_lbl_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	};
 }
