@@ -35,6 +35,9 @@
     <ClInclude Include="list_of_students_page.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="AddBook.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinformsProjekt.cpp">
@@ -53,6 +56,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="list_of_students_page.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="AddBook.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
