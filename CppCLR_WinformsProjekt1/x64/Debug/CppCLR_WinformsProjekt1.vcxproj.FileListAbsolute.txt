@@ -19,25 +19,3 @@ D:\study\sdf\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\K4os.Ha
 D:\study\sdf\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\System.Numerics.Vectors.dll
 D:\study\sdf\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\System.Runtime.CompilerServices.Unsafe.dll
 D:\study\sdf\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\MySql.Data.xml
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\CppCLR_WinformsProjekt1.vcxprojAssemblyReference.cache
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\CppCLR_WinformsProjekt1.exe.config
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\CppCLR_WinformsProjekt1.Form1.resources
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\CppCLR_WinformsProjekt1.Form2.resources
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\CppCLR_WinformsProjekt1.vcxproj.GenerateResource.cache
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\CppCLR_WinformsProjekt1.vcxproj.CopyComplete
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\CppCLR_WinformsProjekt1.exe
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\MySql.Data.dll
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\Google.Protobuf.dll
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\Zstandard.Net.dll
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\K4os.Compression.LZ4.Streams.dll
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\BouncyCastle.Crypto.dll
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\Ubiety.Dns.Core.dll
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\Renci.SshNet.dll
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\System.Memory.dll
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\System.Buffers.dll
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\K4os.Compression.LZ4.dll
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\K4os.Hash.xxHash.dll
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\System.Numerics.Vectors.dll
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\MySql.Data.xml
-C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\CppCLR_WinformsProjekt1.list_of_students_page.resources
