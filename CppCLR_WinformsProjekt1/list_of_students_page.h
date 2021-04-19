@@ -19,6 +19,7 @@ namespace CppCLR_WinformsProjekt1 {
 		list_of_students_page(void)
 		{
 			InitializeComponent();
+			fill_listbox1();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -80,13 +81,14 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 #pragma endregion
 	private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
 
-
+	private: void fill_listbox1() {
 		//
 		//	This section still needs to be edited to work.
 		//
 		//
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 		MySqlCommand^ print_students = gcnew MySqlCommand("select * from test.student_data;", conDataBase);
@@ -95,23 +97,14 @@ namespace CppCLR_WinformsProjekt1 {
 		try {
 			conDataBase->Open();
 			myReader = print_students->ExecuteReader();
-			int count = 0;
+
 			while (myReader->Read())
 			{
-				count += 1;
-			}
-			if (count == 1)
-			{
-				MessageBox::Show("printing ");
-			}
-			else if (count > 1)
-			{
-				MessageBox::Show("Access denied");
-				
-			}
-			else
-				MessageBox::Show("Please try again");
+				String^ printing_names;
+				printing_names = myReader->GetString("name");
+				listBox1->Items->Add(printing_names);
 
+			}
 
 		}
 		catch (Exception^ ex)
@@ -122,5 +115,6 @@ namespace CppCLR_WinformsProjekt1 {
 
 
 	}
+
 	};
 }
