@@ -50,10 +50,11 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::TextBox^ edition_no_txt;
 	private: System::Windows::Forms::TextBox^ no_of_copies_txt;
 	private: System::Windows::Forms::TextBox^ price_txt;
-	protected:
+	private: System::Windows::Forms::Button^ add_button;
 
 	protected:
 
+	protected:
 
 
 
@@ -68,7 +69,8 @@ namespace CppCLR_WinformsProjekt1 {
 
 
 
-	private: System::Windows::Forms::Button^ button1;
+
+
 
 	private:
 		/// <summary>
@@ -97,7 +99,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->edition_no_txt = (gcnew System::Windows::Forms::TextBox());
 			this->no_of_copies_txt = (gcnew System::Windows::Forms::TextBox());
 			this->price_txt = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->add_button = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// bookname_lbl
@@ -214,22 +216,22 @@ namespace CppCLR_WinformsProjekt1 {
 			this->price_txt->Size = System::Drawing::Size(100, 20);
 			this->price_txt->TabIndex = 14;
 			// 
-			// button1
+			// add_button
 			// 
-			this->button1->Location = System::Drawing::Point(642, 221);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(121, 43);
-			this->button1->TabIndex = 16;
-			this->button1->Text = L"Add";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &AddBook::button1_Click);
+			this->add_button->Location = System::Drawing::Point(642, 221);
+			this->add_button->Name = L"add_button";
+			this->add_button->Size = System::Drawing::Size(121, 43);
+			this->add_button->TabIndex = 16;
+			this->add_button->Text = L"Add";
+			this->add_button->UseVisualStyleBackColor = true;
+			this->add_button->Click += gcnew System::EventHandler(this, &AddBook::button1_Click);
 			// 
 			// AddBook
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(846, 572);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->add_button);
 			this->Controls->Add(this->price_txt);
 			this->Controls->Add(this->no_of_copies_txt);
 			this->Controls->Add(this->edition_no_txt);
@@ -263,7 +265,7 @@ namespace CppCLR_WinformsProjekt1 {
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("INSERT INTO 'library_system'.'book_data' ('book_name', 'book_author', 'book_publisher', 'book_price','book_edition_no','no_of_copies', 'category') \
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("INSERT INTO library_system.book_data (book_name, book_author, book_publisher, book_price,book_edition_no,no_of_copies, category) \
 		VALUES('" + this->bookname_txt->Text + "',\
 		'" + this->author_txt->Text + "',\
 		'" + this->publisher_txt->Text + "',\
