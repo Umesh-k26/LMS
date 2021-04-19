@@ -1,4 +1,5 @@
 #pragma once
+#include "pch.h"
 
 namespace CppCLR_WinformsProjekt1 {
 
@@ -35,22 +36,37 @@ namespace CppCLR_WinformsProjekt1 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ bookname_lbl;
+	private: System::Windows::Forms::Label^ author_lbl;
+	private: System::Windows::Forms::Label^ publisher_lbl;
+	private: System::Windows::Forms::Label^ category_lbl;
+	private: System::Windows::Forms::Label^ edition_no_lbl;
+	private: System::Windows::Forms::Label^ no_of_copies_lbl;
+	private: System::Windows::Forms::Label^ price_lbl;
+	private: System::Windows::Forms::TextBox^ bookname_txt;
+	private: System::Windows::Forms::TextBox^ author_txt;
+	private: System::Windows::Forms::TextBox^ publisher_txt;
+	private: System::Windows::Forms::TextBox^ category_txt;
+	private: System::Windows::Forms::TextBox^ edition_no_txt;
+	private: System::Windows::Forms::TextBox^ no_of_copies_txt;
+	private: System::Windows::Forms::TextBox^ price_txt;
 	protected:
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::Label^ label7;
 
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::TextBox^ textBox3;
-	private: System::Windows::Forms::TextBox^ textBox4;
-	private: System::Windows::Forms::TextBox^ textBox5;
-	private: System::Windows::Forms::TextBox^ textBox6;
-	private: System::Windows::Forms::TextBox^ textBox7;
+	protected:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	private: System::Windows::Forms::Button^ button1;
 
@@ -67,136 +83,136 @@ namespace CppCLR_WinformsProjekt1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
+			this->bookname_lbl = (gcnew System::Windows::Forms::Label());
+			this->author_lbl = (gcnew System::Windows::Forms::Label());
+			this->publisher_lbl = (gcnew System::Windows::Forms::Label());
+			this->category_lbl = (gcnew System::Windows::Forms::Label());
+			this->edition_no_lbl = (gcnew System::Windows::Forms::Label());
+			this->no_of_copies_lbl = (gcnew System::Windows::Forms::Label());
+			this->price_lbl = (gcnew System::Windows::Forms::Label());
+			this->bookname_txt = (gcnew System::Windows::Forms::TextBox());
+			this->author_txt = (gcnew System::Windows::Forms::TextBox());
+			this->publisher_txt = (gcnew System::Windows::Forms::TextBox());
+			this->category_txt = (gcnew System::Windows::Forms::TextBox());
+			this->edition_no_txt = (gcnew System::Windows::Forms::TextBox());
+			this->no_of_copies_txt = (gcnew System::Windows::Forms::TextBox());
+			this->price_txt = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
-			// label1
+			// bookname_lbl
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(245, 120);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(35, 13);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Name";
+			this->bookname_lbl->AutoSize = true;
+			this->bookname_lbl->Location = System::Drawing::Point(245, 120);
+			this->bookname_lbl->Name = L"bookname_lbl";
+			this->bookname_lbl->Size = System::Drawing::Size(35, 13);
+			this->bookname_lbl->TabIndex = 0;
+			this->bookname_lbl->Text = L"Name";
 			// 
-			// label2
+			// author_lbl
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(245, 161);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(38, 13);
-			this->label2->TabIndex = 1;
-			this->label2->Text = L"Author";
+			this->author_lbl->AutoSize = true;
+			this->author_lbl->Location = System::Drawing::Point(245, 161);
+			this->author_lbl->Name = L"author_lbl";
+			this->author_lbl->Size = System::Drawing::Size(38, 13);
+			this->author_lbl->TabIndex = 1;
+			this->author_lbl->Text = L"Author";
 			// 
-			// label3
+			// publisher_lbl
 			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(245, 205);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(50, 13);
-			this->label3->TabIndex = 2;
-			this->label3->Text = L"Publisher";
+			this->publisher_lbl->AutoSize = true;
+			this->publisher_lbl->Location = System::Drawing::Point(245, 205);
+			this->publisher_lbl->Name = L"publisher_lbl";
+			this->publisher_lbl->Size = System::Drawing::Size(50, 13);
+			this->publisher_lbl->TabIndex = 2;
+			this->publisher_lbl->Text = L"Publisher";
 			// 
-			// label4
+			// category_lbl
 			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(246, 248);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(49, 13);
-			this->label4->TabIndex = 3;
-			this->label4->Text = L"Category";
+			this->category_lbl->AutoSize = true;
+			this->category_lbl->Location = System::Drawing::Point(246, 248);
+			this->category_lbl->Name = L"category_lbl";
+			this->category_lbl->Size = System::Drawing::Size(49, 13);
+			this->category_lbl->TabIndex = 3;
+			this->category_lbl->Text = L"Category";
 			// 
-			// label5
+			// edition_no_lbl
 			// 
-			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(245, 287);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(59, 13);
-			this->label5->TabIndex = 4;
-			this->label5->Text = L"Edition No.";
+			this->edition_no_lbl->AutoSize = true;
+			this->edition_no_lbl->Location = System::Drawing::Point(245, 287);
+			this->edition_no_lbl->Name = L"edition_no_lbl";
+			this->edition_no_lbl->Size = System::Drawing::Size(59, 13);
+			this->edition_no_lbl->TabIndex = 4;
+			this->edition_no_lbl->Text = L"Edition No.";
 			// 
-			// label6
+			// no_of_copies_lbl
 			// 
-			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(245, 337);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(70, 13);
-			this->label6->TabIndex = 5;
-			this->label6->Text = L"No. of copies";
+			this->no_of_copies_lbl->AutoSize = true;
+			this->no_of_copies_lbl->Location = System::Drawing::Point(245, 337);
+			this->no_of_copies_lbl->Name = L"no_of_copies_lbl";
+			this->no_of_copies_lbl->Size = System::Drawing::Size(70, 13);
+			this->no_of_copies_lbl->TabIndex = 5;
+			this->no_of_copies_lbl->Text = L"No. of copies";
 			// 
-			// label7
+			// price_lbl
 			// 
-			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(246, 388);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(40, 13);
-			this->label7->TabIndex = 6;
-			this->label7->Text = L"M.R.P.";
+			this->price_lbl->AutoSize = true;
+			this->price_lbl->Location = System::Drawing::Point(246, 388);
+			this->price_lbl->Name = L"price_lbl";
+			this->price_lbl->Size = System::Drawing::Size(31, 13);
+			this->price_lbl->TabIndex = 6;
+			this->price_lbl->Text = L"Price";
 			// 
-			// textBox1
+			// bookname_txt
 			// 
-			this->textBox1->Location = System::Drawing::Point(395, 117);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(100, 20);
-			this->textBox1->TabIndex = 8;
+			this->bookname_txt->Location = System::Drawing::Point(395, 117);
+			this->bookname_txt->Name = L"bookname_txt";
+			this->bookname_txt->Size = System::Drawing::Size(100, 20);
+			this->bookname_txt->TabIndex = 8;
 			// 
-			// textBox2
+			// author_txt
 			// 
-			this->textBox2->Location = System::Drawing::Point(395, 158);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(100, 20);
-			this->textBox2->TabIndex = 9;
+			this->author_txt->Location = System::Drawing::Point(395, 158);
+			this->author_txt->Name = L"author_txt";
+			this->author_txt->Size = System::Drawing::Size(100, 20);
+			this->author_txt->TabIndex = 9;
 			// 
-			// textBox3
+			// publisher_txt
 			// 
-			this->textBox3->Location = System::Drawing::Point(395, 202);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(100, 20);
-			this->textBox3->TabIndex = 10;
-			this->textBox3->TextChanged += gcnew System::EventHandler(this, &AddBook::textBox3_TextChanged);
+			this->publisher_txt->Location = System::Drawing::Point(395, 202);
+			this->publisher_txt->Name = L"publisher_txt";
+			this->publisher_txt->Size = System::Drawing::Size(100, 20);
+			this->publisher_txt->TabIndex = 10;
+			this->publisher_txt->TextChanged += gcnew System::EventHandler(this, &AddBook::textBox3_TextChanged);
 			// 
-			// textBox4
+			// category_txt
 			// 
-			this->textBox4->Location = System::Drawing::Point(395, 245);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(100, 20);
-			this->textBox4->TabIndex = 11;
+			this->category_txt->Location = System::Drawing::Point(395, 245);
+			this->category_txt->Name = L"category_txt";
+			this->category_txt->Size = System::Drawing::Size(100, 20);
+			this->category_txt->TabIndex = 11;
 			// 
-			// textBox5
+			// edition_no_txt
 			// 
-			this->textBox5->Location = System::Drawing::Point(395, 284);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(100, 20);
-			this->textBox5->TabIndex = 12;
-			this->textBox5->TextChanged += gcnew System::EventHandler(this, &AddBook::textBox5_TextChanged);
+			this->edition_no_txt->Location = System::Drawing::Point(395, 284);
+			this->edition_no_txt->Name = L"edition_no_txt";
+			this->edition_no_txt->Size = System::Drawing::Size(100, 20);
+			this->edition_no_txt->TabIndex = 12;
+			this->edition_no_txt->TextChanged += gcnew System::EventHandler(this, &AddBook::textBox5_TextChanged);
 			// 
-			// textBox6
+			// no_of_copies_txt
 			// 
-			this->textBox6->Location = System::Drawing::Point(395, 334);
-			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(100, 20);
-			this->textBox6->TabIndex = 13;
+			this->no_of_copies_txt->Location = System::Drawing::Point(395, 334);
+			this->no_of_copies_txt->Name = L"no_of_copies_txt";
+			this->no_of_copies_txt->Size = System::Drawing::Size(100, 20);
+			this->no_of_copies_txt->TabIndex = 13;
 			// 
-			// textBox7
+			// price_txt
 			// 
-			this->textBox7->Location = System::Drawing::Point(395, 385);
-			this->textBox7->Name = L"textBox7";
-			this->textBox7->Size = System::Drawing::Size(100, 20);
-			this->textBox7->TabIndex = 14;
+			this->price_txt->Location = System::Drawing::Point(395, 385);
+			this->price_txt->Name = L"price_txt";
+			this->price_txt->Size = System::Drawing::Size(100, 20);
+			this->price_txt->TabIndex = 14;
 			// 
 			// button1
 			// 
@@ -214,20 +230,20 @@ namespace CppCLR_WinformsProjekt1 {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(846, 572);
 			this->Controls->Add(this->button1);
-			this->Controls->Add(this->textBox7);
-			this->Controls->Add(this->textBox6);
-			this->Controls->Add(this->textBox5);
-			this->Controls->Add(this->textBox4);
-			this->Controls->Add(this->textBox3);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->label7);
-			this->Controls->Add(this->label6);
-			this->Controls->Add(this->label5);
-			this->Controls->Add(this->label4);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->label1);
+			this->Controls->Add(this->price_txt);
+			this->Controls->Add(this->no_of_copies_txt);
+			this->Controls->Add(this->edition_no_txt);
+			this->Controls->Add(this->category_txt);
+			this->Controls->Add(this->publisher_txt);
+			this->Controls->Add(this->author_txt);
+			this->Controls->Add(this->bookname_txt);
+			this->Controls->Add(this->price_lbl);
+			this->Controls->Add(this->no_of_copies_lbl);
+			this->Controls->Add(this->edition_no_lbl);
+			this->Controls->Add(this->category_lbl);
+			this->Controls->Add(this->publisher_lbl);
+			this->Controls->Add(this->author_lbl);
+			this->Controls->Add(this->bookname_lbl);
 			this->Name = L"AddBook";
 			this->Text = L"AddBook";
 			this->Load += gcnew System::EventHandler(this, &AddBook::AddBook_Load);
@@ -246,20 +262,26 @@ namespace CppCLR_WinformsProjekt1 {
 		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
-		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("INSERT INTO book (book_name, book_author, book_publisher, book_price,book_edition_no,book_borrow_status);", conDataBase);
+
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("INSERT INTO 'library_system'.'book_data' ('book_name', 'book_author', 'book_publisher', 'book_price','book_edition_no','no_of_copies', 'category') \
+		VALUES('" + this->bookname_txt->Text + "',\
+		'" + this->author_txt->Text + "',\
+		'" + this->publisher_txt->Text + "',\
+		'" + this->price_txt->Text + "',\
+		" + this->edition_no_txt->Text + "',\
+		'" + this->no_of_copies_txt->Text + "',\
+		'" + this->category_txt->Text + "'	;", conDataBase);
 
 
 		MySqlDataReader^ myReader;
 		try {
 			conDataBase->Open();
-			//myReader = cmdDataBase->ExecuteReader();
-			//int count = 0;
+			myReader = cmdDataBase->ExecuteReader();
+			MessageBox::Show("Book added successfully!");
 			while (myReader->Read())
 			{
-				//count += 1;
+
 			}
-
-
 
 		}
 		catch (Exception^ ex)
