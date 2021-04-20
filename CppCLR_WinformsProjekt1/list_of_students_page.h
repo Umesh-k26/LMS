@@ -1,5 +1,6 @@
 #pragma once
 #include "pch.h"
+//#include "Form2.h"
 namespace CppCLR_WinformsProjekt1 {
 
 	using namespace System;
@@ -38,7 +39,11 @@ namespace CppCLR_WinformsProjekt1 {
 			}
 		}
 
+
+	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ button2;
 
 	protected:
 
@@ -57,7 +62,11 @@ namespace CppCLR_WinformsProjekt1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(list_of_students_page::typeid));
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -65,24 +74,59 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->AllowUserToDeleteRows = false;
+			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Location = System::Drawing::Point(101, 83);
+			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
 			this->dataGridView1->Size = System::Drawing::Size(955, 438);
 			this->dataGridView1->TabIndex = 1;
 			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(204, 32);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(556, 26);
+			this->textBox1->TabIndex = 2;
+			// 
+			// button1
+			// 
+			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
+			this->button1->Location = System::Drawing::Point(13, 13);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 45);
+			this->button1->TabIndex = 3;
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &list_of_students_page::button1_Click);
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(977, 12);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(75, 35);
+			this->button2->TabIndex = 4;
+			this->button2->Text = L"Exit";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &list_of_students_page::button2_Click);
+			// 
 			// list_of_students_page
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1131, 553);
+			this->ClientSize = System::Drawing::Size(1064, 570);
+			this->Controls->Add(this->button2);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->dataGridView1);
 			this->Name = L"list_of_students_page";
 			this->Text = L"list_of_students_page";
+			this->Load += gcnew System::EventHandler(this, &list_of_students_page::list_of_students_page_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -146,5 +190,19 @@ namespace CppCLR_WinformsProjekt1 {
 
 	}
 
-	};
+
+	private: System::Void list_of_students_page_Load(System::Object^ sender, System::EventArgs^ e) {
+		CenterToScreen();
+		//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
+		WindowState = FormWindowState::Maximized;
+	}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	//CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
+	//this->Hide();
+	//f2->ShowDialog();
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	Application::Exit();
+}
+};
 }
