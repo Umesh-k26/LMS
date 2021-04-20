@@ -82,7 +82,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
-			this->dataGridView1->Size = System::Drawing::Size(955, 438);
+			this->dataGridView1->Size = System::Drawing::Size(637, 285);
 			this->dataGridView1->TabIndex = 1;
 			// 
 			// textBox1
@@ -114,13 +114,14 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// list_of_students_page
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1064, 570);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->dataGridView1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"list_of_students_page";
 			this->Text = L"list_of_students_page";
 			this->Load += gcnew System::EventHandler(this, &list_of_students_page::list_of_students_page_Load);

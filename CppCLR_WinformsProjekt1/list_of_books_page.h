@@ -67,11 +67,12 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->AllowUserToDeleteRows = false;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(64, 95);
+			this->dataGridView1->Location = System::Drawing::Point(37, 42);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 62;
-			this->dataGridView1->Size = System::Drawing::Size(729, 325);
+			this->dataGridView1->Size = System::Drawing::Size(486, 211);
 			this->dataGridView1->TabIndex = 0;
 			// 
 			// button1
@@ -96,12 +97,11 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// list_of_books_page
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(862, 483);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
+			this->ClientSize = System::Drawing::Size(575, 314);
 			this->Controls->Add(this->dataGridView1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"list_of_books_page";
 			this->Text = L"list_of_books_page";
 			this->Load += gcnew System::EventHandler(this, &list_of_books_page::list_of_books_page_Load);
@@ -144,12 +144,9 @@ namespace CppCLR_WinformsProjekt1 {
 	}
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	/*CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
-	this->Hide();
-	f2->ShowDialog();*/
-}
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	Application::Exit();
-}
-};
+	private: System::Void list_of_books_page_Load(System::Object^ sender, System::EventArgs^ e) {
+		CenterToScreen();
+		WindowState = FormWindowState::Maximized;
+	}
+	};
 }
