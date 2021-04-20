@@ -22,7 +22,6 @@ namespace CppCLR_WinformsProjekt1 {
 	public:
 		Form2(void)
 		{
-			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -184,6 +183,8 @@ namespace CppCLR_WinformsProjekt1 {
 		list_of_students_f->ShowDialog();
 	}
 	private: System::Void Form2_Load(System::Object^ sender, System::EventArgs^ e) {
+		CenterToScreen();
+		WindowState = FormWindowState::Maximized;
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 		/*CppCLR_WinformsProjekt1::AddBook^ addbook_f = gcnew CppCLR_WinformsProjekt1::AddBook;

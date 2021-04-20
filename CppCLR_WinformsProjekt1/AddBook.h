@@ -1,6 +1,6 @@
 #pragma once
 #include "pch.h"
-
+#include "Form2.h"
 namespace CppCLR_WinformsProjekt1 {
 
 	using namespace System;
@@ -259,6 +259,8 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void AddBook_Load(System::Object^ sender, System::EventArgs^ e) {
+		CenterToScreen();
+		WindowState = FormWindowState::Maximized;
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
