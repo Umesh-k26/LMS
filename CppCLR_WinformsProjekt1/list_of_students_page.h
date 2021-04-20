@@ -19,7 +19,7 @@ namespace CppCLR_WinformsProjekt1 {
 		list_of_students_page(void)
 		{
 			InitializeComponent();
-			fill_listbox1();
+			//fill_listbox1();
 			fill_data_grid();
 			//
 			//TODO: Add the constructor code here
@@ -37,7 +37,7 @@ namespace CppCLR_WinformsProjekt1 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::ListBox^ listBox1;
+
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 
 	protected:
@@ -57,30 +57,20 @@ namespace CppCLR_WinformsProjekt1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// listBox1
-			// 
-			this->listBox1->FormattingEnabled = true;
-			this->listBox1->ItemHeight = 20;
-			this->listBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"hello", L"woewe" });
-			this->listBox1->Location = System::Drawing::Point(709, 55);
-			this->listBox1->Name = L"listBox1";
-			this->listBox1->Size = System::Drawing::Size(364, 344);
-			this->listBox1->TabIndex = 0;
-			this->listBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &list_of_students_page::listBox1_SelectedIndexChanged);
-			// 
 			// dataGridView1
 			// 
+			this->dataGridView1->AllowUserToAddRows = false;
+			this->dataGridView1->AllowUserToDeleteRows = false;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Location = System::Drawing::Point(101, 83);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
-			this->dataGridView1->Size = System::Drawing::Size(552, 382);
+			this->dataGridView1->Size = System::Drawing::Size(955, 438);
 			this->dataGridView1->TabIndex = 1;
 			// 
 			// list_of_students_page
@@ -89,7 +79,6 @@ namespace CppCLR_WinformsProjekt1 {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1131, 553);
 			this->Controls->Add(this->dataGridView1);
-			this->Controls->Add(this->listBox1);
 			this->Name = L"list_of_students_page";
 			this->Text = L"list_of_students_page";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -97,9 +86,8 @@ namespace CppCLR_WinformsProjekt1 {
 
 		}
 #pragma endregion
-	private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-
+	
+/*
 	private: void fill_listbox1() {
 		//
 		//	This section works but can print only one thing
@@ -132,12 +120,12 @@ namespace CppCLR_WinformsProjekt1 {
 
 
 	}
-
+	*/
 	private: void fill_data_grid() {
 
 		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data;", conDataBase);
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from library_system.student_data;", conDataBase);
 		MySqlDataReader^ myReader;
 
 		try {
