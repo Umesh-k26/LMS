@@ -1,1 +1,19 @@
-﻿
+﻿  pch.cpp
+  AddBook.cpp
+  AssemblyInfo.cpp
+  CppCLR_WinformsProjekt.cpp
+C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\list_of_students_page.h(129,20): warning C4101: 'myReader': unreferenced local variable
+C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\list_of_books_page.h(90,20): warning C4101: 'myReader': unreferenced local variable
+  Form1.cpp
+  Form2.cpp
+C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\list_of_students_page.h(129,20): warning C4101: 'myReader': unreferenced local variable
+C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\list_of_books_page.h(90,20): warning C4101: 'myReader': unreferenced local variable
+  list_of_books_page.cpp
+C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\list_of_books_page.h(90,20): warning C4101: 'myReader': unreferenced local variable
+  list_of_students_page.cpp
+C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\list_of_students_page.h(129,20): warning C4101: 'myReader': unreferenced local variable
+  RegisterStudent.cpp
+  Generating Code...
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  AddBook.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  CppCLR_WinformsProjekt1.vcxproj -> C:\Users\sumit\Desktop\Software Development Fundamentals\git_versions\cs1023-sdf-project-team-4\CppCLR_WinformsProjekt1\x64\Debug\CppCLR_WinformsProjekt1.exe
