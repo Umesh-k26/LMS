@@ -190,6 +190,9 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 	}
 	private: System::Void Form2_Load(System::Object^ sender, System::EventArgs^ e) {
+		CenterToScreen();
+		//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
+		WindowState = FormWindowState::Maximized;
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 		/*CppCLR_WinformsProjekt1::AddBook^ addbook_f = gcnew CppCLR_WinformsProjekt1::AddBook;

@@ -206,6 +206,10 @@ namespace CppCLRWinformsProjekt {
 		*/
 	}
 	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
+
+		CenterToScreen();
+		//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
+		WindowState = FormWindowState::Maximized;
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}

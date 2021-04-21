@@ -46,6 +46,10 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::DataGridViewButtonColumn^ Open;
+
+
+
 
 	protected:
 
@@ -66,6 +70,7 @@ namespace CppCLR_WinformsProjekt1 {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(list_of_students_page::typeid));
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->Open = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
@@ -79,6 +84,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1->AllowUserToDeleteRows = false;
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Open });
 			this->dataGridView1->Location = System::Drawing::Point(101, 83);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
@@ -87,6 +93,18 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1->RowTemplate->Height = 28;
 			this->dataGridView1->Size = System::Drawing::Size(955, 438);
 			this->dataGridView1->TabIndex = 1;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &list_of_students_page::dataGridView1_CellContentClick);
+			// 
+			// Open
+			// 
+			this->Open->FlatStyle = System::Windows::Forms::FlatStyle::System;
+			this->Open->HeaderText = L"Profile";
+			this->Open->MinimumWidth = 8;
+			this->Open->Name = L"Open";
+			this->Open->ReadOnly = true;
+			this->Open->Text = L"Open";
+			this->Open->UseColumnTextForButtonValue = true;
+			this->Open->Width = 59;
 			// 
 			// textBox1
 			// 
@@ -231,6 +249,18 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	{
 		this->Show();
 	}
+}
+
+
+private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
+	this->Hide();
+	//testing_f->ShowDialog();
+	if (testing_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		this->Show();
+	}
+
 }
 };
 }
