@@ -4,6 +4,7 @@
 #include "AddBook.h"
 #include "RegisterStudent.h"
 #include "list_of_books_page.h"
+#include "borrow_history_page.h"
 namespace CppCLR_WinformsProjekt1 {
 
 	using namespace System;
@@ -132,6 +133,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->button6->TabIndex = 5;
 			this->button6->Text = L"Borrow History";
 			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &Form2::button6_Click);
 			// 
 			// button8
 			// 
@@ -208,6 +210,14 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	this->Hide();
 	//list_of_books_f->ShowDialog();
 	if (list_of_books_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		this->Show();
+	}
+}
+private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
+	CppCLR_WinformsProjekt1::borrow_history_page^ borrow_history_page_f = gcnew CppCLR_WinformsProjekt1::borrow_history_page;
+	this->Hide();
+	if (borrow_history_page_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 	{
 		this->Show();
 	}
