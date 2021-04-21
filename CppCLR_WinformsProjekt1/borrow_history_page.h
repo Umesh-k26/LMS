@@ -91,6 +91,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Controls->Add(this->button1);
 			this->Name = L"borrow_history_page";
 			this->Text = L"borrow_history_page";
+			this->Load += gcnew System::EventHandler(this, &borrow_history_page::borrow_history_page_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 
@@ -125,5 +126,10 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 
 	}
-	};
+	private: System::Void borrow_history_page_Load(System::Object^ sender, System::EventArgs^ e) {
+		CenterToScreen();
+		//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
+		WindowState = FormWindowState::Maximized;
+	}
+};
 }
