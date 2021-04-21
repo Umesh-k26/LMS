@@ -14,7 +14,7 @@ namespace CppCLRWinformsProjekt {
 	using namespace MySql::Data::MySqlClient;
 
 	/// <summary>
-	/// Zusammenfassung für Form1
+	/// Zusammenfassung fÃ¼r Form1
 	/// </summary>
 
 	public ref class Form1 : public System::Windows::Forms::Form
@@ -24,7 +24,7 @@ namespace CppCLRWinformsProjekt {
 		{
 			InitializeComponent();
 			//
-			//TODO: Konstruktorcode hier hinzufügen.
+			//TODO: Konstruktorcode hier hinzufÃ¼gen.
 			//
 		}
 
@@ -68,8 +68,8 @@ namespace CppCLRWinformsProjekt {
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung.
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung.
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -161,7 +161,7 @@ namespace CppCLRWinformsProjekt {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 		MySqlDataReader^ myReader;
@@ -208,7 +208,6 @@ namespace CppCLRWinformsProjekt {
 	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
 
 		CenterToScreen();
-		//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
 		WindowState = FormWindowState::Maximized;
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {

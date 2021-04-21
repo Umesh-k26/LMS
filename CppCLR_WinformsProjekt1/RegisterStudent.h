@@ -1,5 +1,5 @@
 #pragma once
-
+#include "testing.h"
 namespace CppCLR_WinformsProjekt1 {
 
 	using namespace System;
@@ -58,6 +58,7 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::Button^ add_button;
 	private: System::Windows::Forms::Label^ status_lbl;
 	private: System::Windows::Forms::TextBox^ status_no_txt;
+	private: System::Windows::Forms::Button^ button1;
 
 
 
@@ -74,6 +75,7 @@ namespace CppCLR_WinformsProjekt1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(RegisterStudent::typeid));
 			this->name_lbl = (gcnew System::Windows::Forms::Label());
 			this->dob_lbl = (gcnew System::Windows::Forms::Label());
 			this->profession_lbl = (gcnew System::Windows::Forms::Label());
@@ -89,6 +91,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->add_button = (gcnew System::Windows::Forms::Button());
 			this->status_lbl = (gcnew System::Windows::Forms::Label());
 			this->status_no_txt = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// name_lbl
@@ -228,11 +231,25 @@ namespace CppCLR_WinformsProjekt1 {
 			this->status_no_txt->Size = System::Drawing::Size(148, 26);
 			this->status_no_txt->TabIndex = 14;
 			// 
+			// button1
+			// 
+			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
+			this->button1->Location = System::Drawing::Point(52, 51);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(50, 29);
+			this->button1->TabIndex = 15;
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &RegisterStudent::button1_Click);
+			// 
 			// RegisterStudent
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1216, 908);
+
+			this->ClientSize = System::Drawing::Size(811, 590);
+			this->Controls->Add(this->button1);
+
 			this->Controls->Add(this->status_no_txt);
 			this->Controls->Add(this->status_lbl);
 			this->Controls->Add(this->add_button);
@@ -293,8 +310,19 @@ namespace CppCLR_WinformsProjekt1 {
 	}
 private: System::Void RegisterStudent_Load(System::Object^ sender, System::EventArgs^ e) {
 	CenterToScreen();
-	//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
+
 	WindowState = FormWindowState::Maximized;
 }
+
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
+	this->Hide();
+	//testing_f->ShowDialog();
+	if (testing_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		this->Show();
+	}
+}
+
 };
 }
