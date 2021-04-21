@@ -276,7 +276,7 @@ namespace CppCLR_WinformsProjekt1 {
 #pragma endregion
 	private: System::Void add_button_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 
@@ -315,13 +315,8 @@ private: System::Void RegisterStudent_Load(System::Object^ sender, System::Event
 }
 
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
-	this->Hide();
-	//testing_f->ShowDialog();
-	if (testing_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		this->Show();
-	}
+	this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	this->Close();
 }
 
 };
