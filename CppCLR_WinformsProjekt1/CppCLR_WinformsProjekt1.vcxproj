@@ -146,6 +146,9 @@
     <ClInclude Include="AddBook.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="borrow_history_page.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -170,6 +173,7 @@
   <ItemGroup>
     <ClCompile Include="AddBook.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="borrow_history_page.cpp" />
     <ClCompile Include="CppCLR_WinformsProjekt.cpp" />
     <ClCompile Include="Form1.cpp" />
     <ClCompile Include="Form2.cpp" />
@@ -199,6 +203,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AddBook.resx">
       <DependentUpon>AddBook.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="borrow_history_page.resx">
+      <DependentUpon>borrow_history_page.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.h</DependentUpon>

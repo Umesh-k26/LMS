@@ -47,6 +47,9 @@
     <ClInclude Include="testing.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="borrow_history_page.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinformsProjekt.cpp">
@@ -77,6 +80,9 @@
       <Filter>Headerdateien</Filter>
     </ClCompile>
     <ClCompile Include="testing.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="borrow_history_page.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
