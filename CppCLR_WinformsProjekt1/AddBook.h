@@ -1,6 +1,6 @@
 #pragma once
 #include "pch.h"
-
+#include "testing.h"
 namespace CppCLR_WinformsProjekt1 {
 
 	using namespace System;
@@ -51,6 +51,7 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::TextBox^ no_of_copies_txt;
 	private: System::Windows::Forms::TextBox^ price_txt;
 	private: System::Windows::Forms::Button^ add_button;
+	private: System::Windows::Forms::Button^ button1;
 
 	protected:
 
@@ -85,6 +86,7 @@ namespace CppCLR_WinformsProjekt1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(AddBook::typeid));
 			this->bookname_lbl = (gcnew System::Windows::Forms::Label());
 			this->author_lbl = (gcnew System::Windows::Forms::Label());
 			this->publisher_lbl = (gcnew System::Windows::Forms::Label());
@@ -100,6 +102,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->no_of_copies_txt = (gcnew System::Windows::Forms::TextBox());
 			this->price_txt = (gcnew System::Windows::Forms::TextBox());
 			this->add_button = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// bookname_lbl
@@ -226,11 +229,23 @@ namespace CppCLR_WinformsProjekt1 {
 			this->add_button->UseVisualStyleBackColor = true;
 			this->add_button->Click += gcnew System::EventHandler(this, &AddBook::button1_Click);
 			// 
+			// button1
+			// 
+			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
+			this->button1->Location = System::Drawing::Point(58, 49);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(50, 29);
+			this->button1->TabIndex = 17;
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &AddBook::button1_Click_1);
+			// 
 			// AddBook
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(846, 572);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->add_button);
 			this->Controls->Add(this->price_txt);
 			this->Controls->Add(this->no_of_copies_txt);
@@ -259,6 +274,8 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void AddBook_Load(System::Object^ sender, System::EventArgs^ e) {
+		CenterToScreen();
+		WindowState = FormWindowState::Maximized;
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
@@ -292,5 +309,14 @@ namespace CppCLR_WinformsProjekt1 {
 
 		}
 	}
-	};
+	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+		CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
+		this->Hide();
+		//testing_f->ShowDialog();
+		if (testing_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			this->Show();
+		}
+	}
+};
 }

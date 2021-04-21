@@ -181,7 +181,7 @@ namespace CppCLR_WinformsProjekt1 {
 	*/
 	private: void fill_data_grid() {
 
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from library_system.student_data;", conDataBase);
 		MySqlDataReader^ myReader;
