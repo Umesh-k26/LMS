@@ -163,6 +163,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="testing.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddBook.cpp" />
@@ -179,6 +182,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="RegisterStudent.cpp" />
+    <ClCompile Include="testing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico" />
@@ -210,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegisterStudent.resx">
       <DependentUpon>RegisterStudent.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="testing.resx">
+      <DependentUpon>testing.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

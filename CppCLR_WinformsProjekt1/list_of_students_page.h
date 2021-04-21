@@ -1,6 +1,7 @@
 #pragma once
 #include "pch.h"
 //#include "Form2.h"
+#include "testing.h"
 namespace CppCLR_WinformsProjekt1 {
 
 	using namespace System;
@@ -44,6 +45,7 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ button3;
 
 	protected:
 
@@ -67,6 +69,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -112,11 +115,22 @@ namespace CppCLR_WinformsProjekt1 {
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &list_of_students_page::button2_Click);
 			// 
+			// button3
+			// 
+			this->button3->Location = System::Drawing::Point(12, 186);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(75, 45);
+			this->button3->TabIndex = 5;
+			this->button3->Text = L"button3";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &list_of_students_page::button3_Click);
+			// 
 			// list_of_students_page
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1064, 570);
+			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox1);
@@ -200,9 +214,23 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	//CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
 	//this->Hide();
 	//f2->ShowDialog();
+	this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	this->Close();
+
+
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	Application::Exit();
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
+	this->Hide();
+	//testing_f->ShowDialog();
+	if (testing_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		this->Show();
+	}
 }
 };
 }

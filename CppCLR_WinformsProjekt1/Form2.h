@@ -181,7 +181,11 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 		CppCLR_WinformsProjekt1::list_of_students_page^ list_of_students_f = gcnew CppCLR_WinformsProjekt1::list_of_students_page;
 		this->Hide();
-		list_of_students_f->ShowDialog();
+		//list_of_students_f->ShowDialog();
+		if (list_of_students_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			this->Show();
+		}
 	}
 	private: System::Void Form2_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -202,7 +206,11 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 
 	CppCLR_WinformsProjekt1::list_of_books_page^ list_of_books_f = gcnew CppCLR_WinformsProjekt1::list_of_books_page;
 	this->Hide();
-	list_of_books_f->ShowDialog();
+	//list_of_books_f->ShowDialog();
+	if (list_of_books_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		this->Show();
+	}
 }
 };
 }
