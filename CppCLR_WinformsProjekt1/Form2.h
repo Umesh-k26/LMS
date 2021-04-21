@@ -199,12 +199,18 @@ namespace CppCLR_WinformsProjekt1 {
 		addbook_f->ShowDialog();*/
 		CppCLR_WinformsProjekt1::AddBook^ addbook_f = gcnew CppCLR_WinformsProjekt1::AddBook;
 		this->Hide();
-		addbook_f->ShowDialog();
+		if (addbook_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			this->Show();
+		}
 	}
 	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
 		CppCLR_WinformsProjekt1::RegisterStudent^ registerstudent_f = gcnew CppCLR_WinformsProjekt1::RegisterStudent;
 		this->Hide();
-		registerstudent_f->ShowDialog();
+		if (registerstudent_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			this->Show();
+		}
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 
