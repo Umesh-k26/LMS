@@ -40,6 +40,8 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::DataGridViewButtonColumn^ Column1;
+
 	protected:
 
 	private:
@@ -59,6 +61,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -67,12 +70,15 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->AllowUserToDeleteRows = false;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Column1 });
 			this->dataGridView1->Location = System::Drawing::Point(64, 95);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 62;
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::CellSelect;
 			this->dataGridView1->Size = System::Drawing::Size(729, 325);
 			this->dataGridView1->TabIndex = 0;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &list_of_books_page::dataGridView1_CellContentClick);
 			// 
 			// button1
 			// 
@@ -93,6 +99,16 @@ namespace CppCLR_WinformsProjekt1 {
 			this->button2->Text = L"Exit";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &list_of_books_page::button2_Click);
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Profile";
+			this->Column1->MinimumWidth = 8;
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->Text = L"Open";
+			this->Column1->UseColumnTextForButtonValue = true;
+			this->Column1->Width = 150;
 			// 
 			// list_of_books_page
 			// 
@@ -151,6 +167,21 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	Application::Exit();
+}
+private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	//
+	// Copy code from list_of_students to open a different form and also try to use different DialogBox::OK
+	//
+	//
+	if (e->ColumnIndex == 0)
+	{
+		int row_num = e->RowIndex;
+		int col_num = e->ColumnIndex + 1;
+		String^ str = this->dataGridView1->Rows[row_num]->Cells[col_num]->Value->ToString();
+		MessageBox::Show("Your id is " + str);
+
+	}
+
 }
 };
 }
