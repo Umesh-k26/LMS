@@ -91,6 +91,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(955, 438);
 			this->dataGridView1->TabIndex = 1;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &list_of_students_page::dataGridView1_CellContentClick);
@@ -227,6 +228,8 @@ namespace CppCLR_WinformsProjekt1 {
 		CenterToScreen();
 		//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
 		WindowState = FormWindowState::Maximized;
+
+
 	}
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	//CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
@@ -253,13 +256,24 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 
 
 private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
-	this->Hide();
-	//testing_f->ShowDialog();
-	if (testing_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	if (e->ColumnIndex == 0)
 	{
-		this->Show();
+		/*CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
+		this->Hide();
+		//testing_f->ShowDialog();
+		if (testing_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			this->Show();
+		}*/
+		int row_num = e->RowIndex;
+		int col_num = e->ColumnIndex + 1;
+		String^ str = this->dataGridView1->Rows[row_num]->Cells[col_num]->Value->ToString();
+		MessageBox::Show("Your id is "+ str);
+
+
 	}
+	
+
 
 }
 };
