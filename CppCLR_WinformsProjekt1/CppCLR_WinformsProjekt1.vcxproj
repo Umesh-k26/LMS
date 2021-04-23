@@ -146,6 +146,9 @@
     <ClInclude Include="AddBook.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="BorrowBook.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="borrow_history_page.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -166,6 +169,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="ReturnBook.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="testing.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -173,6 +179,7 @@
   <ItemGroup>
     <ClCompile Include="AddBook.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="BorrowBook.cpp" />
     <ClCompile Include="borrow_history_page.cpp" />
     <ClCompile Include="CppCLR_WinformsProjekt.cpp" />
     <ClCompile Include="Form1.cpp" />
@@ -186,6 +193,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="RegisterStudent.cpp" />
+    <ClCompile Include="ReturnBook.cpp" />
     <ClCompile Include="testing.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +212,9 @@
     <EmbeddedResource Include="AddBook.resx">
       <DependentUpon>AddBook.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BorrowBook.resx">
+      <DependentUpon>BorrowBook.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="borrow_history_page.resx">
       <DependentUpon>borrow_history_page.h</DependentUpon>
     </EmbeddedResource>
@@ -221,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegisterStudent.resx">
       <DependentUpon>RegisterStudent.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReturnBook.resx">
+      <DependentUpon>ReturnBook.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="testing.resx">
       <DependentUpon>testing.h</DependentUpon>
