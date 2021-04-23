@@ -41,6 +41,9 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::DataGridViewButtonColumn^ Column1;
+	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
+	private: System::Windows::Forms::Button^ button3;
 
 	protected:
 
@@ -59,9 +62,12 @@ namespace CppCLR_WinformsProjekt1 {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(list_of_books_page::typeid));
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->button3 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -71,14 +77,24 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1->AllowUserToDeleteRows = false;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Column1 });
-			this->dataGridView1->Location = System::Drawing::Point(64, 95);
+			this->dataGridView1->Location = System::Drawing::Point(136, 182);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::CellSelect;
-			this->dataGridView1->Size = System::Drawing::Size(729, 325);
+			this->dataGridView1->Size = System::Drawing::Size(884, 424);
 			this->dataGridView1->TabIndex = 0;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &list_of_books_page::dataGridView1_CellContentClick);
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Profile";
+			this->Column1->MinimumWidth = 8;
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->Text = L"Open";
+			this->Column1->UseColumnTextForButtonValue = true;
+			this->Column1->Width = 150;
 			// 
 			// button1
 			// 
@@ -92,7 +108,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(775, 13);
+			this->button2->Location = System::Drawing::Point(1047, 12);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 40);
 			this->button2->TabIndex = 2;
@@ -100,21 +116,41 @@ namespace CppCLR_WinformsProjekt1 {
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &list_of_books_page::button2_Click);
 			// 
-			// Column1
+			// textBox1
 			// 
-			this->Column1->HeaderText = L"Profile";
-			this->Column1->MinimumWidth = 8;
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			this->Column1->Text = L"Open";
-			this->Column1->UseColumnTextForButtonValue = true;
-			this->Column1->Width = 150;
+			this->textBox1->Location = System::Drawing::Point(136, 38);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(427, 26);
+			this->textBox1->TabIndex = 3;
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"book_name", L"book_author" });
+			this->comboBox1->Location = System::Drawing::Point(635, 38);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(121, 28);
+			this->comboBox1->TabIndex = 4;
+			// 
+			// button3
+			// 
+			this->button3->Location = System::Drawing::Point(823, 38);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(93, 43);
+			this->button3->TabIndex = 5;
+			this->button3->Text = L"Search";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &list_of_books_page::button3_Click);
 			// 
 			// list_of_books_page
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(862, 483);
+			this->ClientSize = System::Drawing::Size(1134, 637);
+			this->Controls->Add(this->button3);
+			this->Controls->Add(this->comboBox1);
+			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->dataGridView1);
@@ -123,6 +159,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Load += gcnew System::EventHandler(this, &list_of_books_page::list_of_books_page_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -182,6 +219,31 @@ private: System::Void dataGridView1_CellContentClick(System::Object^ sender, Sys
 
 	}
 
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+	//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
+
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.book_data\
+		WHERE " + this->comboBox1->Text + " LIKE '%" + this->textBox1->Text + "%';", conDataBase);
+	MySqlDataReader^ myReader;
+
+	try {
+		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
+		sda->SelectCommand = cmdDataBase;
+		DataTable^ dbdataset = gcnew DataTable();
+		sda->Fill(dbdataset);
+		BindingSource^ bSource = gcnew BindingSource();
+		bSource->DataSource = dbdataset;
+		dataGridView1->DataSource = bSource;
+		sda->Update(dbdataset);
+	}
+	catch (Exception^ ex)
+	{
+		MessageBox::Show(ex->Message);
+
+	}
 }
 };
 }
