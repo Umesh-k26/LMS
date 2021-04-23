@@ -64,7 +64,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
 			this->button1->Location = System::Drawing::Point(13, 13);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 38);
+			this->button1->Size = System::Drawing::Size(75, 53);
 			this->button1->TabIndex = 0;
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &borrow_history_page::button1_Click);
