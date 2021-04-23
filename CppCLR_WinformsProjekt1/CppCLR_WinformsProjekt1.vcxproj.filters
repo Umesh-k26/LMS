@@ -50,6 +50,12 @@
     <ClInclude Include="borrow_history_page.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="BorrowBook.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="ReturnBook.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinformsProjekt.cpp">
@@ -83,6 +89,12 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="borrow_history_page.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="BorrowBook.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="ReturnBook.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
