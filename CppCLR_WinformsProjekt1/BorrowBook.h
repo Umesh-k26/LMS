@@ -77,26 +77,29 @@ namespace CppCLR_WinformsProjekt1 {
 			// stud_id_lbl
 			// 
 			this->stud_id_lbl->AutoSize = true;
-			this->stud_id_lbl->Location = System::Drawing::Point(208, 89);
+			this->stud_id_lbl->Location = System::Drawing::Point(312, 137);
+			this->stud_id_lbl->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->stud_id_lbl->Name = L"stud_id_lbl";
-			this->stud_id_lbl->Size = System::Drawing::Size(58, 13);
+			this->stud_id_lbl->Size = System::Drawing::Size(87, 20);
 			this->stud_id_lbl->TabIndex = 0;
 			this->stud_id_lbl->Text = L"Student ID";
 			// 
 			// book_id_lbl
 			// 
 			this->book_id_lbl->AutoSize = true;
-			this->book_id_lbl->Location = System::Drawing::Point(208, 141);
+			this->book_id_lbl->Location = System::Drawing::Point(312, 217);
+			this->book_id_lbl->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->book_id_lbl->Name = L"book_id_lbl";
-			this->book_id_lbl->Size = System::Drawing::Size(46, 13);
+			this->book_id_lbl->Size = System::Drawing::Size(67, 20);
 			this->book_id_lbl->TabIndex = 1;
 			this->book_id_lbl->Text = L"Book ID";
 			// 
 			// borrow_button
 			// 
-			this->borrow_button->Location = System::Drawing::Point(233, 213);
+			this->borrow_button->Location = System::Drawing::Point(350, 328);
+			this->borrow_button->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->borrow_button->Name = L"borrow_button";
-			this->borrow_button->Size = System::Drawing::Size(75, 23);
+			this->borrow_button->Size = System::Drawing::Size(112, 35);
 			this->borrow_button->TabIndex = 2;
 			this->borrow_button->Text = L"Borrow ";
 			this->borrow_button->UseVisualStyleBackColor = true;
@@ -104,39 +107,43 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// stud_id_txt
 			// 
-			this->stud_id_txt->Location = System::Drawing::Point(277, 86);
+			this->stud_id_txt->Location = System::Drawing::Point(416, 132);
+			this->stud_id_txt->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->stud_id_txt->Name = L"stud_id_txt";
-			this->stud_id_txt->Size = System::Drawing::Size(100, 20);
+			this->stud_id_txt->Size = System::Drawing::Size(148, 26);
 			this->stud_id_txt->TabIndex = 3;
 			// 
 			// book_id_txt
 			// 
-			this->book_id_txt->Location = System::Drawing::Point(277, 138);
+			this->book_id_txt->Location = System::Drawing::Point(416, 212);
+			this->book_id_txt->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->book_id_txt->Name = L"book_id_txt";
-			this->book_id_txt->Size = System::Drawing::Size(100, 20);
+			this->book_id_txt->Size = System::Drawing::Size(148, 26);
 			this->book_id_txt->TabIndex = 4;
 			// 
 			// button1
 			// 
 			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
-			this->button1->Location = System::Drawing::Point(52, 42);
-			this->button1->Margin = System::Windows::Forms::Padding(1);
+			this->button1->Location = System::Drawing::Point(78, 65);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(33, 19);
+			this->button1->Size = System::Drawing::Size(51, 45);
 			this->button1->TabIndex = 16;
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &BorrowBook::button1_Click);
 			// 
 			// BorrowBook
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(614, 422);
+			this->ClientSize = System::Drawing::Size(921, 649);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->book_id_txt);
 			this->Controls->Add(this->stud_id_txt);
 			this->Controls->Add(this->borrow_button);
 			this->Controls->Add(this->book_id_lbl);
 			this->Controls->Add(this->stud_id_lbl);
+			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->Name = L"BorrowBook";
 			this->Text = L"BorrowBook";
 			this->Load += gcnew System::EventHandler(this, &BorrowBook::BorrowBook_Load);
@@ -156,5 +163,9 @@ namespace CppCLR_WinformsProjekt1 {
 		
 		
 	}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	this->Close();
+}
 };
 }
