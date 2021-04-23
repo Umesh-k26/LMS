@@ -47,6 +47,8 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::DataGridViewButtonColumn^ Open;
+	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
 
 
 
@@ -75,6 +77,8 @@ namespace CppCLR_WinformsProjekt1 {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -85,7 +89,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Open });
-			this->dataGridView1->Location = System::Drawing::Point(101, 83);
+			this->dataGridView1->Location = System::Drawing::Point(174, 186);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
@@ -109,9 +113,9 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(204, 32);
+			this->textBox1->Location = System::Drawing::Point(174, 32);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(556, 26);
+			this->textBox1->Size = System::Drawing::Size(463, 26);
 			this->textBox1->TabIndex = 2;
 			// 
 			// button1
@@ -126,7 +130,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(977, 12);
+			this->button2->Location = System::Drawing::Point(1083, 12);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 35);
 			this->button2->TabIndex = 4;
@@ -144,11 +148,32 @@ namespace CppCLR_WinformsProjekt1 {
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &list_of_students_page::button3_Click);
 			// 
+			// button4
+			// 
+			this->button4->Location = System::Drawing::Point(811, 32);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(93, 39);
+			this->button4->TabIndex = 6;
+			this->button4->Text = L"Search";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &list_of_students_page::button4_Click);
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"student_name", L"student_address" });
+			this->comboBox1->Location = System::Drawing::Point(643, 30);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(121, 28);
+			this->comboBox1->TabIndex = 7;
+			// 
 			// list_of_students_page
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1064, 570);
+			this->ClientSize = System::Drawing::Size(1170, 644);
+			this->Controls->Add(this->comboBox1);
+			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
@@ -275,6 +300,31 @@ private: System::Void dataGridView1_CellContentClick(System::Object^ sender, Sys
 	
 
 
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+	//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
+
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.student_data\
+		WHERE " + this->comboBox1->Text+" LIKE '%"+this->textBox1->Text+"%';", conDataBase);
+	MySqlDataReader^ myReader;
+
+	try {
+		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
+		sda->SelectCommand = cmdDataBase;
+		DataTable^ dbdataset = gcnew DataTable();
+		sda->Fill(dbdataset);
+		BindingSource^ bSource = gcnew BindingSource();
+		bSource->DataSource = dbdataset;
+		dataGridView1->DataSource = bSource;
+		sda->Update(dbdataset);
+	}
+	catch (Exception^ ex)
+	{
+		MessageBox::Show(ex->Message);
+
+	}
 }
 };
 }
