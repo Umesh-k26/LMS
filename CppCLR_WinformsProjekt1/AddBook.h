@@ -227,7 +227,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->add_button->TabIndex = 16;
 			this->add_button->Text = L"Add";
 			this->add_button->UseVisualStyleBackColor = true;
-			this->add_button->Click += gcnew System::EventHandler(this, &AddBook::button1_Click);
+			this->add_button->Click += gcnew System::EventHandler(this, &AddBook::AddBook_Click);
 			// 
 			// button1
 			// 
@@ -277,7 +277,7 @@ namespace CppCLR_WinformsProjekt1 {
 		CenterToScreen();
 		WindowState = FormWindowState::Maximized;
 	}
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void AddBook_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
