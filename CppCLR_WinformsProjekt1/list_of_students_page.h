@@ -2,6 +2,7 @@
 #include "pch.h"
 //#include "Form2.h"
 #include "testing.h"
+
 namespace CppCLR_WinformsProjekt1 {
 
 	using namespace System;
@@ -167,9 +168,14 @@ namespace CppCLR_WinformsProjekt1 {
 			// comboBox1
 			// 
 			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+<<<<<<< HEAD
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"student_name", L"student_address" });
 			this->comboBox1->Location = System::Drawing::Point(429, 19);
 			this->comboBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+=======
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"ID", L"Name", L"Phone", L"Email" });
+			this->comboBox1->Location = System::Drawing::Point(643, 30);
+>>>>>>> 856a4f8e68daa52431c09f7aa276edf2454e39af
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(82, 21);
 			this->comboBox1->TabIndex = 7;
@@ -279,13 +285,15 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
+	/*CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
 	this->Hide();
 	//testing_f->ShowDialog();
 	if (testing_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 	{
 		this->Show();
-	}
+	}*/
+	//String^ str = text_combo_data(this->comboBox1->Text);
+	//MessageBox::Show(str);
 }
 
 
@@ -311,12 +319,30 @@ private: System::Void dataGridView1_CellContentClick(System::Object^ sender, Sys
 
 }
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ str_comboBox1;
+	if (this->comboBox1->Text== "Name")
+	{
+		str_comboBox1 = "student_name";
+	}
+	if (String::Equals(this->comboBox1->Text, "ID"))
+	{
+		str_comboBox1 = "student_id";
+	}
+	if (String::Equals(this->comboBox1->Text, "Phone"))
+	{
+		str_comboBox1 = "student_mobile";
+	}
+	if (String::Equals(this->comboBox1->Text, "Email"))
+	{
+		str_comboBox1 = "student_email";
+	}
+
 	String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 	//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 
 	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.student_data\
-		WHERE " + this->comboBox1->Text+" LIKE '%"+this->textBox1->Text+"%';", conDataBase);
+		WHERE " + str_comboBox1 +" LIKE '%"+this->textBox1->Text+"%';", conDataBase);
 	MySqlDataReader^ myReader;
 
 	try {
