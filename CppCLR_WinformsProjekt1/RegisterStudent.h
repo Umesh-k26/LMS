@@ -263,7 +263,7 @@ namespace CppCLR_WinformsProjekt1 {
 #pragma endregion
 	private: System::Void add_button_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		String^ constring = L"datasource=127.0.0.1;port=3306;username=root;password=MySQL";
+		String^ constring = L"datasource=127.0.0.1;port=3306;username=root;password=server@?!1234";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 
