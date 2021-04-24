@@ -73,7 +73,6 @@ namespace CppCLRWinformsProjekt {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
 			this->login_button = (gcnew System::Windows::Forms::Button());
 			this->username_txt = (gcnew System::Windows::Forms::TextBox());
 			this->password_txt = (gcnew System::Windows::Forms::TextBox());
@@ -85,8 +84,6 @@ namespace CppCLRWinformsProjekt {
 			// 
 			// login_button
 			// 
-			//this->login_button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"login_button.Image")));
-			//this->login_button->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->login_button->Location = System::Drawing::Point(126, 181);
 			this->login_button->Name = L"login_button";
 			this->login_button->Size = System::Drawing::Size(76, 28);
@@ -152,6 +149,7 @@ namespace CppCLRWinformsProjekt {
 			this->Controls->Add(this->SignIn_box);
 			this->Name = L"Form1";
 			this->Text = L"Form1";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &Form1::Form1_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
 			this->SignIn_box->ResumeLayout(false);
 			this->SignIn_box->PerformLayout();
@@ -214,5 +212,7 @@ namespace CppCLRWinformsProjekt {
 	}
 	private: System::Void password_lbl_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void Form1_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+	}
+};
 }

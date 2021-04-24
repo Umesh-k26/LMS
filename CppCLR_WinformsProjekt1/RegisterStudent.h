@@ -268,21 +268,21 @@ namespace CppCLR_WinformsProjekt1 {
 		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("USE library_system;INSERT INTO student_data (student_name, student_dob, student_address, student_email, \
-		student_mobile, student_profession, student_no_book_stat) \
+		student_mobile, student_profession, student_no_book_stat,student_fine) \
 		VALUES('" + this->name_txt->Text + "',\
 		'" + this->dateTimePicker->Text + "',\
 		'" + this->address_txt->Text + "',\
 		'" + this->email_id_txt->Text + "',\
 		" + this->mobile_no_txt->Text + ",\
 		'" + this->profession_txt->Text + "',\
-		" + this->status_no_txt->Text + ")	;", conDataBase);
+		" + this->status_no_txt->Text + ", 0)	;", conDataBase);
 
 
 		MySqlDataReader^ myReader;
 		try {
 			conDataBase->Open();
 			myReader = cmdDataBase->ExecuteReader();
-			MessageBox::Show("Book added successfully!");
+			MessageBox::Show("Student registered successfully!");
 			while (myReader->Read())
 			{
 
