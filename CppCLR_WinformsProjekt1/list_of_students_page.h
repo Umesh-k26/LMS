@@ -90,15 +90,14 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Open });
-			this->dataGridView1->Location = System::Drawing::Point(116, 121);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->dataGridView1->Location = System::Drawing::Point(174, 186);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(637, 285);
+			this->dataGridView1->Size = System::Drawing::Size(956, 438);
 			this->dataGridView1->TabIndex = 1;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &list_of_students_page::dataGridView1_CellContentClick);
 			// 
@@ -111,33 +110,30 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Open->ReadOnly = true;
 			this->Open->Text = L"Open";
 			this->Open->UseColumnTextForButtonValue = true;
-			this->Open->Width = 42;
+			this->Open->Width = 59;
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(116, 21);
-			this->textBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->textBox1->Location = System::Drawing::Point(174, 32);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(310, 20);
+			this->textBox1->Size = System::Drawing::Size(463, 26);
 			this->textBox1->TabIndex = 2;
 			// 
 			// button1
 			// 
 			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
-			this->button1->Location = System::Drawing::Point(9, 8);
-			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button1->Location = System::Drawing::Point(14, 12);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(50, 29);
+			this->button1->Size = System::Drawing::Size(75, 45);
 			this->button1->TabIndex = 3;
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &list_of_students_page::button1_Click);
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(722, 8);
-			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button2->Location = System::Drawing::Point(1083, 12);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(50, 23);
+			this->button2->Size = System::Drawing::Size(75, 35);
 			this->button2->TabIndex = 4;
 			this->button2->Text = L"Exit";
 			this->button2->UseVisualStyleBackColor = true;
@@ -145,10 +141,9 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(8, 121);
-			this->button3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button3->Location = System::Drawing::Point(12, 186);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(50, 29);
+			this->button3->Size = System::Drawing::Size(75, 45);
 			this->button3->TabIndex = 5;
 			this->button3->Text = L"button3";
 			this->button3->UseVisualStyleBackColor = true;
@@ -156,10 +151,9 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(541, 21);
-			this->button4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button4->Location = System::Drawing::Point(812, 32);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(62, 25);
+			this->button4->Size = System::Drawing::Size(93, 38);
 			this->button4->TabIndex = 6;
 			this->button4->Text = L"Search";
 			this->button4->UseVisualStyleBackColor = true;
@@ -168,24 +162,18 @@ namespace CppCLR_WinformsProjekt1 {
 			// comboBox1
 			// 
 			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-<<<<<<< HEAD
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"student_name", L"student_address" });
-			this->comboBox1->Location = System::Drawing::Point(429, 19);
-			this->comboBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
-=======
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"ID", L"Name", L"Phone", L"Email" });
-			this->comboBox1->Location = System::Drawing::Point(643, 30);
->>>>>>> 856a4f8e68daa52431c09f7aa276edf2454e39af
+			this->comboBox1->Location = System::Drawing::Point(670, 32);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(82, 21);
+			this->comboBox1->Size = System::Drawing::Size(121, 28);
 			this->comboBox1->TabIndex = 7;
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &list_of_students_page::comboBox1_SelectedIndexChanged);
 			// 
 			// list_of_students_page
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(780, 419);
+			this->ClientSize = System::Drawing::Size(1170, 645);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
@@ -193,7 +181,6 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->dataGridView1);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"list_of_students_page";
 			this->Text = L"list_of_students_page";
 			this->Load += gcnew System::EventHandler(this, &list_of_students_page::list_of_students_page_Load);
@@ -240,7 +227,7 @@ namespace CppCLR_WinformsProjekt1 {
 	*/
 	private: void fill_data_grid() {
 
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from library_system.student_data;", conDataBase);
 		MySqlDataReader^ myReader;
