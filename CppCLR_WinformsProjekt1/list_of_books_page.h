@@ -75,10 +75,11 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->AllowUserToDeleteRows = false;
+			this->dataGridView1->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Column1 });
-			this->dataGridView1->Location = System::Drawing::Point(91, 118);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->dataGridView1->Location = System::Drawing::Point(181, 163);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 62;
@@ -101,7 +102,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
 			this->button1->Location = System::Drawing::Point(9, 8);
-			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(35, 33);
 			this->button1->TabIndex = 1;
@@ -110,8 +111,9 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(698, 8);
-			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->button2->Location = System::Drawing::Point(878, 8);
+			this->button2->Margin = System::Windows::Forms::Padding(2);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(50, 26);
 			this->button2->TabIndex = 2;
@@ -121,19 +123,21 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(91, 25);
-			this->textBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->textBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->textBox1->Location = System::Drawing::Point(181, 70);
+			this->textBox1->Margin = System::Windows::Forms::Padding(2);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(286, 20);
 			this->textBox1->TabIndex = 3;
 			// 
 			// comboBox1
 			// 
+			this->comboBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"book_name", L"book_author" });
-			this->comboBox1->Location = System::Drawing::Point(423, 25);
-			this->comboBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->comboBox1->Location = System::Drawing::Point(513, 70);
+			this->comboBox1->Margin = System::Windows::Forms::Padding(2);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(82, 21);
 			this->comboBox1->TabIndex = 4;
@@ -141,8 +145,9 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(549, 25);
-			this->button3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button3->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->button3->Location = System::Drawing::Point(639, 70);
+			this->button3->Margin = System::Windows::Forms::Padding(2);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(62, 28);
 			this->button3->TabIndex = 5;
@@ -154,14 +159,15 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(756, 414);
+			this->ClientSize = System::Drawing::Size(936, 574);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->dataGridView1);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
+			this->MinimumSize = System::Drawing::Size(952, 613);
 			this->Name = L"list_of_books_page";
 			this->Text = L"list_of_books_page";
 			this->Load += gcnew System::EventHandler(this, &list_of_books_page::list_of_books_page_Load);

@@ -52,6 +52,7 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::TextBox^ price_txt;
 	private: System::Windows::Forms::Button^ add_button;
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::GroupBox^ groupBox1;
 
 	protected:
 
@@ -103,12 +104,15 @@ namespace CppCLR_WinformsProjekt1 {
 			this->price_txt = (gcnew System::Windows::Forms::TextBox());
 			this->add_button = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// bookname_lbl
 			// 
+			this->bookname_lbl->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->bookname_lbl->AutoSize = true;
-			this->bookname_lbl->Location = System::Drawing::Point(245, 120);
+			this->bookname_lbl->Location = System::Drawing::Point(17, 49);
 			this->bookname_lbl->Name = L"bookname_lbl";
 			this->bookname_lbl->Size = System::Drawing::Size(35, 13);
 			this->bookname_lbl->TabIndex = 0;
@@ -116,8 +120,9 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// author_lbl
 			// 
+			this->author_lbl->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->author_lbl->AutoSize = true;
-			this->author_lbl->Location = System::Drawing::Point(245, 161);
+			this->author_lbl->Location = System::Drawing::Point(17, 90);
 			this->author_lbl->Name = L"author_lbl";
 			this->author_lbl->Size = System::Drawing::Size(38, 13);
 			this->author_lbl->TabIndex = 1;
@@ -125,8 +130,9 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// publisher_lbl
 			// 
+			this->publisher_lbl->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->publisher_lbl->AutoSize = true;
-			this->publisher_lbl->Location = System::Drawing::Point(245, 205);
+			this->publisher_lbl->Location = System::Drawing::Point(17, 134);
 			this->publisher_lbl->Name = L"publisher_lbl";
 			this->publisher_lbl->Size = System::Drawing::Size(50, 13);
 			this->publisher_lbl->TabIndex = 2;
@@ -134,8 +140,9 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// category_lbl
 			// 
+			this->category_lbl->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->category_lbl->AutoSize = true;
-			this->category_lbl->Location = System::Drawing::Point(246, 248);
+			this->category_lbl->Location = System::Drawing::Point(18, 177);
 			this->category_lbl->Name = L"category_lbl";
 			this->category_lbl->Size = System::Drawing::Size(49, 13);
 			this->category_lbl->TabIndex = 3;
@@ -143,8 +150,9 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// edition_no_lbl
 			// 
+			this->edition_no_lbl->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->edition_no_lbl->AutoSize = true;
-			this->edition_no_lbl->Location = System::Drawing::Point(245, 287);
+			this->edition_no_lbl->Location = System::Drawing::Point(17, 216);
 			this->edition_no_lbl->Name = L"edition_no_lbl";
 			this->edition_no_lbl->Size = System::Drawing::Size(59, 13);
 			this->edition_no_lbl->TabIndex = 4;
@@ -152,8 +160,9 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// no_of_copies_lbl
 			// 
+			this->no_of_copies_lbl->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->no_of_copies_lbl->AutoSize = true;
-			this->no_of_copies_lbl->Location = System::Drawing::Point(245, 337);
+			this->no_of_copies_lbl->Location = System::Drawing::Point(17, 266);
 			this->no_of_copies_lbl->Name = L"no_of_copies_lbl";
 			this->no_of_copies_lbl->Size = System::Drawing::Size(70, 13);
 			this->no_of_copies_lbl->TabIndex = 5;
@@ -161,8 +170,9 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// price_lbl
 			// 
+			this->price_lbl->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->price_lbl->AutoSize = true;
-			this->price_lbl->Location = System::Drawing::Point(246, 388);
+			this->price_lbl->Location = System::Drawing::Point(18, 317);
 			this->price_lbl->Name = L"price_lbl";
 			this->price_lbl->Size = System::Drawing::Size(31, 13);
 			this->price_lbl->TabIndex = 6;
@@ -170,21 +180,24 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// bookname_txt
 			// 
-			this->bookname_txt->Location = System::Drawing::Point(395, 117);
+			this->bookname_txt->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->bookname_txt->Location = System::Drawing::Point(167, 46);
 			this->bookname_txt->Name = L"bookname_txt";
 			this->bookname_txt->Size = System::Drawing::Size(100, 20);
 			this->bookname_txt->TabIndex = 8;
 			// 
 			// author_txt
 			// 
-			this->author_txt->Location = System::Drawing::Point(395, 158);
+			this->author_txt->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->author_txt->Location = System::Drawing::Point(167, 87);
 			this->author_txt->Name = L"author_txt";
 			this->author_txt->Size = System::Drawing::Size(100, 20);
 			this->author_txt->TabIndex = 9;
 			// 
 			// publisher_txt
 			// 
-			this->publisher_txt->Location = System::Drawing::Point(395, 202);
+			this->publisher_txt->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->publisher_txt->Location = System::Drawing::Point(167, 131);
 			this->publisher_txt->Name = L"publisher_txt";
 			this->publisher_txt->Size = System::Drawing::Size(100, 20);
 			this->publisher_txt->TabIndex = 10;
@@ -192,14 +205,16 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// category_txt
 			// 
-			this->category_txt->Location = System::Drawing::Point(395, 245);
+			this->category_txt->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->category_txt->Location = System::Drawing::Point(167, 174);
 			this->category_txt->Name = L"category_txt";
 			this->category_txt->Size = System::Drawing::Size(100, 20);
 			this->category_txt->TabIndex = 11;
 			// 
 			// edition_no_txt
 			// 
-			this->edition_no_txt->Location = System::Drawing::Point(395, 284);
+			this->edition_no_txt->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->edition_no_txt->Location = System::Drawing::Point(167, 213);
 			this->edition_no_txt->Name = L"edition_no_txt";
 			this->edition_no_txt->Size = System::Drawing::Size(100, 20);
 			this->edition_no_txt->TabIndex = 12;
@@ -207,20 +222,23 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// no_of_copies_txt
 			// 
-			this->no_of_copies_txt->Location = System::Drawing::Point(395, 334);
+			this->no_of_copies_txt->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->no_of_copies_txt->Location = System::Drawing::Point(167, 263);
 			this->no_of_copies_txt->Name = L"no_of_copies_txt";
 			this->no_of_copies_txt->Size = System::Drawing::Size(100, 20);
 			this->no_of_copies_txt->TabIndex = 13;
 			// 
 			// price_txt
 			// 
-			this->price_txt->Location = System::Drawing::Point(395, 385);
+			this->price_txt->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->price_txt->Location = System::Drawing::Point(167, 314);
 			this->price_txt->Name = L"price_txt";
 			this->price_txt->Size = System::Drawing::Size(100, 20);
 			this->price_txt->TabIndex = 14;
 			// 
 			// add_button
 			// 
+			this->add_button->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->add_button->Location = System::Drawing::Point(642, 221);
 			this->add_button->Name = L"add_button";
 			this->add_button->Size = System::Drawing::Size(121, 43);
@@ -240,32 +258,44 @@ namespace CppCLR_WinformsProjekt1 {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &AddBook::button1_Click_1);
 			// 
+			// groupBox1
+			// 
+			this->groupBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->groupBox1->Controls->Add(this->no_of_copies_txt);
+			this->groupBox1->Controls->Add(this->bookname_lbl);
+			this->groupBox1->Controls->Add(this->author_lbl);
+			this->groupBox1->Controls->Add(this->price_txt);
+			this->groupBox1->Controls->Add(this->publisher_lbl);
+			this->groupBox1->Controls->Add(this->category_lbl);
+			this->groupBox1->Controls->Add(this->edition_no_txt);
+			this->groupBox1->Controls->Add(this->edition_no_lbl);
+			this->groupBox1->Controls->Add(this->category_txt);
+			this->groupBox1->Controls->Add(this->no_of_copies_lbl);
+			this->groupBox1->Controls->Add(this->publisher_txt);
+			this->groupBox1->Controls->Add(this->price_lbl);
+			this->groupBox1->Controls->Add(this->author_txt);
+			this->groupBox1->Controls->Add(this->bookname_txt);
+			this->groupBox1->Location = System::Drawing::Point(285, 88);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(289, 360);
+			this->groupBox1->TabIndex = 18;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Add Book";
+			// 
 			// AddBook
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(846, 572);
+			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->add_button);
-			this->Controls->Add(this->price_txt);
-			this->Controls->Add(this->no_of_copies_txt);
-			this->Controls->Add(this->edition_no_txt);
-			this->Controls->Add(this->category_txt);
-			this->Controls->Add(this->publisher_txt);
-			this->Controls->Add(this->author_txt);
-			this->Controls->Add(this->bookname_txt);
-			this->Controls->Add(this->price_lbl);
-			this->Controls->Add(this->no_of_copies_lbl);
-			this->Controls->Add(this->edition_no_lbl);
-			this->Controls->Add(this->category_lbl);
-			this->Controls->Add(this->publisher_lbl);
-			this->Controls->Add(this->author_lbl);
-			this->Controls->Add(this->bookname_lbl);
 			this->Name = L"AddBook";
-			this->Text = L"AddBook";
+			this->Text = L"Add Book";
 			this->Load += gcnew System::EventHandler(this, &AddBook::AddBook_Load);
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion

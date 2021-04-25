@@ -90,7 +90,8 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(197, 94);
+			this->button2->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->button2->Location = System::Drawing::Point(380, 135);
 			this->button2->Margin = System::Windows::Forms::Padding(2);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(93, 19);
@@ -101,7 +102,8 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(197, 144);
+			this->button3->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->button3->Location = System::Drawing::Point(380, 185);
 			this->button3->Margin = System::Windows::Forms::Padding(2);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(93, 23);
@@ -112,7 +114,8 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(197, 191);
+			this->button4->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->button4->Location = System::Drawing::Point(380, 232);
 			this->button4->Margin = System::Windows::Forms::Padding(2);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(119, 35);
@@ -123,7 +126,8 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button5
 			// 
-			this->button5->Location = System::Drawing::Point(197, 243);
+			this->button5->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->button5->Location = System::Drawing::Point(380, 284);
 			this->button5->Margin = System::Windows::Forms::Padding(2);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(117, 36);
@@ -134,7 +138,8 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(200, 48);
+			this->button6->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->button6->Location = System::Drawing::Point(383, 89);
 			this->button6->Margin = System::Windows::Forms::Padding(2);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(90, 28);
@@ -145,7 +150,8 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button8
 			// 
-			this->button8->Location = System::Drawing::Point(57, 121);
+			this->button8->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->button8->Location = System::Drawing::Point(240, 162);
 			this->button8->Margin = System::Windows::Forms::Padding(2);
 			this->button8->Name = L"button8";
 			this->button8->Size = System::Drawing::Size(96, 26);
@@ -156,7 +162,8 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button7
 			// 
-			this->button7->Location = System::Drawing::Point(57, 201);
+			this->button7->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->button7->Location = System::Drawing::Point(240, 242);
 			this->button7->Margin = System::Windows::Forms::Padding(2);
 			this->button7->Name = L"button7";
 			this->button7->Size = System::Drawing::Size(96, 30);
@@ -169,7 +176,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1057, 546);
+			this->ClientSize = System::Drawing::Size(742, 463);
 			this->Controls->Add(this->button7);
 			this->Controls->Add(this->button8);
 			this->Controls->Add(this->button6);
@@ -178,6 +185,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
+			this->MinimumSize = System::Drawing::Size(758, 502);
 			this->Name = L"Form2";
 			this->Text = L"Form2";
 			this->Load += gcnew System::EventHandler(this, &Form2::Form2_Load);

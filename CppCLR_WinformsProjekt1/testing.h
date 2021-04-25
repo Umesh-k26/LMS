@@ -55,8 +55,9 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(89, 55);
-			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button1->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->button1->Location = System::Drawing::Point(64, 55);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(50, 33);
 			this->button1->TabIndex = 0;
@@ -70,7 +71,8 @@ namespace CppCLR_WinformsProjekt1 {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(185, 159);
 			this->Controls->Add(this->button1);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
+			this->MinimumSize = System::Drawing::Size(201, 198);
 			this->Name = L"testing";
 			this->Text = L"testing";
 			this->Load += gcnew System::EventHandler(this, &testing::testing_Load);

@@ -84,6 +84,7 @@ namespace CppCLRWinformsProjekt {
 			// 
 			// login_button
 			// 
+			this->login_button->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->login_button->Location = System::Drawing::Point(126, 181);
 			this->login_button->Name = L"login_button";
 			this->login_button->Size = System::Drawing::Size(76, 28);
@@ -109,6 +110,7 @@ namespace CppCLRWinformsProjekt {
 			// 
 			// username_lbl
 			// 
+			this->username_lbl->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->username_lbl->AutoSize = true;
 			this->username_lbl->Location = System::Drawing::Point(72, 68);
 			this->username_lbl->Name = L"username_lbl";
@@ -119,6 +121,7 @@ namespace CppCLRWinformsProjekt {
 			// 
 			// password_lbl
 			// 
+			this->password_lbl->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->password_lbl->AutoSize = true;
 			this->password_lbl->Location = System::Drawing::Point(72, 121);
 			this->password_lbl->Name = L"password_lbl";
@@ -129,12 +132,14 @@ namespace CppCLRWinformsProjekt {
 			// 
 			// SignIn_box
 			// 
+			this->SignIn_box->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->SignIn_box->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->SignIn_box->Controls->Add(this->login_button);
 			this->SignIn_box->Controls->Add(this->password_lbl);
 			this->SignIn_box->Controls->Add(this->username_txt);
 			this->SignIn_box->Controls->Add(this->username_lbl);
 			this->SignIn_box->Controls->Add(this->password_txt);
-			this->SignIn_box->Location = System::Drawing::Point(149, 138);
+			this->SignIn_box->Location = System::Drawing::Point(170, 156);
 			this->SignIn_box->Name = L"SignIn_box";
 			this->SignIn_box->Size = System::Drawing::Size(349, 261);
 			this->SignIn_box->TabIndex = 7;
@@ -145,8 +150,9 @@ namespace CppCLRWinformsProjekt {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(667, 548);
+			this->ClientSize = System::Drawing::Size(709, 585);
 			this->Controls->Add(this->SignIn_box);
+			this->MinimumSize = System::Drawing::Size(725, 624);
 			this->Name = L"Form1";
 			this->Text = L"Form1";
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &Form1::Form1_FormClosed);
@@ -159,7 +165,7 @@ namespace CppCLRWinformsProjekt {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 		MySqlDataReader^ myReader;

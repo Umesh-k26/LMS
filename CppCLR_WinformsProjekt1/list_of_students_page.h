@@ -87,17 +87,19 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->AllowUserToDeleteRows = false;
+			this->dataGridView1->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Open });
-			this->dataGridView1->Location = System::Drawing::Point(174, 186);
+			this->dataGridView1->Location = System::Drawing::Point(116, 121);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(956, 438);
+			this->dataGridView1->Size = System::Drawing::Size(793, 375);
 			this->dataGridView1->TabIndex = 1;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &list_of_students_page::dataGridView1_CellContentClick);
 			// 
@@ -110,30 +112,35 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Open->ReadOnly = true;
 			this->Open->Text = L"Open";
 			this->Open->UseColumnTextForButtonValue = true;
-			this->Open->Width = 59;
+			this->Open->Width = 42;
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(174, 32);
+			this->textBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->textBox1->Location = System::Drawing::Point(116, 21);
+			this->textBox1->Margin = System::Windows::Forms::Padding(2);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(463, 26);
+			this->textBox1->Size = System::Drawing::Size(310, 20);
 			this->textBox1->TabIndex = 2;
 			// 
 			// button1
 			// 
 			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
-			this->button1->Location = System::Drawing::Point(14, 12);
+			this->button1->Location = System::Drawing::Point(9, 8);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 45);
+			this->button1->Size = System::Drawing::Size(50, 29);
 			this->button1->TabIndex = 3;
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &list_of_students_page::button1_Click);
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(1083, 12);
+			this->button2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->button2->Location = System::Drawing::Point(980, 47);
+			this->button2->Margin = System::Windows::Forms::Padding(2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 35);
+			this->button2->Size = System::Drawing::Size(50, 23);
 			this->button2->TabIndex = 4;
 			this->button2->Text = L"Exit";
 			this->button2->UseVisualStyleBackColor = true;
@@ -141,9 +148,10 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(12, 186);
+			this->button3->Location = System::Drawing::Point(8, 121);
+			this->button3->Margin = System::Windows::Forms::Padding(2);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 45);
+			this->button3->Size = System::Drawing::Size(50, 29);
 			this->button3->TabIndex = 5;
 			this->button3->Text = L"button3";
 			this->button3->UseVisualStyleBackColor = true;
@@ -151,9 +159,11 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(812, 32);
+			this->button4->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->button4->Location = System::Drawing::Point(541, 21);
+			this->button4->Margin = System::Windows::Forms::Padding(2);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(93, 38);
+			this->button4->Size = System::Drawing::Size(62, 25);
 			this->button4->TabIndex = 6;
 			this->button4->Text = L"Search";
 			this->button4->UseVisualStyleBackColor = true;
@@ -161,19 +171,21 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// comboBox1
 			// 
+			this->comboBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"ID", L"Name", L"Phone", L"Email" });
-			this->comboBox1->Location = System::Drawing::Point(670, 32);
+			this->comboBox1->Location = System::Drawing::Point(447, 21);
+			this->comboBox1->Margin = System::Windows::Forms::Padding(2);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(121, 28);
+			this->comboBox1->Size = System::Drawing::Size(82, 21);
 			this->comboBox1->TabIndex = 7;
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &list_of_students_page::comboBox1_SelectedIndexChanged);
 			// 
 			// list_of_students_page
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1170, 645);
+			this->ClientSize = System::Drawing::Size(1101, 638);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
@@ -181,6 +193,8 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->dataGridView1);
+			this->Margin = System::Windows::Forms::Padding(2);
+			this->MinimumSize = System::Drawing::Size(1117, 677);
 			this->Name = L"list_of_students_page";
 			this->Text = L"list_of_students_page";
 			this->Load += gcnew System::EventHandler(this, &list_of_students_page::list_of_students_page_Load);

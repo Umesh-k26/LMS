@@ -60,6 +60,7 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::TextBox^ status_no_txt;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::DateTimePicker^ dateTimePicker;
+	private: System::Windows::Forms::GroupBox^ groupBox1;
 
 
 
@@ -94,12 +95,14 @@ namespace CppCLR_WinformsProjekt1 {
 			this->status_no_txt = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->dateTimePicker = (gcnew System::Windows::Forms::DateTimePicker());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// name_lbl
 			// 
 			this->name_lbl->AutoSize = true;
-			this->name_lbl->Location = System::Drawing::Point(219, 156);
+			this->name_lbl->Location = System::Drawing::Point(36, 58);
 			this->name_lbl->Name = L"name_lbl";
 			this->name_lbl->Size = System::Drawing::Size(35, 13);
 			this->name_lbl->TabIndex = 0;
@@ -108,7 +111,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// dob_lbl
 			// 
 			this->dob_lbl->AutoSize = true;
-			this->dob_lbl->Location = System::Drawing::Point(219, 201);
+			this->dob_lbl->Location = System::Drawing::Point(36, 103);
 			this->dob_lbl->Name = L"dob_lbl";
 			this->dob_lbl->Size = System::Drawing::Size(66, 13);
 			this->dob_lbl->TabIndex = 1;
@@ -117,7 +120,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// profession_lbl
 			// 
 			this->profession_lbl->AutoSize = true;
-			this->profession_lbl->Location = System::Drawing::Point(219, 252);
+			this->profession_lbl->Location = System::Drawing::Point(36, 154);
 			this->profession_lbl->Name = L"profession_lbl";
 			this->profession_lbl->Size = System::Drawing::Size(56, 13);
 			this->profession_lbl->TabIndex = 2;
@@ -126,7 +129,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// email_id_lbl
 			// 
 			this->email_id_lbl->AutoSize = true;
-			this->email_id_lbl->Location = System::Drawing::Point(219, 304);
+			this->email_id_lbl->Location = System::Drawing::Point(36, 206);
 			this->email_id_lbl->Name = L"email_id_lbl";
 			this->email_id_lbl->Size = System::Drawing::Size(44, 13);
 			this->email_id_lbl->TabIndex = 3;
@@ -135,7 +138,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// mobile_no_lbl
 			// 
 			this->mobile_no_lbl->AutoSize = true;
-			this->mobile_no_lbl->Location = System::Drawing::Point(219, 356);
+			this->mobile_no_lbl->Location = System::Drawing::Point(36, 258);
 			this->mobile_no_lbl->Name = L"mobile_no_lbl";
 			this->mobile_no_lbl->Size = System::Drawing::Size(58, 13);
 			this->mobile_no_lbl->TabIndex = 4;
@@ -144,7 +147,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// address_lbl
 			// 
 			this->address_lbl->AutoSize = true;
-			this->address_lbl->Location = System::Drawing::Point(219, 408);
+			this->address_lbl->Location = System::Drawing::Point(36, 310);
 			this->address_lbl->Name = L"address_lbl";
 			this->address_lbl->Size = System::Drawing::Size(45, 13);
 			this->address_lbl->TabIndex = 5;
@@ -152,42 +155,43 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// name_txt
 			// 
-			this->name_txt->Location = System::Drawing::Point(354, 153);
+			this->name_txt->Location = System::Drawing::Point(171, 55);
 			this->name_txt->Name = L"name_txt";
 			this->name_txt->Size = System::Drawing::Size(100, 20);
 			this->name_txt->TabIndex = 6;
 			// 
 			// profession_txt
 			// 
-			this->profession_txt->Location = System::Drawing::Point(354, 249);
+			this->profession_txt->Location = System::Drawing::Point(171, 151);
 			this->profession_txt->Name = L"profession_txt";
 			this->profession_txt->Size = System::Drawing::Size(100, 20);
 			this->profession_txt->TabIndex = 8;
 			// 
 			// email_id_txt
 			// 
-			this->email_id_txt->Location = System::Drawing::Point(354, 301);
+			this->email_id_txt->Location = System::Drawing::Point(171, 203);
 			this->email_id_txt->Name = L"email_id_txt";
 			this->email_id_txt->Size = System::Drawing::Size(100, 20);
 			this->email_id_txt->TabIndex = 9;
 			// 
 			// mobile_no_txt
 			// 
-			this->mobile_no_txt->Location = System::Drawing::Point(354, 353);
+			this->mobile_no_txt->Location = System::Drawing::Point(171, 255);
 			this->mobile_no_txt->Name = L"mobile_no_txt";
 			this->mobile_no_txt->Size = System::Drawing::Size(100, 20);
 			this->mobile_no_txt->TabIndex = 10;
 			// 
 			// address_txt
 			// 
-			this->address_txt->Location = System::Drawing::Point(354, 405);
+			this->address_txt->Location = System::Drawing::Point(171, 307);
 			this->address_txt->Name = L"address_txt";
 			this->address_txt->Size = System::Drawing::Size(100, 20);
 			this->address_txt->TabIndex = 11;
 			// 
 			// add_button
 			// 
-			this->add_button->Location = System::Drawing::Point(589, 264);
+			this->add_button->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->add_button->Location = System::Drawing::Point(626, 278);
 			this->add_button->Name = L"add_button";
 			this->add_button->Size = System::Drawing::Size(117, 32);
 			this->add_button->TabIndex = 12;
@@ -198,7 +202,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// status_lbl
 			// 
 			this->status_lbl->AutoSize = true;
-			this->status_lbl->Location = System::Drawing::Point(219, 457);
+			this->status_lbl->Location = System::Drawing::Point(36, 359);
 			this->status_lbl->Name = L"status_lbl";
 			this->status_lbl->Size = System::Drawing::Size(91, 13);
 			this->status_lbl->TabIndex = 13;
@@ -206,7 +210,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// status_no_txt
 			// 
-			this->status_no_txt->Location = System::Drawing::Point(354, 454);
+			this->status_no_txt->Location = System::Drawing::Point(171, 356);
 			this->status_no_txt->Name = L"status_no_txt";
 			this->status_no_txt->Size = System::Drawing::Size(100, 20);
 			this->status_no_txt->TabIndex = 14;
@@ -226,38 +230,51 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->dateTimePicker->CustomFormat = L"yyyy-MM-dd";
 			this->dateTimePicker->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
-			this->dateTimePicker->Location = System::Drawing::Point(355, 195);
+			this->dateTimePicker->Location = System::Drawing::Point(172, 97);
 			this->dateTimePicker->Name = L"dateTimePicker";
 			this->dateTimePicker->Size = System::Drawing::Size(99, 20);
 			this->dateTimePicker->TabIndex = 16;
 			this->dateTimePicker->ValueChanged += gcnew System::EventHandler(this, &RegisterStudent::dateTimePicker_ValueChanged);
+			// 
+			// groupBox1
+			// 
+			this->groupBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->groupBox1->Controls->Add(this->status_no_txt);
+			this->groupBox1->Controls->Add(this->dateTimePicker);
+			this->groupBox1->Controls->Add(this->name_lbl);
+			this->groupBox1->Controls->Add(this->dob_lbl);
+			this->groupBox1->Controls->Add(this->profession_lbl);
+			this->groupBox1->Controls->Add(this->status_lbl);
+			this->groupBox1->Controls->Add(this->email_id_lbl);
+			this->groupBox1->Controls->Add(this->mobile_no_lbl);
+			this->groupBox1->Controls->Add(this->address_txt);
+			this->groupBox1->Controls->Add(this->address_lbl);
+			this->groupBox1->Controls->Add(this->mobile_no_txt);
+			this->groupBox1->Controls->Add(this->name_txt);
+			this->groupBox1->Controls->Add(this->email_id_txt);
+			this->groupBox1->Controls->Add(this->profession_txt);
+			this->groupBox1->Location = System::Drawing::Point(235, 87);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(316, 421);
+			this->groupBox1->TabIndex = 17;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Register Student";
 			// 
 			// RegisterStudent
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(843, 633);
-			this->Controls->Add(this->dateTimePicker);
+			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->button1);
-			this->Controls->Add(this->status_no_txt);
-			this->Controls->Add(this->status_lbl);
 			this->Controls->Add(this->add_button);
-			this->Controls->Add(this->address_txt);
-			this->Controls->Add(this->mobile_no_txt);
-			this->Controls->Add(this->email_id_txt);
-			this->Controls->Add(this->profession_txt);
-			this->Controls->Add(this->name_txt);
-			this->Controls->Add(this->address_lbl);
-			this->Controls->Add(this->mobile_no_lbl);
-			this->Controls->Add(this->email_id_lbl);
-			this->Controls->Add(this->profession_lbl);
-			this->Controls->Add(this->dob_lbl);
-			this->Controls->Add(this->name_lbl);
+			this->MinimumSize = System::Drawing::Size(859, 672);
 			this->Name = L"RegisterStudent";
-			this->Text = L"RegisterStudent";
+			this->Text = L"Register Student";
 			this->Load += gcnew System::EventHandler(this, &RegisterStudent::RegisterStudent_Load);
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
