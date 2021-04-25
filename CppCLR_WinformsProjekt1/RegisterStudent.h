@@ -102,98 +102,110 @@ namespace CppCLR_WinformsProjekt1 {
 			// name_lbl
 			// 
 			this->name_lbl->AutoSize = true;
-			this->name_lbl->Location = System::Drawing::Point(36, 58);
+			this->name_lbl->Location = System::Drawing::Point(54, 89);
+			this->name_lbl->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->name_lbl->Name = L"name_lbl";
-			this->name_lbl->Size = System::Drawing::Size(35, 13);
+			this->name_lbl->Size = System::Drawing::Size(51, 20);
 			this->name_lbl->TabIndex = 0;
 			this->name_lbl->Text = L"Name";
 			// 
 			// dob_lbl
 			// 
 			this->dob_lbl->AutoSize = true;
-			this->dob_lbl->Location = System::Drawing::Point(36, 103);
+			this->dob_lbl->Location = System::Drawing::Point(54, 158);
+			this->dob_lbl->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->dob_lbl->Name = L"dob_lbl";
-			this->dob_lbl->Size = System::Drawing::Size(66, 13);
+			this->dob_lbl->Size = System::Drawing::Size(99, 20);
 			this->dob_lbl->TabIndex = 1;
 			this->dob_lbl->Text = L"Date of Birth";
 			// 
 			// profession_lbl
 			// 
 			this->profession_lbl->AutoSize = true;
-			this->profession_lbl->Location = System::Drawing::Point(36, 154);
+			this->profession_lbl->Location = System::Drawing::Point(54, 237);
+			this->profession_lbl->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->profession_lbl->Name = L"profession_lbl";
-			this->profession_lbl->Size = System::Drawing::Size(56, 13);
+			this->profession_lbl->Size = System::Drawing::Size(84, 20);
 			this->profession_lbl->TabIndex = 2;
 			this->profession_lbl->Text = L"Profession";
 			// 
 			// email_id_lbl
 			// 
 			this->email_id_lbl->AutoSize = true;
-			this->email_id_lbl->Location = System::Drawing::Point(36, 206);
+			this->email_id_lbl->Location = System::Drawing::Point(54, 317);
+			this->email_id_lbl->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->email_id_lbl->Name = L"email_id_lbl";
-			this->email_id_lbl->Size = System::Drawing::Size(44, 13);
+			this->email_id_lbl->Size = System::Drawing::Size(66, 20);
 			this->email_id_lbl->TabIndex = 3;
 			this->email_id_lbl->Text = L"Email Id";
 			// 
 			// mobile_no_lbl
 			// 
 			this->mobile_no_lbl->AutoSize = true;
-			this->mobile_no_lbl->Location = System::Drawing::Point(36, 258);
+			this->mobile_no_lbl->Location = System::Drawing::Point(54, 397);
+			this->mobile_no_lbl->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->mobile_no_lbl->Name = L"mobile_no_lbl";
-			this->mobile_no_lbl->Size = System::Drawing::Size(58, 13);
+			this->mobile_no_lbl->Size = System::Drawing::Size(83, 20);
 			this->mobile_no_lbl->TabIndex = 4;
 			this->mobile_no_lbl->Text = L"Mobile No.";
 			// 
 			// address_lbl
 			// 
 			this->address_lbl->AutoSize = true;
-			this->address_lbl->Location = System::Drawing::Point(36, 310);
+			this->address_lbl->Location = System::Drawing::Point(54, 477);
+			this->address_lbl->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->address_lbl->Name = L"address_lbl";
-			this->address_lbl->Size = System::Drawing::Size(45, 13);
+			this->address_lbl->Size = System::Drawing::Size(68, 20);
 			this->address_lbl->TabIndex = 5;
 			this->address_lbl->Text = L"Address";
 			// 
 			// name_txt
 			// 
-			this->name_txt->Location = System::Drawing::Point(171, 55);
+			this->name_txt->Location = System::Drawing::Point(256, 85);
+			this->name_txt->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->name_txt->Name = L"name_txt";
-			this->name_txt->Size = System::Drawing::Size(100, 20);
+			this->name_txt->Size = System::Drawing::Size(148, 26);
 			this->name_txt->TabIndex = 6;
 			// 
 			// profession_txt
 			// 
-			this->profession_txt->Location = System::Drawing::Point(171, 151);
+			this->profession_txt->Location = System::Drawing::Point(256, 232);
+			this->profession_txt->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->profession_txt->Name = L"profession_txt";
-			this->profession_txt->Size = System::Drawing::Size(100, 20);
+			this->profession_txt->Size = System::Drawing::Size(148, 26);
 			this->profession_txt->TabIndex = 8;
 			// 
 			// email_id_txt
 			// 
-			this->email_id_txt->Location = System::Drawing::Point(171, 203);
+			this->email_id_txt->Location = System::Drawing::Point(256, 312);
+			this->email_id_txt->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->email_id_txt->Name = L"email_id_txt";
-			this->email_id_txt->Size = System::Drawing::Size(100, 20);
+			this->email_id_txt->Size = System::Drawing::Size(148, 26);
 			this->email_id_txt->TabIndex = 9;
 			// 
 			// mobile_no_txt
 			// 
-			this->mobile_no_txt->Location = System::Drawing::Point(171, 255);
+			this->mobile_no_txt->Location = System::Drawing::Point(256, 392);
+			this->mobile_no_txt->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->mobile_no_txt->Name = L"mobile_no_txt";
-			this->mobile_no_txt->Size = System::Drawing::Size(100, 20);
+			this->mobile_no_txt->Size = System::Drawing::Size(148, 26);
 			this->mobile_no_txt->TabIndex = 10;
 			// 
 			// address_txt
 			// 
-			this->address_txt->Location = System::Drawing::Point(171, 307);
+			this->address_txt->Location = System::Drawing::Point(256, 472);
+			this->address_txt->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->address_txt->Name = L"address_txt";
-			this->address_txt->Size = System::Drawing::Size(100, 20);
+			this->address_txt->Size = System::Drawing::Size(148, 26);
 			this->address_txt->TabIndex = 11;
 			// 
 			// add_button
 			// 
 			this->add_button->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->add_button->Location = System::Drawing::Point(626, 278);
+			this->add_button->Location = System::Drawing::Point(939, 428);
+			this->add_button->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->add_button->Name = L"add_button";
-			this->add_button->Size = System::Drawing::Size(117, 32);
+			this->add_button->Size = System::Drawing::Size(176, 49);
 			this->add_button->TabIndex = 12;
 			this->add_button->Text = L"Add";
 			this->add_button->UseVisualStyleBackColor = true;
@@ -202,26 +214,28 @@ namespace CppCLR_WinformsProjekt1 {
 			// status_lbl
 			// 
 			this->status_lbl->AutoSize = true;
-			this->status_lbl->Location = System::Drawing::Point(36, 359);
+			this->status_lbl->Location = System::Drawing::Point(54, 552);
+			this->status_lbl->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->status_lbl->Name = L"status_lbl";
-			this->status_lbl->Size = System::Drawing::Size(91, 13);
+			this->status_lbl->Size = System::Drawing::Size(135, 20);
 			this->status_lbl->TabIndex = 13;
 			this->status_lbl->Text = L"Borrow status No.";
 			// 
 			// status_no_txt
 			// 
-			this->status_no_txt->Location = System::Drawing::Point(171, 356);
+			this->status_no_txt->Location = System::Drawing::Point(256, 548);
+			this->status_no_txt->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->status_no_txt->Name = L"status_no_txt";
-			this->status_no_txt->Size = System::Drawing::Size(100, 20);
+			this->status_no_txt->Size = System::Drawing::Size(148, 26);
 			this->status_no_txt->TabIndex = 14;
 			// 
 			// button1
 			// 
 			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
-			this->button1->Location = System::Drawing::Point(35, 33);
-			this->button1->Margin = System::Windows::Forms::Padding(1);
+			this->button1->Location = System::Drawing::Point(52, 51);
+			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(37, 34);
+			this->button1->Size = System::Drawing::Size(56, 52);
 			this->button1->TabIndex = 15;
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &RegisterStudent::button1_Click);
@@ -230,9 +244,10 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->dateTimePicker->CustomFormat = L"yyyy-MM-dd";
 			this->dateTimePicker->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
-			this->dateTimePicker->Location = System::Drawing::Point(172, 97);
+			this->dateTimePicker->Location = System::Drawing::Point(258, 149);
+			this->dateTimePicker->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->dateTimePicker->Name = L"dateTimePicker";
-			this->dateTimePicker->Size = System::Drawing::Size(99, 20);
+			this->dateTimePicker->Size = System::Drawing::Size(146, 26);
 			this->dateTimePicker->TabIndex = 16;
 			this->dateTimePicker->ValueChanged += gcnew System::EventHandler(this, &RegisterStudent::dateTimePicker_ValueChanged);
 			// 
@@ -253,22 +268,25 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1->Controls->Add(this->name_txt);
 			this->groupBox1->Controls->Add(this->email_id_txt);
 			this->groupBox1->Controls->Add(this->profession_txt);
-			this->groupBox1->Location = System::Drawing::Point(235, 87);
+			this->groupBox1->Location = System::Drawing::Point(352, 134);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(316, 421);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->groupBox1->Size = System::Drawing::Size(474, 648);
 			this->groupBox1->TabIndex = 17;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Register Student";
 			// 
 			// RegisterStudent
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(843, 633);
+			this->ClientSize = System::Drawing::Size(1264, 974);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->add_button);
-			this->MinimumSize = System::Drawing::Size(859, 672);
+			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->MinimumSize = System::Drawing::Size(1278, 1004);
 			this->Name = L"RegisterStudent";
 			this->Text = L"Register Student";
 			this->Load += gcnew System::EventHandler(this, &RegisterStudent::RegisterStudent_Load);
