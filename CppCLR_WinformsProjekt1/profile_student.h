@@ -8,6 +8,7 @@ namespace CppCLR_WinformsProjekt1 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace MySql::Data::MySqlClient;
 
 	/// <summary>
 	/// Summary for profile_student
@@ -80,6 +81,7 @@ namespace CppCLR_WinformsProjekt1 {
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->dateTimePicker = (gcnew System::Windows::Forms::DateTimePicker());
 			this->name_lbl = (gcnew System::Windows::Forms::Label());
 			this->dob_lbl = (gcnew System::Windows::Forms::Label());
@@ -92,7 +94,6 @@ namespace CppCLR_WinformsProjekt1 {
 			this->name_txt = (gcnew System::Windows::Forms::TextBox());
 			this->email_id_txt = (gcnew System::Windows::Forms::TextBox());
 			this->profession_txt = (gcnew System::Windows::Forms::TextBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -122,7 +123,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1->Controls->Add(this->name_txt);
 			this->groupBox1->Controls->Add(this->email_id_txt);
 			this->groupBox1->Controls->Add(this->profession_txt);
-			this->groupBox1->Location = System::Drawing::Point(360, -13);
+			this->groupBox1->Location = System::Drawing::Point(370, 10);
 			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
@@ -130,6 +131,14 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1->TabIndex = 18;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Register Student";
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(257, 42);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->ReadOnly = true;
+			this->textBox1->Size = System::Drawing::Size(146, 26);
+			this->textBox1->TabIndex = 17;
 			// 
 			// dateTimePicker
 			// 
@@ -246,19 +255,11 @@ namespace CppCLR_WinformsProjekt1 {
 			this->profession_txt->Size = System::Drawing::Size(148, 26);
 			this->profession_txt->TabIndex = 8;
 			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(257, 42);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->ReadOnly = true;
-			this->textBox1->Size = System::Drawing::Size(146, 26);
-			this->textBox1->TabIndex = 17;
-			// 
 			// profile_student
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1109, 625);
+			this->ClientSize = System::Drawing::Size(1129, 670);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"profile_student";
 			this->Text = L"profile_student";
@@ -274,13 +275,54 @@ namespace CppCLR_WinformsProjekt1 {
 		//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
 		WindowState = FormWindowState::Maximized;
 		//this->label1->Text = list_of_students_page::global_student_id_passed;
-		this->label1->Text = transfer_id_student;
+		//this->label1->Text = transfer_id_student;
 		//
 		//
 		//	STILL NEED TO ADD FUNCTION TO DISPLAY ALL THE DATA
 		//
 		//
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.student_data\
+		WHERE student_id = "+ transfer_id_student+";", conDataBase);
+		MySqlDataReader^ myReader;
+
+		try {
+			conDataBase->Open();
+			myReader = cmdDataBase->ExecuteReader();
+
+			while (myReader->Read())
+			{
+				String^ printing_name;
+				String^ printing_id;
+				String^ printing_profession;
+				String^ printing_email;
+				String^ printing_mobile;
+				String^ printing_address;
+				printing_id = myReader->GetString("student_id");
+				printing_name = myReader->GetString("student_name");
+				printing_profession = myReader->GetString("student_profession");
+				printing_email = myReader->GetString("student_email");
+				printing_mobile = myReader->GetString("student_mobile");
+				printing_address = myReader->GetString("student_address");
+				this->name_txt->Text = printing_name;
+				this->textBox1->Text = printing_id;
+				this->email_id_txt->Text = printing_email;
+				this->mobile_no_txt->Text = printing_mobile;
+				this->address_txt->Text = printing_address;
+
+				//listBox1->Items->Add(printing_names);
+
+			}
+
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->Message);
+
+		}
 	}
 	};
 }
