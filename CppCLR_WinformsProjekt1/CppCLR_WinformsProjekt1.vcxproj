@@ -165,6 +165,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="profile_book.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="profile_student.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -195,6 +198,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="profile_book.cpp" />
     <ClCompile Include="profile_student.cpp" />
     <ClCompile Include="RegisterStudent.cpp" />
     <ClCompile Include="ReturnBook.cpp" />
@@ -233,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="list_of_students_page.resx">
       <DependentUpon>list_of_students_page.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="profile_book.resx">
+      <DependentUpon>profile_book.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="profile_student.resx">
       <DependentUpon>profile_student.h</DependentUpon>

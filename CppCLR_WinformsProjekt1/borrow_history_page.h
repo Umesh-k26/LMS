@@ -36,7 +36,7 @@ namespace CppCLR_WinformsProjekt1 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ back_button_borrow_his;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	protected:
 
@@ -54,21 +54,20 @@ namespace CppCLR_WinformsProjekt1 {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(borrow_history_page::typeid));
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->back_button_borrow_his = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// button1
+			// back_button_borrow_his
 			// 
-			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
-			this->button1->Location = System::Drawing::Point(9, 8);
-			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(50, 34);
-			this->button1->TabIndex = 0;
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &borrow_history_page::button1_Click);
+			this->back_button_borrow_his->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"back_button_borrow_his.Image")));
+			this->back_button_borrow_his->Location = System::Drawing::Point(14, 12);
+			this->back_button_borrow_his->Name = L"back_button_borrow_his";
+			this->back_button_borrow_his->Size = System::Drawing::Size(75, 52);
+			this->back_button_borrow_his->TabIndex = 0;
+			this->back_button_borrow_his->UseVisualStyleBackColor = true;
+			this->back_button_borrow_his->Click += gcnew System::EventHandler(this, &borrow_history_page::back_button_borrow_his_Click);
 			// 
 			// dataGridView1
 			// 
@@ -76,24 +75,22 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1->AllowUserToDeleteRows = false;
 			this->dataGridView1->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(94, 128);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->dataGridView1->Location = System::Drawing::Point(141, 197);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
-			this->dataGridView1->Size = System::Drawing::Size(541, 188);
+			this->dataGridView1->Size = System::Drawing::Size(812, 289);
 			this->dataGridView1->TabIndex = 1;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &borrow_history_page::dataGridView1_CellContentClick);
 			// 
 			// borrow_history_page
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(756, 445);
+			this->ClientSize = System::Drawing::Size(1134, 685);
 			this->Controls->Add(this->dataGridView1);
-			this->Controls->Add(this->button1);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Controls->Add(this->back_button_borrow_his);
 			this->Name = L"borrow_history_page";
 			this->Text = L"borrow_history_page";
 			this->Load += gcnew System::EventHandler(this, &borrow_history_page::borrow_history_page_Load);
@@ -102,7 +99,7 @@ namespace CppCLR_WinformsProjekt1 {
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void back_button_borrow_his_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
