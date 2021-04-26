@@ -65,6 +65,7 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::TextBox^ dob_student_txt;
 	private: System::Windows::Forms::Button^ delete_profile_button;
 	private: System::Windows::Forms::Button^ update_profile_button;
+	private: System::Windows::Forms::Button^ confirm_change_button;
 
 
 
@@ -102,6 +103,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->profession_txt = (gcnew System::Windows::Forms::TextBox());
 			this->delete_profile_button = (gcnew System::Windows::Forms::Button());
 			this->update_profile_button = (gcnew System::Windows::Forms::Button());
+			this->confirm_change_button = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -143,7 +145,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// dob_student_txt
 			// 
-			this->dob_student_txt->Location = System::Drawing::Point(254, 149);
+			this->dob_student_txt->Location = System::Drawing::Point(275, 149);
 			this->dob_student_txt->Name = L"dob_student_txt";
 			this->dob_student_txt->ReadOnly = true;
 			this->dob_student_txt->Size = System::Drawing::Size(150, 26);
@@ -293,11 +295,23 @@ namespace CppCLR_WinformsProjekt1 {
 			this->update_profile_button->UseVisualStyleBackColor = true;
 			this->update_profile_button->Click += gcnew System::EventHandler(this, &profile_student::update_profile_button_Click);
 			// 
+			// confirm_change_button
+			// 
+			this->confirm_change_button->Location = System::Drawing::Point(912, 118);
+			this->confirm_change_button->Name = L"confirm_change_button";
+			this->confirm_change_button->Size = System::Drawing::Size(203, 67);
+			this->confirm_change_button->TabIndex = 21;
+			this->confirm_change_button->Text = L"MAKE CHANGES";
+			this->confirm_change_button->UseVisualStyleBackColor = true;
+			this->confirm_change_button->Visible = false;
+			this->confirm_change_button->Click += gcnew System::EventHandler(this, &profile_student::confirm_change_button_Click);
+			// 
 			// profile_student
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1129, 670);
+			this->Controls->Add(this->confirm_change_button);
 			this->Controls->Add(this->update_profile_button);
 			this->Controls->Add(this->delete_profile_button);
 			this->Controls->Add(this->groupBox1);
@@ -369,9 +383,77 @@ namespace CppCLR_WinformsProjekt1 {
 	}
 	private: System::Void update_profile_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show("Update profile");
+		this->dob_student_txt->Visible = false;
+		this->update_profile_button->Visible = false;
+		this->confirm_change_button->Visible = true;
+		this->dateTimePicker->Visible = true;
+		this->name_txt->ReadOnly = false;
+		this->profession_txt->ReadOnly = false;
+		this->email_id_txt->ReadOnly = false;
+		this->mobile_no_txt->ReadOnly = false;
+		this->address_txt->ReadOnly = false;
+
+
 	}
 private: System::Void delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e) {
 	MessageBox::Show("Delete Profile");
+	/*String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("DELETE * FROM library_system.student WHERE student_id = "+this->student_id_txt->Text+";", conDataBase);
+	MySqlDataReader^ myReader;
+	try {
+		conDataBase->Open();
+		myReader = cmdDataBase->ExecuteReader();
+		MessageBox::Show("Profile is deleted");
+		while (myReader->Read())
+		{
+
+		}
+		
+
+	}
+	catch (Exception^ ex)
+	{
+		MessageBox::Show(ex->Message);
+
+	}*/
+	this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	this->Close();
+}
+private: System::Void confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("Changes made");
+	/*String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("UPDATE library_system.student_data set student_id = \
+		" + this->student_id_txt->Text + "student_name = '" + this->name_txt->Text + "',student_dob = '" + this->dob_student_txt->Text + "', student_profession = '" + this->profession_txt->Text + "', student_email='" + this->email_id_txt->Text + "', student_mobile=" + this->mobile_no_txt->Text + ", student_address = '" + this->address_txt->Text + "'WHERE student_id = " + this->student_id_txt->Text + ";", conDataBase);
+	MySqlDataReader^ myReader;
+	try {
+		conDataBase->Open();
+		myReader = cmdDataBase->ExecuteReader();
+		MessageBox::Show("Profile is updated");
+		while (myReader->Read())
+		{
+
+		}
+
+
+	}
+	catch (Exception^ ex)
+	{
+		MessageBox::Show(ex->Message);
+
+	}*/
+	this->confirm_change_button->Visible = false;
+	this->dob_student_txt->Visible = true;
+	this->dateTimePicker->Visible = false;
+	this->update_profile_button->Visible = true;
+
+	profile_student(transfer_id_student);
+	//profile_student_Load();
+	//
+	//	FORM NOT RELOADING OVER HERE NEED TO FIX
+	//
+
 }
 };
 }

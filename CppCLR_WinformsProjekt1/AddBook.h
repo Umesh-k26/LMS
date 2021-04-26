@@ -317,9 +317,9 @@ namespace CppCLR_WinformsProjekt1 {
 		'" + this->author_txt->Text + "',\
 		'" + this->publisher_txt->Text + "',\
 		'" + this->price_txt->Text + "',\
-		" + this->edition_no_txt->Text + "',\
+		'" + this->edition_no_txt->Text + "',\
 		'" + this->no_of_copies_txt->Text + "',\
-		'" + this->category_txt->Text + "'	;", conDataBase);
+		'" + this->category_txt->Text + "'	);", conDataBase);
 
 
 		MySqlDataReader^ myReader;
