@@ -1,5 +1,6 @@
 #pragma once
 //#include "Form2.h"
+#include "profile_book.h"
 namespace CppCLR_WinformsProjekt1 {
 
 	using namespace System;
@@ -223,6 +224,14 @@ private: System::Void dataGridView1_CellContentClick(System::Object^ sender, Sys
 		int col_num = e->ColumnIndex + 1;
 		String^ str = this->dataGridView1->Rows[row_num]->Cells[col_num]->Value->ToString();
 		MessageBox::Show("Your id is " + str);
+		CppCLR_WinformsProjekt1::profile_book^ profile_book_f = gcnew CppCLR_WinformsProjekt1::profile_book(str);
+		this->Hide();
+		//testing_f->ShowDialog();
+
+		if (profile_book_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			this->Show();
+		}
 
 	}
 
