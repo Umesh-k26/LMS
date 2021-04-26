@@ -46,14 +46,14 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 
 
-	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::TextBox^ search_bar_student;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ back_button_student_list;
+	private: System::Windows::Forms::Button^ exit_button;
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::DataGridViewButtonColumn^ Open;
-	private: System::Windows::Forms::Button^ button4;
-	private: System::Windows::Forms::ComboBox^ comboBox1;
+	private: System::Windows::Forms::Button^ search_button_student;
+	private: System::Windows::Forms::ComboBox^ list_detail_search_person;
 
 
 
@@ -78,12 +78,12 @@ namespace CppCLR_WinformsProjekt1 {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(list_of_students_page::typeid));
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Open = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->search_bar_student = (gcnew System::Windows::Forms::TextBox());
+			this->back_button_student_list = (gcnew System::Windows::Forms::Button());
+			this->exit_button = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->search_button_student = (gcnew System::Windows::Forms::Button());
+			this->list_detail_search_person = (gcnew System::Windows::Forms::ComboBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -117,34 +117,34 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Open->UseColumnTextForButtonValue = true;
 			this->Open->Width = 59;
 			// 
-			// textBox1
+			// search_bar_student
 			// 
-			this->textBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->textBox1->Location = System::Drawing::Point(174, 32);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(463, 26);
-			this->textBox1->TabIndex = 2;
+			this->search_bar_student->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->search_bar_student->Location = System::Drawing::Point(174, 32);
+			this->search_bar_student->Name = L"search_bar_student";
+			this->search_bar_student->Size = System::Drawing::Size(463, 26);
+			this->search_bar_student->TabIndex = 2;
 			// 
-			// button1
+			// back_button_student_list
 			// 
-			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
-			this->button1->Location = System::Drawing::Point(14, 12);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 45);
-			this->button1->TabIndex = 3;
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &list_of_students_page::button1_Click);
+			this->back_button_student_list->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"back_button_student_list.Image")));
+			this->back_button_student_list->Location = System::Drawing::Point(14, 12);
+			this->back_button_student_list->Name = L"back_button_student_list";
+			this->back_button_student_list->Size = System::Drawing::Size(75, 45);
+			this->back_button_student_list->TabIndex = 3;
+			this->back_button_student_list->UseVisualStyleBackColor = true;
+			this->back_button_student_list->Click += gcnew System::EventHandler(this, &list_of_students_page::back_button_student_list_Click);
 			// 
-			// button2
+			// exit_button
 			// 
-			this->button2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button2->Location = System::Drawing::Point(1470, 72);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 35);
-			this->button2->TabIndex = 4;
-			this->button2->Text = L"Exit";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &list_of_students_page::button2_Click);
+			this->exit_button->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->exit_button->Location = System::Drawing::Point(1470, 72);
+			this->exit_button->Name = L"exit_button";
+			this->exit_button->Size = System::Drawing::Size(75, 35);
+			this->exit_button->TabIndex = 4;
+			this->exit_button->Text = L"Exit";
+			this->exit_button->UseVisualStyleBackColor = true;
+			this->exit_button->Click += gcnew System::EventHandler(this, &list_of_students_page::exit_button_Click);
 			// 
 			// button3
 			// 
@@ -156,39 +156,39 @@ namespace CppCLR_WinformsProjekt1 {
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &list_of_students_page::button3_Click);
 			// 
-			// button4
+			// search_button_student
 			// 
-			this->button4->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->button4->Location = System::Drawing::Point(1019, 20);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(93, 38);
-			this->button4->TabIndex = 6;
-			this->button4->Text = L"Search";
-			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &list_of_students_page::button4_Click);
+			this->search_button_student->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->search_button_student->Location = System::Drawing::Point(1019, 20);
+			this->search_button_student->Name = L"search_button_student";
+			this->search_button_student->Size = System::Drawing::Size(93, 38);
+			this->search_button_student->TabIndex = 6;
+			this->search_button_student->Text = L"Search";
+			this->search_button_student->UseVisualStyleBackColor = true;
+			this->search_button_student->Click += gcnew System::EventHandler(this, &list_of_students_page::search_button_student_Click);
 			// 
-			// comboBox1
+			// list_detail_search_person
 			// 
-			this->comboBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"ID", L"Name", L"Phone", L"Email", L"Number of books borrowed currently" });
-			this->comboBox1->Location = System::Drawing::Point(670, 32);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(343, 28);
-			this->comboBox1->TabIndex = 7;
-			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &list_of_students_page::comboBox1_SelectedIndexChanged);
+			this->list_detail_search_person->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->list_detail_search_person->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->list_detail_search_person->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"ID", L"Name", L"Phone", L"Email", L"Number of books borrowed currently" });
+			this->list_detail_search_person->Location = System::Drawing::Point(670, 32);
+			this->list_detail_search_person->Name = L"list_detail_search_person";
+			this->list_detail_search_person->Size = System::Drawing::Size(343, 28);
+			this->list_detail_search_person->TabIndex = 7;
+			this->list_detail_search_person->SelectedIndexChanged += gcnew System::EventHandler(this, &list_of_students_page::list_detail_search_person_SelectedIndexChanged);
 			// 
 			// list_of_students_page
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1652, 982);
-			this->Controls->Add(this->comboBox1);
-			this->Controls->Add(this->button4);
+			this->Controls->Add(this->list_detail_search_person);
+			this->Controls->Add(this->search_button_student);
 			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->exit_button);
+			this->Controls->Add(this->back_button_student_list);
+			this->Controls->Add(this->search_bar_student);
 			this->Controls->Add(this->dataGridView1);
 			this->MinimumSize = System::Drawing::Size(1664, 1011);
 			this->Name = L"list_of_students_page";
@@ -268,7 +268,7 @@ namespace CppCLR_WinformsProjekt1 {
 
 
 	}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void back_button_student_list_Click(System::Object^ sender, System::EventArgs^ e) {
 	//CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
 	//this->Hide();
 	//f2->ShowDialog();
@@ -277,7 +277,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 
 }
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void exit_button_Click(System::Object^ sender, System::EventArgs^ e) {
 	Application::Exit();
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -289,7 +289,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	{
 		this->Show();
 	}*/
-	//String^ str = text_combo_data(this->comboBox1->Text);
+	//String^ str = text_combo_data(this->list_detail_search_person->Text);
 	//MessageBox::Show(str);
 }
 
@@ -323,27 +323,27 @@ private: System::Void dataGridView1_CellContentClick(System::Object^ sender, Sys
 
 
 }
-private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ str_comboBox1;
-	if (this->comboBox1->Text== "Name")
+private: System::Void search_button_student_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ str_list_detail_search_person;
+	if (this->list_detail_search_person->Text== "Name")
 	{
-		str_comboBox1 = "student_name";
+		str_list_detail_search_person = "student_name";
 	}
-	if (String::Equals(this->comboBox1->Text, "ID"))
+	if (String::Equals(this->list_detail_search_person->Text, "ID"))
 	{
-		str_comboBox1 = "student_id";
+		str_list_detail_search_person = "student_id";
 	}
-	if (String::Equals(this->comboBox1->Text, "Phone"))
+	if (String::Equals(this->list_detail_search_person->Text, "Phone"))
 	{
-		str_comboBox1 = "student_mobile";
+		str_list_detail_search_person = "student_mobile";
 	}
-	if (String::Equals(this->comboBox1->Text, "Email"))
+	if (String::Equals(this->list_detail_search_person->Text, "Email"))
 	{
-		str_comboBox1 = "student_email";
+		str_list_detail_search_person = "student_email";
 	}
-	if (String::Equals(this->comboBox1->Text, "Number of books borrowed currently"))
+	if (String::Equals(this->list_detail_search_person->Text, "Number of books borrowed currently"))
 	{
-		str_comboBox1 = "student_no_book_stat";
+		str_list_detail_search_person = "student_no_book_stat";
 	}
 
 	String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
@@ -351,7 +351,7 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 
 	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.student_data\
-		WHERE " + str_comboBox1 +" LIKE '%"+this->textBox1->Text+"%';", conDataBase);
+		WHERE " + str_list_detail_search_person +" LIKE '%"+this->search_bar_student->Text+"%';", conDataBase);
 	MySqlDataReader^ myReader;
 
 	try {
@@ -370,7 +370,7 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 
 	}
 }
-private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void list_detail_search_person_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

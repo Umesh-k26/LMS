@@ -61,7 +61,12 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::TextBox^ name_txt;
 	private: System::Windows::Forms::TextBox^ email_id_txt;
 	private: System::Windows::Forms::TextBox^ profession_txt;
-	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::TextBox^ student_id_txt;
+	private: System::Windows::Forms::TextBox^ dob_student_txt;
+	private: System::Windows::Forms::Button^ delete_profile_button;
+	private: System::Windows::Forms::Button^ update_profile_button;
+
+
 
 
 	protected:
@@ -81,7 +86,8 @@ namespace CppCLR_WinformsProjekt1 {
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->dob_student_txt = (gcnew System::Windows::Forms::TextBox());
+			this->student_id_txt = (gcnew System::Windows::Forms::TextBox());
 			this->dateTimePicker = (gcnew System::Windows::Forms::DateTimePicker());
 			this->name_lbl = (gcnew System::Windows::Forms::Label());
 			this->dob_lbl = (gcnew System::Windows::Forms::Label());
@@ -94,6 +100,8 @@ namespace CppCLR_WinformsProjekt1 {
 			this->name_txt = (gcnew System::Windows::Forms::TextBox());
 			this->email_id_txt = (gcnew System::Windows::Forms::TextBox());
 			this->profession_txt = (gcnew System::Windows::Forms::TextBox());
+			this->delete_profile_button = (gcnew System::Windows::Forms::Button());
+			this->update_profile_button = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -109,7 +117,8 @@ namespace CppCLR_WinformsProjekt1 {
 			// groupBox1
 			// 
 			this->groupBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->groupBox1->Controls->Add(this->textBox1);
+			this->groupBox1->Controls->Add(this->dob_student_txt);
+			this->groupBox1->Controls->Add(this->student_id_txt);
 			this->groupBox1->Controls->Add(this->dateTimePicker);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->name_lbl);
@@ -123,22 +132,30 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1->Controls->Add(this->name_txt);
 			this->groupBox1->Controls->Add(this->email_id_txt);
 			this->groupBox1->Controls->Add(this->profession_txt);
-			this->groupBox1->Location = System::Drawing::Point(370, 10);
+			this->groupBox1->Location = System::Drawing::Point(269, 10);
 			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->groupBox1->Size = System::Drawing::Size(474, 649);
 			this->groupBox1->TabIndex = 18;
 			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Register Student";
+			this->groupBox1->Text = L"Student Profile";
 			// 
-			// textBox1
+			// dob_student_txt
 			// 
-			this->textBox1->Location = System::Drawing::Point(257, 42);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->ReadOnly = true;
-			this->textBox1->Size = System::Drawing::Size(146, 26);
-			this->textBox1->TabIndex = 17;
+			this->dob_student_txt->Location = System::Drawing::Point(254, 149);
+			this->dob_student_txt->Name = L"dob_student_txt";
+			this->dob_student_txt->ReadOnly = true;
+			this->dob_student_txt->Size = System::Drawing::Size(150, 26);
+			this->dob_student_txt->TabIndex = 18;
+			// 
+			// student_id_txt
+			// 
+			this->student_id_txt->Location = System::Drawing::Point(257, 42);
+			this->student_id_txt->Name = L"student_id_txt";
+			this->student_id_txt->ReadOnly = true;
+			this->student_id_txt->Size = System::Drawing::Size(146, 26);
+			this->student_id_txt->TabIndex = 17;
 			// 
 			// dateTimePicker
 			// 
@@ -149,6 +166,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dateTimePicker->Name = L"dateTimePicker";
 			this->dateTimePicker->Size = System::Drawing::Size(146, 26);
 			this->dateTimePicker->TabIndex = 16;
+			this->dateTimePicker->Visible = false;
 			// 
 			// name_lbl
 			// 
@@ -255,11 +273,33 @@ namespace CppCLR_WinformsProjekt1 {
 			this->profession_txt->Size = System::Drawing::Size(148, 26);
 			this->profession_txt->TabIndex = 8;
 			// 
+			// delete_profile_button
+			// 
+			this->delete_profile_button->Location = System::Drawing::Point(912, 66);
+			this->delete_profile_button->Name = L"delete_profile_button";
+			this->delete_profile_button->Size = System::Drawing::Size(203, 45);
+			this->delete_profile_button->TabIndex = 19;
+			this->delete_profile_button->Text = L"DELETE PROFILE";
+			this->delete_profile_button->UseVisualStyleBackColor = true;
+			this->delete_profile_button->Click += gcnew System::EventHandler(this, &profile_student::delete_profile_button_Click);
+			// 
+			// update_profile_button
+			// 
+			this->update_profile_button->Location = System::Drawing::Point(912, 10);
+			this->update_profile_button->Name = L"update_profile_button";
+			this->update_profile_button->Size = System::Drawing::Size(205, 50);
+			this->update_profile_button->TabIndex = 20;
+			this->update_profile_button->Text = L"UPDATE PROFILE";
+			this->update_profile_button->UseVisualStyleBackColor = true;
+			this->update_profile_button->Click += gcnew System::EventHandler(this, &profile_student::update_profile_button_Click);
+			// 
 			// profile_student
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1129, 670);
+			this->Controls->Add(this->update_profile_button);
+			this->Controls->Add(this->delete_profile_button);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"profile_student";
 			this->Text = L"profile_student";
@@ -301,18 +341,21 @@ namespace CppCLR_WinformsProjekt1 {
 				String^ printing_email;
 				String^ printing_mobile;
 				String^ printing_address;
+				String^ printing_dob;
 				printing_id = myReader->GetString("student_id");
 				printing_name = myReader->GetString("student_name");
 				printing_profession = myReader->GetString("student_profession");
 				printing_email = myReader->GetString("student_email");
 				printing_mobile = myReader->GetString("student_mobile");
 				printing_address = myReader->GetString("student_address");
+				printing_dob = myReader->GetString("student_dob");
 				this->name_txt->Text = printing_name;
-				this->textBox1->Text = printing_id;
+				this->student_id_txt->Text = printing_id;
 				this->email_id_txt->Text = printing_email;
 				this->mobile_no_txt->Text = printing_mobile;
 				this->address_txt->Text = printing_address;
-
+				this->dob_student_txt->Text = printing_dob;
+				this->profession_txt->Text = printing_profession;
 				//listBox1->Items->Add(printing_names);
 
 			}
@@ -324,5 +367,11 @@ namespace CppCLR_WinformsProjekt1 {
 
 		}
 	}
-	};
+	private: System::Void update_profile_button_Click(System::Object^ sender, System::EventArgs^ e) {
+		MessageBox::Show("Update profile");
+	}
+private: System::Void delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("Delete Profile");
+}
+};
 }

@@ -39,12 +39,12 @@ namespace CppCLR_WinformsProjekt1 {
 			}
 		}
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ back_button_book_list;
+	private: System::Windows::Forms::Button^ exit_button;
 	private: System::Windows::Forms::DataGridViewButtonColumn^ Column1;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::ComboBox^ comboBox1;
-	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::TextBox^ search_bar_book;
+	private: System::Windows::Forms::ComboBox^ list_detail_search_book;
+	private: System::Windows::Forms::Button^ search_button_book;
 
 	protected:
 
@@ -64,11 +64,11 @@ namespace CppCLR_WinformsProjekt1 {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(list_of_books_page::typeid));
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->back_button_book_list = (gcnew System::Windows::Forms::Button());
+			this->exit_button = (gcnew System::Windows::Forms::Button());
+			this->search_bar_book = (gcnew System::Windows::Forms::TextBox());
+			this->list_detail_search_book = (gcnew System::Windows::Forms::ComboBox());
+			this->search_button_book = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -98,68 +98,68 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Column1->UseColumnTextForButtonValue = true;
 			this->Column1->Width = 150;
 			// 
-			// button1
+			// back_button_book_list
 			// 
-			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
-			this->button1->Location = System::Drawing::Point(14, 12);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(52, 51);
-			this->button1->TabIndex = 1;
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &list_of_books_page::button1_Click);
+			this->back_button_book_list->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"back_button_book_list.Image")));
+			this->back_button_book_list->Location = System::Drawing::Point(14, 12);
+			this->back_button_book_list->Name = L"back_button_book_list";
+			this->back_button_book_list->Size = System::Drawing::Size(52, 51);
+			this->back_button_book_list->TabIndex = 1;
+			this->back_button_book_list->UseVisualStyleBackColor = true;
+			this->back_button_book_list->Click += gcnew System::EventHandler(this, &list_of_books_page::back_button_book_list_Click);
 			// 
-			// button2
+			// exit_button
 			// 
-			this->button2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->button2->Location = System::Drawing::Point(1317, 12);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 40);
-			this->button2->TabIndex = 2;
-			this->button2->Text = L"Exit";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &list_of_books_page::button2_Click);
+			this->exit_button->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->exit_button->Location = System::Drawing::Point(1317, 12);
+			this->exit_button->Name = L"exit_button";
+			this->exit_button->Size = System::Drawing::Size(75, 40);
+			this->exit_button->TabIndex = 2;
+			this->exit_button->Text = L"Exit";
+			this->exit_button->UseVisualStyleBackColor = true;
+			this->exit_button->Click += gcnew System::EventHandler(this, &list_of_books_page::exit_button_Click);
 			// 
-			// textBox1
+			// search_bar_book
 			// 
-			this->textBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->textBox1->Location = System::Drawing::Point(272, 108);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(427, 26);
-			this->textBox1->TabIndex = 3;
+			this->search_bar_book->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->search_bar_book->Location = System::Drawing::Point(272, 108);
+			this->search_bar_book->Name = L"search_bar_book";
+			this->search_bar_book->Size = System::Drawing::Size(427, 26);
+			this->search_bar_book->TabIndex = 3;
 			// 
-			// comboBox1
+			// list_detail_search_book
 			// 
-			this->comboBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"ID", L"Name", L"Author", L"Edition No." });
-			this->comboBox1->Location = System::Drawing::Point(770, 108);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(121, 28);
-			this->comboBox1->TabIndex = 4;
-			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &list_of_books_page::comboBox1_SelectedIndexChanged);
+			this->list_detail_search_book->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->list_detail_search_book->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->list_detail_search_book->FormattingEnabled = true;
+			this->list_detail_search_book->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"ID", L"Name", L"Author", L"Edition No." });
+			this->list_detail_search_book->Location = System::Drawing::Point(770, 108);
+			this->list_detail_search_book->Name = L"list_detail_search_book";
+			this->list_detail_search_book->Size = System::Drawing::Size(121, 28);
+			this->list_detail_search_book->TabIndex = 4;
+			this->list_detail_search_book->SelectedIndexChanged += gcnew System::EventHandler(this, &list_of_books_page::list_detail_search_book_SelectedIndexChanged);
 			// 
-			// button3
+			// search_button_book
 			// 
-			this->button3->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->button3->Location = System::Drawing::Point(958, 108);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(93, 43);
-			this->button3->TabIndex = 5;
-			this->button3->Text = L"Search";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &list_of_books_page::button3_Click);
+			this->search_button_book->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->search_button_book->Location = System::Drawing::Point(958, 108);
+			this->search_button_book->Name = L"search_button_book";
+			this->search_button_book->Size = System::Drawing::Size(93, 43);
+			this->search_button_book->TabIndex = 5;
+			this->search_button_book->Text = L"Search";
+			this->search_button_book->UseVisualStyleBackColor = true;
+			this->search_button_book->Click += gcnew System::EventHandler(this, &list_of_books_page::search_button_book_Click);
 			// 
 			// list_of_books_page
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1404, 883);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->comboBox1);
-			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->search_button_book);
+			this->Controls->Add(this->list_detail_search_book);
+			this->Controls->Add(this->search_bar_book);
+			this->Controls->Add(this->exit_button);
+			this->Controls->Add(this->back_button_book_list);
 			this->Controls->Add(this->dataGridView1);
 			this->MinimumSize = System::Drawing::Size(1417, 913);
 			this->Name = L"list_of_books_page";
@@ -203,14 +203,14 @@ namespace CppCLR_WinformsProjekt1 {
 		//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
 		WindowState = FormWindowState::Maximized;
 	}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void back_button_book_list_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->DialogResult = System::Windows::Forms::DialogResult::OK;
 	this->Close();
 	/*CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
 	this->Hide();
 	f2->ShowDialog();*/
 }
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void exit_button_Click(System::Object^ sender, System::EventArgs^ e) {
 	Application::Exit();
 }
 private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
@@ -236,29 +236,29 @@ private: System::Void dataGridView1_CellContentClick(System::Object^ sender, Sys
 	}
 
 }
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void search_button_book_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 	//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
-	String^ str_comboBox1;
-	if (this->comboBox1->Text == "Name")
+	String^ str_list_detail_search_book;
+	if (this->list_detail_search_book->Text == "Name")
 	{
-		str_comboBox1 = "book_name";
+		str_list_detail_search_book = "book_name";
 	}
-	if (String::Equals(this->comboBox1->Text, "ID"))
+	if (String::Equals(this->list_detail_search_book->Text, "ID"))
 	{
-		str_comboBox1 = "book_id";
+		str_list_detail_search_book = "book_id";
 	}
-	if (String::Equals(this->comboBox1->Text, "Author"))
+	if (String::Equals(this->list_detail_search_book->Text, "Author"))
 	{
-		str_comboBox1 = "book_author";
+		str_list_detail_search_book = "book_author";
 	}
-	if (String::Equals(this->comboBox1->Text, "Edition No."))
+	if (String::Equals(this->list_detail_search_book->Text, "Edition No."))
 	{
-		str_comboBox1 = "book_edition_no";
+		str_list_detail_search_book = "book_edition_no";
 	}
 	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.book_data\
-		WHERE " + str_comboBox1 + " LIKE '%" + this->textBox1->Text + "%';", conDataBase);
+		WHERE " + str_list_detail_search_book + " LIKE '%" + this->search_bar_book->Text + "%';", conDataBase);
 	MySqlDataReader^ myReader;
 
 	try {
@@ -277,7 +277,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 
 	}
 }
-private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void list_detail_search_book_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
