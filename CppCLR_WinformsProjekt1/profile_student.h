@@ -145,7 +145,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// dob_student_txt
 			// 
-			this->dob_student_txt->Location = System::Drawing::Point(275, 149);
+			this->dob_student_txt->Location = System::Drawing::Point(258, 149);
 			this->dob_student_txt->Name = L"dob_student_txt";
 			this->dob_student_txt->ReadOnly = true;
 			this->dob_student_txt->Size = System::Drawing::Size(150, 26);
@@ -443,13 +443,18 @@ private: System::Void confirm_change_button_Click(System::Object^ sender, System
 		MessageBox::Show(ex->Message);
 
 	}*/
-	this->confirm_change_button->Visible = false;
 	this->dob_student_txt->Visible = true;
-	this->dateTimePicker->Visible = false;
 	this->update_profile_button->Visible = true;
-
-	profile_student(transfer_id_student);
-	//profile_student_Load();
+	this->confirm_change_button->Visible = false;
+	this->dateTimePicker->Visible = false;
+	this->name_txt->ReadOnly = true;
+	this->profession_txt->ReadOnly = true;
+	this->email_id_txt->ReadOnly = true;
+	this->mobile_no_txt->ReadOnly = true;
+	this->address_txt->ReadOnly = true;
+	//this->Refresh();
+	//profile_student(transfer_id_student);
+	profile_student_Load(sender,e);
 	//
 	//	FORM NOT RELOADING OVER HERE NEED TO FIX
 	//
