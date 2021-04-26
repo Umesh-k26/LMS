@@ -46,8 +46,9 @@ namespace CppCLR_WinformsProjekt1 {
 			}
 		}
 	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::TextBox^ book_id_txt;
 	protected:
-	private: System::Windows::Forms::TextBox^ textBox1;
+
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ bookname_lbl;
 	private: System::Windows::Forms::Label^ author_lbl;
@@ -59,6 +60,8 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::Label^ price_lbl;
 	private: System::Windows::Forms::TextBox^ author_txt;
 	private: System::Windows::Forms::TextBox^ bookname_txt;
+	private: System::Windows::Forms::Button^ update_profile_button;
+	private: System::Windows::Forms::Button^ delete_profile_button;
 
 	private:
 		/// <summary>
@@ -74,6 +77,8 @@ namespace CppCLR_WinformsProjekt1 {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->book_id_txt = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->bookname_lbl = (gcnew System::Windows::Forms::Label());
 			this->author_lbl = (gcnew System::Windows::Forms::Label());
 			this->price_txt = (gcnew System::Windows::Forms::TextBox());
@@ -84,15 +89,15 @@ namespace CppCLR_WinformsProjekt1 {
 			this->price_lbl = (gcnew System::Windows::Forms::Label());
 			this->author_txt = (gcnew System::Windows::Forms::TextBox());
 			this->bookname_txt = (gcnew System::Windows::Forms::TextBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->update_profile_button = (gcnew System::Windows::Forms::Button());
+			this->delete_profile_button = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox1
 			// 
 			this->groupBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->groupBox1->Controls->Add(this->textBox1);
+			this->groupBox1->Controls->Add(this->book_id_txt);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->bookname_lbl);
 			this->groupBox1->Controls->Add(this->author_lbl);
@@ -111,7 +116,24 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1->Size = System::Drawing::Size(434, 554);
 			this->groupBox1->TabIndex = 19;
 			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Add Book";
+			this->groupBox1->Text = L"Book Profile";
+			// 
+			// book_id_txt
+			// 
+			this->book_id_txt->Location = System::Drawing::Point(240, 26);
+			this->book_id_txt->Name = L"book_id_txt";
+			this->book_id_txt->ReadOnly = true;
+			this->book_id_txt->Size = System::Drawing::Size(157, 26);
+			this->book_id_txt->TabIndex = 21;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(26, 36);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(26, 20);
+			this->label1->TabIndex = 20;
+			this->label1->Text = L"ID";
 			// 
 			// bookname_lbl
 			// 
@@ -218,28 +240,33 @@ namespace CppCLR_WinformsProjekt1 {
 			this->bookname_txt->Size = System::Drawing::Size(148, 26);
 			this->bookname_txt->TabIndex = 8;
 			// 
-			// label1
+			// update_profile_button
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(26, 36);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(26, 20);
-			this->label1->TabIndex = 20;
-			this->label1->Text = L"ID";
+			this->update_profile_button->Location = System::Drawing::Point(806, 12);
+			this->update_profile_button->Name = L"update_profile_button";
+			this->update_profile_button->Size = System::Drawing::Size(205, 50);
+			this->update_profile_button->TabIndex = 22;
+			this->update_profile_button->Text = L"UPDATE PROFILE";
+			this->update_profile_button->UseVisualStyleBackColor = true;
+			this->update_profile_button->Click += gcnew System::EventHandler(this, &profile_book::update_profile_button_Click);
 			// 
-			// textBox1
+			// delete_profile_button
 			// 
-			this->textBox1->Location = System::Drawing::Point(240, 26);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->ReadOnly = true;
-			this->textBox1->Size = System::Drawing::Size(157, 26);
-			this->textBox1->TabIndex = 21;
+			this->delete_profile_button->Location = System::Drawing::Point(806, 68);
+			this->delete_profile_button->Name = L"delete_profile_button";
+			this->delete_profile_button->Size = System::Drawing::Size(203, 45);
+			this->delete_profile_button->TabIndex = 21;
+			this->delete_profile_button->Text = L"DELETE PROFILE";
+			this->delete_profile_button->UseVisualStyleBackColor = true;
+			this->delete_profile_button->Click += gcnew System::EventHandler(this, &profile_book::delete_profile_button_Click);
 			// 
 			// profile_book
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1023, 645);
+			this->Controls->Add(this->update_profile_button);
+			this->Controls->Add(this->delete_profile_button);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"profile_book";
 			this->Text = L"profile_book";
@@ -281,7 +308,7 @@ namespace CppCLR_WinformsProjekt1 {
 				printing_price = myReader->GetString("book_price");
 				printing_edition_no= myReader->GetString("book_edition_no");
 				this->bookname_txt->Text = printing_name;
-				this->textBox1->Text = printing_id;
+				this->book_id_txt->Text = printing_id;
 				this->author_txt->Text = printing_author;
 				this->publisher_txt->Text = printing_publisher;
 				this->price_txt->Text = printing_price;
@@ -298,5 +325,12 @@ namespace CppCLR_WinformsProjekt1 {
 
 		}
 	}
-	};
+	
+private: System::Void update_profile_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("Update Profile");
+}
+private: System::Void delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("Delete Profile");
+}
+};
 }
