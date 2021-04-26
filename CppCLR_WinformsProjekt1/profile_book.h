@@ -62,6 +62,8 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::TextBox^ bookname_txt;
 	private: System::Windows::Forms::Button^ update_profile_button;
 	private: System::Windows::Forms::Button^ delete_profile_button;
+	private: System::Windows::Forms::Button^ confirm_change_button;
+
 
 	private:
 		/// <summary>
@@ -91,6 +93,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->bookname_txt = (gcnew System::Windows::Forms::TextBox());
 			this->update_profile_button = (gcnew System::Windows::Forms::Button());
 			this->delete_profile_button = (gcnew System::Windows::Forms::Button());
+			this->confirm_change_button = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -260,11 +263,22 @@ namespace CppCLR_WinformsProjekt1 {
 			this->delete_profile_button->UseVisualStyleBackColor = true;
 			this->delete_profile_button->Click += gcnew System::EventHandler(this, &profile_book::delete_profile_button_Click);
 			// 
+			// confirm_change_button
+			// 
+			this->confirm_change_button->Location = System::Drawing::Point(810, 128);
+			this->confirm_change_button->Name = L"confirm_change_button";
+			this->confirm_change_button->Size = System::Drawing::Size(198, 42);
+			this->confirm_change_button->TabIndex = 23;
+			this->confirm_change_button->Text = L"MAKE CHANGES";
+			this->confirm_change_button->UseVisualStyleBackColor = true;
+			this->confirm_change_button->Click += gcnew System::EventHandler(this, &profile_book::confirm_change_button_Click);
+			// 
 			// profile_book
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1023, 645);
+			this->Controls->Add(this->confirm_change_button);
 			this->Controls->Add(this->update_profile_button);
 			this->Controls->Add(this->delete_profile_button);
 			this->Controls->Add(this->groupBox1);
@@ -331,6 +345,8 @@ private: System::Void update_profile_button_Click(System::Object^ sender, System
 }
 private: System::Void delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e) {
 	MessageBox::Show("Delete Profile");
+}
+private: System::Void confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
