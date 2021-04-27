@@ -41,10 +41,11 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::Button^ back_button_book_list;
 	private: System::Windows::Forms::Button^ exit_button;
-	private: System::Windows::Forms::DataGridViewButtonColumn^ Column1;
+
 	private: System::Windows::Forms::TextBox^ search_bar_book;
 	private: System::Windows::Forms::ComboBox^ list_detail_search_book;
 	private: System::Windows::Forms::Button^ search_button_book;
+	private: System::Windows::Forms::DataGridViewButtonColumn^ Open;
 
 	protected:
 
@@ -63,7 +64,7 @@ namespace CppCLR_WinformsProjekt1 {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(list_of_books_page::typeid));
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
+			this->Open = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
 			this->back_button_book_list = (gcnew System::Windows::Forms::Button());
 			this->exit_button = (gcnew System::Windows::Forms::Button());
 			this->search_bar_book = (gcnew System::Windows::Forms::TextBox());
@@ -76,27 +77,28 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->AllowUserToDeleteRows = false;
-			this->dataGridView1->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::ColumnHeader;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Column1 });
-			this->dataGridView1->Location = System::Drawing::Point(272, 251);
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Open });
+			this->dataGridView1->Location = System::Drawing::Point(174, 224);
+			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 62;
-			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::CellSelect;
-			this->dataGridView1->Size = System::Drawing::Size(884, 425);
-			this->dataGridView1->TabIndex = 0;
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->dataGridView1->Size = System::Drawing::Size(1399, 501);
+			this->dataGridView1->TabIndex = 1;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &list_of_books_page::dataGridView1_CellContentClick);
 			// 
-			// Column1
+			// Open
 			// 
-			this->Column1->HeaderText = L"Profile";
-			this->Column1->MinimumWidth = 8;
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			this->Column1->Text = L"Open";
-			this->Column1->UseColumnTextForButtonValue = true;
-			this->Column1->Width = 150;
+			this->Open->HeaderText = L"Profile";
+			this->Open->MinimumWidth = 8;
+			this->Open->Name = L"Open";
+			this->Open->ReadOnly = true;
+			this->Open->Text = L"Open";
+			this->Open->UseColumnTextForButtonValue = true;
+			this->Open->Width = 59;
 			// 
 			// back_button_book_list
 			// 
@@ -110,8 +112,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// exit_button
 			// 
-			this->exit_button->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->exit_button->Location = System::Drawing::Point(1317, 12);
+			this->exit_button->Location = System::Drawing::Point(12, 224);
 			this->exit_button->Name = L"exit_button";
 			this->exit_button->Size = System::Drawing::Size(75, 40);
 			this->exit_button->TabIndex = 2;
@@ -121,28 +122,28 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// search_bar_book
 			// 
-			this->search_bar_book->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->search_bar_book->Location = System::Drawing::Point(272, 108);
+			this->search_bar_book->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->search_bar_book->Location = System::Drawing::Point(439, 37);
 			this->search_bar_book->Name = L"search_bar_book";
 			this->search_bar_book->Size = System::Drawing::Size(427, 26);
 			this->search_bar_book->TabIndex = 3;
 			// 
 			// list_detail_search_book
 			// 
-			this->list_detail_search_book->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->list_detail_search_book->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->list_detail_search_book->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->list_detail_search_book->FormattingEnabled = true;
 			this->list_detail_search_book->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"ID", L"Name", L"Author", L"Edition No." });
-			this->list_detail_search_book->Location = System::Drawing::Point(770, 108);
+			this->list_detail_search_book->Location = System::Drawing::Point(931, 37);
 			this->list_detail_search_book->Name = L"list_detail_search_book";
-			this->list_detail_search_book->Size = System::Drawing::Size(121, 28);
+			this->list_detail_search_book->Size = System::Drawing::Size(133, 28);
 			this->list_detail_search_book->TabIndex = 4;
 			this->list_detail_search_book->SelectedIndexChanged += gcnew System::EventHandler(this, &list_of_books_page::list_detail_search_book_SelectedIndexChanged);
 			// 
 			// search_button_book
 			// 
-			this->search_button_book->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->search_button_book->Location = System::Drawing::Point(958, 108);
+			this->search_button_book->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->search_button_book->Location = System::Drawing::Point(1125, 37);
 			this->search_button_book->Name = L"search_button_book";
 			this->search_button_book->Size = System::Drawing::Size(93, 43);
 			this->search_button_book->TabIndex = 5;
@@ -154,7 +155,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1404, 883);
+			this->ClientSize = System::Drawing::Size(1765, 883);
 			this->Controls->Add(this->search_button_book);
 			this->Controls->Add(this->list_detail_search_book);
 			this->Controls->Add(this->search_bar_book);
@@ -176,7 +177,7 @@ namespace CppCLR_WinformsProjekt1 {
 
 		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from library_system.book_data;", conDataBase);
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.book_data;", conDataBase);
 		MySqlDataReader^ myReader;
 
 		try {
