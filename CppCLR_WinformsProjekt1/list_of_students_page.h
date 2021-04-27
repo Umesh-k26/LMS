@@ -49,11 +49,12 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::TextBox^ search_bar_student;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::Button^ back_button_student_list;
-	private: System::Windows::Forms::Button^ exit_button;
+
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::DataGridViewButtonColumn^ Open;
 	private: System::Windows::Forms::Button^ search_button_student;
 	private: System::Windows::Forms::ComboBox^ list_detail_search_person;
+	private: System::Windows::Forms::Button^ exit_button;
 
 
 
@@ -80,10 +81,10 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Open = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
 			this->search_bar_student = (gcnew System::Windows::Forms::TextBox());
 			this->back_button_student_list = (gcnew System::Windows::Forms::Button());
-			this->exit_button = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->search_button_student = (gcnew System::Windows::Forms::Button());
 			this->list_detail_search_person = (gcnew System::Windows::Forms::ComboBox());
+			this->exit_button = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -91,18 +92,17 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->AllowUserToDeleteRows = false;
-			this->dataGridView1->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
+			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Open });
-			this->dataGridView1->Location = System::Drawing::Point(174, 186);
+			this->dataGridView1->Location = System::Drawing::Point(174, 148);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(1190, 577);
+			this->dataGridView1->Size = System::Drawing::Size(1413, 577);
 			this->dataGridView1->TabIndex = 1;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &list_of_students_page::dataGridView1_CellContentClick);
 			// 
@@ -115,11 +115,10 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Open->ReadOnly = true;
 			this->Open->Text = L"Open";
 			this->Open->UseColumnTextForButtonValue = true;
-			this->Open->Width = 59;
 			// 
 			// search_bar_student
 			// 
-			this->search_bar_student->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->search_bar_student->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom));
 			this->search_bar_student->Location = System::Drawing::Point(174, 32);
 			this->search_bar_student->Name = L"search_bar_student";
 			this->search_bar_student->Size = System::Drawing::Size(463, 26);
@@ -135,17 +134,6 @@ namespace CppCLR_WinformsProjekt1 {
 			this->back_button_student_list->UseVisualStyleBackColor = true;
 			this->back_button_student_list->Click += gcnew System::EventHandler(this, &list_of_students_page::back_button_student_list_Click);
 			// 
-			// exit_button
-			// 
-			this->exit_button->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->exit_button->Location = System::Drawing::Point(1470, 72);
-			this->exit_button->Name = L"exit_button";
-			this->exit_button->Size = System::Drawing::Size(75, 35);
-			this->exit_button->TabIndex = 4;
-			this->exit_button->Text = L"Exit";
-			this->exit_button->UseVisualStyleBackColor = true;
-			this->exit_button->Click += gcnew System::EventHandler(this, &list_of_students_page::exit_button_Click);
-			// 
 			// button3
 			// 
 			this->button3->Location = System::Drawing::Point(12, 186);
@@ -158,10 +146,10 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// search_button_student
 			// 
-			this->search_button_student->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->search_button_student->Location = System::Drawing::Point(1019, 20);
+			this->search_button_student->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->search_button_student->Location = System::Drawing::Point(958, 26);
 			this->search_button_student->Name = L"search_button_student";
-			this->search_button_student->Size = System::Drawing::Size(93, 38);
+			this->search_button_student->Size = System::Drawing::Size(105, 38);
 			this->search_button_student->TabIndex = 6;
 			this->search_button_student->Text = L"Search";
 			this->search_button_student->UseVisualStyleBackColor = true;
@@ -169,24 +157,37 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// list_detail_search_person
 			// 
-			this->list_detail_search_person->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->list_detail_search_person->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->list_detail_search_person->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->list_detail_search_person->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"ID", L"Name", L"Phone", L"Email", L"Number of books borrowed currently" });
-			this->list_detail_search_person->Location = System::Drawing::Point(670, 32);
+			this->list_detail_search_person->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+				L"ID", L"Name", L"Phone", L"Email",
+					L"Number of books borrowed currently"
+			});
+			this->list_detail_search_person->Location = System::Drawing::Point(656, 32);
 			this->list_detail_search_person->Name = L"list_detail_search_person";
-			this->list_detail_search_person->Size = System::Drawing::Size(343, 28);
+			this->list_detail_search_person->Size = System::Drawing::Size(277, 28);
 			this->list_detail_search_person->TabIndex = 7;
 			this->list_detail_search_person->SelectedIndexChanged += gcnew System::EventHandler(this, &list_of_students_page::list_detail_search_person_SelectedIndexChanged);
+			// 
+			// exit_button
+			// 
+			this->exit_button->Location = System::Drawing::Point(12, 277);
+			this->exit_button->Name = L"exit_button";
+			this->exit_button->Size = System::Drawing::Size(103, 46);
+			this->exit_button->TabIndex = 8;
+			this->exit_button->Text = L"Exit";
+			this->exit_button->UseVisualStyleBackColor = true;
+			this->exit_button->Click += gcnew System::EventHandler(this, &list_of_students_page::exit_button_Click);
 			// 
 			// list_of_students_page
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1652, 982);
+			this->Controls->Add(this->exit_button);
 			this->Controls->Add(this->list_detail_search_person);
 			this->Controls->Add(this->search_button_student);
 			this->Controls->Add(this->button3);
-			this->Controls->Add(this->exit_button);
 			this->Controls->Add(this->back_button_student_list);
 			this->Controls->Add(this->search_bar_student);
 			this->Controls->Add(this->dataGridView1);
@@ -239,9 +240,9 @@ namespace CppCLR_WinformsProjekt1 {
 
 		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from library_system.student_data;", conDataBase);
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.student_data;", conDataBase);
 		MySqlDataReader^ myReader;
-
+		//student_id,student_name,student_mobile, student_profession, student_no_book_stat 
 		try {
 			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
 			sda->SelectCommand = cmdDataBase;
@@ -277,9 +278,7 @@ private: System::Void back_button_student_list_Click(System::Object^ sender, Sys
 
 
 }
-private: System::Void exit_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	Application::Exit();
-}
+
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	/*CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
@@ -349,7 +348,7 @@ private: System::Void search_button_student_Click(System::Object^ sender, System
 	String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 	//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
-
+	//student_id,student_name,student_mobile, student_profession, student_no_book_stat 
 	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.student_data\
 		WHERE " + str_list_detail_search_person +" LIKE '%"+this->search_bar_student->Text+"%';", conDataBase);
 	MySqlDataReader^ myReader;
@@ -371,6 +370,9 @@ private: System::Void search_button_student_Click(System::Object^ sender, System
 	}
 }
 private: System::Void list_detail_search_person_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void exit_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	Application::Exit();
 }
 };
 }
