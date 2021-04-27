@@ -77,7 +77,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->AllowUserToDeleteRows = false;
-			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::ColumnHeader;
+			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Open });
 			this->dataGridView1->Location = System::Drawing::Point(174, 224);
@@ -98,7 +98,6 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Open->ReadOnly = true;
 			this->Open->Text = L"Open";
 			this->Open->UseColumnTextForButtonValue = true;
-			this->Open->Width = 59;
 			// 
 			// back_button_book_list
 			// 
@@ -177,7 +176,7 @@ namespace CppCLR_WinformsProjekt1 {
 
 		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.book_data;", conDataBase);
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id, book_name, book_author, book_edition_no, book_publisher, book_borrow_status FROM library_system.book_data;", conDataBase);
 		MySqlDataReader^ myReader;
 
 		try {

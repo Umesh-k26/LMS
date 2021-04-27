@@ -24,6 +24,7 @@ namespace CppCLR_WinformsProjekt1 {
 			//
 			//TODO: Add the constructor code here
 			//
+			fill_data_grid();
 		}
 		profile_book(String^ label_book_id)
 		{
@@ -32,6 +33,7 @@ namespace CppCLR_WinformsProjekt1 {
 			//TODO: Add the constructor code here
 			//
 			transfer_id_book = label_book_id;
+			fill_data_grid();
 		}
 
 	protected:
@@ -63,6 +65,11 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::Button^ update_profile_button;
 	private: System::Windows::Forms::Button^ delete_profile_button;
 	private: System::Windows::Forms::Button^ confirm_change_button;
+	private: System::Windows::Forms::TextBox^ borrow_stat_txt;
+	private: System::Windows::Forms::Label^ borrow_stat_lbl;
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridViewButtonColumn^ Open;
+
 
 
 	private:
@@ -79,6 +86,8 @@ namespace CppCLR_WinformsProjekt1 {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->borrow_stat_txt = (gcnew System::Windows::Forms::TextBox());
+			this->borrow_stat_lbl = (gcnew System::Windows::Forms::Label());
 			this->book_id_txt = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->bookname_lbl = (gcnew System::Windows::Forms::Label());
@@ -94,12 +103,17 @@ namespace CppCLR_WinformsProjekt1 {
 			this->update_profile_button = (gcnew System::Windows::Forms::Button());
 			this->delete_profile_button = (gcnew System::Windows::Forms::Button());
 			this->confirm_change_button = (gcnew System::Windows::Forms::Button());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->Open = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
 			this->groupBox1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// groupBox1
 			// 
 			this->groupBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->groupBox1->Controls->Add(this->borrow_stat_txt);
+			this->groupBox1->Controls->Add(this->borrow_stat_lbl);
 			this->groupBox1->Controls->Add(this->book_id_txt);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->bookname_lbl);
@@ -112,7 +126,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1->Controls->Add(this->price_lbl);
 			this->groupBox1->Controls->Add(this->author_txt);
 			this->groupBox1->Controls->Add(this->bookname_txt);
-			this->groupBox1->Location = System::Drawing::Point(294, 51);
+			this->groupBox1->Location = System::Drawing::Point(735, 58);
 			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
@@ -120,6 +134,23 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1->TabIndex = 19;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Book Profile";
+			// 
+			// borrow_stat_txt
+			// 
+			this->borrow_stat_txt->Location = System::Drawing::Point(250, 259);
+			this->borrow_stat_txt->Name = L"borrow_stat_txt";
+			this->borrow_stat_txt->ReadOnly = true;
+			this->borrow_stat_txt->Size = System::Drawing::Size(147, 26);
+			this->borrow_stat_txt->TabIndex = 23;
+			// 
+			// borrow_stat_lbl
+			// 
+			this->borrow_stat_lbl->AutoSize = true;
+			this->borrow_stat_lbl->Location = System::Drawing::Point(26, 262);
+			this->borrow_stat_lbl->Name = L"borrow_stat_lbl";
+			this->borrow_stat_lbl->Size = System::Drawing::Size(110, 20);
+			this->borrow_stat_lbl->TabIndex = 22;
+			this->borrow_stat_lbl->Text = L"Borrow Status";
 			// 
 			// book_id_txt
 			// 
@@ -245,7 +276,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// update_profile_button
 			// 
-			this->update_profile_button->Location = System::Drawing::Point(806, 12);
+			this->update_profile_button->Location = System::Drawing::Point(1370, 12);
 			this->update_profile_button->Name = L"update_profile_button";
 			this->update_profile_button->Size = System::Drawing::Size(205, 50);
 			this->update_profile_button->TabIndex = 22;
@@ -255,7 +286,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// delete_profile_button
 			// 
-			this->delete_profile_button->Location = System::Drawing::Point(806, 68);
+			this->delete_profile_button->Location = System::Drawing::Point(1372, 68);
 			this->delete_profile_button->Name = L"delete_profile_button";
 			this->delete_profile_button->Size = System::Drawing::Size(203, 45);
 			this->delete_profile_button->TabIndex = 21;
@@ -265,7 +296,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// confirm_change_button
 			// 
-			this->confirm_change_button->Location = System::Drawing::Point(810, 128);
+			this->confirm_change_button->Location = System::Drawing::Point(1377, 119);
 			this->confirm_change_button->Name = L"confirm_change_button";
 			this->confirm_change_button->Size = System::Drawing::Size(198, 42);
 			this->confirm_change_button->TabIndex = 23;
@@ -273,11 +304,32 @@ namespace CppCLR_WinformsProjekt1 {
 			this->confirm_change_button->UseVisualStyleBackColor = true;
 			this->confirm_change_button->Click += gcnew System::EventHandler(this, &profile_book::confirm_change_button_Click);
 			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Open });
+			this->dataGridView1->Location = System::Drawing::Point(12, 12);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->RowHeadersWidth = 62;
+			this->dataGridView1->RowTemplate->Height = 28;
+			this->dataGridView1->Size = System::Drawing::Size(696, 340);
+			this->dataGridView1->TabIndex = 24;
+			// 
+			// Open
+			// 
+			this->Open->HeaderText = L"Profile";
+			this->Open->MinimumWidth = 8;
+			this->Open->Name = L"Open";
+			this->Open->Text = L"Open";
+			this->Open->UseColumnTextForButtonValue = true;
+			this->Open->Width = 150;
+			// 
 			// profile_book
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1023, 645);
+			this->ClientSize = System::Drawing::Size(1587, 760);
+			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->confirm_change_button);
 			this->Controls->Add(this->update_profile_button);
 			this->Controls->Add(this->delete_profile_button);
@@ -287,6 +339,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Load += gcnew System::EventHandler(this, &profile_book::profile_book_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -315,18 +368,21 @@ namespace CppCLR_WinformsProjekt1 {
 				String^ printing_publisher;
 				String^ printing_price;
 				String^ printing_edition_no;
+				String^ printing_book_borrow_stat;
 				printing_id = myReader->GetString("book_id");
 				printing_name = myReader->GetString("book_name");
 				printing_author = myReader->GetString("book_author");
 				printing_publisher = myReader->GetString("book_publisher");
 				printing_price = myReader->GetString("book_price");
 				printing_edition_no= myReader->GetString("book_edition_no");
+				printing_book_borrow_stat = myReader->GetString("book_borrow_status");
 				this->bookname_txt->Text = printing_name;
 				this->book_id_txt->Text = printing_id;
 				this->author_txt->Text = printing_author;
 				this->publisher_txt->Text = printing_publisher;
 				this->price_txt->Text = printing_price;
 				this->edition_no_txt->Text = printing_edition_no;
+				this->borrow_stat_txt->Text = printing_book_borrow_stat;
 
 				//listBox1->Items->Add(printing_names);
 
@@ -348,5 +404,34 @@ private: System::Void delete_profile_button_Click(System::Object^ sender, System
 }
 private: System::Void confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+private: void fill_data_grid() {
+
+		   String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		   MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+		   MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id, book_name, book_author, book_edition_no, book_publisher, book_borrow_status FROM library_system.book_data WHERE book_name = '"+this->bookname_txt->Text+"';", conDataBase);
+		   MySqlDataReader^ myReader;
+		   //
+		   //
+		   //	THIS PART IS NOT FILLING THE DATA PROPERLY IN DATAGRIDVIEW NEED TO CHECK
+		   //
+
+
+		   try {
+			   MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
+			   sda->SelectCommand = cmdDataBase;
+			   DataTable^ dbdataset = gcnew DataTable();
+			   sda->Fill(dbdataset);
+			   BindingSource^ bSource = gcnew BindingSource();
+			   bSource->DataSource = dbdataset;
+			   dataGridView1->DataSource = bSource;
+			   sda->Update(dbdataset);
+		   }
+		   catch (Exception^ ex)
+		   {
+			   MessageBox::Show(ex->Message);
+
+		   }
+
+	}
 };
 }
