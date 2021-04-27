@@ -66,6 +66,7 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::Button^ delete_profile_button;
 	private: System::Windows::Forms::Button^ update_profile_button;
 	private: System::Windows::Forms::Button^ confirm_change_button;
+	private: System::Windows::Forms::ComboBox^ profession_selector;
 
 
 
@@ -104,6 +105,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->delete_profile_button = (gcnew System::Windows::Forms::Button());
 			this->update_profile_button = (gcnew System::Windows::Forms::Button());
 			this->confirm_change_button = (gcnew System::Windows::Forms::Button());
+			this->profession_selector = (gcnew System::Windows::Forms::ComboBox());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -119,6 +121,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// groupBox1
 			// 
 			this->groupBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->groupBox1->Controls->Add(this->profession_selector);
 			this->groupBox1->Controls->Add(this->dob_student_txt);
 			this->groupBox1->Controls->Add(this->student_id_txt);
 			this->groupBox1->Controls->Add(this->dateTimePicker);
@@ -138,14 +141,14 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->groupBox1->Size = System::Drawing::Size(474, 649);
+			this->groupBox1->Size = System::Drawing::Size(599, 649);
 			this->groupBox1->TabIndex = 18;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Student Profile";
 			// 
 			// dob_student_txt
 			// 
-			this->dob_student_txt->Location = System::Drawing::Point(258, 149);
+			this->dob_student_txt->Location = System::Drawing::Point(256, 149);
 			this->dob_student_txt->Name = L"dob_student_txt";
 			this->dob_student_txt->ReadOnly = true;
 			this->dob_student_txt->Size = System::Drawing::Size(150, 26);
@@ -163,7 +166,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->dateTimePicker->CustomFormat = L"yyyy-MM-dd";
 			this->dateTimePicker->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
-			this->dateTimePicker->Location = System::Drawing::Point(258, 149);
+			this->dateTimePicker->Location = System::Drawing::Point(430, 147);
 			this->dateTimePicker->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->dateTimePicker->Name = L"dateTimePicker";
 			this->dateTimePicker->Size = System::Drawing::Size(146, 26);
@@ -277,6 +280,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// delete_profile_button
 			// 
+			this->delete_profile_button->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
 			this->delete_profile_button->Location = System::Drawing::Point(912, 66);
 			this->delete_profile_button->Name = L"delete_profile_button";
 			this->delete_profile_button->Size = System::Drawing::Size(203, 45);
@@ -287,6 +291,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// update_profile_button
 			// 
+			this->update_profile_button->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
 			this->update_profile_button->Location = System::Drawing::Point(912, 10);
 			this->update_profile_button->Name = L"update_profile_button";
 			this->update_profile_button->Size = System::Drawing::Size(205, 50);
@@ -297,6 +302,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// confirm_change_button
 			// 
+			this->confirm_change_button->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
 			this->confirm_change_button->Location = System::Drawing::Point(912, 118);
 			this->confirm_change_button->Name = L"confirm_change_button";
 			this->confirm_change_button->Size = System::Drawing::Size(203, 67);
@@ -305,6 +311,17 @@ namespace CppCLR_WinformsProjekt1 {
 			this->confirm_change_button->UseVisualStyleBackColor = true;
 			this->confirm_change_button->Visible = false;
 			this->confirm_change_button->Click += gcnew System::EventHandler(this, &profile_student::confirm_change_button_Click);
+			// 
+			// profession_selector
+			// 
+			this->profession_selector->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->profession_selector->FormattingEnabled = true;
+			this->profession_selector->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Student", L"Professor", L"Alumni" });
+			this->profession_selector->Location = System::Drawing::Point(430, 228);
+			this->profession_selector->Name = L"profession_selector";
+			this->profession_selector->Size = System::Drawing::Size(146, 28);
+			this->profession_selector->TabIndex = 19;
+			this->profession_selector->Visible = false;
 			// 
 			// profile_student
 			// 
@@ -383,16 +400,16 @@ namespace CppCLR_WinformsProjekt1 {
 	}
 	private: System::Void update_profile_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show("Update profile");
-		this->dob_student_txt->Visible = false;
+		//this->dob_student_txt->Visible = false;
 		this->update_profile_button->Visible = false;
 		this->confirm_change_button->Visible = true;
 		this->dateTimePicker->Visible = true;
 		this->name_txt->ReadOnly = false;
-		this->profession_txt->ReadOnly = false;
+		this->profession_txt->ReadOnly = true;
 		this->email_id_txt->ReadOnly = false;
 		this->mobile_no_txt->ReadOnly = false;
 		this->address_txt->ReadOnly = false;
-
+		this->profession_selector->Visible = true;
 
 	}
 private: System::Void delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -422,6 +439,7 @@ private: System::Void delete_profile_button_Click(System::Object^ sender, System
 }
 private: System::Void confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e) {
 	MessageBox::Show("Changes made");
+	//this->profession_txt->Text = this->profession_selector->Text;
 	/*String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("UPDATE library_system.student_data set student_id = \
@@ -443,7 +461,7 @@ private: System::Void confirm_change_button_Click(System::Object^ sender, System
 		MessageBox::Show(ex->Message);
 
 	}*/
-	this->dob_student_txt->Visible = true;
+	//this->dob_student_txt->Visible = true;
 	this->update_profile_button->Visible = true;
 	this->confirm_change_button->Visible = false;
 	this->dateTimePicker->Visible = false;
@@ -452,6 +470,7 @@ private: System::Void confirm_change_button_Click(System::Object^ sender, System
 	this->email_id_txt->ReadOnly = true;
 	this->mobile_no_txt->ReadOnly = true;
 	this->address_txt->ReadOnly = true;
+	this->profession_selector->Visible = false;
 	//this->Refresh();
 	//profile_student(transfer_id_student);
 	profile_student_Load(sender,e);
