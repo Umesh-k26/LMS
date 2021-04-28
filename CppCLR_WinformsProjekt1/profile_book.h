@@ -24,7 +24,7 @@ namespace CppCLR_WinformsProjekt1 {
 			//
 			//TODO: Add the constructor code here
 			//
-			fill_data_grid();
+			//fill_data_grid();
 		}
 		profile_book(String^ label_book_id)
 		{
@@ -33,7 +33,7 @@ namespace CppCLR_WinformsProjekt1 {
 			//TODO: Add the constructor code here
 			//
 			transfer_id_book = label_book_id;
-			fill_data_grid();
+			//fill_data_grid();
 		}
 
 	protected:
@@ -69,6 +69,9 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::Label^ borrow_stat_lbl;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::DataGridViewButtonColumn^ Open;
+	private: System::Windows::Forms::TextBox^ no_copies_txt;
+	private: System::Windows::Forms::Label^ no_copies_lbl;
+
 
 
 
@@ -86,6 +89,8 @@ namespace CppCLR_WinformsProjekt1 {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->no_copies_lbl = (gcnew System::Windows::Forms::Label());
+			this->no_copies_txt = (gcnew System::Windows::Forms::TextBox());
 			this->borrow_stat_txt = (gcnew System::Windows::Forms::TextBox());
 			this->borrow_stat_lbl = (gcnew System::Windows::Forms::Label());
 			this->book_id_txt = (gcnew System::Windows::Forms::TextBox());
@@ -112,6 +117,8 @@ namespace CppCLR_WinformsProjekt1 {
 			// groupBox1
 			// 
 			this->groupBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->groupBox1->Controls->Add(this->no_copies_lbl);
+			this->groupBox1->Controls->Add(this->no_copies_txt);
 			this->groupBox1->Controls->Add(this->borrow_stat_txt);
 			this->groupBox1->Controls->Add(this->borrow_stat_lbl);
 			this->groupBox1->Controls->Add(this->book_id_txt);
@@ -134,6 +141,23 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1->TabIndex = 19;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Book Profile";
+			// 
+			// no_copies_lbl
+			// 
+			this->no_copies_lbl->AutoSize = true;
+			this->no_copies_lbl->Location = System::Drawing::Point(26, 396);
+			this->no_copies_lbl->Name = L"no_copies_lbl";
+			this->no_copies_lbl->Size = System::Drawing::Size(101, 20);
+			this->no_copies_lbl->TabIndex = 25;
+			this->no_copies_lbl->Text = L"No. of copies";
+			// 
+			// no_copies_txt
+			// 
+			this->no_copies_txt->Location = System::Drawing::Point(250, 396);
+			this->no_copies_txt->Name = L"no_copies_txt";
+			this->no_copies_txt->ReadOnly = true;
+			this->no_copies_txt->Size = System::Drawing::Size(148, 26);
+			this->no_copies_txt->TabIndex = 24;
 			// 
 			// borrow_stat_txt
 			// 
@@ -306,20 +330,27 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// dataGridView1
 			// 
+			this->dataGridView1->AllowUserToAddRows = false;
+			this->dataGridView1->AllowUserToDeleteRows = false;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Open });
 			this->dataGridView1->Location = System::Drawing::Point(12, 12);
+			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(696, 340);
 			this->dataGridView1->TabIndex = 24;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &profile_book::dataGridView1_CellContentClick);
 			// 
 			// Open
 			// 
 			this->Open->HeaderText = L"Profile";
 			this->Open->MinimumWidth = 8;
 			this->Open->Name = L"Open";
+			this->Open->ReadOnly = true;
 			this->Open->Text = L"Open";
 			this->Open->UseColumnTextForButtonValue = true;
 			this->Open->Width = 150;
@@ -387,6 +418,9 @@ namespace CppCLR_WinformsProjekt1 {
 				//listBox1->Items->Add(printing_names);
 
 			}
+			fill_data_grid();
+			int num_row = this->dataGridView1->RowCount;
+			this->no_copies_txt->Text = num_row.ToString();
 
 		}
 		catch (Exception^ ex)
@@ -408,7 +442,7 @@ private: void fill_data_grid() {
 
 		   String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		   MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
-		   MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id, book_name, book_author, book_edition_no, book_publisher, book_borrow_status FROM library_system.book_data WHERE book_name = '"+this->bookname_txt->Text+"';", conDataBase);
+		   MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id, book_name, book_author, book_edition_no, book_publisher, book_borrow_status FROM library_system.book_data WHERE book_name = '"+this->bookname_txt->Text+"' AND book_edition_no = "+this->edition_no_txt->Text+";", conDataBase);
 		   MySqlDataReader^ myReader;
 		   //
 		   //
@@ -433,5 +467,23 @@ private: void fill_data_grid() {
 		   }
 
 	}
+private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	if (e->ColumnIndex == 0)
+	{
+		int row_num = e->RowIndex;
+		int col_num = e->ColumnIndex + 1;
+		String^ str = this->dataGridView1->Rows[row_num]->Cells[col_num]->Value->ToString();
+		MessageBox::Show("Your id is " + str);
+		CppCLR_WinformsProjekt1::profile_book^ profile_book_f = gcnew CppCLR_WinformsProjekt1::profile_book(str);
+		this->Hide();
+		profile_book_f->ShowDialog();
+
+		/*if (profile_book_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			this->Show();
+		}*/
+
+	}
+}
 };
 }
