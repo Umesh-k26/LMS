@@ -67,6 +67,8 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::Button^ update_profile_button;
 	private: System::Windows::Forms::Button^ confirm_change_button;
 	private: System::Windows::Forms::ComboBox^ profession_selector;
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridViewButtonColumn^ Open;
 
 
 
@@ -88,6 +90,7 @@ namespace CppCLR_WinformsProjekt1 {
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->profession_selector = (gcnew System::Windows::Forms::ComboBox());
 			this->dob_student_txt = (gcnew System::Windows::Forms::TextBox());
 			this->student_id_txt = (gcnew System::Windows::Forms::TextBox());
 			this->dateTimePicker = (gcnew System::Windows::Forms::DateTimePicker());
@@ -105,8 +108,10 @@ namespace CppCLR_WinformsProjekt1 {
 			this->delete_profile_button = (gcnew System::Windows::Forms::Button());
 			this->update_profile_button = (gcnew System::Windows::Forms::Button());
 			this->confirm_change_button = (gcnew System::Windows::Forms::Button());
-			this->profession_selector = (gcnew System::Windows::Forms::ComboBox());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->Open = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
 			this->groupBox1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -137,7 +142,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1->Controls->Add(this->name_txt);
 			this->groupBox1->Controls->Add(this->email_id_txt);
 			this->groupBox1->Controls->Add(this->profession_txt);
-			this->groupBox1->Location = System::Drawing::Point(269, 10);
+			this->groupBox1->Location = System::Drawing::Point(364, 28);
 			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
@@ -145,6 +150,17 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1->TabIndex = 18;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Student Profile";
+			// 
+			// profession_selector
+			// 
+			this->profession_selector->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->profession_selector->FormattingEnabled = true;
+			this->profession_selector->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Student", L"Professor", L"Alumni" });
+			this->profession_selector->Location = System::Drawing::Point(430, 228);
+			this->profession_selector->Name = L"profession_selector";
+			this->profession_selector->Size = System::Drawing::Size(146, 28);
+			this->profession_selector->TabIndex = 19;
+			this->profession_selector->Visible = false;
 			// 
 			// dob_student_txt
 			// 
@@ -281,7 +297,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// delete_profile_button
 			// 
 			this->delete_profile_button->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->delete_profile_button->Location = System::Drawing::Point(912, 66);
+			this->delete_profile_button->Location = System::Drawing::Point(969, 66);
 			this->delete_profile_button->Name = L"delete_profile_button";
 			this->delete_profile_button->Size = System::Drawing::Size(203, 45);
 			this->delete_profile_button->TabIndex = 19;
@@ -292,7 +308,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// update_profile_button
 			// 
 			this->update_profile_button->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->update_profile_button->Location = System::Drawing::Point(912, 10);
+			this->update_profile_button->Location = System::Drawing::Point(969, 10);
 			this->update_profile_button->Name = L"update_profile_button";
 			this->update_profile_button->Size = System::Drawing::Size(205, 50);
 			this->update_profile_button->TabIndex = 20;
@@ -303,7 +319,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// confirm_change_button
 			// 
 			this->confirm_change_button->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->confirm_change_button->Location = System::Drawing::Point(912, 118);
+			this->confirm_change_button->Location = System::Drawing::Point(969, 118);
 			this->confirm_change_button->Name = L"confirm_change_button";
 			this->confirm_change_button->Size = System::Drawing::Size(203, 67);
 			this->confirm_change_button->TabIndex = 21;
@@ -312,22 +328,36 @@ namespace CppCLR_WinformsProjekt1 {
 			this->confirm_change_button->Visible = false;
 			this->confirm_change_button->Click += gcnew System::EventHandler(this, &profile_student::confirm_change_button_Click);
 			// 
-			// profession_selector
+			// dataGridView1
 			// 
-			this->profession_selector->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->profession_selector->FormattingEnabled = true;
-			this->profession_selector->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Student", L"Professor", L"Alumni" });
-			this->profession_selector->Location = System::Drawing::Point(430, 228);
-			this->profession_selector->Name = L"profession_selector";
-			this->profession_selector->Size = System::Drawing::Size(146, 28);
-			this->profession_selector->TabIndex = 19;
-			this->profession_selector->Visible = false;
+			this->dataGridView1->AllowUserToAddRows = false;
+			this->dataGridView1->AllowUserToDeleteRows = false;
+			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::ColumnHeader;
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Open });
+			this->dataGridView1->Location = System::Drawing::Point(12, 12);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->RowHeadersWidth = 62;
+			this->dataGridView1->RowTemplate->Height = 28;
+			this->dataGridView1->Size = System::Drawing::Size(740, 240);
+			this->dataGridView1->TabIndex = 20;
+			// 
+			// Open
+			// 
+			this->Open->HeaderText = L"Profile";
+			this->Open->MinimumWidth = 8;
+			this->Open->Name = L"Open";
+			this->Open->ReadOnly = true;
+			this->Open->Text = L"Open";
+			this->Open->UseColumnTextForButtonValue = true;
+			this->Open->Width = 59;
 			// 
 			// profile_student
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1129, 670);
+			this->ClientSize = System::Drawing::Size(1186, 909);
+			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->confirm_change_button);
 			this->Controls->Add(this->update_profile_button);
 			this->Controls->Add(this->delete_profile_button);
@@ -337,6 +367,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Load += gcnew System::EventHandler(this, &profile_student::profile_student_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -390,6 +421,7 @@ namespace CppCLR_WinformsProjekt1 {
 				//listBox1->Items->Add(printing_names);
 
 			}
+			fill_data_grid();
 
 		}
 		catch (Exception^ ex)
@@ -479,5 +511,29 @@ private: System::Void confirm_change_button_Click(System::Object^ sender, System
 	//
 
 }
+	   private: void fill_data_grid() {
+
+		   String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		   MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+		   MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history WHERE student_id = "+this->student_id_txt->Text+" AND borrow_status = 'BORROWED';", conDataBase);
+		   MySqlDataReader^ myReader;
+		   //student_id,student_name,student_mobile, student_profession, student_no_book_stat 
+		   try {
+			   MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
+			   sda->SelectCommand = cmdDataBase;
+			   DataTable^ dbdataset = gcnew DataTable();
+			   sda->Fill(dbdataset);
+			   BindingSource^ bSource = gcnew BindingSource();
+			   bSource->DataSource = dbdataset;
+			   dataGridView1->DataSource = bSource;
+			   sda->Update(dbdataset);
+		   }
+		   catch (Exception^ ex)
+		   {
+			   MessageBox::Show(ex->Message);
+
+		   }
+
+	   }
 };
 }
