@@ -38,6 +38,11 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 	private: System::Windows::Forms::Button^ back_button_borrow_his;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridViewButtonColumn^ Open;
+	private: System::Windows::Forms::TextBox^ search_bar;
+	private: System::Windows::Forms::ComboBox^ list_detail_search_order;
+	private: System::Windows::Forms::Button^ search_button;
+
 	protected:
 
 	private:
@@ -56,6 +61,10 @@ namespace CppCLR_WinformsProjekt1 {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(borrow_history_page::typeid));
 			this->back_button_borrow_his = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->Open = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
+			this->search_bar = (gcnew System::Windows::Forms::TextBox());
+			this->list_detail_search_order = (gcnew System::Windows::Forms::ComboBox());
+			this->search_button = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -75,20 +84,63 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1->AllowUserToDeleteRows = false;
 			this->dataGridView1->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(141, 197);
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Open });
+			this->dataGridView1->Location = System::Drawing::Point(141, 103);
+			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
-			this->dataGridView1->Size = System::Drawing::Size(812, 289);
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->dataGridView1->Size = System::Drawing::Size(956, 383);
 			this->dataGridView1->TabIndex = 1;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &borrow_history_page::dataGridView1_CellContentClick);
+			// 
+			// Open
+			// 
+			this->Open->HeaderText = L"Profile";
+			this->Open->MinimumWidth = 8;
+			this->Open->Name = L"Open";
+			this->Open->ReadOnly = true;
+			this->Open->Text = L"Open";
+			this->Open->UseColumnTextForButtonValue = true;
+			this->Open->Width = 150;
+			// 
+			// search_bar
+			// 
+			this->search_bar->Location = System::Drawing::Point(169, 27);
+			this->search_bar->Name = L"search_bar";
+			this->search_bar->Size = System::Drawing::Size(500, 26);
+			this->search_bar->TabIndex = 2;
+			// 
+			// list_detail_search_order
+			// 
+			this->list_detail_search_order->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->list_detail_search_order->FormattingEnabled = true;
+			this->list_detail_search_order->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Order ID", L"Student ID", L"Book ID" });
+			this->list_detail_search_order->Location = System::Drawing::Point(737, 24);
+			this->list_detail_search_order->Name = L"list_detail_search_order";
+			this->list_detail_search_order->Size = System::Drawing::Size(146, 28);
+			this->list_detail_search_order->TabIndex = 3;
+			// 
+			// search_button
+			// 
+			this->search_button->Location = System::Drawing::Point(921, 24);
+			this->search_button->Name = L"search_button";
+			this->search_button->Size = System::Drawing::Size(119, 40);
+			this->search_button->TabIndex = 4;
+			this->search_button->Text = L"Search";
+			this->search_button->UseVisualStyleBackColor = true;
+			this->search_button->Click += gcnew System::EventHandler(this, &borrow_history_page::search_button_Click);
 			// 
 			// borrow_history_page
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1134, 685);
+			this->Controls->Add(this->search_button);
+			this->Controls->Add(this->list_detail_search_order);
+			this->Controls->Add(this->search_bar);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->back_button_borrow_his);
 			this->Name = L"borrow_history_page";
@@ -96,6 +148,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Load += gcnew System::EventHandler(this, &borrow_history_page::borrow_history_page_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -134,6 +187,63 @@ namespace CppCLR_WinformsProjekt1 {
 		WindowState = FormWindowState::Maximized;
 	}
 private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	if (e->ColumnIndex == 0)
+	{
+		/*CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
+		this->Hide();
+		//testing_f->ShowDialog();
+		if (testing_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			this->Show();
+		}*/
+		int row_num = e->RowIndex;
+		int col_num = e->ColumnIndex + 1;
+		String^ str = this->dataGridView1->Rows[row_num]->Cells[col_num]->Value->ToString();
+
+		MessageBox::Show("Your id is " + str);
+		//CppCLR_WinformsProjekt1::profile_student^ profile_student_f = gcnew CppCLR_WinformsProjekt1::profile_student(str);
+		//this->Hide();
+		//testing_f->ShowDialog();
+
+	}
+}
+private: System::Void search_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ str_list_detail_search_order;
+	if (this->list_detail_search_order->Text == "Order ID")
+	{
+		str_list_detail_search_order = "order_id";
+	}
+	if (String::Equals(this->list_detail_search_order->Text, "Student ID"))
+	{
+		str_list_detail_search_order = "student_id";
+	}
+	if (String::Equals(this->list_detail_search_order->Text, "Book ID"))
+	{
+		str_list_detail_search_order = "book_id";
+	}
+	String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+	//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
+	//student_id,student_name,student_mobile, student_profession, student_no_book_stat 
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history\
+		WHERE " + str_list_detail_search_order + " LIKE '%" + this->search_bar->Text + "%';", conDataBase);
+	MySqlDataReader^ myReader;
+
+	try {
+		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
+		sda->SelectCommand = cmdDataBase;
+		DataTable^ dbdataset = gcnew DataTable();
+		sda->Fill(dbdataset);
+		BindingSource^ bSource = gcnew BindingSource();
+		bSource->DataSource = dbdataset;
+		dataGridView1->DataSource = bSource;
+		sda->Update(dbdataset);
+	}
+	catch (Exception^ ex)
+	{
+		MessageBox::Show(ex->Message);
+
+	}
 }
 };
 }
