@@ -383,7 +383,8 @@ namespace CppCLR_WinformsProjekt1 {
 		//	STILL NEED TO ADD FUNCTION TO DISPLAY ALL THE DATA
 		//
 		//
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 
@@ -513,7 +514,8 @@ private: System::Void confirm_change_button_Click(System::Object^ sender, System
 }
 	   private: void fill_data_grid() {
 
-		   String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		   //String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		   String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		   MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		   MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history WHERE student_id = "+this->student_id_txt->Text+" AND borrow_status = 'BORROWED';", conDataBase);
 		   MySqlDataReader^ myReader;

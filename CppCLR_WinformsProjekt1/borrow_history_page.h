@@ -159,7 +159,8 @@ namespace CppCLR_WinformsProjekt1 {
 
 	private: void fill_data_grid() {
 
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from library_system.borrow_history;", conDataBase);
 		MySqlDataReader^ myReader;
@@ -221,7 +222,8 @@ private: System::Void search_button_Click(System::Object^ sender, System::EventA
 	{
 		str_list_detail_search_order = "book_id";
 	}
-	String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+	//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+	String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 	//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 	//student_id,student_name,student_mobile, student_profession, student_no_book_stat 
