@@ -125,7 +125,8 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->groupBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Right));
 			this->groupBox1->Controls->Add(this->profession_selector);
 			this->groupBox1->Controls->Add(this->dob_student_txt);
 			this->groupBox1->Controls->Add(this->student_id_txt);
@@ -142,7 +143,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1->Controls->Add(this->name_txt);
 			this->groupBox1->Controls->Add(this->email_id_txt);
 			this->groupBox1->Controls->Add(this->profession_txt);
-			this->groupBox1->Location = System::Drawing::Point(364, 28);
+			this->groupBox1->Location = System::Drawing::Point(141, 14);
 			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
@@ -297,7 +298,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// delete_profile_button
 			// 
 			this->delete_profile_button->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->delete_profile_button->Location = System::Drawing::Point(969, 66);
+			this->delete_profile_button->Location = System::Drawing::Point(932, 66);
 			this->delete_profile_button->Name = L"delete_profile_button";
 			this->delete_profile_button->Size = System::Drawing::Size(203, 45);
 			this->delete_profile_button->TabIndex = 19;
@@ -308,7 +309,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// update_profile_button
 			// 
 			this->update_profile_button->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->update_profile_button->Location = System::Drawing::Point(969, 10);
+			this->update_profile_button->Location = System::Drawing::Point(932, 10);
 			this->update_profile_button->Name = L"update_profile_button";
 			this->update_profile_button->Size = System::Drawing::Size(205, 50);
 			this->update_profile_button->TabIndex = 20;
@@ -319,7 +320,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// confirm_change_button
 			// 
 			this->confirm_change_button->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->confirm_change_button->Location = System::Drawing::Point(969, 118);
+			this->confirm_change_button->Location = System::Drawing::Point(932, 118);
 			this->confirm_change_button->Name = L"confirm_change_button";
 			this->confirm_change_button->Size = System::Drawing::Size(203, 67);
 			this->confirm_change_button->TabIndex = 21;
@@ -332,6 +333,8 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->AllowUserToDeleteRows = false;
+			this->dataGridView1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left));
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::ColumnHeader;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Open });
@@ -339,7 +342,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
-			this->dataGridView1->Size = System::Drawing::Size(740, 240);
+			this->dataGridView1->Size = System::Drawing::Size(687, 558);
 			this->dataGridView1->TabIndex = 20;
 			// 
 			// Open
@@ -356,7 +359,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1186, 909);
+			this->ClientSize = System::Drawing::Size(1149, 909);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->confirm_change_button);
 			this->Controls->Add(this->update_profile_button);
@@ -383,8 +386,8 @@ namespace CppCLR_WinformsProjekt1 {
 		//	STILL NEED TO ADD FUNCTION TO DISPLAY ALL THE DATA
 		//
 		//
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 
@@ -514,8 +517,8 @@ private: System::Void confirm_change_button_Click(System::Object^ sender, System
 }
 	   private: void fill_data_grid() {
 
-		   //String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		   String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		   String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		   //String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		   MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		   MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history WHERE student_id = "+this->student_id_txt->Text+" AND borrow_status = 'BORROWED';", conDataBase);
 		   MySqlDataReader^ myReader;

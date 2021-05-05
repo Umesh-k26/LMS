@@ -55,6 +55,7 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::Button^ search_button_student;
 	private: System::Windows::Forms::ComboBox^ list_detail_search_person;
 	private: System::Windows::Forms::Button^ exit_button;
+	private: System::Windows::Forms::Button^ clear_all_button;
 
 
 
@@ -85,6 +86,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->search_button_student = (gcnew System::Windows::Forms::Button());
 			this->list_detail_search_person = (gcnew System::Windows::Forms::ComboBox());
 			this->exit_button = (gcnew System::Windows::Forms::Button());
+			this->clear_all_button = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -102,7 +104,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(1413, 577);
+			this->dataGridView1->Size = System::Drawing::Size(1439, 560);
 			this->dataGridView1->TabIndex = 1;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &list_of_students_page::dataGridView1_CellContentClick);
 			// 
@@ -119,7 +121,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// search_bar_student
 			// 
 			this->search_bar_student->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom));
-			this->search_bar_student->Location = System::Drawing::Point(174, 32);
+			this->search_bar_student->Location = System::Drawing::Point(198, 12);
 			this->search_bar_student->Name = L"search_bar_student";
 			this->search_bar_student->Size = System::Drawing::Size(463, 26);
 			this->search_bar_student->TabIndex = 2;
@@ -127,7 +129,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// back_button_student_list
 			// 
 			this->back_button_student_list->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"back_button_student_list.Image")));
-			this->back_button_student_list->Location = System::Drawing::Point(14, 12);
+			this->back_button_student_list->Location = System::Drawing::Point(12, 12);
 			this->back_button_student_list->Name = L"back_button_student_list";
 			this->back_button_student_list->Size = System::Drawing::Size(75, 45);
 			this->back_button_student_list->TabIndex = 3;
@@ -136,7 +138,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(12, 186);
+			this->button3->Location = System::Drawing::Point(12, 63);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(75, 45);
 			this->button3->TabIndex = 5;
@@ -147,9 +149,9 @@ namespace CppCLR_WinformsProjekt1 {
 			// search_button_student
 			// 
 			this->search_button_student->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->search_button_student->Location = System::Drawing::Point(958, 26);
+			this->search_button_student->Location = System::Drawing::Point(950, 12);
 			this->search_button_student->Name = L"search_button_student";
-			this->search_button_student->Size = System::Drawing::Size(105, 38);
+			this->search_button_student->Size = System::Drawing::Size(105, 30);
 			this->search_button_student->TabIndex = 6;
 			this->search_button_student->Text = L"Search";
 			this->search_button_student->UseVisualStyleBackColor = true;
@@ -163,7 +165,7 @@ namespace CppCLR_WinformsProjekt1 {
 				L"ID", L"Name", L"Phone", L"Email",
 					L"Number of books borrowed currently"
 			});
-			this->list_detail_search_person->Location = System::Drawing::Point(656, 32);
+			this->list_detail_search_person->Location = System::Drawing::Point(667, 12);
 			this->list_detail_search_person->Name = L"list_detail_search_person";
 			this->list_detail_search_person->Size = System::Drawing::Size(277, 28);
 			this->list_detail_search_person->TabIndex = 7;
@@ -171,7 +173,8 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// exit_button
 			// 
-			this->exit_button->Location = System::Drawing::Point(12, 277);
+			this->exit_button->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->exit_button->Location = System::Drawing::Point(1510, 12);
 			this->exit_button->Name = L"exit_button";
 			this->exit_button->Size = System::Drawing::Size(103, 46);
 			this->exit_button->TabIndex = 8;
@@ -179,11 +182,23 @@ namespace CppCLR_WinformsProjekt1 {
 			this->exit_button->UseVisualStyleBackColor = true;
 			this->exit_button->Click += gcnew System::EventHandler(this, &list_of_students_page::exit_button_Click);
 			// 
+			// clear_all_button
+			// 
+			this->clear_all_button->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->clear_all_button->Location = System::Drawing::Point(1061, 12);
+			this->clear_all_button->Name = L"clear_all_button";
+			this->clear_all_button->Size = System::Drawing::Size(115, 30);
+			this->clear_all_button->TabIndex = 9;
+			this->clear_all_button->Text = L"Clear Search";
+			this->clear_all_button->UseVisualStyleBackColor = true;
+			this->clear_all_button->Click += gcnew System::EventHandler(this, &list_of_students_page::clear_all_button_Click);
+			// 
 			// list_of_students_page
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1652, 982);
+			this->ClientSize = System::Drawing::Size(1642, 955);
+			this->Controls->Add(this->clear_all_button);
 			this->Controls->Add(this->exit_button);
 			this->Controls->Add(this->list_detail_search_person);
 			this->Controls->Add(this->search_button_student);
@@ -238,10 +253,10 @@ namespace CppCLR_WinformsProjekt1 {
 	*/
 	private: void fill_data_grid() {
 
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.student_data;", conDataBase);
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT student_id AS ID, student_name AS Name, student_mobile AS Mobile, student_email as 'E-Mail', student_no_book_stat AS 'No. of Books Borrowed' FROM library_system.student_data;", conDataBase);
 		MySqlDataReader^ myReader;
 		//student_id,student_name,student_mobile, student_profession, student_no_book_stat 
 		try {
@@ -267,6 +282,7 @@ namespace CppCLR_WinformsProjekt1 {
 		CenterToScreen();
 		//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
 		WindowState = FormWindowState::Maximized;
+		this->list_detail_search_person->SelectedIndex = 1;
 
 
 	}
@@ -350,7 +366,7 @@ private: System::Void search_button_student_Click(System::Object^ sender, System
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 	//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 	//student_id,student_name,student_mobile, student_profession, student_no_book_stat 
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.student_data\
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT student_id AS ID, student_name AS Name, student_mobile AS Mobile, student_email as 'E-Mail', student_no_book_stat AS 'No. of Books Borrowed' FROM library_system.student_data\
 		WHERE " + str_list_detail_search_person +" LIKE '%"+this->search_bar_student->Text+"%';", conDataBase);
 	MySqlDataReader^ myReader;
 
@@ -374,6 +390,10 @@ private: System::Void list_detail_search_person_SelectedIndexChanged(System::Obj
 }
 private: System::Void exit_button_Click(System::Object^ sender, System::EventArgs^ e) {
 	Application::Exit();
+}
+private: System::Void clear_all_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->search_bar_student->Text = "";
+	search_button_student_Click(sender,e);
 }
 };
 }

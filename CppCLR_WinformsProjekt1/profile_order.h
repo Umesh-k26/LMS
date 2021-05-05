@@ -15,6 +15,7 @@ namespace CppCLR_WinformsProjekt1 {
 	/// </summary>
 	public ref class profile_order : public System::Windows::Forms::Form
 	{
+		String^ transfer_order_id;
 	public:
 		profile_order(void)
 		{
@@ -22,6 +23,14 @@ namespace CppCLR_WinformsProjekt1 {
 			//
 			//TODO: Add the constructor code here
 			//
+		}
+		profile_order(String^ input_for_orderid)
+		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+			transfer_order_id = input_for_orderid;
 		}
 
 	protected:
@@ -72,8 +81,11 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::Label^ date_return_lbl;
 	private: System::Windows::Forms::Label^ fine_lbl;
 	private: System::Windows::Forms::TextBox^ date_issue_txt;
-	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::TextBox^ date_return_txt;
+
 	private: System::Windows::Forms::TextBox^ order_fine_txt;
+	private: System::Windows::Forms::Label^ order_id_lbl;
+	private: System::Windows::Forms::TextBox^ order_id_txt;
 
 	private:
 		/// <summary>
@@ -97,12 +109,12 @@ namespace CppCLR_WinformsProjekt1 {
 			this->profession_lbl = (gcnew System::Windows::Forms::Label());
 			this->email_id_lbl = (gcnew System::Windows::Forms::Label());
 			this->mobile_no_lbl = (gcnew System::Windows::Forms::Label());
+			this->address_txt = (gcnew System::Windows::Forms::TextBox());
 			this->address_lbl = (gcnew System::Windows::Forms::Label());
 			this->mobile_no_txt = (gcnew System::Windows::Forms::TextBox());
 			this->name_txt = (gcnew System::Windows::Forms::TextBox());
 			this->email_id_txt = (gcnew System::Windows::Forms::TextBox());
 			this->profession_txt = (gcnew System::Windows::Forms::TextBox());
-			this->address_txt = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->no_copies_lbl = (gcnew System::Windows::Forms::Label());
 			this->no_copies_txt = (gcnew System::Windows::Forms::TextBox());
@@ -124,8 +136,10 @@ namespace CppCLR_WinformsProjekt1 {
 			this->date_return_lbl = (gcnew System::Windows::Forms::Label());
 			this->fine_lbl = (gcnew System::Windows::Forms::Label());
 			this->date_issue_txt = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->date_return_txt = (gcnew System::Windows::Forms::TextBox());
 			this->order_fine_txt = (gcnew System::Windows::Forms::TextBox());
+			this->order_id_lbl = (gcnew System::Windows::Forms::Label());
+			this->order_id_txt = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
@@ -231,6 +245,15 @@ namespace CppCLR_WinformsProjekt1 {
 			this->mobile_no_lbl->TabIndex = 4;
 			this->mobile_no_lbl->Text = L"Mobile No.";
 			// 
+			// address_txt
+			// 
+			this->address_txt->Location = System::Drawing::Point(256, 472);
+			this->address_txt->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->address_txt->Name = L"address_txt";
+			this->address_txt->ReadOnly = true;
+			this->address_txt->Size = System::Drawing::Size(148, 26);
+			this->address_txt->TabIndex = 11;
+			// 
 			// address_lbl
 			// 
 			this->address_lbl->AutoSize = true;
@@ -276,15 +299,6 @@ namespace CppCLR_WinformsProjekt1 {
 			this->profession_txt->ReadOnly = true;
 			this->profession_txt->Size = System::Drawing::Size(148, 26);
 			this->profession_txt->TabIndex = 8;
-			// 
-			// address_txt
-			// 
-			this->address_txt->Location = System::Drawing::Point(256, 472);
-			this->address_txt->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->address_txt->Name = L"address_txt";
-			this->address_txt->ReadOnly = true;
-			this->address_txt->Size = System::Drawing::Size(148, 26);
-			this->address_txt->TabIndex = 11;
 			// 
 			// groupBox2
 			// 
@@ -472,6 +486,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// date_issue_lbl
 			// 
+			this->date_issue_lbl->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->date_issue_lbl->AutoSize = true;
 			this->date_issue_lbl->Location = System::Drawing::Point(1236, 106);
 			this->date_issue_lbl->Name = L"date_issue_lbl";
@@ -481,6 +496,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// date_return_lbl
 			// 
+			this->date_return_lbl->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->date_return_lbl->AutoSize = true;
 			this->date_return_lbl->Location = System::Drawing::Point(1236, 229);
 			this->date_return_lbl->Name = L"date_return_lbl";
@@ -490,6 +506,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// fine_lbl
 			// 
+			this->fine_lbl->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->fine_lbl->AutoSize = true;
 			this->fine_lbl->Location = System::Drawing::Point(1261, 313);
 			this->fine_lbl->Name = L"fine_lbl";
@@ -499,35 +516,57 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// date_issue_txt
 			// 
+			this->date_issue_txt->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->date_issue_txt->Location = System::Drawing::Point(1247, 144);
 			this->date_issue_txt->Name = L"date_issue_txt";
 			this->date_issue_txt->ReadOnly = true;
 			this->date_issue_txt->Size = System::Drawing::Size(103, 26);
 			this->date_issue_txt->TabIndex = 29;
 			// 
-			// textBox2
+			// date_return_txt
 			// 
-			this->textBox2->Location = System::Drawing::Point(1243, 269);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->ReadOnly = true;
-			this->textBox2->Size = System::Drawing::Size(100, 26);
-			this->textBox2->TabIndex = 30;
+			this->date_return_txt->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->date_return_txt->Location = System::Drawing::Point(1243, 269);
+			this->date_return_txt->Name = L"date_return_txt";
+			this->date_return_txt->ReadOnly = true;
+			this->date_return_txt->Size = System::Drawing::Size(100, 26);
+			this->date_return_txt->TabIndex = 30;
 			// 
 			// order_fine_txt
 			// 
+			this->order_fine_txt->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->order_fine_txt->Location = System::Drawing::Point(1247, 365);
 			this->order_fine_txt->Name = L"order_fine_txt";
 			this->order_fine_txt->ReadOnly = true;
 			this->order_fine_txt->Size = System::Drawing::Size(103, 26);
 			this->order_fine_txt->TabIndex = 31;
 			// 
+			// order_id_lbl
+			// 
+			this->order_id_lbl->AutoSize = true;
+			this->order_id_lbl->Location = System::Drawing::Point(405, 38);
+			this->order_id_lbl->Name = L"order_id_lbl";
+			this->order_id_lbl->Size = System::Drawing::Size(74, 20);
+			this->order_id_lbl->TabIndex = 32;
+			this->order_id_lbl->Text = L"Order ID:";
+			// 
+			// order_id_txt
+			// 
+			this->order_id_txt->Location = System::Drawing::Point(502, 32);
+			this->order_id_txt->Name = L"order_id_txt";
+			this->order_id_txt->ReadOnly = true;
+			this->order_id_txt->Size = System::Drawing::Size(133, 26);
+			this->order_id_txt->TabIndex = 33;
+			// 
 			// profile_order
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1445, 1019);
+			this->Controls->Add(this->order_id_txt);
+			this->Controls->Add(this->order_id_lbl);
 			this->Controls->Add(this->order_fine_txt);
-			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->date_return_txt);
 			this->Controls->Add(this->date_issue_txt);
 			this->Controls->Add(this->fine_lbl);
 			this->Controls->Add(this->date_return_lbl);
@@ -558,6 +597,147 @@ namespace CppCLR_WinformsProjekt1 {
 		//		NEED TO ADD LOADING PROFILES
 		//
 		//
+		this->order_id_txt->Text = transfer_order_id;
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history\
+		WHERE order_id = " + transfer_order_id + ";", conDataBase);
+		MySqlDataReader^ myReader;
+		//MessageBox::Show(transfer_order_id);
+
+		try {
+			conDataBase->Open();
+			myReader = cmdDataBase->ExecuteReader();
+
+			while (myReader->Read())
+			{
+				String^ printing_student_id;
+				String^ printing_book_id;
+				String^ printing_date_issue;
+				String^ printing_date_return;
+				String^ printing_fine;
+
+				printing_student_id = myReader->GetString("student_id");
+				printing_book_id = myReader->GetString("book_id");
+				printing_date_issue = myReader->GetString("date_issue");
+				printing_date_return = myReader->GetString("date_returned");
+				printing_fine = myReader->GetString("borrow_fine");
+
+				this->student_id_txt->Text = printing_student_id;
+				this->book_id_txt->Text = printing_book_id;
+				this->date_issue_txt->Text = printing_date_issue;
+				this->date_return_txt->Text = printing_date_return;
+				this->order_fine_txt->Text = printing_fine;
+
+			}
+			
+
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->Message);
+
+		}
+		fill_student_data();
+		fill_book_data();
+		
+	}
+	private: void fill_student_data()
+	{
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.student_data WHERE student_id = " + this->student_id_txt->Text + ";", conDataBase);
+		MySqlDataReader^ myReader;
+		try {
+			conDataBase->Open();
+			myReader = cmdDataBase->ExecuteReader();
+
+			while (myReader->Read())
+			{
+				String^ printing_name;
+				//String^ printing_id;
+				String^ printing_profession;
+				String^ printing_email;
+				String^ printing_mobile;
+				String^ printing_address;
+				String^ printing_dob;
+				//printing_id = myReader->GetString("student_id");
+				printing_name = myReader->GetString("student_name");
+				printing_profession = myReader->GetString("student_profession");
+				printing_email = myReader->GetString("student_email");
+				printing_mobile = myReader->GetString("student_mobile");
+				printing_address = myReader->GetString("student_address");
+				printing_dob = myReader->GetString("student_dob");
+				this->name_txt->Text = printing_name;
+				//this->student_id_txt->Text = printing_id;
+				this->email_id_txt->Text = printing_email;
+				this->mobile_no_txt->Text = printing_mobile;
+				this->address_txt->Text = printing_address;
+				this->dob_student_txt->Text = printing_dob;
+				this->profession_txt->Text = printing_profession;
+
+			}
+
+
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->Message);
+
+		}
+	}
+	private: void fill_book_data()
+	{
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.book_data WHERE book_id = " + this->book_id_txt->Text + ";", conDataBase);
+		MySqlDataReader^ myReader;
+		try {
+			conDataBase->Open();
+			myReader = cmdDataBase->ExecuteReader();
+
+			while (myReader->Read())
+			{
+				String^ printing_name;
+				
+				String^ printing_author;
+				String^ printing_publisher;
+				String^ printing_price;
+				String^ printing_edition_no;
+				String^ printing_book_borrow_stat;
+				
+				printing_name = myReader->GetString("book_name");
+				printing_author = myReader->GetString("book_author");
+				printing_publisher = myReader->GetString("book_publisher");
+				printing_price = myReader->GetString("book_price");
+				printing_edition_no = myReader->GetString("book_edition_no");
+				printing_book_borrow_stat = myReader->GetString("book_borrow_status");
+				this->bookname_txt->Text = printing_name;
+				
+				this->author_txt->Text = printing_author;
+				this->publisher_txt->Text = printing_publisher;
+				this->price_txt->Text = printing_price;
+				this->edition_no_txt->Text = printing_edition_no;
+				this->borrow_stat_txt->Text = printing_book_borrow_stat;
+
+				//listBox1->Items->Add(printing_names);
+
+			}
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->Message);
+
+		}
 	}
 };
 }
