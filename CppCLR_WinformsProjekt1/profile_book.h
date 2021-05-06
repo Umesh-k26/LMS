@@ -71,6 +71,7 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::DataGridViewButtonColumn^ Open;
 	private: System::Windows::Forms::TextBox^ no_copies_txt;
 	private: System::Windows::Forms::Label^ no_copies_lbl;
+	private: System::Windows::Forms::Button^ back_button;
 
 
 
@@ -88,6 +89,7 @@ namespace CppCLR_WinformsProjekt1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(profile_book::typeid));
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->no_copies_lbl = (gcnew System::Windows::Forms::Label());
 			this->no_copies_txt = (gcnew System::Windows::Forms::TextBox());
@@ -110,6 +112,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->confirm_change_button = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Open = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
+			this->back_button = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
@@ -355,11 +358,22 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Open->UseColumnTextForButtonValue = true;
 			this->Open->Width = 150;
 			// 
+			// back_button
+			// 
+			this->back_button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"back_button.Image")));
+			this->back_button->Location = System::Drawing::Point(12, 700);
+			this->back_button->Name = L"back_button";
+			this->back_button->Size = System::Drawing::Size(74, 48);
+			this->back_button->TabIndex = 25;
+			this->back_button->UseVisualStyleBackColor = true;
+			this->back_button->Click += gcnew System::EventHandler(this, &profile_book::back_button_Click);
+			// 
 			// profile_book
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1587, 760);
+			this->Controls->Add(this->back_button);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->confirm_change_button);
 			this->Controls->Add(this->update_profile_button);
@@ -486,6 +500,10 @@ private: System::Void dataGridView1_CellContentClick(System::Object^ sender, Sys
 		}*/
 
 	}
+}
+private: System::Void back_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	this->Close();
 }
 };
 }

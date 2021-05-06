@@ -69,6 +69,7 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::ComboBox^ profession_selector;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::DataGridViewButtonColumn^ Open;
+	private: System::Windows::Forms::Button^ back_button;
 
 
 
@@ -88,6 +89,7 @@ namespace CppCLR_WinformsProjekt1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(profile_student::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->profession_selector = (gcnew System::Windows::Forms::ComboBox());
@@ -110,6 +112,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->confirm_change_button = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Open = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
+			this->back_button = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
@@ -355,11 +358,22 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Open->UseColumnTextForButtonValue = true;
 			this->Open->Width = 59;
 			// 
+			// back_button
+			// 
+			this->back_button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"back_button.Image")));
+			this->back_button->Location = System::Drawing::Point(12, 833);
+			this->back_button->Name = L"back_button";
+			this->back_button->Size = System::Drawing::Size(81, 44);
+			this->back_button->TabIndex = 22;
+			this->back_button->UseVisualStyleBackColor = true;
+			this->back_button->Click += gcnew System::EventHandler(this, &profile_student::back_button_Click);
+			// 
 			// profile_student
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1149, 909);
+			this->Controls->Add(this->back_button);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->confirm_change_button);
 			this->Controls->Add(this->update_profile_button);
@@ -381,11 +395,9 @@ namespace CppCLR_WinformsProjekt1 {
 		WindowState = FormWindowState::Maximized;
 		//this->label1->Text = list_of_students_page::global_student_id_passed;
 		//this->label1->Text = transfer_id_student;
-		//
-		//
-		//	STILL NEED TO ADD FUNCTION TO DISPLAY ALL THE DATA
-		//
-		//
+		
+
+
 		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
@@ -407,22 +419,30 @@ namespace CppCLR_WinformsProjekt1 {
 				String^ printing_email;
 				String^ printing_mobile;
 				String^ printing_address;
-				String^ printing_dob;
+				//String^ printing_dob;
 				printing_id = myReader->GetString("student_id");
 				printing_name = myReader->GetString("student_name");
 				printing_profession = myReader->GetString("student_profession");
 				printing_email = myReader->GetString("student_email");
 				printing_mobile = myReader->GetString("student_mobile");
 				printing_address = myReader->GetString("student_address");
-				printing_dob = myReader->GetString("student_dob");
+				//printing_dob = myReader->GetString("student_dob");
+
+				MySql::Data::Types::MySqlDateTime new_dob;
+				new_dob = myReader->GetMySqlDateTime("student_dob");
 				this->name_txt->Text = printing_name;
 				this->student_id_txt->Text = printing_id;
 				this->email_id_txt->Text = printing_email;
 				this->mobile_no_txt->Text = printing_mobile;
 				this->address_txt->Text = printing_address;
-				this->dob_student_txt->Text = printing_dob;
+
+				//this->dob_student_txt->Text = printing_dob;
+				this->dob_student_txt->Text = new_dob.ToString();
+
 				this->profession_txt->Text = printing_profession;
 				//listBox1->Items->Add(printing_names);
+
+				this->dateTimePicker->Value = new_dob.GetDateTime();
 
 			}
 			fill_data_grid();
@@ -446,6 +466,9 @@ namespace CppCLR_WinformsProjekt1 {
 		this->mobile_no_txt->ReadOnly = false;
 		this->address_txt->ReadOnly = false;
 		this->profession_selector->Visible = true;
+		this->profession_selector->Text = this->profession_txt->Text;
+
+		
 
 	}
 private: System::Void delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -475,11 +498,16 @@ private: System::Void delete_profile_button_Click(System::Object^ sender, System
 }
 private: System::Void confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e) {
 	MessageBox::Show("Changes made");
-	//this->profession_txt->Text = this->profession_selector->Text;
-	/*String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+
+
+	this->profession_txt->Text = this->profession_selector->Text;
+	this->dob_student_txt->Text = this->dateTimePicker->Text;
+
+
+	String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("UPDATE library_system.student_data set student_id = \
-		" + this->student_id_txt->Text + "student_name = '" + this->name_txt->Text + "',student_dob = '" + this->dob_student_txt->Text + "', student_profession = '" + this->profession_txt->Text + "', student_email='" + this->email_id_txt->Text + "', student_mobile=" + this->mobile_no_txt->Text + ", student_address = '" + this->address_txt->Text + "'WHERE student_id = " + this->student_id_txt->Text + ";", conDataBase);
+		" + this->student_id_txt->Text + ",student_name = '" + this->name_txt->Text + "',student_dob = '" + this->dob_student_txt->Text + "', student_profession = '" + this->profession_txt->Text + "', student_email='" + this->email_id_txt->Text + "', student_mobile=" + this->mobile_no_txt->Text + ", student_address = '" + this->address_txt->Text + "'WHERE student_id = " + this->student_id_txt->Text + ";", conDataBase);
 	MySqlDataReader^ myReader;
 	try {
 		conDataBase->Open();
@@ -496,7 +524,7 @@ private: System::Void confirm_change_button_Click(System::Object^ sender, System
 	{
 		MessageBox::Show(ex->Message);
 
-	}*/
+	}
 	//this->dob_student_txt->Visible = true;
 	this->update_profile_button->Visible = true;
 	this->confirm_change_button->Visible = false;
@@ -540,5 +568,9 @@ private: System::Void confirm_change_button_Click(System::Object^ sender, System
 		   }
 
 	   }
+private: System::Void back_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	this->Close();
+}
 };
 }
