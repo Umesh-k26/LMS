@@ -277,7 +277,6 @@ namespace CppCLR_WinformsProjekt1 {
 			this->female_rbtn->Name = L"female_rbtn";
 			this->female_rbtn->Size = System::Drawing::Size(59, 17);
 			this->female_rbtn->TabIndex = 19;
-			this->female_rbtn->TabStop = true;
 			this->female_rbtn->Text = L"Female";
 			this->female_rbtn->UseVisualStyleBackColor = true;
 			this->female_rbtn->CheckedChanged += gcnew System::EventHandler(this, &RegisterStudent::female_rbtn_CheckedChanged);
@@ -289,7 +288,6 @@ namespace CppCLR_WinformsProjekt1 {
 			this->male_rbtn->Name = L"male_rbtn";
 			this->male_rbtn->Size = System::Drawing::Size(48, 17);
 			this->male_rbtn->TabIndex = 18;
-			this->male_rbtn->TabStop = true;
 			this->male_rbtn->Text = L"Male";
 			this->male_rbtn->UseVisualStyleBackColor = true;
 			this->male_rbtn->CheckedChanged += gcnew System::EventHandler(this, &RegisterStudent::male_rbtn_CheckedChanged);
@@ -318,7 +316,7 @@ namespace CppCLR_WinformsProjekt1 {
 		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("INSERT INTO library_system.student_data (student_name, student_dob, student_address, student_email, \
+		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system.student_data (student_name, student_dob, student_address, student_email, \
 		student_mobile, student_profession, student_no_book_stat,student_fine, student_gender) \
 		VALUES('" + this->name_txt->Text + "',\
 		'" + this->dateTimePicker->Text + "',\
@@ -328,16 +326,35 @@ namespace CppCLR_WinformsProjekt1 {
 		'" + this->profession_txt->Text + "',\
 		" + this->status_no_txt->Text + ", 0, '"+Gender+"')	;", conDataBase);
 
+		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system.student_data \
+	    WHERE student_email = '"+this->email_id_txt->Text+"';", conDataBase);
 
 		MySqlDataReader^ myReader;
 		try {
 			conDataBase->Open();
-			myReader = cmdDataBase->ExecuteReader();
-			MessageBox::Show("Student registered successfully!");
-			while (myReader->Read())
-			{
+			cmdDataBase1->ExecuteNonQuery();
 
+			MessageBox::Show("Student registered successfully!");
+
+			myReader = cmdDataBase2->ExecuteReader();
+			
+			if (myReader->Read())
+			{
+				int student_id = myReader->GetInt32("student_id");
+				MessageBox::Show("Your id is " + student_id);
 			}
+			myReader->Close();
+
+			this->name_txt->Text  = "";
+			this->dateTimePicker->Text = "";
+			this->address_txt->Text = "";
+			this->email_id_txt->Text = "";
+			this->mobile_no_txt->Text = "";
+			this->profession_txt->Text = "";
+			this->status_no_txt->Text = "";
+			this->male_rbtn->Checked = false;
+			this->female_rbtn->Checked = false;
+			
 		}
 		catch (Exception^ ex)
 		{

@@ -337,11 +337,11 @@ namespace CppCLR_WinformsProjekt1 {
 		WindowState = FormWindowState::Maximized;
 	}
 	private: System::Void AddBook_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("INSERT INTO library_system.book_data \
+		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system.book_data \
 		(book_name, book_author, book_publisher, book_price,book_edition_no,no_of_copies, category) \
 		VALUES('" + this->bookname_txt->Text + "',\
 		'" + this->author_txt->Text + "',\
@@ -351,18 +351,22 @@ namespace CppCLR_WinformsProjekt1 {
 		'" + this->no_of_copies_txt->Text + "',\
 		'" + this->category_txt->Text + "'	);", conDataBase);
 
-
+		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system.book_data WHERE (book_name = '" + this->bookname_txt->Text + "' \
+		AND book_edition_no = " + this->edition_no_txt->Text + ");", conDataBase);
 		MySqlDataReader^ myReader;
 		try {
 			conDataBase->Open();
 
-			myReader = cmdDataBase->ExecuteReader();
+			cmdDataBase1->ExecuteNonQuery();
 			MessageBox::Show("Book added successfully!");
-			while (myReader->Read())
+
+			myReader = cmdDataBase2->ExecuteReader();
+			if(myReader->Read())
 			{
-
+				int book_id = myReader->GetInt32("book_id");
+				MessageBox::Show("Book id is " + book_id);
 			}
-
+			myReader->Close();
 		}
 		catch (Exception^ ex)
 		{
