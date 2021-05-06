@@ -218,7 +218,11 @@ private: System::Void dataGridView1_CellContentClick(System::Object^ sender, Sys
 		MessageBox::Show("Your id is " + str);
 		CppCLR_WinformsProjekt1::profile_order^ profile_order_f = gcnew CppCLR_WinformsProjekt1::profile_order(str);
 		this->Hide();
-		profile_order_f->ShowDialog();
+		if (profile_order_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			this->Show();
+			fill_data_grid();
+		}
 
 	}
 }

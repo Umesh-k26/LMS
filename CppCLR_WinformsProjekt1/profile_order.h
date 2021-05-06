@@ -86,6 +86,7 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::TextBox^ order_fine_txt;
 	private: System::Windows::Forms::Label^ order_id_lbl;
 	private: System::Windows::Forms::TextBox^ order_id_txt;
+	private: System::Windows::Forms::Button^ back_button;
 
 	private:
 		/// <summary>
@@ -100,6 +101,7 @@ namespace CppCLR_WinformsProjekt1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(profile_order::typeid));
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->dob_student_txt = (gcnew System::Windows::Forms::TextBox());
 			this->student_id_txt = (gcnew System::Windows::Forms::TextBox());
@@ -140,6 +142,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->order_fine_txt = (gcnew System::Windows::Forms::TextBox());
 			this->order_id_lbl = (gcnew System::Windows::Forms::Label());
 			this->order_id_txt = (gcnew System::Windows::Forms::TextBox());
+			this->back_button = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
@@ -558,11 +561,22 @@ namespace CppCLR_WinformsProjekt1 {
 			this->order_id_txt->Size = System::Drawing::Size(133, 26);
 			this->order_id_txt->TabIndex = 33;
 			// 
+			// back_button
+			// 
+			this->back_button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"back_button.Image")));
+			this->back_button->Location = System::Drawing::Point(74, 905);
+			this->back_button->Name = L"back_button";
+			this->back_button->Size = System::Drawing::Size(74, 44);
+			this->back_button->TabIndex = 35;
+			this->back_button->UseVisualStyleBackColor = true;
+			this->back_button->Click += gcnew System::EventHandler(this, &profile_order::back_button_Click);
+			// 
 			// profile_order
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1445, 1019);
+			this->Controls->Add(this->back_button);
 			this->Controls->Add(this->order_id_txt);
 			this->Controls->Add(this->order_id_lbl);
 			this->Controls->Add(this->order_fine_txt);
@@ -739,5 +753,9 @@ namespace CppCLR_WinformsProjekt1 {
 
 		}
 	}
+private: System::Void back_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	this->Close();
+}
 };
 }

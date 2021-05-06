@@ -312,8 +312,8 @@ namespace CppCLR_WinformsProjekt1 {
 #pragma endregion
 	private: System::Void add_button_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 
 		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system.student_data (student_name, student_dob, student_address, student_email, \

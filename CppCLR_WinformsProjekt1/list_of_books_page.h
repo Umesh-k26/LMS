@@ -250,6 +250,7 @@ private: System::Void dataGridView1_CellContentClick(System::Object^ sender, Sys
 		if (profile_book_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
 			this->Show();
+			fill_data_grid();
 		}
 
 	}
