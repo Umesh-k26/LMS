@@ -49,7 +49,7 @@ namespace CppCLR_WinformsProjekt1 {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -81,9 +81,10 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->stud_id_lbl->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->stud_id_lbl->AutoSize = true;
-			this->stud_id_lbl->Location = System::Drawing::Point(64, 41);
+			this->stud_id_lbl->Location = System::Drawing::Point(96, 63);
+			this->stud_id_lbl->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->stud_id_lbl->Name = L"stud_id_lbl";
-			this->stud_id_lbl->Size = System::Drawing::Size(58, 13);
+			this->stud_id_lbl->Size = System::Drawing::Size(87, 20);
 			this->stud_id_lbl->TabIndex = 0;
 			this->stud_id_lbl->Text = L"Student ID";
 			// 
@@ -91,18 +92,20 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->book_id_lbl->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->book_id_lbl->AutoSize = true;
-			this->book_id_lbl->Location = System::Drawing::Point(64, 97);
+			this->book_id_lbl->Location = System::Drawing::Point(96, 149);
+			this->book_id_lbl->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->book_id_lbl->Name = L"book_id_lbl";
-			this->book_id_lbl->Size = System::Drawing::Size(46, 13);
+			this->book_id_lbl->Size = System::Drawing::Size(67, 20);
 			this->book_id_lbl->TabIndex = 1;
 			this->book_id_lbl->Text = L"Book ID";
 			// 
 			// borrow_button
 			// 
 			this->borrow_button->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->borrow_button->Location = System::Drawing::Point(117, 160);
+			this->borrow_button->Location = System::Drawing::Point(176, 246);
+			this->borrow_button->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->borrow_button->Name = L"borrow_button";
-			this->borrow_button->Size = System::Drawing::Size(75, 23);
+			this->borrow_button->Size = System::Drawing::Size(112, 35);
 			this->borrow_button->TabIndex = 2;
 			this->borrow_button->Text = L"Borrow ";
 			this->borrow_button->UseVisualStyleBackColor = true;
@@ -111,26 +114,29 @@ namespace CppCLR_WinformsProjekt1 {
 			// stud_id_txt
 			// 
 			this->stud_id_txt->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->stud_id_txt->Location = System::Drawing::Point(146, 38);
+			this->stud_id_txt->Location = System::Drawing::Point(219, 58);
+			this->stud_id_txt->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->stud_id_txt->Name = L"stud_id_txt";
-			this->stud_id_txt->Size = System::Drawing::Size(100, 20);
+			this->stud_id_txt->Size = System::Drawing::Size(148, 26);
 			this->stud_id_txt->TabIndex = 3;
+			this->stud_id_txt->TextChanged += gcnew System::EventHandler(this, &BorrowBook::stud_id_txt_TextChanged);
 			// 
 			// book_id_txt
 			// 
 			this->book_id_txt->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->book_id_txt->Location = System::Drawing::Point(146, 94);
+			this->book_id_txt->Location = System::Drawing::Point(219, 145);
+			this->book_id_txt->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->book_id_txt->Name = L"book_id_txt";
-			this->book_id_txt->Size = System::Drawing::Size(100, 20);
+			this->book_id_txt->Size = System::Drawing::Size(148, 26);
 			this->book_id_txt->TabIndex = 4;
 			// 
 			// button1
 			// 
 			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
-			this->button1->Location = System::Drawing::Point(52, 42);
-			this->button1->Margin = System::Windows::Forms::Padding(1, 1, 1, 1);
+			this->button1->Location = System::Drawing::Point(78, 65);
+			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(34, 29);
+			this->button1->Size = System::Drawing::Size(51, 45);
 			this->button1->TabIndex = 16;
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &BorrowBook::button1_Click);
@@ -143,21 +149,24 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1->Controls->Add(this->book_id_txt);
 			this->groupBox1->Controls->Add(this->book_id_lbl);
 			this->groupBox1->Controls->Add(this->stud_id_txt);
-			this->groupBox1->Location = System::Drawing::Point(163, 122);
+			this->groupBox1->Location = System::Drawing::Point(244, 188);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(320, 221);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->groupBox1->Size = System::Drawing::Size(480, 340);
 			this->groupBox1->TabIndex = 17;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Borrow Book";
 			// 
 			// BorrowBook
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(652, 473);
+			this->ClientSize = System::Drawing::Size(978, 728);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->button1);
-			this->MinimumSize = System::Drawing::Size(668, 512);
+			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->MinimumSize = System::Drawing::Size(991, 758);
 			this->Name = L"BorrowBook";
 			this->Text = L"Borrow Book";
 			this->Load += gcnew System::EventHandler(this, &BorrowBook::BorrowBook_Load);
@@ -175,12 +184,101 @@ namespace CppCLR_WinformsProjekt1 {
 		WindowState = FormWindowState::Maximized;
 	}
 	private: System::Void borrow_button_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-		
+
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+
+		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT * FROM library_system.student_data WHERE student_id = '" + this->stud_id_txt->Text + "';", conDataBase);
+		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system.book_data WHERE book_id = '" + this->book_id_txt->Text + "';", conDataBase);
+		MySqlCommand^ cmdDataBase3 = gcnew MySqlCommand("UPDATE  library_system.book_data set copies_available = copies_available - 1 WHERE book_id ='" + this->book_id_txt->Text + "' ; UPDATE  library_system.book_data set book_borrow_status = 'NOT AVAILABLE' WHERE copies_available = 0 ;", conDataBase);
+		MySqlCommand^ cmdDataBase4 = gcnew MySqlCommand("INSERT INTO library_system.borrow_history \
+		(book_id, student_id,date_issue) \
+		VALUES('" + this->book_id_txt->Text + "',\
+		'" + this->stud_id_txt->Text + "',\
+		CURDATE());", conDataBase);
+
+		MySqlCommand^ cmdDataBase5 = gcnew MySqlCommand("SELECT * FROM  library_system.borrow_history \
+			WHERE  book_id ='" + this->book_id_txt->Text + "'\
+            AND student_id = '" + this->stud_id_txt->Text + "'\
+			AND date_issue = CURDATE()\
+			; ", conDataBase);
+
+
+
+		MySqlDataReader^ myReader,^Readdd;
+
+
+		try {
+			conDataBase->Open();
+			myReader = cmdDataBase1->ExecuteReader();
+
+			int count1 = 0, count2 = 0;
+			int copies_available;
+			while (myReader->Read())
+			{
+				count1 += 1;
+			}
+			if (count1 == 0)
+			{
+				MessageBox::Show("Student not found with given student id .");
+			}
+			else if (count1 == 1)
+			{
+				myReader->Close();
+				myReader = cmdDataBase2->ExecuteReader();
+				while (myReader->Read())
+				{
+					count2 += 1;
+				   copies_available = myReader->GetInt32("copies_available");
+				}
+				if (count2 == 0)
+				{
+					MessageBox::Show("Book not found with given book id .");
+				}
+				else if (count2 == 1)
+				{
+					if (copies_available > 0)
+					{
+						myReader->Close();
+						cmdDataBase3->ExecuteNonQuery(); //Updates Book_data
+						cmdDataBase4->ExecuteNonQuery(); //Updates Borrow_history
+
+						myReader = cmdDataBase5->ExecuteReader();
+						
+						int orderid;
+						
+						while (myReader->Read())
+						{
+							orderid = myReader->GetInt32("order_id");
+						}
+						MessageBox::Show("Borrowed book successfully! \n book_id = '" + this->book_id_txt->Text + "',student_id = '" + this->stud_id_txt->Text + "',order_id = " + orderid);
+						myReader->Close();
+					}
+
+					else if(copies_available == 0)
+						MessageBox::Show("Book is Not available ");
+
+				}
+
+				else if(count2 > 1)
+					MessageBox::Show("Duplicate ID's of same book_id detected. Please resolve before updating.");
+				
+			}
+			else if (count1 > 1)
+				MessageBox::Show("Duplicate ID's of same student_id detected. Please resolve before updating.");
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->Message);
+
+		}
 	}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->DialogResult = System::Windows::Forms::DialogResult::OK;
-	this->Close();
-}
-};
-}
+	private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+		this->Close();
+	}
+	private: System::Void stud_id_txt_TextChanged(System::Object ^ sender, System::EventArgs ^ e) {
+	}
+	};
+	}
