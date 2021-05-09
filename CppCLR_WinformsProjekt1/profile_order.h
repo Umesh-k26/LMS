@@ -630,22 +630,30 @@ namespace CppCLR_WinformsProjekt1 {
 			{
 				String^ printing_student_id;
 				String^ printing_book_id;
-				String^ printing_date_issue;
-				String^ printing_date_return;
+				//String^ printing_date_issue;
+				//String^ printing_date_return;
 				String^ printing_fine;
+
+				MySql::Data::Types::MySqlDateTime print_date_of_issue;
+				MySql::Data::Types::MySqlDateTime print_date_of_return;
+				print_date_of_issue = myReader->GetMySqlDateTime("date_issue");
+				print_date_of_return = myReader->GetMySqlDateTime("date_returned");
+
 
 				printing_student_id = myReader->GetString("student_id");
 				printing_book_id = myReader->GetString("book_id");
-				printing_date_issue = myReader->GetString("date_issue");
-				printing_date_return = myReader->GetString("date_returned");
+				//printing_date_issue = myReader->GetString("date_issue");
+				//printing_date_return = myReader->GetString("date_returned");
 				printing_fine = myReader->GetString("borrow_fine");
 
 				this->student_id_txt->Text = printing_student_id;
 				this->book_id_txt->Text = printing_book_id;
-				this->date_issue_txt->Text = printing_date_issue;
-				this->date_return_txt->Text = printing_date_return;
+				//this->date_issue_txt->Text = printing_date_issue;
+				//this->date_return_txt->Text = printing_date_return;
 				this->order_fine_txt->Text = printing_fine;
 
+				this->date_issue_txt->Text = print_date_of_issue.ToString();
+				this->date_return_txt->Text = print_date_of_return.ToString();
 			}
 			
 
@@ -680,20 +688,23 @@ namespace CppCLR_WinformsProjekt1 {
 				String^ printing_email;
 				String^ printing_mobile;
 				String^ printing_address;
-				String^ printing_dob;
+				//String^ printing_dob;
 				//printing_id = myReader->GetString("student_id");
+				MySql::Data::Types::MySqlDateTime print_dob;
 				printing_name = myReader->GetString("student_name");
 				printing_profession = myReader->GetString("student_profession");
 				printing_email = myReader->GetString("student_email");
 				printing_mobile = myReader->GetString("student_mobile");
 				printing_address = myReader->GetString("student_address");
-				printing_dob = myReader->GetString("student_dob");
+				//printing_dob = myReader->GetString("student_dob");
+				print_dob = myReader->GetMySqlDateTime("student_dob");
 				this->name_txt->Text = printing_name;
 				//this->student_id_txt->Text = printing_id;
 				this->email_id_txt->Text = printing_email;
 				this->mobile_no_txt->Text = printing_mobile;
 				this->address_txt->Text = printing_address;
-				this->dob_student_txt->Text = printing_dob;
+				//this->dob_student_txt->Text = printing_dob;
+				this->dob_student_txt->Text = print_dob.ToString();
 				this->profession_txt->Text = printing_profession;
 
 			}
@@ -728,13 +739,15 @@ namespace CppCLR_WinformsProjekt1 {
 				String^ printing_price;
 				String^ printing_edition_no;
 				String^ printing_book_borrow_stat;
-				
+				String^ printing_no_of_copies;
+
 				printing_name = myReader->GetString("book_name");
 				printing_author = myReader->GetString("book_author");
 				printing_publisher = myReader->GetString("book_publisher");
 				printing_price = myReader->GetString("book_price");
 				printing_edition_no = myReader->GetString("book_edition_no");
 				printing_book_borrow_stat = myReader->GetString("book_borrow_status");
+				printing_no_of_copies = myReader->GetString("no_of_copies");
 				this->bookname_txt->Text = printing_name;
 				
 				this->author_txt->Text = printing_author;
@@ -742,7 +755,7 @@ namespace CppCLR_WinformsProjekt1 {
 				this->price_txt->Text = printing_price;
 				this->edition_no_txt->Text = printing_edition_no;
 				this->borrow_stat_txt->Text = printing_book_borrow_stat;
-
+				this->no_copies_txt->Text = printing_no_of_copies;
 				//listBox1->Items->Add(printing_names);
 
 			}
