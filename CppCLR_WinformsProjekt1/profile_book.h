@@ -72,6 +72,7 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::TextBox^ no_copies_txt;
 	private: System::Windows::Forms::Label^ no_copies_lbl;
 	private: System::Windows::Forms::Button^ back_button;
+	private: System::Windows::Forms::NumericUpDown^ numeric_updown_no_copies;
 
 
 
@@ -113,8 +114,10 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Open = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
 			this->back_button = (gcnew System::Windows::Forms::Button());
+			this->numeric_updown_no_copies = (gcnew System::Windows::Forms::NumericUpDown());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numeric_updown_no_copies))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// groupBox1
@@ -329,6 +332,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->confirm_change_button->TabIndex = 23;
 			this->confirm_change_button->Text = L"MAKE CHANGES";
 			this->confirm_change_button->UseVisualStyleBackColor = true;
+			this->confirm_change_button->Visible = false;
 			this->confirm_change_button->Click += gcnew System::EventHandler(this, &profile_book::confirm_change_button_Click);
 			// 
 			// dataGridView1
@@ -368,11 +372,21 @@ namespace CppCLR_WinformsProjekt1 {
 			this->back_button->UseVisualStyleBackColor = true;
 			this->back_button->Click += gcnew System::EventHandler(this, &profile_book::back_button_Click);
 			// 
+			// numeric_updown_no_copies
+			// 
+			this->numeric_updown_no_copies->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->numeric_updown_no_copies->Location = System::Drawing::Point(1176, 452);
+			this->numeric_updown_no_copies->Name = L"numeric_updown_no_copies";
+			this->numeric_updown_no_copies->Size = System::Drawing::Size(120, 26);
+			this->numeric_updown_no_copies->TabIndex = 26;
+			this->numeric_updown_no_copies->Visible = false;
+			// 
 			// profile_book
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1587, 760);
+			this->Controls->Add(this->numeric_updown_no_copies);
 			this->Controls->Add(this->back_button);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->confirm_change_button);
@@ -385,6 +399,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numeric_updown_no_copies))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -447,11 +462,22 @@ namespace CppCLR_WinformsProjekt1 {
 	
 private: System::Void update_profile_button_Click(System::Object^ sender, System::EventArgs^ e) {
 	MessageBox::Show("Update Profile");
+	this->numeric_updown_no_copies->Visible = true;
+	this->confirm_change_button->Visible = true;
+	this->update_profile_button->Visible = false;
 }
 private: System::Void delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e) {
 	MessageBox::Show("Delete Profile");
 }
 private: System::Void confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("Profile updated");
+	this->numeric_updown_no_copies->Visible = false;
+	this->confirm_change_button->Visible = false;
+	this->update_profile_button->Visible = true;
+
+	updating_no_of_copies((int)this->numeric_updown_no_copies->Value);
+
+	profile_book_Load(sender, e);
 }
 private: void fill_data_grid() {
 
@@ -505,5 +531,23 @@ private: System::Void back_button_Click(System::Object^ sender, System::EventArg
 	this->DialogResult = System::Windows::Forms::DialogResult::OK;
 	this->Close();
 }
+	   private: void updating_no_of_copies(int num_new_copies)
+	   {
+		   if (num_new_copies <= 0)
+		   {
+			   MessageBox::Show(""+num_new_copies+"");
+			   return;
+		   }
+		   else 
+		   {
+			   MessageBox::Show("" + num_new_copies + "");
+			   //
+			   //		ADD FUNCTION TO UPDATE NUMBER OF COPIES AND TO ADD NEW COPIES TO DATABASE
+			   //
+			   //
+			   //
+			   return;
+		   }
+	   }
 };
 }

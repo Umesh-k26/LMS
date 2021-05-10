@@ -192,7 +192,7 @@ namespace CppCLR_WinformsProjekt1 {
 		int Book_edition_no;
 		int copies_available;
 
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=25081998@nikhil";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 
