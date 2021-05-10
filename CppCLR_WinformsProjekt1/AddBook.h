@@ -55,6 +55,8 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: System::Windows::Forms::Button^ update_button;
 	private: System::Windows::Forms::RichTextBox^ richTextBox1;
+	private: System::Windows::Forms::ListBox^ id_listbox;
+
 
 
 	protected:
@@ -110,6 +112,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->update_button = (gcnew System::Windows::Forms::Button());
 			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
+			this->id_listbox = (gcnew System::Windows::Forms::ListBox());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -244,7 +247,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// add_button
 			// 
 			this->add_button->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->add_button->Location = System::Drawing::Point(775, 272);
+			this->add_button->Location = System::Drawing::Point(554, 561);
 			this->add_button->Name = L"add_button";
 			this->add_button->Size = System::Drawing::Size(121, 43);
 			this->add_button->TabIndex = 16;
@@ -280,7 +283,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1->Controls->Add(this->price_lbl);
 			this->groupBox1->Controls->Add(this->author_txt);
 			this->groupBox1->Controls->Add(this->bookname_txt);
-			this->groupBox1->Location = System::Drawing::Point(418, 139);
+			this->groupBox1->Location = System::Drawing::Point(348, 131);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(289, 360);
 			this->groupBox1->TabIndex = 18;
@@ -290,7 +293,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// update_button
 			// 
 			this->update_button->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->update_button->Location = System::Drawing::Point(775, 355);
+			this->update_button->Location = System::Drawing::Point(314, 561);
 			this->update_button->Name = L"update_button";
 			this->update_button->Size = System::Drawing::Size(121, 43);
 			this->update_button->TabIndex = 19;
@@ -301,7 +304,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// richTextBox1
 			// 
 			this->richTextBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->richTextBox1->Location = System::Drawing::Point(58, 229);
+			this->richTextBox1->Location = System::Drawing::Point(649, -10);
 			this->richTextBox1->Name = L"richTextBox1";
 			this->richTextBox1->ReadOnly = true;
 			this->richTextBox1->Size = System::Drawing::Size(303, 104);
@@ -309,11 +312,23 @@ namespace CppCLR_WinformsProjekt1 {
 			this->richTextBox1->Text = L"\nTo Add Book - \n\tEnter all fields.\n\nTo Update -\n\t Enter Book Name, Edition No. an"
 				L"d No. of copies.";
 			// 
+			// id_listbox
+			// 
+			this->id_listbox->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->id_listbox->FormattingEnabled = true;
+			this->id_listbox->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"", L"ID\'s of the books added recently : " });
+			this->id_listbox->Location = System::Drawing::Point(761, 177);
+			this->id_listbox->Name = L"id_listbox";
+			this->id_listbox->Size = System::Drawing::Size(226, 251);
+			this->id_listbox->TabIndex = 21;
+			this->id_listbox->Visible = false;
+			// 
 			// AddBook
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1113, 674);
+			this->Controls->Add(this->id_listbox);
 			this->Controls->Add(this->richTextBox1);
 			this->Controls->Add(this->update_button);
 			this->Controls->Add(this->groupBox1);
@@ -337,8 +352,8 @@ namespace CppCLR_WinformsProjekt1 {
 		WindowState = FormWindowState::Maximized;
 	}
 	private: System::Void AddBook_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 
 		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system.book_data \
@@ -357,16 +372,23 @@ namespace CppCLR_WinformsProjekt1 {
 		try {
 			conDataBase->Open();
 
-			cmdDataBase1->ExecuteNonQuery();
-			MessageBox::Show("Book added successfully!");
+			int copies_no = System::Convert::ToInt32(this->no_of_copies_txt->Text);
+			for (int i = 0; i < copies_no; i++)
+				cmdDataBase1->ExecuteNonQuery();
 
+			MessageBox::Show("Book(s) added successfully!");
+
+			int db_count = 0;
 			myReader = cmdDataBase2->ExecuteReader();
-			if(myReader->Read())
+			while (myReader->Read())
 			{
 				int book_id = myReader->GetInt32("book_id");
-				MessageBox::Show("Book id is " + book_id);
+				id_listbox->Items->Add(book_id);
+				db_count++;
 			}
+			id_listbox->Items->Add("No. of books added = " + db_count);
 			myReader->Close();
+			this->id_listbox->Visible = true;
 		}
 		catch (Exception^ ex)
 		{
@@ -378,54 +400,54 @@ namespace CppCLR_WinformsProjekt1 {
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-	//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
-	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 
-	MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT * FROM library_system.book_data WHERE (book_name = '" + this->bookname_txt->Text + "' \
+		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT * FROM library_system.book_data WHERE (book_name = '" + this->bookname_txt->Text + "' \
 	AND book_edition_no = " + this->edition_no_txt->Text + ");", conDataBase);
 
-	MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("UPDATE library_system.book_data SET \
-	no_of_copies = no_of_copies + '"+ this->no_of_copies_txt->Text+"' WHERE (book_name = '"+this->bookname_txt->Text+"' \
-	AND book_edition_no = "+ this->edition_no_txt->Text+");", conDataBase);
+		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("UPDATE library_system.book_data SET \
+	no_of_copies = no_of_copies + '" + this->no_of_copies_txt->Text + "' WHERE (book_name = '" + this->bookname_txt->Text + "' \
+	AND book_edition_no = " + this->edition_no_txt->Text + ");", conDataBase);
 
-	MySqlDataReader^ myReader;
-	try {
-		conDataBase->Open();
-		myReader = cmdDataBase1->ExecuteReader();
+		MySqlDataReader^ myReader;
+		try {
+			conDataBase->Open();
+			myReader = cmdDataBase1->ExecuteReader();
 
-		int count = 0;
-		while (myReader->Read())
-		{
-			count += 1;
-		}
-		if (count == 0)
-		{
-			MessageBox::Show("No book found with given book name and edition no.\nFirst Add Book with given instructions.");
-		}
-		else if (count == 1)
-		{
-			myReader->Close();
-			cmdDataBase2->ExecuteReader();
-			MessageBox::Show("Updated book successfully!");
-		}
-		else if (count > 1)
-			MessageBox::Show("Duplicate ID's of same book detected. Please resolve before updating.");
+			int count = 0;
+			while (myReader->Read())
+			{
+				count += 1;
+			}
+			if (count == 0)
+			{
+				MessageBox::Show("No book found with given book name and edition no.\nFirst Add Book with given instructions.");
+			}
+			else if (count == 1)
+			{
+				myReader->Close();
+				cmdDataBase2->ExecuteReader();
+				MessageBox::Show("Updated book successfully!");
+			}
+			else if (count > 1)
+				MessageBox::Show("Duplicate ID's of same book detected. Please resolve before updating.");
 
-		this->bookname_txt->Text = "";
-		this->author_txt->Text = "";
-		this->author_txt->Text = "";
-		this->publisher_txt->Text = "";
-		this->edition_no_txt->Text = "";
-		this->category_txt->Text = "";
-		this->no_of_copies_txt->Text = "";
+			this->bookname_txt->Text = "";
+			this->author_txt->Text = "";
+			this->author_txt->Text = "";
+			this->publisher_txt->Text = "";
+			this->edition_no_txt->Text = "";
+			this->category_txt->Text = "";
+			this->no_of_copies_txt->Text = "";
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->Message);
+
+		}
 	}
-	catch (Exception^ ex)
-	{
-		MessageBox::Show(ex->Message);
-
-	}
-}
-};
+	};
 }
