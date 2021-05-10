@@ -185,28 +185,35 @@ namespace CppCLR_WinformsProjekt1 {
 	}
 	private: System::Void borrow_button_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		String^ Book_status;
+		String^ Book_name;
+		String^ Book_author;
+		String^ Book_publisher;
+		int Book_edition_no;
+		int copies_available;
+
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=25081998@nikhil";
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 
 		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT * FROM library_system.student_data WHERE student_id = '" + this->stud_id_txt->Text + "';", conDataBase);
 		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system.book_data WHERE book_id = '" + this->book_id_txt->Text + "';", conDataBase);
-		MySqlCommand^ cmdDataBase3 = gcnew MySqlCommand("UPDATE  library_system.book_data set copies_available = copies_available - 1 WHERE book_id ='" + this->book_id_txt->Text + "' ; UPDATE  library_system.book_data set book_borrow_status = 'NOT AVAILABLE' WHERE copies_available = 0 ;", conDataBase);
-		MySqlCommand^ cmdDataBase4 = gcnew MySqlCommand("INSERT INTO library_system.borrow_history \
+		MySqlCommand^ cmdDataBase3 = gcnew MySqlCommand("UPDATE  library_system.book_data set book_borrow_status = 'BORROWED' WHERE book_id ='" + this->book_id_txt->Text + "' ;", conDataBase);
+
+
+		MySqlCommand^ cmdDataBase5 = gcnew MySqlCommand("INSERT INTO library_system.borrow_history \
 		(book_id, student_id,date_issue) \
 		VALUES('" + this->book_id_txt->Text + "',\
 		'" + this->stud_id_txt->Text + "',\
 		CURDATE());", conDataBase);
 
-		MySqlCommand^ cmdDataBase5 = gcnew MySqlCommand("SELECT * FROM  library_system.borrow_history \
+		MySqlCommand^ cmdDataBase6 = gcnew MySqlCommand("SELECT * FROM  library_system.borrow_history \
 			WHERE  book_id ='" + this->book_id_txt->Text + "'\
             AND student_id = '" + this->stud_id_txt->Text + "'\
 			AND date_issue = CURDATE()\
 			; ", conDataBase);
 
-
-
-		MySqlDataReader^ myReader,^Readdd;
+		MySqlDataReader^ myReader, ^ Readdd;
 
 
 		try {
@@ -214,7 +221,6 @@ namespace CppCLR_WinformsProjekt1 {
 			myReader = cmdDataBase1->ExecuteReader();
 
 			int count1 = 0, count2 = 0;
-			int copies_available;
 			while (myReader->Read())
 			{
 				count1 += 1;
@@ -227,10 +233,16 @@ namespace CppCLR_WinformsProjekt1 {
 			{
 				myReader->Close();
 				myReader = cmdDataBase2->ExecuteReader();
+
 				while (myReader->Read())
 				{
 					count2 += 1;
-				   copies_available = myReader->GetInt32("copies_available");
+					Book_status = myReader->GetString("book_borrow_status");
+					Book_name = myReader->GetString("book_name");
+					Book_author = myReader->GetString("book_author");
+					Book_publisher = myReader->GetString("book_publisher");
+					Book_edition_no = myReader->GetInt32("book_edition_no");
+					copies_available = myReader->GetInt32("copies_available");
 				}
 				if (count2 == 0)
 				{
@@ -238,32 +250,50 @@ namespace CppCLR_WinformsProjekt1 {
 				}
 				else if (count2 == 1)
 				{
-					if (copies_available > 0)
+					if (Book_status == "AVAILABLE")
 					{
-						myReader->Close();
-						cmdDataBase3->ExecuteNonQuery(); //Updates Book_data
-						cmdDataBase4->ExecuteNonQuery(); //Updates Borrow_history
 
-						myReader = cmdDataBase5->ExecuteReader();
-						
+						myReader->Close();
+						cmdDataBase3->ExecuteNonQuery(); //updates borrow_status(coloumn) in book data (table)
+						cmdDataBase5->ExecuteNonQuery(); //updates borrow_history(table) inserts new row for this order
+
+						MySqlCommand^ cmdDataBase4 = gcnew MySqlCommand("UPDATE  library_system.book_data set copies_available = copies_available -1 WHERE book_name ='" + Book_name + "'\
+                             AND book_author ='" + Book_author + "' \
+                             AND book_publisher ='" + Book_publisher + "'\
+                             AND book_edition_no ='" + Book_edition_no + "' \
+                             ;", conDataBase);
+
+						cmdDataBase4->ExecuteNonQuery(); // updates copies__available(coloumn) in book data (table)
+
+						myReader = cmdDataBase6->ExecuteReader();
+
 						int orderid;
-						
+
 						while (myReader->Read())
 						{
 							orderid = myReader->GetInt32("order_id");
 						}
 						MessageBox::Show("Borrowed book successfully! \n book_id = '" + this->book_id_txt->Text + "',student_id = '" + this->stud_id_txt->Text + "',order_id = " + orderid);
 						myReader->Close();
+
+
 					}
 
-					else if(copies_available == 0)
-						MessageBox::Show("Book is Not available ");
+
+					else if (Book_status == "BORROWED")
+					{
+						if (copies_available > 0)
+							MessageBox::Show("Same Book is available , but with different book id");
+						else if (copies_available == 0)
+							MessageBox::Show("Book is Not available ");
+
+					}
 
 				}
 
-				else if(count2 > 1)
+				else if (count2 > 1)
 					MessageBox::Show("Duplicate ID's of same book_id detected. Please resolve before updating.");
-				
+
 			}
 			else if (count1 > 1)
 				MessageBox::Show("Duplicate ID's of same student_id detected. Please resolve before updating.");
@@ -273,6 +303,8 @@ namespace CppCLR_WinformsProjekt1 {
 			MessageBox::Show(ex->Message);
 
 		}
+
+
 	}
 	private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^ e) {
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
