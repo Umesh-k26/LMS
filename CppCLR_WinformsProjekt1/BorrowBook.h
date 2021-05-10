@@ -204,8 +204,6 @@ namespace CppCLR_WinformsProjekt1 {
 			AND date_issue = CURDATE()\
 			; ", conDataBase);
 
-
-
 		MySqlDataReader^ myReader,^Readdd;
 
 
