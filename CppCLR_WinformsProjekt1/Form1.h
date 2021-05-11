@@ -165,7 +165,8 @@ namespace CppCLRWinformsProjekt {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=lovebcmm**,02";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE \
@@ -186,7 +187,14 @@ namespace CppCLRWinformsProjekt {
 
 				CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
 				this->Hide();
-				f2->ShowDialog();
+				if (f2->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+				{
+					this->username_txt->Text = "";
+					this->password_txt->Text = "";
+					this->Show();
+					
+				}
+				
 			}
 			else if (count > 1)
 			{
