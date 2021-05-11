@@ -191,8 +191,8 @@ namespace CppCLR_WinformsProjekt1 {
 
 	private: void fill_data_grid() {
 
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS ID, book_name as Title, book_author AS Author, book_edition_no AS Edition, book_publisher AS Publisher, book_borrow_status AS Status FROM library_system.book_data;", conDataBase);
 		MySqlDataReader^ myReader;
@@ -257,8 +257,8 @@ private: System::Void dataGridView1_CellContentClick(System::Object^ sender, Sys
 
 }
 private: System::Void search_button_book_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-	//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+	//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+	String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 	//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 	String^ str_list_detail_search_book;

@@ -36,7 +36,7 @@ namespace CppCLR_WinformsProjekt1 {
 			}
 		}
 
-	String^ Gender;
+		String^ Gender;
 
 	private: System::Windows::Forms::Label^ name_lbl;
 	protected:
@@ -67,6 +67,13 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::RadioButton^ female_rbtn;
 
 	private: System::Windows::Forms::RadioButton^ male_rbtn;
+	private: System::Windows::Forms::TextBox^ re_password_txt;
+
+	private: System::Windows::Forms::TextBox^ password_txt;
+	private: System::Windows::Forms::Label^ password_lbl;
+	private: System::Windows::Forms::Label^ re_password_lbl;
+
+
 
 
 
@@ -75,7 +82,7 @@ namespace CppCLR_WinformsProjekt1 {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -102,6 +109,10 @@ namespace CppCLR_WinformsProjekt1 {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->dateTimePicker = (gcnew System::Windows::Forms::DateTimePicker());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->re_password_txt = (gcnew System::Windows::Forms::TextBox());
+			this->password_txt = (gcnew System::Windows::Forms::TextBox());
+			this->password_lbl = (gcnew System::Windows::Forms::Label());
+			this->re_password_lbl = (gcnew System::Windows::Forms::Label());
 			this->female_rbtn = (gcnew System::Windows::Forms::RadioButton());
 			this->male_rbtn = (gcnew System::Windows::Forms::RadioButton());
 			this->groupBox1->SuspendLayout();
@@ -247,6 +258,10 @@ namespace CppCLR_WinformsProjekt1 {
 			// groupBox1
 			// 
 			this->groupBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->groupBox1->Controls->Add(this->re_password_txt);
+			this->groupBox1->Controls->Add(this->password_txt);
+			this->groupBox1->Controls->Add(this->password_lbl);
+			this->groupBox1->Controls->Add(this->re_password_lbl);
 			this->groupBox1->Controls->Add(this->female_rbtn);
 			this->groupBox1->Controls->Add(this->male_rbtn);
 			this->groupBox1->Controls->Add(this->status_no_txt);
@@ -265,10 +280,44 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1->Controls->Add(this->profession_txt);
 			this->groupBox1->Location = System::Drawing::Point(235, 51);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(333, 522);
+			this->groupBox1->Size = System::Drawing::Size(333, 570);
 			this->groupBox1->TabIndex = 17;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Register Student";
+			// 
+			// re_password_txt
+			// 
+			this->re_password_txt->Location = System::Drawing::Point(172, 529);
+			this->re_password_txt->Name = L"re_password_txt";
+			this->re_password_txt->PasswordChar = '*';
+			this->re_password_txt->Size = System::Drawing::Size(100, 20);
+			this->re_password_txt->TabIndex = 23;
+			// 
+			// password_txt
+			// 
+			this->password_txt->Location = System::Drawing::Point(172, 479);
+			this->password_txt->Name = L"password_txt";
+			this->password_txt->PasswordChar = '*';
+			this->password_txt->Size = System::Drawing::Size(100, 20);
+			this->password_txt->TabIndex = 22;
+			// 
+			// password_lbl
+			// 
+			this->password_lbl->AutoSize = true;
+			this->password_lbl->Location = System::Drawing::Point(36, 482);
+			this->password_lbl->Name = L"password_lbl";
+			this->password_lbl->Size = System::Drawing::Size(72, 13);
+			this->password_lbl->TabIndex = 21;
+			this->password_lbl->Text = L"Set Password";
+			// 
+			// re_password_lbl
+			// 
+			this->re_password_lbl->AutoSize = true;
+			this->re_password_lbl->Location = System::Drawing::Point(36, 532);
+			this->re_password_lbl->Name = L"re_password_lbl";
+			this->re_password_lbl->Size = System::Drawing::Size(97, 13);
+			this->re_password_lbl->TabIndex = 20;
+			this->re_password_lbl->Text = L"Re-enter Password";
 			// 
 			// female_rbtn
 			// 
@@ -312,8 +361,8 @@ namespace CppCLR_WinformsProjekt1 {
 #pragma endregion
 	private: System::Void add_button_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 
 		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system.student_data (student_name, student_dob, student_address, student_email, \
@@ -324,20 +373,40 @@ namespace CppCLR_WinformsProjekt1 {
 		'" + this->email_id_txt->Text + "',\
 		" + this->mobile_no_txt->Text + ",\
 		'" + this->profession_txt->Text + "',\
-		" + this->status_no_txt->Text + ", 0, '"+Gender+"')	;", conDataBase);
+		" + this->status_no_txt->Text + ", 0, '" + Gender + "')	;", conDataBase);
 
-		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system.student_data \
-	    WHERE student_email = '"+this->email_id_txt->Text+"';", conDataBase);
+		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("USE library_system;INSERT INTO user_pass (student_id, user_password) \
+		VALUES((SELECT student_id FROM student_data WHERE student_email = '" + this->email_id_txt->Text + "'), \
+		'" + this->password_txt->Text + "');", conDataBase);
+
+		MySqlCommand^ cmdDataBase3 = gcnew MySqlCommand("SELECT * FROM library_system.student_data \
+	    WHERE student_email = '" + this->email_id_txt->Text + "';", conDataBase);
 
 		MySqlDataReader^ myReader;
 		try {
 			conDataBase->Open();
-			cmdDataBase1->ExecuteNonQuery();
+
+			while (true)
+			{
+				if (String::Equals(this->password_txt->Text, this->re_password_txt->Text))
+				{
+					cmdDataBase1->ExecuteNonQuery();
+					cmdDataBase2->ExecuteNonQuery();
+					break;
+				}
+				else
+				{
+					MessageBox::Show("Re-enter same password");
+					this->password_txt->Text = "";
+					this->re_password_txt->Text = "";
+					return;
+				}
+			}
 
 			MessageBox::Show("Student registered successfully!");
 
-			myReader = cmdDataBase2->ExecuteReader();
-			
+			myReader = cmdDataBase3->ExecuteReader();
+
 			if (myReader->Read())
 			{
 				int student_id = myReader->GetInt32("student_id");
@@ -345,42 +414,43 @@ namespace CppCLR_WinformsProjekt1 {
 			}
 			myReader->Close();
 
-			this->name_txt->Text  = "";
+			this->name_txt->Text = "";
 			this->dateTimePicker->Text = "";
 			this->address_txt->Text = "";
 			this->email_id_txt->Text = "";
 			this->mobile_no_txt->Text = "";
 			this->profession_txt->Text = "";
 			this->status_no_txt->Text = "";
+			this->password_txt->Text = "";
+			this->re_password_txt->Text = "";
 			this->male_rbtn->Checked = false;
 			this->female_rbtn->Checked = false;
-			
+
 		}
 		catch (Exception^ ex)
 		{
 			MessageBox::Show(ex->Message);
-
 		}
 	}
-private: System::Void RegisterStudent_Load(System::Object^ sender, System::EventArgs^ e) {
-	CenterToScreen();
-	WindowState = FormWindowState::Maximized;
-}
+	private: System::Void RegisterStudent_Load(System::Object^ sender, System::EventArgs^ e) {
+		CenterToScreen();
+		WindowState = FormWindowState::Maximized;
+	}
 
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->DialogResult = System::Windows::Forms::DialogResult::OK;
-	this->Close();
-}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+		this->Close();
+	}
 
-private: System::Void dob_txt_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void dateTimePicker_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void male_rbtn_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-	Gender = "Male";
-}
-private: System::Void female_rbtn_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-	Gender = "Female";
-}
-};
+	private: System::Void dob_txt_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void dateTimePicker_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void male_rbtn_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		Gender = "Male";
+	}
+	private: System::Void female_rbtn_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		Gender = "Female";
+	}
+	};
 }
