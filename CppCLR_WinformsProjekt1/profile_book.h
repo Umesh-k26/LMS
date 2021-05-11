@@ -443,8 +443,8 @@ namespace CppCLR_WinformsProjekt1 {
 		CenterToScreen();
 		//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
 		WindowState = FormWindowState::Maximized;
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 
@@ -465,6 +465,7 @@ namespace CppCLR_WinformsProjekt1 {
 				String^ printing_price;
 				String^ printing_edition_no;
 				String^ printing_book_borrow_stat;
+				String^ printing_category;
 				printing_id = myReader->GetString("book_id");
 				printing_name = myReader->GetString("book_name");
 				printing_author = myReader->GetString("book_author");
@@ -472,6 +473,7 @@ namespace CppCLR_WinformsProjekt1 {
 				printing_price = myReader->GetString("book_price");
 				printing_edition_no = myReader->GetString("book_edition_no");
 				printing_book_borrow_stat = myReader->GetString("book_borrow_status");
+				printing_category = myReader->GetString("category");
 				this->bookname_txt->Text = printing_name;
 				this->book_id_txt->Text = printing_id;
 				this->author_txt->Text = printing_author;
@@ -479,7 +481,7 @@ namespace CppCLR_WinformsProjekt1 {
 				this->price_txt->Text = printing_price;
 				this->edition_no_txt->Text = printing_edition_no;
 				this->borrow_stat_txt->Text = printing_book_borrow_stat;
-
+				this->category_txt->Text = printing_category;
 				//listBox1->Items->Add(printing_names);
 
 			}
@@ -514,8 +516,8 @@ namespace CppCLR_WinformsProjekt1 {
 	}
 	private: void fill_data_grid() {
 
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id, book_name, book_author, book_edition_no, book_publisher, book_borrow_status FROM library_system.book_data WHERE book_name = '" + this->bookname_txt->Text + "' AND book_edition_no = " + this->edition_no_txt->Text + ";", conDataBase);
 		MySqlDataReader^ myReader;
@@ -575,8 +577,8 @@ namespace CppCLR_WinformsProjekt1 {
 		{
 			MessageBox::Show("" + num_new_copies + "");
 
-			//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-			String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+			String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+			//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 
 			MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system.book_data \
