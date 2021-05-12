@@ -394,8 +394,8 @@ namespace CppCLR_WinformsProjekt1 {
 
 
 
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 
@@ -469,28 +469,35 @@ namespace CppCLR_WinformsProjekt1 {
 	}
 	private: System::Void delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show("Delete Profile");
-		/*String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("DELETE * FROM library_system.student WHERE student_id = "+this->student_id_txt->Text+";", conDataBase);
-		MySqlDataReader^ myReader;
-		try {
-			conDataBase->Open();
-			myReader = cmdDataBase->ExecuteReader();
-			MessageBox::Show("Profile is deleted");
-			while (myReader->Read())
-			{
+		if (MessageBox::Show("The profile will be deleted. Do you want to contiue?", "Warning", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK)
+		{
+			String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+			MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system.student_data WHERE student_id = " + this->student_id_txt->Text + ";", conDataBase);
+			MySqlDataReader^ myReader;
+			try {
+				conDataBase->Open();
+				myReader = cmdDataBase->ExecuteReader();
+				MessageBox::Show("Profile is deleted");
+				while (myReader->Read())
+				{
+
+				}
+
 
 			}
+			catch (Exception^ ex)
+			{
+				MessageBox::Show(ex->Message);
 
-
+			}
+			this->DialogResult = System::Windows::Forms::DialogResult::OK;
+			this->Close(); 
 		}
-		catch (Exception^ ex)
+		else
 		{
-			MessageBox::Show(ex->Message);
-
-		}*/
-		this->DialogResult = System::Windows::Forms::DialogResult::OK;
-		this->Close();
+			//Do nothing
+		}
 	}
 	private: System::Void confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show("Changes made");
@@ -500,8 +507,8 @@ namespace CppCLR_WinformsProjekt1 {
 		this->dob_student_txt->Text = this->dateTimePicker->Text;
 
 
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("UPDATE library_system.student_data set student_id = \
 		" + this->student_id_txt->Text + ",student_name = '" + this->name_txt->Text + "',student_dob = '" + this->dob_student_txt->Text + "', student_profession = '" + this->profession_txt->Text + "', student_email='" + this->email_id_txt->Text + "', student_mobile=" + this->mobile_no_txt->Text + ", student_address = '" + this->address_txt->Text + "'WHERE student_id = " + this->student_id_txt->Text + ";", conDataBase);
@@ -542,8 +549,8 @@ namespace CppCLR_WinformsProjekt1 {
 	}
 	private: void fill_data_grid() {
 
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history WHERE student_id = " + this->student_id_txt->Text + " AND borrow_status = 'BORROWED';", conDataBase);
 		MySqlDataReader^ myReader;

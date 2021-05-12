@@ -505,6 +505,35 @@ namespace CppCLR_WinformsProjekt1 {
 	}
 	private: System::Void delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show("Delete Profile");
+		if (MessageBox::Show("The profile will be deleted. Do you want to contiue?", "Warning", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK)
+		{
+			String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+			MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system.book_data WHERE book_id = " + this->book_id_txt->Text + ";", conDataBase);
+			MySqlDataReader^ myReader;
+			try {
+				conDataBase->Open();
+				myReader = cmdDataBase->ExecuteReader();
+				MessageBox::Show("Profile is deleted");
+				while (myReader->Read())
+				{
+
+				}
+
+
+			}
+			catch (Exception^ ex)
+			{
+				MessageBox::Show(ex->Message);
+
+			}
+			this->DialogResult = System::Windows::Forms::DialogResult::OK;
+			this->Close();
+		}
+		else
+		{
+			//do nothing
+		}
 	}
 	private: System::Void confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->numeric_updown_no_copies->Visible = false;
