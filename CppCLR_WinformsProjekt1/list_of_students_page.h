@@ -13,8 +13,8 @@ namespace CppCLR_WinformsProjekt1 {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace MySql::Data::MySqlClient;
-	
-	
+
+
 	/// <summary>
 	/// Summary for list_of_students_page
 	/// </summary>
@@ -29,9 +29,9 @@ namespace CppCLR_WinformsProjekt1 {
 			//
 			//TODO: Add the constructor code here
 			//
-			
+
 		}
-		
+
 
 	protected:
 		/// <summary>
@@ -68,7 +68,7 @@ namespace CppCLR_WinformsProjekt1 {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -216,45 +216,45 @@ namespace CppCLR_WinformsProjekt1 {
 
 		}
 #pragma endregion
-	
-/*
-	private: void fill_listbox1() {
-		//
-		//	This section works but can print only one thing
-		//
-		//
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
-		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
-		MySqlCommand^ print_students = gcnew MySqlCommand("select * from test.student_data;", conDataBase);
-		MySqlDataReader^ myReader;
-		//listBox1.Items.Add("Mahesh Chand");
-		try {
-			conDataBase->Open();
-			myReader = print_students->ExecuteReader();
 
-			while (myReader->Read())
-			{
-				String^ printing_names;
-				printing_names = myReader->GetString("gender");
-				listBox1->Items->Add(printing_names);
+		/*
+			private: void fill_listbox1() {
+				//
+				//	This section works but can print only one thing
+				//
+				//
+				String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+				MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+				//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
+				MySqlCommand^ print_students = gcnew MySqlCommand("select * from test.student_data;", conDataBase);
+				MySqlDataReader^ myReader;
+				//listBox1.Items.Add("Mahesh Chand");
+				try {
+					conDataBase->Open();
+					myReader = print_students->ExecuteReader();
+
+					while (myReader->Read())
+					{
+						String^ printing_names;
+						printing_names = myReader->GetString("gender");
+						listBox1->Items->Add(printing_names);
+
+					}
+
+				}
+				catch (Exception^ ex)
+				{
+					MessageBox::Show(ex->Message);
+
+				}
+
 
 			}
-
-		}
-		catch (Exception^ ex)
-		{
-			MessageBox::Show(ex->Message);
-
-		}
-
-
-	}
-	*/
+			*/
 	private: void fill_data_grid() {
 
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT student_id AS ID, student_name AS Name, student_mobile AS Mobile, student_email as 'E-Mail', student_no_book_stat AS 'No. of Books Borrowed' FROM library_system.student_data;", conDataBase);
 		MySqlDataReader^ myReader;
@@ -286,33 +286,18 @@ namespace CppCLR_WinformsProjekt1 {
 
 
 	}
-private: System::Void back_button_student_list_Click(System::Object^ sender, System::EventArgs^ e) {
-	//CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
-	//this->Hide();
-	//f2->ShowDialog();
-	this->DialogResult = System::Windows::Forms::DialogResult::OK;
-	this->Close();
+	private: System::Void back_button_student_list_Click(System::Object^ sender, System::EventArgs^ e) {
+		//CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
+		//this->Hide();
+		//f2->ShowDialog();
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+		this->Close();
 
 
-}
+	}
 
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	/*CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
-	this->Hide();
-	//testing_f->ShowDialog();
-	if (testing_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		this->Show();
-	}*/
-	//String^ str = text_combo_data(this->list_detail_search_person->Text);
-	//MessageBox::Show(str);
-}
-
-
-private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	if (e->ColumnIndex == 0)
-	{
 		/*CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
 		this->Hide();
 		//testing_f->ShowDialog();
@@ -320,81 +305,97 @@ private: System::Void dataGridView1_CellContentClick(System::Object^ sender, Sys
 		{
 			this->Show();
 		}*/
-		int row_num = e->RowIndex;
-		int col_num = e->ColumnIndex + 1;
-		String^ str = this->dataGridView1->Rows[row_num]->Cells[col_num]->Value->ToString();
-		
-		MessageBox::Show("Your id is "+ str);
-		CppCLR_WinformsProjekt1::profile_student^ profile_student_f = gcnew CppCLR_WinformsProjekt1::profile_student(str);
-		this->Hide();
-		//testing_f->ShowDialog();
+		//String^ str = text_combo_data(this->list_detail_search_person->Text);
+		//MessageBox::Show(str);
+	}
 
-		if (profile_student_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+
+	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+		if (e->ColumnIndex == 0)
 		{
-			this->Show();
-			fill_data_grid();
+			/*CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
+			this->Hide();
+			//testing_f->ShowDialog();
+			if (testing_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+			{
+				this->Show();
+			}*/
+			int row_num = e->RowIndex;
+			int col_num = e->ColumnIndex + 1;
+			String^ str = this->dataGridView1->Rows[row_num]->Cells[col_num]->Value->ToString();
+
+			MessageBox::Show("Your id is " + str);
+			CppCLR_WinformsProjekt1::profile_student^ profile_student_f = gcnew CppCLR_WinformsProjekt1::profile_student(str);
+			this->Hide();
+			//testing_f->ShowDialog();
+
+			if (profile_student_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+			{
+				this->Show();
+				fill_data_grid();
+			}
+
 		}
 
-	}
-	
 
 
-}
-private: System::Void search_button_student_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ str_list_detail_search_person;
-	if (this->list_detail_search_person->Text== "Name")
-	{
-		str_list_detail_search_person = "student_name";
 	}
-	if (String::Equals(this->list_detail_search_person->Text, "ID"))
-	{
-		str_list_detail_search_person = "student_id";
-	}
-	if (String::Equals(this->list_detail_search_person->Text, "Phone"))
-	{
-		str_list_detail_search_person = "student_mobile";
-	}
-	if (String::Equals(this->list_detail_search_person->Text, "Email"))
-	{
-		str_list_detail_search_person = "student_email";
-	}
-	if (String::Equals(this->list_detail_search_person->Text, "Number of books borrowed currently"))
-	{
-		str_list_detail_search_person = "student_no_book_stat";
-	}
+	private: System::Void search_button_student_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ str_list_detail_search_person;
+		if (this->list_detail_search_person->Text == "Name")
+		{
+			str_list_detail_search_person = "student_name";
+		}
+		if (String::Equals(this->list_detail_search_person->Text, "ID"))
+		{
+			str_list_detail_search_person = "student_id";
+		}
+		if (String::Equals(this->list_detail_search_person->Text, "Phone"))
+		{
+			str_list_detail_search_person = "student_mobile";
+		}
+		if (String::Equals(this->list_detail_search_person->Text, "Email"))
+		{
+			str_list_detail_search_person = "student_email";
+		}
+		if (String::Equals(this->list_detail_search_person->Text, "Number of books borrowed currently"))
+		{
+			str_list_detail_search_person = "student_no_book_stat";
+		}
 
-	String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
-	//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
-	//student_id,student_name,student_mobile, student_profession, student_no_book_stat 
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT student_id AS ID, student_name AS Name, student_mobile AS Mobile, student_email as 'E-Mail', student_no_book_stat AS 'No. of Books Borrowed' FROM library_system.student_data\
-		WHERE " + str_list_detail_search_person +" LIKE '%"+this->search_bar_student->Text+"%';", conDataBase);
-	MySqlDataReader^ myReader;
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
+		//student_id,student_name,student_mobile, student_profession, student_no_book_stat 
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT student_id AS ID, student_name AS Name, student_mobile AS Mobile, student_email as 'E-Mail', student_no_book_stat AS 'No. of Books Borrowed' FROM library_system.student_data\
+		WHERE " + str_list_detail_search_person + " LIKE '%" + this->search_bar_student->Text + "%';", conDataBase);
+		MySqlDataReader^ myReader;
 
-	try {
-		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
-		sda->SelectCommand = cmdDataBase;
-		DataTable^ dbdataset = gcnew DataTable();
-		sda->Fill(dbdataset);
-		BindingSource^ bSource = gcnew BindingSource();
-		bSource->DataSource = dbdataset;
-		dataGridView1->DataSource = bSource;
-		sda->Update(dbdataset);
-	}
-	catch (Exception^ ex)
-	{
-		MessageBox::Show(ex->Message);
+		try {
+			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
+			sda->SelectCommand = cmdDataBase;
+			DataTable^ dbdataset = gcnew DataTable();
+			sda->Fill(dbdataset);
+			BindingSource^ bSource = gcnew BindingSource();
+			bSource->DataSource = dbdataset;
+			dataGridView1->DataSource = bSource;
+			sda->Update(dbdataset);
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->Message);
 
+		}
 	}
-}
-private: System::Void list_detail_search_person_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void exit_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	Application::Exit();
-}
-private: System::Void clear_all_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->search_bar_student->Text = "";
-	search_button_student_Click(sender,e);
-}
-};
+	private: System::Void list_detail_search_person_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void exit_button_Click(System::Object^ sender, System::EventArgs^ e) {
+		Application::Exit();
+	}
+	private: System::Void clear_all_button_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->search_bar_student->Text = "";
+		search_button_student_Click(sender, e);
+	}
+	};
 }

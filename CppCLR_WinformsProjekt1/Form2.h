@@ -210,7 +210,7 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		Application::Exit();
 	}
-	
+
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 		CppCLR_WinformsProjekt1::list_of_students_page^ list_of_students_f = gcnew CppCLR_WinformsProjekt1::list_of_students_page;
 		this->Hide();
@@ -243,43 +243,43 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Show();
 		}
 	}
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	CppCLR_WinformsProjekt1::list_of_books_page^ list_of_books_f = gcnew CppCLR_WinformsProjekt1::list_of_books_page;
-	this->Hide();
-	//list_of_books_f->ShowDialog();
-	if (list_of_books_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		this->Show();
+		CppCLR_WinformsProjekt1::list_of_books_page^ list_of_books_f = gcnew CppCLR_WinformsProjekt1::list_of_books_page;
+		this->Hide();
+		//list_of_books_f->ShowDialog();
+		if (list_of_books_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			this->Show();
+		}
 	}
-}
-private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
-	CppCLR_WinformsProjekt1::borrow_history_page^ borrow_history_page_f = gcnew CppCLR_WinformsProjekt1::borrow_history_page;
-	this->Hide();
-	if (borrow_history_page_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		this->Show();
+	private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
+		CppCLR_WinformsProjekt1::borrow_history_page^ borrow_history_page_f = gcnew CppCLR_WinformsProjekt1::borrow_history_page;
+		this->Hide();
+		if (borrow_history_page_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			this->Show();
+		}
 	}
-}
-private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
-	CppCLR_WinformsProjekt1::BorrowBook^ borrowbook_f = gcnew CppCLR_WinformsProjekt1::BorrowBook;
-	this->Hide();
-	if (borrowbook_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		this->Show();
+	private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
+		CppCLR_WinformsProjekt1::BorrowBook^ borrowbook_f = gcnew CppCLR_WinformsProjekt1::BorrowBook;
+		this->Hide();
+		if (borrowbook_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			this->Show();
+		}
 	}
-}
-private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
-	CppCLR_WinformsProjekt1::ReturnBook^ returnbook_f = gcnew CppCLR_WinformsProjekt1::ReturnBook;
-	this->Hide();
-	if (returnbook_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		this->Show();
+	private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
+		CppCLR_WinformsProjekt1::ReturnBook^ returnbook_f = gcnew CppCLR_WinformsProjekt1::ReturnBook;
+		this->Hide();
+		if (returnbook_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			this->Show();
+		}
 	}
-}
-private: System::Void button9_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	this->DialogResult = System::Windows::Forms::DialogResult::OK;
-	this->Close();
-}
-};
+	private: System::Void button9_Click_1(System::Object^ sender, System::EventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+		this->Close();
+	}
+	};
 }

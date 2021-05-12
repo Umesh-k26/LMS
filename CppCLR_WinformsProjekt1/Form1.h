@@ -166,8 +166,8 @@ namespace CppCLRWinformsProjekt {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=lovebcmm**,02";
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE \
 		username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
@@ -192,9 +192,9 @@ namespace CppCLRWinformsProjekt {
 					this->username_txt->Text = "";
 					this->password_txt->Text = "";
 					this->Show();
-					
+
 				}
-				
+
 			}
 			else if (count > 1)
 			{
@@ -231,5 +231,5 @@ namespace CppCLRWinformsProjekt {
 	}
 	private: System::Void Form1_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
 	}
-};
+	};
 }

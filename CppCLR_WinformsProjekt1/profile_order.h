@@ -92,7 +92,7 @@ namespace CppCLR_WinformsProjekt1 {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -655,7 +655,7 @@ namespace CppCLR_WinformsProjekt1 {
 				this->date_issue_txt->Text = print_date_of_issue.ToString();
 				this->date_return_txt->Text = print_date_of_return.ToString();
 			}
-			
+
 
 		}
 		catch (Exception^ ex)
@@ -665,7 +665,7 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 		fill_student_data();
 		fill_book_data();
-		
+
 	}
 	private: void fill_student_data()
 	{
@@ -733,7 +733,7 @@ namespace CppCLR_WinformsProjekt1 {
 			while (myReader->Read())
 			{
 				String^ printing_name;
-				
+
 				String^ printing_author;
 				String^ printing_publisher;
 				String^ printing_price;
@@ -749,7 +749,7 @@ namespace CppCLR_WinformsProjekt1 {
 				printing_book_borrow_stat = myReader->GetString("book_borrow_status");
 				printing_no_of_copies = myReader->GetString("no_of_copies");
 				this->bookname_txt->Text = printing_name;
-				
+
 				this->author_txt->Text = printing_author;
 				this->publisher_txt->Text = printing_publisher;
 				this->price_txt->Text = printing_price;
@@ -766,9 +766,9 @@ namespace CppCLR_WinformsProjekt1 {
 
 		}
 	}
-private: System::Void back_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->DialogResult = System::Windows::Forms::DialogResult::OK;
-	this->Close();
-}
-};
+	private: System::Void back_button_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+		this->Close();
+	}
+	};
 }

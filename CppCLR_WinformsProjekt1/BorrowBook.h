@@ -306,11 +306,11 @@ namespace CppCLR_WinformsProjekt1 {
 
 
 	}
-	private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^ e) {
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
-	private: System::Void stud_id_txt_TextChanged(System::Object ^ sender, System::EventArgs ^ e) {
+	private: System::Void stud_id_txt_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	};
-	}
+}

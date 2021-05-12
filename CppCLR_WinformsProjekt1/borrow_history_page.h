@@ -50,7 +50,7 @@ namespace CppCLR_WinformsProjekt1 {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -201,73 +201,73 @@ namespace CppCLR_WinformsProjekt1 {
 		WindowState = FormWindowState::Maximized;
 		this->list_detail_search_order->SelectedIndex = 0;
 	}
-private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	if (e->ColumnIndex == 0)
-	{
-		/*CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
-		this->Hide();
-		//testing_f->ShowDialog();
-		if (testing_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+		if (e->ColumnIndex == 0)
 		{
-			this->Show();
-		}*/
-		int row_num = e->RowIndex;
-		int col_num = e->ColumnIndex + 1;
-		String^ str = this->dataGridView1->Rows[row_num]->Cells[col_num]->Value->ToString();
+			/*CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
+			this->Hide();
+			//testing_f->ShowDialog();
+			if (testing_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+			{
+				this->Show();
+			}*/
+			int row_num = e->RowIndex;
+			int col_num = e->ColumnIndex + 1;
+			String^ str = this->dataGridView1->Rows[row_num]->Cells[col_num]->Value->ToString();
 
-		MessageBox::Show("Your id is " + str);
-		CppCLR_WinformsProjekt1::profile_order^ profile_order_f = gcnew CppCLR_WinformsProjekt1::profile_order(str);
-		this->Hide();
-		if (profile_order_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-		{
-			this->Show();
-			fill_data_grid();
+			MessageBox::Show("Your id is " + str);
+			CppCLR_WinformsProjekt1::profile_order^ profile_order_f = gcnew CppCLR_WinformsProjekt1::profile_order(str);
+			this->Hide();
+			if (profile_order_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+			{
+				this->Show();
+				fill_data_grid();
+			}
+
 		}
-
 	}
-}
-private: System::Void search_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ str_list_detail_search_order;
-	if (this->list_detail_search_order->Text == "Order ID")
-	{
-		str_list_detail_search_order = "order_id";
-	}
-	if (String::Equals(this->list_detail_search_order->Text, "Student ID"))
-	{
-		str_list_detail_search_order = "student_id";
-	}
-	if (String::Equals(this->list_detail_search_order->Text, "Book ID"))
-	{
-		str_list_detail_search_order = "book_id";
-	}
-	String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-	//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
-	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
-	//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
-	//student_id,student_name,student_mobile, student_profession, student_no_book_stat 
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT order_id AS ID, book_id AS 'Book ID', student_id AS 'Borrower ID', date_issue AS 'Issue Date', date_returned AS 'Return Date', borrow_fine AS 'Fine', borrow_status AS 'Status' FROM library_system.borrow_history\
+	private: System::Void search_button_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ str_list_detail_search_order;
+		if (this->list_detail_search_order->Text == "Order ID")
+		{
+			str_list_detail_search_order = "order_id";
+		}
+		if (String::Equals(this->list_detail_search_order->Text, "Student ID"))
+		{
+			str_list_detail_search_order = "student_id";
+		}
+		if (String::Equals(this->list_detail_search_order->Text, "Book ID"))
+		{
+			str_list_detail_search_order = "book_id";
+		}
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
+		//student_id,student_name,student_mobile, student_profession, student_no_book_stat 
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT order_id AS ID, book_id AS 'Book ID', student_id AS 'Borrower ID', date_issue AS 'Issue Date', date_returned AS 'Return Date', borrow_fine AS 'Fine', borrow_status AS 'Status' FROM library_system.borrow_history\
 		WHERE " + str_list_detail_search_order + " LIKE '%" + this->search_bar->Text + "%';", conDataBase);
-	MySqlDataReader^ myReader;
+		MySqlDataReader^ myReader;
 
-	try {
-		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
-		sda->SelectCommand = cmdDataBase;
-		DataTable^ dbdataset = gcnew DataTable();
-		sda->Fill(dbdataset);
-		BindingSource^ bSource = gcnew BindingSource();
-		bSource->DataSource = dbdataset;
-		dataGridView1->DataSource = bSource;
-		sda->Update(dbdataset);
-	}
-	catch (Exception^ ex)
-	{
-		MessageBox::Show(ex->Message);
+		try {
+			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
+			sda->SelectCommand = cmdDataBase;
+			DataTable^ dbdataset = gcnew DataTable();
+			sda->Fill(dbdataset);
+			BindingSource^ bSource = gcnew BindingSource();
+			bSource->DataSource = dbdataset;
+			dataGridView1->DataSource = bSource;
+			sda->Update(dbdataset);
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->Message);
 
+		}
 	}
-}
-private: System::Void clear_all_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->search_bar->Text = "";
-	search_button_Click(sender, e);
-}
-};
+	private: System::Void clear_all_button_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->search_bar->Text = "";
+		search_button_Click(sender, e);
+	}
+	};
 }

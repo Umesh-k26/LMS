@@ -54,7 +54,7 @@ namespace CppCLR_WinformsProjekt1 {
 
 	private: System::Windows::Forms::TextBox^ name_txt;
 
-	private: System::Windows::Forms::TextBox^ profession_txt;
+
 	private: System::Windows::Forms::TextBox^ email_id_txt;
 	private: System::Windows::Forms::TextBox^ mobile_no_txt;
 	private: System::Windows::Forms::TextBox^ address_txt;
@@ -72,6 +72,7 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::TextBox^ password_txt;
 	private: System::Windows::Forms::Label^ password_lbl;
 	private: System::Windows::Forms::Label^ re_password_lbl;
+	private: System::Windows::Forms::ComboBox^ profession_comboBox;
 
 
 
@@ -99,7 +100,6 @@ namespace CppCLR_WinformsProjekt1 {
 			this->mobile_no_lbl = (gcnew System::Windows::Forms::Label());
 			this->address_lbl = (gcnew System::Windows::Forms::Label());
 			this->name_txt = (gcnew System::Windows::Forms::TextBox());
-			this->profession_txt = (gcnew System::Windows::Forms::TextBox());
 			this->email_id_txt = (gcnew System::Windows::Forms::TextBox());
 			this->mobile_no_txt = (gcnew System::Windows::Forms::TextBox());
 			this->address_txt = (gcnew System::Windows::Forms::TextBox());
@@ -109,6 +109,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->dateTimePicker = (gcnew System::Windows::Forms::DateTimePicker());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->profession_comboBox = (gcnew System::Windows::Forms::ComboBox());
 			this->re_password_txt = (gcnew System::Windows::Forms::TextBox());
 			this->password_txt = (gcnew System::Windows::Forms::TextBox());
 			this->password_lbl = (gcnew System::Windows::Forms::Label());
@@ -179,13 +180,6 @@ namespace CppCLR_WinformsProjekt1 {
 			this->name_txt->Size = System::Drawing::Size(100, 20);
 			this->name_txt->TabIndex = 6;
 			// 
-			// profession_txt
-			// 
-			this->profession_txt->Location = System::Drawing::Point(172, 253);
-			this->profession_txt->Name = L"profession_txt";
-			this->profession_txt->Size = System::Drawing::Size(100, 20);
-			this->profession_txt->TabIndex = 8;
-			// 
 			// email_id_txt
 			// 
 			this->email_id_txt->Location = System::Drawing::Point(171, 296);
@@ -247,6 +241,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// dateTimePicker
 			// 
+			this->dateTimePicker->Checked = false;
 			this->dateTimePicker->CustomFormat = L"yyyy-MM-dd";
 			this->dateTimePicker->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
 			this->dateTimePicker->Location = System::Drawing::Point(171, 145);
@@ -258,6 +253,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// groupBox1
 			// 
 			this->groupBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->groupBox1->Controls->Add(this->profession_comboBox);
 			this->groupBox1->Controls->Add(this->re_password_txt);
 			this->groupBox1->Controls->Add(this->password_txt);
 			this->groupBox1->Controls->Add(this->password_lbl);
@@ -277,13 +273,23 @@ namespace CppCLR_WinformsProjekt1 {
 			this->groupBox1->Controls->Add(this->mobile_no_txt);
 			this->groupBox1->Controls->Add(this->name_txt);
 			this->groupBox1->Controls->Add(this->email_id_txt);
-			this->groupBox1->Controls->Add(this->profession_txt);
 			this->groupBox1->Location = System::Drawing::Point(235, 51);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(333, 570);
 			this->groupBox1->TabIndex = 17;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Register Student";
+			// 
+			// profession_comboBox
+			// 
+			this->profession_comboBox->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->profession_comboBox->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->profession_comboBox->FormattingEnabled = true;
+			this->profession_comboBox->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Student", L"Faculty", L"Alumini" });
+			this->profession_comboBox->Location = System::Drawing::Point(170, 253);
+			this->profession_comboBox->Name = L"profession_comboBox";
+			this->profession_comboBox->Size = System::Drawing::Size(121, 21);
+			this->profession_comboBox->TabIndex = 24;
 			// 
 			// re_password_txt
 			// 
@@ -372,7 +378,7 @@ namespace CppCLR_WinformsProjekt1 {
 		'" + this->address_txt->Text + "',\
 		'" + this->email_id_txt->Text + "',\
 		" + this->mobile_no_txt->Text + ",\
-		'" + this->profession_txt->Text + "',\
+		'" + this->profession_comboBox->Text + "',\
 		" + this->status_no_txt->Text + ", 0, '" + Gender + "')	;", conDataBase);
 
 		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("USE library_system;INSERT INTO user_pass (student_id, user_password) \
@@ -419,7 +425,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->address_txt->Text = "";
 			this->email_id_txt->Text = "";
 			this->mobile_no_txt->Text = "";
-			this->profession_txt->Text = "";
+			this->profession_comboBox->Text = nullptr;
 			this->status_no_txt->Text = "";
 			this->password_txt->Text = "";
 			this->re_password_txt->Text = "";
