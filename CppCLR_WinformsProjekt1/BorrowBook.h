@@ -198,8 +198,12 @@ namespace CppCLR_WinformsProjekt1 {
 
 		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT * FROM library_system.student_data WHERE student_id = '" + this->stud_id_txt->Text + "';", conDataBase);
 		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system.book_data WHERE book_id = '" + this->book_id_txt->Text + "';", conDataBase);
-		MySqlCommand^ cmdDataBase3 = gcnew MySqlCommand("UPDATE  library_system.book_data set book_borrow_status = 'BORROWED' WHERE book_id ='" + this->book_id_txt->Text + "' ;", conDataBase);
-
+		MySqlCommand^ cmdDataBase3 = gcnew MySqlCommand("UPDATE  library_system.book_data set\
+     book_borrow_status = 'BORROWED' WHERE \
+     book_id ='" + this->book_id_txt->Text + "' ; \
+     UPDATE library_system.student_data set\
+     student_no_book_stat = student_no_book_stat +1 WHERE \
+     student_id ='" + this->stud_id_txt->Text + "' ", conDataBase);
 
 		MySqlCommand^ cmdDataBase5 = gcnew MySqlCommand("INSERT INTO library_system.borrow_history \
 		(book_id, student_id,date_issue) \
@@ -213,7 +217,7 @@ namespace CppCLR_WinformsProjekt1 {
 			AND date_issue = CURDATE()\
 			; ", conDataBase);
 
-		MySqlDataReader^ myReader, ^ Readdd;
+		MySqlDataReader^ myReader;
 
 
 		try {
@@ -254,8 +258,12 @@ namespace CppCLR_WinformsProjekt1 {
 					{
 
 						myReader->Close();
-						cmdDataBase3->ExecuteNonQuery(); //updates borrow_status(coloumn) in book data (table)
-						cmdDataBase5->ExecuteNonQuery(); //updates borrow_history(table) inserts new row for this order
+
+						//Below query updates borrow_status(coloumn) in book data (table) and in student_data(table) updates no_borrowed_books (coloumn)
+						cmdDataBase3->ExecuteNonQuery();
+
+						//Below query updates borrow_history(table) inserts new row for this order.
+						cmdDataBase5->ExecuteNonQuery();
 
 						MySqlCommand^ cmdDataBase4 = gcnew MySqlCommand("UPDATE  library_system.book_data set copies_available = copies_available -1 WHERE book_name ='" + Book_name + "'\
                              AND book_author ='" + Book_author + "' \
@@ -303,7 +311,6 @@ namespace CppCLR_WinformsProjekt1 {
 			MessageBox::Show(ex->Message);
 
 		}
-
 
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
