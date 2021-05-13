@@ -8,6 +8,8 @@ namespace CppCLR_WinformsProjekt1 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace MySql::Data::MySqlClient;
+
 
 	/// <summary>
 	/// Summary for testing
@@ -18,6 +20,7 @@ namespace CppCLR_WinformsProjekt1 {
 		testing(void)
 		{
 			InitializeComponent();
+			calculate_fine();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -85,6 +88,98 @@ namespace CppCLR_WinformsProjekt1 {
 		this->Close();
 	}
 	private: System::Void testing_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: int calculate_fine()
+	{
+		int order_id_dummy = 1;
+		int student_id_dummy = 3;
+		int value_fine = 0;
+		int num_date_difference;
+		String^ borrower_profession;
+
+		int default_student_allowance = 7, default_faculty_allowance = 14, default_alumni_allowance = 10;
+		int perday_student = 10, perday_faculty = 20, perday_alumni = 20;
+
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT DATEDIFF(date_returned, date_issue) AS fine_column FROM library_system.borrow_history WHERE order_id = " + order_id_dummy +";", conDataBase);
+		MySqlDataReader^ myReader;
+		
+		try {
+			conDataBase->Open();
+			myReader = cmdDataBase1->ExecuteReader();
+
+			while (myReader->Read())
+			{
+				num_date_difference = myReader->GetInt16("fine_column");
+				//MessageBox::Show(""+num_date_difference);
+			}
+			myReader->Close();
+
+			MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT student_profession FROM library_system.student_data WHERE student_id = "+student_id_dummy+";", conDataBase);
+			myReader = cmdDataBase2->ExecuteReader();
+			while (myReader->Read())
+			{
+				borrower_profession = myReader->GetString("student_profession");
+			}
+			myReader->Close();
+
+			if (borrower_profession == "Student")
+			{
+				if (num_date_difference <= default_student_allowance)
+				{
+					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrower_profession + "\n Fine = " + value_fine);
+					return 0;
+				}
+				else
+				{
+					num_date_difference = num_date_difference - default_student_allowance;
+					value_fine = num_date_difference * perday_student;
+					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrower_profession + "\n Fine = " + value_fine);
+					return value_fine;
+				}
+			}
+			if (borrower_profession == "Faculty")
+			{
+				if (num_date_difference <= default_faculty_allowance)
+				{
+					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrower_profession + "\n Fine = " + value_fine);
+					return 0;
+				}
+				else
+				{
+					num_date_difference = num_date_difference - default_faculty_allowance;
+					value_fine = num_date_difference * perday_faculty;
+					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrower_profession + "\n Fine = " + value_fine);
+					return value_fine;
+				}
+			}
+			if (borrower_profession == "Alumni")
+			{
+				if (num_date_difference <= default_alumni_allowance)
+				{
+					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrower_profession + "\n Fine = " + value_fine);
+					return 0;
+				}
+				else
+				{
+					num_date_difference = num_date_difference - default_alumni_allowance;
+					value_fine = num_date_difference * perday_alumni;
+					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrower_profession + "\n Fine = " + value_fine);
+					return value_fine;
+				}
+			}
+
+
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->Message);
+
+		}
+
+		
 	}
 	};
 }
