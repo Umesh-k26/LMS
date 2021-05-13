@@ -198,11 +198,18 @@ namespace CppCLR_WinformsProjekt1 {
                       AND book_edition_no = " + Book_edition_no + "\
                       ; UPDATE library_system.book_data set book_borrow_status = 'AVAILABLE' WHERE book_id = " + Book_id + " ;", conDataBase);
 
-						//Below Query Updates Book_data (Table) {increases copies_available by 1 for all copies and book_borrow_Status = AVAILABLE for partciular book id}
-						cmdDataBase4->ExecuteNonQuery();
+						MySqlCommand^ cmdDataBase5 = gcnew MySqlCommand("UPDATE  library_system.student_data\
+                     set student_no_book_stat = student_no_book_stat - 1 \
+                     WHERE student_id ='" + Student_id + "';", conDataBase);
 
 						//Below Query Updates Borrow_history (Table)
 						cmdDataBase2->ExecuteNonQuery();
+
+						//Below Query Updates student_data(Table)
+						cmdDataBase5->ExecuteNonQuery();
+
+						//Below Query Updates Book_data (Table) {increases copies_available by 1 for all copies and book_borrow_Status = AVAILABLE for partciular book id}
+						cmdDataBase4->ExecuteNonQuery();
 
 						MessageBox::Show("Returned book successfully! \n book_id = " + Book_id + ",student_id = " + Student_id + ",order_id = " + this->order_id_txt->Text + " ");
 					}
