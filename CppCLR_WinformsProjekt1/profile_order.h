@@ -612,6 +612,16 @@ namespace CppCLR_WinformsProjekt1 {
 		//
 		//
 		this->order_id_txt->Text = transfer_order_id;
+		enum column_id_for_order_history
+		{
+			column_order_id = 0,
+			column_book_id = 1,
+			column_student_id = 2,
+			column_issue_ = 3,
+			column_return_ = 4,
+			column_fine_ = 5,
+			column_stat_ = 6,
+		};
 		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 
@@ -635,25 +645,37 @@ namespace CppCLR_WinformsProjekt1 {
 				String^ printing_fine;
 
 				MySql::Data::Types::MySqlDateTime print_date_of_issue;
-				MySql::Data::Types::MySqlDateTime print_date_of_return;
+				//MySql::Data::Types::MySqlDateTime print_date_of_return;
 				print_date_of_issue = myReader->GetMySqlDateTime("date_issue");
-				print_date_of_return = myReader->GetMySqlDateTime("date_returned");
-
+				//print_date_of_return = myReader->GetMySqlDateTime("date_returned");
+				if (myReader->IsDBNull(column_id_for_order_history::column_return_) || myReader->IsDBNull(column_id_for_order_history::column_fine_))
+				{
+					this->date_return_txt->Text = "";
+					this->order_fine_txt->Text = "";
+				}
+				else
+				{
+					MySql::Data::Types::MySqlDateTime print_date_of_return;
+					print_date_of_return = myReader->GetMySqlDateTime("date_returned");
+					printing_fine = myReader->GetString("borrow_fine");
+					this->date_return_txt->Text = print_date_of_return.ToString();
+					this->order_fine_txt->Text = printing_fine;
+				}
 
 				printing_student_id = myReader->GetString("student_id");
 				printing_book_id = myReader->GetString("book_id");
 				//printing_date_issue = myReader->GetString("date_issue");
 				//printing_date_return = myReader->GetString("date_returned");
-				printing_fine = myReader->GetString("borrow_fine");
+				//printing_fine = myReader->GetString("borrow_fine");
 
 				this->student_id_txt->Text = printing_student_id;
 				this->book_id_txt->Text = printing_book_id;
 				//this->date_issue_txt->Text = printing_date_issue;
 				//this->date_return_txt->Text = printing_date_return;
-				this->order_fine_txt->Text = printing_fine;
+				//this->order_fine_txt->Text = printing_fine;
 
 				this->date_issue_txt->Text = print_date_of_issue.ToString();
-				this->date_return_txt->Text = print_date_of_return.ToString();
+				//this->date_return_txt->Text = print_date_of_return.ToString();
 			}
 
 
