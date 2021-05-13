@@ -298,13 +298,13 @@ namespace CppCLR_WinformsProjekt1 {
 
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		/*CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
+		CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
 		this->Hide();
 		//testing_f->ShowDialog();
 		if (testing_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
 			this->Show();
-		}*/
+		}
 		//String^ str = text_combo_data(this->list_detail_search_person->Text);
 		//MessageBox::Show(str);
 	}
