@@ -65,6 +65,9 @@
     <ClInclude Include="profile_order.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="fine_function.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinformsProjekt.cpp">
@@ -113,6 +116,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="profile_order.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="fine_function.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
