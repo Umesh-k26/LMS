@@ -26,15 +26,9 @@ namespace CppCLR_WinformsProjekt1 {
 		Form2(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
 		}
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
 		~Form2()
 		{
 			if (components)
@@ -62,10 +56,7 @@ namespace CppCLR_WinformsProjekt1 {
 		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
+		//Description of buttons over here.
 		void InitializeComponent(void)
 		{
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -208,6 +199,7 @@ namespace CppCLR_WinformsProjekt1 {
 
 		}
 #pragma endregion
+		// The function carried out by clicking the button comes here.
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		Application::Exit();
 	}
