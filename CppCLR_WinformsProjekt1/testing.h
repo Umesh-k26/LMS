@@ -1,5 +1,5 @@
 #pragma once
-
+#include "fine_function.h"
 namespace CppCLR_WinformsProjekt1 {
 
 	using namespace System;
@@ -20,7 +20,7 @@ namespace CppCLR_WinformsProjekt1 {
 		testing(void)
 		{
 			InitializeComponent();
-			calculate_fine();
+			//calculate_fine();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -84,12 +84,27 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		//
+		//	SAMPLE WAY OF USING THE FUNCTION
+		//	APPLY IN RETURN BOOK
+		//
+		//
+		int fine_value_test = 0;
+		int order_id_dummy = 1;
+		int student_id_dummy = 3;
+		String^ prof = L"Student";
+		fine_value_test = extra_func::calculate_fine(order_id_dummy, student_id_dummy, prof);
+		//
+		//
+		//
+		//
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
 	private: System::Void testing_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: int calculate_fine()
+	/*private: int calculate_fine()
 	{
 		int order_id_dummy = 1;
 		int student_id_dummy = 3;
@@ -180,6 +195,6 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 
 		
-	}
+	}*/
 	};
 }
