@@ -68,6 +68,9 @@
     <ClInclude Include="fine_function.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="connection_sql_func.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinformsProjekt.cpp">
@@ -119,6 +122,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="fine_function.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="connection_sql_func.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

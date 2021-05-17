@@ -1,4 +1,5 @@
 #pragma once
+#include "connection_sql_func.h"
 
 namespace CppCLR_WinformsProjekt1 {
 
@@ -622,8 +623,9 @@ namespace CppCLR_WinformsProjekt1 {
 			column_fine_ = 5,
 			column_stat_ = 6,
 		};
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = sql_connection_func::sql_user_pass_string();
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 
@@ -691,8 +693,9 @@ namespace CppCLR_WinformsProjekt1 {
 	}
 	private: void fill_student_data()
 	{
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = sql_connection_func::sql_user_pass_string();
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 
@@ -741,8 +744,9 @@ namespace CppCLR_WinformsProjekt1 {
 	}
 	private: void fill_book_data()
 	{
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = sql_connection_func::sql_user_pass_string();
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 
