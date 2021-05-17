@@ -1,5 +1,6 @@
 #pragma once
 #include "fine_function.h"
+#include "connection_sql_func.h"
 namespace CppCLR_WinformsProjekt1 {
 
 	using namespace System;
@@ -94,11 +95,16 @@ namespace CppCLR_WinformsProjekt1 {
 		int order_id_dummy = 1;
 		int student_id_dummy = 3;
 		String^ prof = L"Student";
-		fine_value_test = extra_func::calculate_fine(order_id_dummy, student_id_dummy, prof);
+		//fine_value_test = extra_func::calculate_fine(order_id_dummy, student_id_dummy, prof);
 		//
 		//
 		//
 		//
+
+		String^ test_string = sql_connection_func::sql_user_pass_string();
+		MessageBox::Show(test_string);
+
+
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}

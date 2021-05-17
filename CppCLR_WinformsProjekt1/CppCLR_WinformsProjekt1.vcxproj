@@ -152,6 +152,7 @@
     <ClInclude Include="borrow_history_page.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="connection_sql_func.h" />
     <ClInclude Include="fine_function.h" />
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
@@ -191,6 +192,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="BorrowBook.cpp" />
     <ClCompile Include="borrow_history_page.cpp" />
+    <ClCompile Include="connection_sql_func.cpp" />
     <ClCompile Include="CppCLR_WinformsProjekt.cpp" />
     <ClCompile Include="fine_function.cpp" />
     <ClCompile Include="Form1.cpp" />

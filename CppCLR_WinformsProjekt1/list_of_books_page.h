@@ -1,6 +1,7 @@
 #pragma once
 //#include "Form2.h"
 #include "profile_book.h"
+#include "connection_sql_func.h"
 namespace CppCLR_WinformsProjekt1 {
 
 	using namespace System;
@@ -20,8 +21,8 @@ namespace CppCLR_WinformsProjekt1 {
 		list_of_books_page(void)
 		{
 			InitializeComponent();
-			fill_data_grid();
-
+			//fill_data_grid();
+			sql_connection_func::fill_datagrid_book(dataGridView1);
 			//
 			//TODO: Add the constructor code here
 			//
@@ -191,8 +192,10 @@ namespace CppCLR_WinformsProjekt1 {
 
 	private: void fill_data_grid() {
 
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = sql_connection_func::sql_user_pass_string();
+
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS ID, book_name as Title, book_author AS Author, book_edition_no AS Edition, book_publisher AS Publisher, book_borrow_status AS Status FROM library_system.book_data;", conDataBase);
 		MySqlDataReader^ myReader;
@@ -250,16 +253,18 @@ namespace CppCLR_WinformsProjekt1 {
 			if (profile_book_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 			{
 				this->Show();
-				fill_data_grid();
+				sql_connection_func::fill_datagrid_book(dataGridView1);
 			}
 
 		}
 
 	}
 	private: System::Void search_button_book_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+		//String^ constring = sql_connection_func::sql_user_pass_string();
+
+		//MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 		String^ str_list_detail_search_book;
 		if (this->list_detail_search_book->Text == "Title")
@@ -278,7 +283,7 @@ namespace CppCLR_WinformsProjekt1 {
 		{
 			str_list_detail_search_book = "book_edition_no";
 		}
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS ID, book_name as Title, book_author AS Author, book_edition_no AS Edition, book_publisher AS Publisher, book_borrow_status AS Status FROM library_system.book_data\
+		/*MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS ID, book_name as Title, book_author AS Author, book_edition_no AS Edition, book_publisher AS Publisher, book_borrow_status AS Status FROM library_system.book_data\
 		WHERE " + str_list_detail_search_book + " LIKE '%" + this->search_bar_book->Text + "%';", conDataBase);
 		MySqlDataReader^ myReader;
 
@@ -296,7 +301,8 @@ namespace CppCLR_WinformsProjekt1 {
 		{
 			MessageBox::Show(ex->Message);
 
-		}
+		}*/
+		sql_connection_func::fill_datagrid_books_filtered(str_list_detail_search_book, this->search_bar_book->Text, dataGridView1);
 	}
 	private: System::Void list_detail_search_book_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	}

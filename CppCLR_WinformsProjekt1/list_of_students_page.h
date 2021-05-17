@@ -3,7 +3,7 @@
 //#include "Form2.h"
 #include "testing.h"
 #include "profile_student.h"
-
+#include "connection_sql_func.h"
 namespace CppCLR_WinformsProjekt1 {
 
 	using namespace System;
@@ -25,11 +25,11 @@ namespace CppCLR_WinformsProjekt1 {
 		{
 			InitializeComponent();
 			//fill_listbox1();
-			fill_data_grid();
+			//fill_data_grid();
 			//
 			//TODO: Add the constructor code here
 			//
-
+			sql_connection_func::fill_datagrid_student(dataGridView1);
 		}
 
 
@@ -253,8 +253,10 @@ namespace CppCLR_WinformsProjekt1 {
 			*/
 	private: void fill_data_grid() {
 
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+
+		String^ constring = sql_connection_func::sql_user_pass_string();
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT student_id AS ID, student_name AS Name, student_mobile AS Mobile, student_email as 'E-Mail', student_no_book_stat AS 'No. of Books Borrowed' FROM library_system.student_data;", conDataBase);
 		MySqlDataReader^ myReader;
@@ -332,7 +334,8 @@ namespace CppCLR_WinformsProjekt1 {
 			if (profile_student_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 			{
 				this->Show();
-				fill_data_grid();
+				//fill_data_grid();
+				sql_connection_func::fill_datagrid_student(dataGridView1);
 			}
 
 		}
@@ -363,8 +366,10 @@ namespace CppCLR_WinformsProjekt1 {
 			str_list_detail_search_person = "student_no_book_stat";
 		}
 
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		/*String^ constring = sql_connection_func::sql_user_pass_string();
+
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 		//student_id,student_name,student_mobile, student_profession, student_no_book_stat 
@@ -386,7 +391,8 @@ namespace CppCLR_WinformsProjekt1 {
 		{
 			MessageBox::Show(ex->Message);
 
-		}
+		}*/
+		sql_connection_func::fill_datagrid_students_filtered(str_list_detail_search_person, this->search_bar_student->Text, dataGridView1);
 	}
 	private: System::Void list_detail_search_person_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	}

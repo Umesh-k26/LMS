@@ -1,5 +1,5 @@
 #pragma once
-
+#include "connection_sql_func.h"
 namespace CppCLR_WinformsProjekt1 {
 
 	using namespace System;
@@ -443,8 +443,11 @@ namespace CppCLR_WinformsProjekt1 {
 		CenterToScreen();
 		//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
 		WindowState = FormWindowState::Maximized;
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = sql_connection_func::sql_user_pass_string();
+
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 
@@ -507,7 +510,9 @@ namespace CppCLR_WinformsProjekt1 {
 		MessageBox::Show("Delete Profile");
 		if (MessageBox::Show("The profile will be deleted. Do you want to contiue?", "Warning", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK)
 		{
-			String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+			//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+			String^ constring = sql_connection_func::sql_user_pass_string();
+
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system.book_data WHERE book_id = " + this->book_id_txt->Text + ";", conDataBase);
 			MySqlDataReader^ myReader;
@@ -545,8 +550,10 @@ namespace CppCLR_WinformsProjekt1 {
 	}
 	private: void fill_data_grid() {
 
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = sql_connection_func::sql_user_pass_string();
+
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id, book_name, book_author, book_edition_no, book_publisher, book_borrow_status FROM library_system.book_data WHERE book_name = '" + this->bookname_txt->Text + "' AND book_edition_no = " + this->edition_no_txt->Text + ";", conDataBase);
 		MySqlDataReader^ myReader;
@@ -606,8 +613,10 @@ namespace CppCLR_WinformsProjekt1 {
 		{
 			MessageBox::Show("" + num_new_copies + "");
 
-			String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+			//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 			//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+			String^ constring = sql_connection_func::sql_user_pass_string();
+
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 
 			MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system.book_data \
