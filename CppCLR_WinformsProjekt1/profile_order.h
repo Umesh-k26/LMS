@@ -88,6 +88,10 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::Label^ order_id_lbl;
 	private: System::Windows::Forms::TextBox^ order_id_txt;
 	private: System::Windows::Forms::Button^ back_button;
+	private: System::Windows::Forms::Label^ copies_available_lbl;
+	private: System::Windows::Forms::TextBox^ copies_available_txt;
+
+
 
 	private:
 		/// <summary>
@@ -144,6 +148,8 @@ namespace CppCLR_WinformsProjekt1 {
 			this->order_id_lbl = (gcnew System::Windows::Forms::Label());
 			this->order_id_txt = (gcnew System::Windows::Forms::TextBox());
 			this->back_button = (gcnew System::Windows::Forms::Button());
+			this->copies_available_txt = (gcnew System::Windows::Forms::TextBox());
+			this->copies_available_lbl = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
@@ -307,6 +313,8 @@ namespace CppCLR_WinformsProjekt1 {
 			// groupBox2
 			// 
 			this->groupBox2->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->groupBox2->Controls->Add(this->copies_available_lbl);
+			this->groupBox2->Controls->Add(this->copies_available_txt);
 			this->groupBox2->Controls->Add(this->no_copies_lbl);
 			this->groupBox2->Controls->Add(this->no_copies_txt);
 			this->groupBox2->Controls->Add(this->borrow_stat_txt);
@@ -335,7 +343,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// no_copies_lbl
 			// 
 			this->no_copies_lbl->AutoSize = true;
-			this->no_copies_lbl->Location = System::Drawing::Point(26, 396);
+			this->no_copies_lbl->Location = System::Drawing::Point(27, 391);
 			this->no_copies_lbl->Name = L"no_copies_lbl";
 			this->no_copies_lbl->Size = System::Drawing::Size(101, 20);
 			this->no_copies_lbl->TabIndex = 25;
@@ -343,7 +351,7 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// no_copies_txt
 			// 
-			this->no_copies_txt->Location = System::Drawing::Point(250, 396);
+			this->no_copies_txt->Location = System::Drawing::Point(250, 385);
 			this->no_copies_txt->Name = L"no_copies_txt";
 			this->no_copies_txt->ReadOnly = true;
 			this->no_copies_txt->Size = System::Drawing::Size(148, 26);
@@ -368,10 +376,10 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// book_id_txt
 			// 
-			this->book_id_txt->Location = System::Drawing::Point(240, 26);
+			this->book_id_txt->Location = System::Drawing::Point(250, 30);
 			this->book_id_txt->Name = L"book_id_txt";
 			this->book_id_txt->ReadOnly = true;
-			this->book_id_txt->Size = System::Drawing::Size(157, 26);
+			this->book_id_txt->Size = System::Drawing::Size(147, 26);
 			this->book_id_txt->TabIndex = 21;
 			// 
 			// label2
@@ -572,6 +580,25 @@ namespace CppCLR_WinformsProjekt1 {
 			this->back_button->UseVisualStyleBackColor = true;
 			this->back_button->Click += gcnew System::EventHandler(this, &profile_order::back_button_Click);
 			// 
+			// copies_available_txt
+			// 
+			this->copies_available_txt->Location = System::Drawing::Point(250, 439);
+			this->copies_available_txt->Name = L"copies_available_txt";
+			this->copies_available_txt->ReadOnly = true;
+			this->copies_available_txt->Size = System::Drawing::Size(148, 26);
+			this->copies_available_txt->TabIndex = 26;
+			this->copies_available_txt->TextChanged += gcnew System::EventHandler(this, &profile_order::textBox1_TextChanged);
+			// 
+			// copies_available_lbl
+			// 
+			this->copies_available_lbl->AutoSize = true;
+			this->copies_available_lbl->Location = System::Drawing::Point(26, 445);
+			this->copies_available_lbl->Name = L"copies_available_lbl";
+			this->copies_available_lbl->Size = System::Drawing::Size(125, 20);
+			this->copies_available_lbl->TabIndex = 27;
+			this->copies_available_lbl->Text = L"Copies Available";
+			this->copies_available_lbl->Click += gcnew System::EventHandler(this, &profile_order::label3_Click);
+			// 
 			// profile_order
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
@@ -766,6 +793,7 @@ namespace CppCLR_WinformsProjekt1 {
 				String^ printing_edition_no;
 				String^ printing_book_borrow_stat;
 				String^ printing_no_of_copies;
+				String^ printing_copies_available;
 
 				printing_name = myReader->GetString("book_name");
 				printing_author = myReader->GetString("book_author");
@@ -774,6 +802,7 @@ namespace CppCLR_WinformsProjekt1 {
 				printing_edition_no = myReader->GetString("book_edition_no");
 				printing_book_borrow_stat = myReader->GetString("book_borrow_status");
 				printing_no_of_copies = myReader->GetString("no_of_copies");
+				printing_copies_available = myReader->GetString("copies_available");
 				this->bookname_txt->Text = printing_name;
 
 				this->author_txt->Text = printing_author;
@@ -782,6 +811,7 @@ namespace CppCLR_WinformsProjekt1 {
 				this->edition_no_txt->Text = printing_edition_no;
 				this->borrow_stat_txt->Text = printing_book_borrow_stat;
 				this->no_copies_txt->Text = printing_no_of_copies;
+				this->copies_available_txt->Text = printing_copies_available;
 				//listBox1->Items->Add(printing_names);
 
 			}
@@ -796,5 +826,9 @@ namespace CppCLR_WinformsProjekt1 {
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
-	};
+	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+};
 }

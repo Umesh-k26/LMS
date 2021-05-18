@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "fine_function.h"
+#include  "connection_sql_func.h"
 
 //
 //	FINE FUNCTION DEFINITION
@@ -13,8 +14,12 @@ namespace extra_func {
 		int default_student_allowance = 7, default_faculty_allowance = 14, default_alumni_allowance = 10;
 		int perday_student = 10, perday_faculty = 20, perday_alumni = 20;
 
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		
+		String^ constring;
+		constring = sql_connection_func::sql_user_pass_string();
+
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT DATEDIFF(date_returned, date_issue) AS fine_column FROM library_system.borrow_history WHERE order_id = " + order_id_input + ";", conDataBase);
 		MySqlDataReader^ myReader;
