@@ -17,25 +17,11 @@ namespace CppCLR_WinformsProjekt1 {
 	public ref class AddBook : public System::Windows::Forms::Form
 	{
 	public:
-		AddBook(void)
-		{
-			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
-		}
+		AddBook(void);
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		~AddBook()
-		{
-			if (components)
-			{
-				delete components;
-			}
-		}
+		~AddBook();
+		
 	private: System::Windows::Forms::Label^ bookname_lbl;
 	private: System::Windows::Forms::Label^ author_lbl;
 	private: System::Windows::Forms::Label^ publisher_lbl;
@@ -51,33 +37,15 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::TextBox^ no_of_copies_txt;
 	private: System::Windows::Forms::TextBox^ price_txt;
 	private: System::Windows::Forms::Button^ add_button;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::Button^ back_button;
 
+	private: System::Windows::Forms::GroupBox^ groupBox1;
 
 	private: System::Windows::Forms::ListBox^ id_listbox;
 
-
-
 	protected:
 
 	protected:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	private:
 		/// <summary>
@@ -108,7 +76,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->no_of_copies_txt = (gcnew System::Windows::Forms::TextBox());
 			this->price_txt = (gcnew System::Windows::Forms::TextBox());
 			this->add_button = (gcnew System::Windows::Forms::Button());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->back_button = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->id_listbox = (gcnew System::Windows::Forms::ListBox());
 			this->groupBox1->SuspendLayout();
@@ -207,7 +175,6 @@ namespace CppCLR_WinformsProjekt1 {
 			this->publisher_txt->Name = L"publisher_txt";
 			this->publisher_txt->Size = System::Drawing::Size(100, 20);
 			this->publisher_txt->TabIndex = 10;
-			this->publisher_txt->TextChanged += gcnew System::EventHandler(this, &AddBook::textBox3_TextChanged);
 			// 
 			// category_txt
 			// 
@@ -224,7 +191,6 @@ namespace CppCLR_WinformsProjekt1 {
 			this->edition_no_txt->Name = L"edition_no_txt";
 			this->edition_no_txt->Size = System::Drawing::Size(100, 20);
 			this->edition_no_txt->TabIndex = 12;
-			this->edition_no_txt->TextChanged += gcnew System::EventHandler(this, &AddBook::textBox5_TextChanged);
 			// 
 			// no_of_copies_txt
 			// 
@@ -253,16 +219,16 @@ namespace CppCLR_WinformsProjekt1 {
 			this->add_button->UseVisualStyleBackColor = true;
 			this->add_button->Click += gcnew System::EventHandler(this, &AddBook::AddBook_Click);
 			// 
-			// button1
+			// back_button
 			// 
-			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
-			this->button1->Location = System::Drawing::Point(58, 49);
-			this->button1->Margin = System::Windows::Forms::Padding(2);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(50, 29);
-			this->button1->TabIndex = 17;
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &AddBook::button1_Click_1);
+			this->back_button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"back_button.Image")));
+			this->back_button->Location = System::Drawing::Point(58, 49);
+			this->back_button->Margin = System::Windows::Forms::Padding(2);
+			this->back_button->Name = L"back_button";
+			this->back_button->Size = System::Drawing::Size(50, 29);
+			this->back_button->TabIndex = 17;
+			this->back_button->UseVisualStyleBackColor = true;
+			this->back_button->Click += gcnew System::EventHandler(this, &AddBook::BackButton_Click);
 			// 
 			// groupBox1
 			// 
@@ -306,7 +272,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->ClientSize = System::Drawing::Size(1113, 674);
 			this->Controls->Add(this->id_listbox);
 			this->Controls->Add(this->groupBox1);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->back_button);
 			this->Controls->Add(this->add_button);
 			this->Name = L"AddBook";
 			this->Text = L"Add Book";
@@ -317,61 +283,9 @@ namespace CppCLR_WinformsProjekt1 {
 
 		}
 #pragma endregion
-	private: System::Void textBox5_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void AddBook_Load(System::Object^ sender, System::EventArgs^ e) {
-		CenterToScreen();
-		WindowState = FormWindowState::Maximized;
-	}
-	private: System::Void AddBook_Click(System::Object^ sender, System::EventArgs^ e) {
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
-		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system.book_data \
-		(book_name, book_author, book_publisher, book_price,book_edition_no,no_of_copies, category, copies_available) \
-		VALUES('" + this->bookname_txt->Text + "',\
-		'" + this->author_txt->Text + "',\
-		'" + this->publisher_txt->Text + "',\
-		'" + this->price_txt->Text + "',\
-		'" + this->edition_no_txt->Text + "',\
-		'" + this->no_of_copies_txt->Text + "',\
-		'" + this->category_txt->Text + "',\
-		'" + this->no_of_copies_txt->Text + "'	);", conDataBase);
-
-		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system.book_data WHERE (book_name = '" + this->bookname_txt->Text + "' \
-		AND book_edition_no = " + this->edition_no_txt->Text + ");", conDataBase);
-		MySqlDataReader^ myReader;
-		try {
-			conDataBase->Open();
-
-			int copies_no = System::Convert::ToInt32(this->no_of_copies_txt->Text);
-			for (int i = 0; i < copies_no; i++)
-				cmdDataBase1->ExecuteNonQuery();
-
-			MessageBox::Show("Book(s) added successfully!");
-
-			int db_count = 0;
-			myReader = cmdDataBase2->ExecuteReader();
-			while (myReader->Read())
-			{
-				int book_id = myReader->GetInt32("book_id");
-				id_listbox->Items->Add(book_id);
-				db_count++;
-			}
-			id_listbox->Items->Add("No. of books added = " + db_count);
-			myReader->Close();
-			this->id_listbox->Visible = true;
-		}
-		catch (Exception^ ex)
-		{
-			MessageBox::Show(ex->Message);
-
-		}
-	}
-	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-		this->DialogResult = System::Windows::Forms::DialogResult::OK;
-		this->Close();
-	}
+	private: System::Void AddBook_Load(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void AddBook_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void BackButton_Click(System::Object^ sender, System::EventArgs^ e);
 	};
 }

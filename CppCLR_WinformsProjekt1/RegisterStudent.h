@@ -16,25 +16,10 @@ namespace CppCLR_WinformsProjekt1 {
 	public ref class RegisterStudent : public System::Windows::Forms::Form
 	{
 	public:
-		RegisterStudent(void)
-		{
-			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
-		}
+		RegisterStudent(void);
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		~RegisterStudent()
-		{
-			if (components)
-			{
-				delete components;
-			}
-		}
+		~RegisterStudent();
 
 		String^ Gender;
 
@@ -61,7 +46,8 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::Button^ add_button;
 	private: System::Windows::Forms::Label^ status_lbl;
 	private: System::Windows::Forms::TextBox^ status_no_txt;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ back_button;
+
 	private: System::Windows::Forms::DateTimePicker^ dateTimePicker;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: System::Windows::Forms::RadioButton^ female_rbtn;
@@ -73,10 +59,6 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::Label^ password_lbl;
 	private: System::Windows::Forms::Label^ re_password_lbl;
 	private: System::Windows::Forms::ComboBox^ profession_comboBox;
-
-
-
-
 
 
 	private:
@@ -106,7 +88,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->add_button = (gcnew System::Windows::Forms::Button());
 			this->status_lbl = (gcnew System::Windows::Forms::Label());
 			this->status_no_txt = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->back_button = (gcnew System::Windows::Forms::Button());
 			this->dateTimePicker = (gcnew System::Windows::Forms::DateTimePicker());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->profession_comboBox = (gcnew System::Windows::Forms::ComboBox());
@@ -228,16 +210,16 @@ namespace CppCLR_WinformsProjekt1 {
 			this->status_no_txt->Size = System::Drawing::Size(100, 20);
 			this->status_no_txt->TabIndex = 14;
 			// 
-			// button1
+			// back_button
 			// 
-			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
-			this->button1->Location = System::Drawing::Point(35, 33);
-			this->button1->Margin = System::Windows::Forms::Padding(1);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(37, 34);
-			this->button1->TabIndex = 15;
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &RegisterStudent::button1_Click);
+			this->back_button->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"back_button.Image")));
+			this->back_button->Location = System::Drawing::Point(35, 33);
+			this->back_button->Margin = System::Windows::Forms::Padding(1);
+			this->back_button->Name = L"back_button";
+			this->back_button->Size = System::Drawing::Size(37, 34);
+			this->back_button->TabIndex = 15;
+			this->back_button->UseVisualStyleBackColor = true;
+			this->back_button->Click += gcnew System::EventHandler(this, &RegisterStudent::BackButton_Click);
 			// 
 			// dateTimePicker
 			// 
@@ -248,7 +230,6 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dateTimePicker->Name = L"dateTimePicker";
 			this->dateTimePicker->Size = System::Drawing::Size(99, 20);
 			this->dateTimePicker->TabIndex = 16;
-			this->dateTimePicker->ValueChanged += gcnew System::EventHandler(this, &RegisterStudent::dateTimePicker_ValueChanged);
 			// 
 			// groupBox1
 			// 
@@ -353,7 +334,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(843, 633);
 			this->Controls->Add(this->groupBox1);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->back_button);
 			this->Controls->Add(this->add_button);
 			this->MinimumSize = System::Drawing::Size(857, 666);
 			this->Name = L"RegisterStudent";
@@ -365,91 +346,10 @@ namespace CppCLR_WinformsProjekt1 {
 
 		}
 #pragma endregion
-	private: System::Void add_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void add_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void RegisterStudent_Load(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void BackButton_Click(System::Object^ sender, System::EventArgs^ e);
 
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-
-		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system.student_data (student_name, student_dob, student_address, student_email, \
-		student_mobile, student_profession, student_no_book_stat,student_fine, student_gender) \
-		VALUES('" + this->name_txt->Text + "',\
-		'" + this->dateTimePicker->Text + "',\
-		'" + this->address_txt->Text + "',\
-		'" + this->email_id_txt->Text + "',\
-		" + this->mobile_no_txt->Text + ",\
-		'" + this->profession_comboBox->Text + "',\
-		" + this->status_no_txt->Text + ", 0, '" + Gender + "')	;", conDataBase);
-
-		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("USE library_system;INSERT INTO user_pass (student_id, user_password) \
-		VALUES((SELECT student_id FROM student_data WHERE student_email = '" + this->email_id_txt->Text + "'), \
-		'" + this->password_txt->Text + "');", conDataBase);
-
-		MySqlCommand^ cmdDataBase3 = gcnew MySqlCommand("SELECT * FROM library_system.student_data \
-	    WHERE student_email = '" + this->email_id_txt->Text + "';", conDataBase);
-
-		MySqlDataReader^ myReader;
-		try {
-			conDataBase->Open();
-
-			while (true)
-			{
-				if (String::Equals(this->password_txt->Text, this->re_password_txt->Text))
-				{
-					cmdDataBase1->ExecuteNonQuery();
-					cmdDataBase2->ExecuteNonQuery();
-					break;
-				}
-				else
-				{
-					MessageBox::Show("Re-enter same password");
-					this->password_txt->Text = "";
-					this->re_password_txt->Text = "";
-					return;
-				}
-			}
-
-			MessageBox::Show("Student registered successfully!");
-
-			myReader = cmdDataBase3->ExecuteReader();
-
-			if (myReader->Read())
-			{
-				int student_id = myReader->GetInt32("student_id");
-				MessageBox::Show("Your id is " + student_id);
-			}
-			myReader->Close();
-
-			this->name_txt->Text = "";
-			this->dateTimePicker->Text = "";
-			this->address_txt->Text = "";
-			this->email_id_txt->Text = "";
-			this->mobile_no_txt->Text = "";
-			this->profession_comboBox->Text = nullptr;
-			this->status_no_txt->Text = "";
-			this->password_txt->Text = "";
-			this->re_password_txt->Text = "";
-			this->male_rbtn->Checked = false;
-			this->female_rbtn->Checked = false;
-
-		}
-		catch (Exception^ ex)
-		{
-			MessageBox::Show(ex->Message);
-		}
-	}
-	private: System::Void RegisterStudent_Load(System::Object^ sender, System::EventArgs^ e) {
-		CenterToScreen();
-		WindowState = FormWindowState::Maximized;
-	}
-
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->DialogResult = System::Windows::Forms::DialogResult::OK;
-		this->Close();
-	}
-
-	private: System::Void dob_txt_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void dateTimePicker_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
 	private: System::Void male_rbtn_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 		Gender = "Male";
 	}
