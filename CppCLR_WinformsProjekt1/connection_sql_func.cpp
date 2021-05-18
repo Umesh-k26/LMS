@@ -13,12 +13,14 @@ namespace sql_connection_func {
 	String^ sql_user_pass_string()
 	{
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=lovebcmm**,02";
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 
 		return constring;
 	}
-
+	// 
+	//FUNCTION FOR FILLING STUDENT DATAGRID IN LIST OF STUDENTS PAGE
+	//
 	void fill_datagrid_student(System::Windows::Forms::DataGridView^ dataGridView1)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
@@ -65,7 +67,9 @@ namespace sql_connection_func {
 
 		}
 	}
-
+	//
+	//FUNCTION FOR FILLING BOOK DATAGRID IN LIST OF BOOKS PAGE
+	//
 	void fill_datagrid_book(System::Windows::Forms::DataGridView^ dataGridView1)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
@@ -112,7 +116,9 @@ namespace sql_connection_func {
 
 		}
 	}
-
+	//
+	//FUNCTION FOR FILLING BORROW HISTORY DATAGRID IN BORROW HISTORY PAGE
+	//
 	void fill_datagrid_borrow_history(System::Windows::Forms::DataGridView^ dataGridView1)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
@@ -139,8 +145,6 @@ namespace sql_connection_func {
 	void fill_datagrid_borrow_history_filtered(String^ str_list_detail_search_order, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView1)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
-		//student_id,student_name,student_mobile, student_profession, student_no_book_stat 
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT order_id AS ID, book_id AS 'Book ID', student_id AS 'Borrower ID', date_issue AS 'Issue Date', date_returned AS 'Return Date', borrow_fine AS 'Fine', borrow_status AS 'Status' FROM library_system.borrow_history\
 		WHERE " + str_list_detail_search_order + " LIKE '%" + search_bar_text + "%';", conDataBase);
 		MySqlDataReader^ myReader;
