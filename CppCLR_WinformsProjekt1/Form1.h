@@ -171,7 +171,7 @@ namespace CppCLRWinformsProjekt {
 		{
 			MessageBox::Show("Username and password is correct");
 
-			CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
+			CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2(this->username_txt->Text, true);
 			this->Hide();
 			if (f2->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 			{
@@ -199,7 +199,7 @@ namespace CppCLRWinformsProjekt {
 				{
 					MessageBox::Show("Username and password is correct");
 
-					CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
+					CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2(this->username_txt->Text, false);
 					this->Hide();
 					if (f2->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 					{
