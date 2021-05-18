@@ -3,6 +3,7 @@
 #include "pch.h"
 #include "Form2.h"
 #include "connection_sql_func.h"
+#include "login_to_librarian_db.h"
 
 namespace CppCLRWinformsProjekt {
 
@@ -166,57 +167,66 @@ namespace CppCLRWinformsProjekt {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE \
+		if (connection_to_librarian_db::is_librarian(this->username_txt->Text, this->password_txt->Text) == true)
+		{
+			MessageBox::Show("Username and password is correct");
+
+			CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
+			this->Hide();
+			if (f2->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+			{
+				this->username_txt->Text = "";
+				this->password_txt->Text = "";
+				this->Show();
+			}
+		}
+		else
+		{
+			MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE \
 	    username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 
-		MySqlDataReader^ myReader;
-		try {
-			conDataBase->Open();
-			myReader = cmdDataBase->ExecuteReader();
-			int count = 0;
-			while (myReader->Read())
-			{
-				count += 1;
-			}
-			if (count == 1)
-			{
-				MessageBox::Show("Username and password is correct");
-
-				CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
-				this->Hide();
-				if (f2->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+			MySqlDataReader^ myReader;
+			try {
+				conDataBase->Open();
+				myReader = cmdDataBase->ExecuteReader();
+				int count = 0;
+				while (myReader->Read())
 				{
-					this->username_txt->Text = "";
-					this->password_txt->Text = "";
-					this->Show();
+					count += 1;
+				}
+				if (count == 1)
+				{
+					MessageBox::Show("Username and password is correct");
+
+					CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
+					this->Hide();
+					if (f2->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+					{
+						this->username_txt->Text = "";
+						this->password_txt->Text = "";
+						this->Show();
+
+					}
 
 				}
+				else if (count > 1)
+				{
+					MessageBox::Show("Duplicate username and password ...Access denied");
+				}
+				else
+					MessageBox::Show("Username and password is incorrect ...Please try again");
+
 
 			}
-			else if (count > 1)
+			catch (Exception^ ex)
 			{
-				MessageBox::Show("Duplicate username and password ...Access denied");
+				MessageBox::Show(ex->Message);
+
 			}
-			else
-				MessageBox::Show("Username and password is incorrect ...Please try again");
-
 
 		}
-		catch (Exception^ ex)
-		{
-			MessageBox::Show(ex->Message);
-
-		}
-
-
-
-
-		/*MessageBox::Show(L"Your employment application appears to be incomplete"
-			 L"\nPlease complete it first before clicking Resume",
-			 L"Georgetown Dry Cleaning Services",
-			 MessageBoxButtons::OK, MessageBoxIcon::Information);
-		*/
+		
 	}
 	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
 
