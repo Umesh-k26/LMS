@@ -177,6 +177,9 @@
     <ClInclude Include="profile_student.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="RegisterLibrarian.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="RegisterStudent.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -210,6 +213,7 @@
     <ClCompile Include="profile_book.cpp" />
     <ClCompile Include="profile_order.cpp" />
     <ClCompile Include="profile_student.cpp" />
+    <ClCompile Include="RegisterLibrarian.cpp" />
     <ClCompile Include="RegisterStudent.cpp" />
     <ClCompile Include="ReturnBook.cpp" />
     <ClCompile Include="testing.cpp" />
@@ -257,6 +261,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="profile_student.resx">
       <DependentUpon>profile_student.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegisterLibrarian.resx">
+      <DependentUpon>RegisterLibrarian.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegisterStudent.resx">
       <DependentUpon>RegisterStudent.h</DependentUpon>

@@ -7,6 +7,7 @@
 #include "borrow_history_page.h"
 #include "BorrowBook.h"
 #include "ReturnBook.h"
+#include "RegisterLibrarian.h"
 namespace CppCLR_WinformsProjekt1 {
 
 	using namespace System;
@@ -45,6 +46,7 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::Button^ button8;
 	private: System::Windows::Forms::Button^ button7;
 	private: System::Windows::Forms::Button^ button9;
+	private: System::Windows::Forms::Button^ button10;
 
 
 	protected:
@@ -68,14 +70,15 @@ namespace CppCLR_WinformsProjekt1 {
 			this->button8 = (gcnew System::Windows::Forms::Button());
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->button9 = (gcnew System::Windows::Forms::Button());
+			this->button10 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(12, 632);
-			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button1->Location = System::Drawing::Point(8, 411);
+			this->button1->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(187, 69);
+			this->button1->Size = System::Drawing::Size(125, 45);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Exit";
 			this->button1->UseVisualStyleBackColor = true;
@@ -84,10 +87,10 @@ namespace CppCLR_WinformsProjekt1 {
 			// button2
 			// 
 			this->button2->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->button2->Location = System::Drawing::Point(468, 186);
-			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button2->Location = System::Drawing::Point(312, 121);
+			this->button2->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(181, 68);
+			this->button2->Size = System::Drawing::Size(121, 44);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"List of Books";
 			this->button2->UseVisualStyleBackColor = true;
@@ -96,10 +99,10 @@ namespace CppCLR_WinformsProjekt1 {
 			// button3
 			// 
 			this->button3->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->button3->Location = System::Drawing::Point(468, 336);
-			this->button3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button3->Location = System::Drawing::Point(312, 218);
+			this->button3->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(181, 66);
+			this->button3->Size = System::Drawing::Size(121, 43);
 			this->button3->TabIndex = 2;
 			this->button3->Text = L"List of Students";
 			this->button3->UseVisualStyleBackColor = true;
@@ -108,10 +111,10 @@ namespace CppCLR_WinformsProjekt1 {
 			// button4
 			// 
 			this->button4->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->button4->Location = System::Drawing::Point(760, 336);
-			this->button4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button4->Location = System::Drawing::Point(507, 218);
+			this->button4->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(174, 66);
+			this->button4->Size = System::Drawing::Size(116, 43);
 			this->button4->TabIndex = 3;
 			this->button4->Text = L"Add Book to Library";
 			this->button4->UseVisualStyleBackColor = true;
@@ -120,10 +123,10 @@ namespace CppCLR_WinformsProjekt1 {
 			// button5
 			// 
 			this->button5->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->button5->Location = System::Drawing::Point(189, 496);
-			this->button5->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button5->Location = System::Drawing::Point(126, 322);
+			this->button5->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
 			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(166, 65);
+			this->button5->Size = System::Drawing::Size(111, 42);
 			this->button5->TabIndex = 4;
 			this->button5->Text = L"Register a Student";
 			this->button5->UseVisualStyleBackColor = true;
@@ -132,10 +135,10 @@ namespace CppCLR_WinformsProjekt1 {
 			// button6
 			// 
 			this->button6->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->button6->Location = System::Drawing::Point(760, 186);
-			this->button6->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button6->Location = System::Drawing::Point(507, 121);
+			this->button6->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
 			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(174, 68);
+			this->button6->Size = System::Drawing::Size(116, 44);
 			this->button6->TabIndex = 5;
 			this->button6->Text = L"Borrow History";
 			this->button6->UseVisualStyleBackColor = true;
@@ -144,10 +147,10 @@ namespace CppCLR_WinformsProjekt1 {
 			// button8
 			// 
 			this->button8->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->button8->Location = System::Drawing::Point(189, 186);
-			this->button8->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button8->Location = System::Drawing::Point(126, 121);
+			this->button8->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
 			this->button8->Name = L"button8";
-			this->button8->Size = System::Drawing::Size(166, 68);
+			this->button8->Size = System::Drawing::Size(111, 44);
 			this->button8->TabIndex = 7;
 			this->button8->Text = L"Borrow A Book";
 			this->button8->UseVisualStyleBackColor = true;
@@ -156,10 +159,10 @@ namespace CppCLR_WinformsProjekt1 {
 			// button7
 			// 
 			this->button7->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->button7->Location = System::Drawing::Point(189, 336);
-			this->button7->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button7->Location = System::Drawing::Point(126, 218);
+			this->button7->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
 			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(166, 66);
+			this->button7->Size = System::Drawing::Size(111, 43);
 			this->button7->TabIndex = 8;
 			this->button7->Text = L"Return A Book";
 			this->button7->UseVisualStyleBackColor = true;
@@ -167,20 +170,33 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// button9
 			// 
-			this->button9->Location = System::Drawing::Point(14, 44);
-			this->button9->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->button9->Location = System::Drawing::Point(9, 29);
+			this->button9->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
 			this->button9->Name = L"button9";
-			this->button9->Size = System::Drawing::Size(146, 66);
+			this->button9->Size = System::Drawing::Size(97, 43);
 			this->button9->TabIndex = 9;
 			this->button9->Text = L"Logout";
 			this->button9->UseVisualStyleBackColor = true;
 			this->button9->Click += gcnew System::EventHandler(this, &Form2::button9_Click_1);
 			// 
+			// button10
+			// 
+			this->button10->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->button10->Location = System::Drawing::Point(312, 322);
+			this->button10->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->button10->Name = L"button10";
+			this->button10->Size = System::Drawing::Size(111, 42);
+			this->button10->TabIndex = 10;
+			this->button10->Text = L"Register a Librarian";
+			this->button10->UseVisualStyleBackColor = true;
+			this->button10->Click += gcnew System::EventHandler(this, &Form2::button10_Click);
+			// 
 			// Form2
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1113, 712);
+			this->ClientSize = System::Drawing::Size(742, 463);
+			this->Controls->Add(this->button10);
 			this->Controls->Add(this->button9);
 			this->Controls->Add(this->button7);
 			this->Controls->Add(this->button8);
@@ -190,8 +206,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
-			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->MinimumSize = System::Drawing::Size(1126, 740);
+			this->MinimumSize = System::Drawing::Size(756, 495);
 			this->Name = L"Form2";
 			this->Text = L"Form2";
 			this->Load += gcnew System::EventHandler(this, &Form2::Form2_Load);
@@ -274,5 +289,13 @@ namespace CppCLR_WinformsProjekt1 {
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
-	};
+	private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) {
+		CppCLR_WinformsProjekt1::RegisterLibrarian^ registerlibrarian_f = gcnew CppCLR_WinformsProjekt1::RegisterLibrarian;
+		this->Hide();
+		if (registerlibrarian_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			this->Show();
+		}
+	}
+};
 }

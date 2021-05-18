@@ -74,6 +74,9 @@
     <ClInclude Include="login_to_librarian_db.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="RegisterLibrarian.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinformsProjekt.cpp">
@@ -131,6 +134,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="login_to_librarian_db.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="RegisterLibrarian.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

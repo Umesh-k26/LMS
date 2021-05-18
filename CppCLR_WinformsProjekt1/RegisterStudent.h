@@ -43,13 +43,15 @@ namespace CppCLR_WinformsProjekt1 {
 	private: System::Windows::Forms::TextBox^ email_id_txt;
 	private: System::Windows::Forms::TextBox^ mobile_no_txt;
 	private: System::Windows::Forms::TextBox^ address_txt;
-	private: System::Windows::Forms::Button^ add_button;
+	private: System::Windows::Forms::Button^ register_button;
+
 	private: System::Windows::Forms::Label^ status_lbl;
 	private: System::Windows::Forms::TextBox^ status_no_txt;
 	private: System::Windows::Forms::Button^ back_button;
 
 	private: System::Windows::Forms::DateTimePicker^ dateTimePicker;
-	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::GroupBox^ register_student_grp_box;
+
 	private: System::Windows::Forms::RadioButton^ female_rbtn;
 
 	private: System::Windows::Forms::RadioButton^ male_rbtn;
@@ -85,12 +87,12 @@ namespace CppCLR_WinformsProjekt1 {
 			this->email_id_txt = (gcnew System::Windows::Forms::TextBox());
 			this->mobile_no_txt = (gcnew System::Windows::Forms::TextBox());
 			this->address_txt = (gcnew System::Windows::Forms::TextBox());
-			this->add_button = (gcnew System::Windows::Forms::Button());
+			this->register_button = (gcnew System::Windows::Forms::Button());
 			this->status_lbl = (gcnew System::Windows::Forms::Label());
 			this->status_no_txt = (gcnew System::Windows::Forms::TextBox());
 			this->back_button = (gcnew System::Windows::Forms::Button());
 			this->dateTimePicker = (gcnew System::Windows::Forms::DateTimePicker());
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->register_student_grp_box = (gcnew System::Windows::Forms::GroupBox());
 			this->profession_comboBox = (gcnew System::Windows::Forms::ComboBox());
 			this->re_password_txt = (gcnew System::Windows::Forms::TextBox());
 			this->password_txt = (gcnew System::Windows::Forms::TextBox());
@@ -98,7 +100,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->re_password_lbl = (gcnew System::Windows::Forms::Label());
 			this->female_rbtn = (gcnew System::Windows::Forms::RadioButton());
 			this->male_rbtn = (gcnew System::Windows::Forms::RadioButton());
-			this->groupBox1->SuspendLayout();
+			this->register_student_grp_box->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// name_lbl
@@ -183,16 +185,16 @@ namespace CppCLR_WinformsProjekt1 {
 			this->address_txt->Size = System::Drawing::Size(100, 20);
 			this->address_txt->TabIndex = 11;
 			// 
-			// add_button
+			// register_button
 			// 
-			this->add_button->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->add_button->Location = System::Drawing::Point(626, 278);
-			this->add_button->Name = L"add_button";
-			this->add_button->Size = System::Drawing::Size(117, 32);
-			this->add_button->TabIndex = 12;
-			this->add_button->Text = L"Register";
-			this->add_button->UseVisualStyleBackColor = true;
-			this->add_button->Click += gcnew System::EventHandler(this, &RegisterStudent::add_button_Click);
+			this->register_button->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->register_button->Location = System::Drawing::Point(626, 278);
+			this->register_button->Name = L"register_button";
+			this->register_button->Size = System::Drawing::Size(117, 32);
+			this->register_button->TabIndex = 12;
+			this->register_button->Text = L"Register";
+			this->register_button->UseVisualStyleBackColor = true;
+			this->register_button->Click += gcnew System::EventHandler(this, &RegisterStudent::RegisterStudent_Click);
 			// 
 			// status_lbl
 			// 
@@ -231,35 +233,35 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dateTimePicker->Size = System::Drawing::Size(99, 20);
 			this->dateTimePicker->TabIndex = 16;
 			// 
-			// groupBox1
+			// register_student_grp_box
 			// 
-			this->groupBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->groupBox1->Controls->Add(this->profession_comboBox);
-			this->groupBox1->Controls->Add(this->re_password_txt);
-			this->groupBox1->Controls->Add(this->password_txt);
-			this->groupBox1->Controls->Add(this->password_lbl);
-			this->groupBox1->Controls->Add(this->re_password_lbl);
-			this->groupBox1->Controls->Add(this->female_rbtn);
-			this->groupBox1->Controls->Add(this->male_rbtn);
-			this->groupBox1->Controls->Add(this->status_no_txt);
-			this->groupBox1->Controls->Add(this->dateTimePicker);
-			this->groupBox1->Controls->Add(this->name_lbl);
-			this->groupBox1->Controls->Add(this->dob_lbl);
-			this->groupBox1->Controls->Add(this->profession_lbl);
-			this->groupBox1->Controls->Add(this->status_lbl);
-			this->groupBox1->Controls->Add(this->email_id_lbl);
-			this->groupBox1->Controls->Add(this->mobile_no_lbl);
-			this->groupBox1->Controls->Add(this->address_txt);
-			this->groupBox1->Controls->Add(this->address_lbl);
-			this->groupBox1->Controls->Add(this->mobile_no_txt);
-			this->groupBox1->Controls->Add(this->name_txt);
-			this->groupBox1->Controls->Add(this->email_id_txt);
-			this->groupBox1->Location = System::Drawing::Point(235, 51);
-			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(333, 570);
-			this->groupBox1->TabIndex = 17;
-			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Register Student";
+			this->register_student_grp_box->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->register_student_grp_box->Controls->Add(this->profession_comboBox);
+			this->register_student_grp_box->Controls->Add(this->re_password_txt);
+			this->register_student_grp_box->Controls->Add(this->password_txt);
+			this->register_student_grp_box->Controls->Add(this->password_lbl);
+			this->register_student_grp_box->Controls->Add(this->re_password_lbl);
+			this->register_student_grp_box->Controls->Add(this->female_rbtn);
+			this->register_student_grp_box->Controls->Add(this->male_rbtn);
+			this->register_student_grp_box->Controls->Add(this->status_no_txt);
+			this->register_student_grp_box->Controls->Add(this->dateTimePicker);
+			this->register_student_grp_box->Controls->Add(this->name_lbl);
+			this->register_student_grp_box->Controls->Add(this->dob_lbl);
+			this->register_student_grp_box->Controls->Add(this->profession_lbl);
+			this->register_student_grp_box->Controls->Add(this->status_lbl);
+			this->register_student_grp_box->Controls->Add(this->email_id_lbl);
+			this->register_student_grp_box->Controls->Add(this->mobile_no_lbl);
+			this->register_student_grp_box->Controls->Add(this->address_txt);
+			this->register_student_grp_box->Controls->Add(this->address_lbl);
+			this->register_student_grp_box->Controls->Add(this->mobile_no_txt);
+			this->register_student_grp_box->Controls->Add(this->name_txt);
+			this->register_student_grp_box->Controls->Add(this->email_id_txt);
+			this->register_student_grp_box->Location = System::Drawing::Point(235, 51);
+			this->register_student_grp_box->Name = L"register_student_grp_box";
+			this->register_student_grp_box->Size = System::Drawing::Size(333, 570);
+			this->register_student_grp_box->TabIndex = 17;
+			this->register_student_grp_box->TabStop = false;
+			this->register_student_grp_box->Text = L"Register Student";
 			// 
 			// profession_comboBox
 			// 
@@ -333,20 +335,20 @@ namespace CppCLR_WinformsProjekt1 {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(843, 633);
-			this->Controls->Add(this->groupBox1);
+			this->Controls->Add(this->register_student_grp_box);
 			this->Controls->Add(this->back_button);
-			this->Controls->Add(this->add_button);
+			this->Controls->Add(this->register_button);
 			this->MinimumSize = System::Drawing::Size(857, 666);
 			this->Name = L"RegisterStudent";
 			this->Text = L"Register Student";
 			this->Load += gcnew System::EventHandler(this, &RegisterStudent::RegisterStudent_Load);
-			this->groupBox1->ResumeLayout(false);
-			this->groupBox1->PerformLayout();
+			this->register_student_grp_box->ResumeLayout(false);
+			this->register_student_grp_box->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	private: System::Void add_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void RegisterStudent_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void RegisterStudent_Load(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void BackButton_Click(System::Object^ sender, System::EventArgs^ e);
 

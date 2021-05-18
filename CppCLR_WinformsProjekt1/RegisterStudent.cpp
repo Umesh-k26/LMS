@@ -19,7 +19,7 @@ namespace CppCLR_WinformsProjekt1 {
 		WindowState = FormWindowState::Maximized;
 	}
 
-	System::Void RegisterStudent::add_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	System::Void RegisterStudent::RegisterStudent_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
