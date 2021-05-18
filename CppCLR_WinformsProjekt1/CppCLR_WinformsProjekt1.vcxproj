@@ -166,6 +166,7 @@
     <ClInclude Include="list_of_students_page.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="login_to_librarian_db.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="profile_book.h">
       <FileType>CppForm</FileType>
@@ -199,6 +200,7 @@
     <ClCompile Include="Form2.cpp" />
     <ClCompile Include="list_of_books_page.cpp" />
     <ClCompile Include="list_of_students_page.cpp" />
+    <ClCompile Include="login_to_librarian_db.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
