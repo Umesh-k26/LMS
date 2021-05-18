@@ -1,5 +1,7 @@
 #pragma once
 
+#include "connection_sql_func.h"
+
 namespace CppCLR_WinformsProjekt1 {
 
 	using namespace System;
@@ -192,8 +194,9 @@ namespace CppCLR_WinformsProjekt1 {
 		int Book_edition_no;
 		int copies_available;
 
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring;
+		constring = sql_connection_func::sql_user_pass_string();
+
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 
 		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT * FROM library_system.student_data WHERE student_id = '" + this->stud_id_txt->Text + "';", conDataBase);
