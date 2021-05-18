@@ -182,12 +182,12 @@ namespace CppCLR_WinformsProjekt1 {
 			MessageBox::Show("Your id is " + str);
 			CppCLR_WinformsProjekt1::profile_book^ profile_book_f = gcnew CppCLR_WinformsProjekt1::profile_book(str);
 			this->Hide();
-			profile_book_f->ShowDialog();
+			//profile_book_f->ShowDialog();
 
-			/*if (profile_book_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+			if (profile_book_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 			{
 				this->Show();
-			}*/
+			}
 
 		}
 	}

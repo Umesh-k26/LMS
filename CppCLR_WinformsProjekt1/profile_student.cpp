@@ -186,7 +186,8 @@ namespace CppCLR_WinformsProjekt1 {
 
 	}
 
-	void profile_student::fill_data_grid() {
+	void profile_student::fill_data_grid() 
+	{
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history WHERE student_id = " + this->student_id_txt->Text + " AND borrow_status = 'BORROWED';", conDataBase);
@@ -210,9 +211,29 @@ namespace CppCLR_WinformsProjekt1 {
 
 	}
 
-	System::Void profile_student::back_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	System::Void profile_student::back_button_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
+	}
+
+	System::Void profile_student::dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
+	{
+		if (e->ColumnIndex == 0)
+		{
+			int row_num = e->RowIndex;
+			int col_num = e->ColumnIndex + 1;
+			String^ str = this->dataGridView1->Rows[row_num]->Cells[col_num]->Value->ToString();
+			MessageBox::Show("Your id is " + str);
+			CppCLR_WinformsProjekt1::profile_order^ profile_order_f = gcnew CppCLR_WinformsProjekt1::profile_order(str);
+			this->Hide();
+
+			if (profile_order_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+			{
+				this->Show();
+			}
+
+		}
 	}
 
 }
