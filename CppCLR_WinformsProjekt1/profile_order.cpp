@@ -1,3 +1,224 @@
 #include "pch.h"
 #include "profile_order.h"
 
+namespace CppCLR_WinformsProjekt1 {
+
+	profile_order::profile_order(void)
+	{
+		InitializeComponent();
+		//
+		//TODO: Add the constructor code here
+		//
+	}
+
+	profile_order::profile_order(String^ input_for_orderid)
+	{
+		InitializeComponent();
+		//
+		//TODO: Add the constructor code here
+		//
+		transfer_order_id = input_for_orderid;
+	}
+
+	profile_order::~profile_order()
+	{
+		if (components)
+		{
+			delete components;
+		}
+	}
+
+	System::Void profile_order::profile_order_Load(System::Object^ sender, System::EventArgs^ e) 
+	{
+
+		CenterToScreen();
+		//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
+		WindowState = FormWindowState::Maximized;
+
+		//
+		//
+		//
+		//		NEED TO ADD LOADING PROFILES
+		//
+		//
+		this->order_id_txt->Text = transfer_order_id;
+		enum column_id_for_order_history
+		{
+			column_order_id = 0,
+			column_book_id = 1,
+			column_student_id = 2,
+			column_issue_ = 3,
+			column_return_ = 4,
+			column_fine_ = 5,
+			column_stat_ = 6,
+		};
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history\
+		WHERE order_id = " + transfer_order_id + ";", conDataBase);
+		MySqlDataReader^ myReader;
+		//MessageBox::Show(transfer_order_id);
+
+		try {
+			conDataBase->Open();
+			myReader = cmdDataBase->ExecuteReader();
+
+			while (myReader->Read())
+			{
+				String^ printing_student_id;
+				String^ printing_book_id;
+				//String^ printing_date_issue;
+				//String^ printing_date_return;
+				String^ printing_fine;
+
+				MySql::Data::Types::MySqlDateTime print_date_of_issue;
+				//MySql::Data::Types::MySqlDateTime print_date_of_return;
+				print_date_of_issue = myReader->GetMySqlDateTime("date_issue");
+				//print_date_of_return = myReader->GetMySqlDateTime("date_returned");
+				if (myReader->IsDBNull(column_id_for_order_history::column_return_) || myReader->IsDBNull(column_id_for_order_history::column_fine_))
+				{
+					this->date_return_txt->Text = "";
+					this->order_fine_txt->Text = "";
+				}
+				else
+				{
+					MySql::Data::Types::MySqlDateTime print_date_of_return;
+					print_date_of_return = myReader->GetMySqlDateTime("date_returned");
+					printing_fine = myReader->GetString("borrow_fine");
+					this->date_return_txt->Text = print_date_of_return.ToString();
+					this->order_fine_txt->Text = printing_fine;
+				}
+
+				printing_student_id = myReader->GetString("student_id");
+				printing_book_id = myReader->GetString("book_id");
+				//printing_date_issue = myReader->GetString("date_issue");
+				//printing_date_return = myReader->GetString("date_returned");
+				//printing_fine = myReader->GetString("borrow_fine");
+
+				this->student_id_txt->Text = printing_student_id;
+				this->book_id_txt->Text = printing_book_id;
+				//this->date_issue_txt->Text = printing_date_issue;
+				//this->date_return_txt->Text = printing_date_return;
+				//this->order_fine_txt->Text = printing_fine;
+
+				this->date_issue_txt->Text = print_date_of_issue.ToString();
+				//this->date_return_txt->Text = print_date_of_return.ToString();
+			}
+
+
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->Message);
+
+		}
+		fill_student_data();
+		fill_book_data();
+
+	}
+
+	void profile_order::fill_student_data()
+	{
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.student_data WHERE student_id = " + this->student_id_txt->Text + ";", conDataBase);
+		MySqlDataReader^ myReader;
+		try {
+			conDataBase->Open();
+			myReader = cmdDataBase->ExecuteReader();
+
+			while (myReader->Read())
+			{
+				String^ printing_name;
+				//String^ printing_id;
+				String^ printing_profession;
+				String^ printing_email;
+				String^ printing_mobile;
+				String^ printing_address;
+				//String^ printing_dob;
+				//printing_id = myReader->GetString("student_id");
+				MySql::Data::Types::MySqlDateTime print_dob;
+				printing_name = myReader->GetString("student_name");
+				printing_profession = myReader->GetString("student_profession");
+				printing_email = myReader->GetString("student_email");
+				printing_mobile = myReader->GetString("student_mobile");
+				printing_address = myReader->GetString("student_address");
+				//printing_dob = myReader->GetString("student_dob");
+				print_dob = myReader->GetMySqlDateTime("student_dob");
+				this->name_txt->Text = printing_name;
+				//this->student_id_txt->Text = printing_id;
+				this->email_id_txt->Text = printing_email;
+				this->mobile_no_txt->Text = printing_mobile;
+				this->address_txt->Text = printing_address;
+				//this->dob_student_txt->Text = printing_dob;
+				this->dob_student_txt->Text = print_dob.ToString();
+				this->profession_txt->Text = printing_profession;
+
+			}
+
+
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->Message);
+
+		}
+	}
+
+	void profile_order::fill_book_data()
+	{
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.book_data WHERE book_id = " + this->book_id_txt->Text + ";", conDataBase);
+		MySqlDataReader^ myReader;
+		try {
+			conDataBase->Open();
+			myReader = cmdDataBase->ExecuteReader();
+
+			while (myReader->Read())
+			{
+				String^ printing_name;
+
+				String^ printing_author;
+				String^ printing_publisher;
+				String^ printing_price;
+				String^ printing_edition_no;
+				String^ printing_book_borrow_stat;
+				String^ printing_no_of_copies;
+				String^ printing_copies_available;
+
+				printing_name = myReader->GetString("book_name");
+				printing_author = myReader->GetString("book_author");
+				printing_publisher = myReader->GetString("book_publisher");
+				printing_price = myReader->GetString("book_price");
+				printing_edition_no = myReader->GetString("book_edition_no");
+				printing_book_borrow_stat = myReader->GetString("book_borrow_status");
+				printing_no_of_copies = myReader->GetString("no_of_copies");
+				printing_copies_available = myReader->GetString("copies_available");
+				this->bookname_txt->Text = printing_name;
+
+				this->author_txt->Text = printing_author;
+				this->publisher_txt->Text = printing_publisher;
+				this->price_txt->Text = printing_price;
+				this->edition_no_txt->Text = printing_edition_no;
+				this->borrow_stat_txt->Text = printing_book_borrow_stat;
+				this->no_copies_txt->Text = printing_no_of_copies;
+				this->copies_available_txt->Text = printing_copies_available;
+				//listBox1->Items->Add(printing_names);
+
+			}
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->Message);
+
+		}
+	}
+
+	System::Void profile_order::back_button_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+		this->Close();
+	}
+
+}
+
