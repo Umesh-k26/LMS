@@ -194,10 +194,7 @@ namespace CppCLR_WinformsProjekt1 {
 		int Book_edition_no;
 		int copies_available;
 
-		String^ constring;
-		constring = sql_connection_func::sql_user_pass_string();
-
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
 		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT * FROM library_system.student_data WHERE student_id = '" + this->stud_id_txt->Text + "';", conDataBase);
 		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system.book_data WHERE book_id = '" + this->book_id_txt->Text + "';", conDataBase);

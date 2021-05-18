@@ -166,11 +166,7 @@ namespace CppCLRWinformsProjekt {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-
-		String^ constring;
-		constring = sql_connection_func::sql_user_pass_string();
-
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE \
 	    username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 

@@ -132,10 +132,7 @@ namespace CppCLR_WinformsProjekt1 {
 	}
 	private: System::Void return_button_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		String^ constring;
-		constring = sql_connection_func::sql_user_pass_string();
-		
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history WHERE order_id = '" + this->order_id_txt->Text + "';", conDataBase);
 
 		MySqlDataReader^ myReader;

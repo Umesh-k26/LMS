@@ -192,11 +192,7 @@ namespace CppCLR_WinformsProjekt1 {
 
 	private: void fill_data_grid() {
 
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
-		String^ constring = sql_connection_func::sql_user_pass_string();
-
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS ID, book_name as Title, book_author AS Author, book_edition_no AS Edition, book_publisher AS Publisher, book_borrow_status AS Status FROM library_system.book_data;", conDataBase);
 		MySqlDataReader^ myReader;
 
