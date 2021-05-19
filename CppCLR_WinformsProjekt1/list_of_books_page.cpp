@@ -14,6 +14,18 @@ namespace CppCLR_WinformsProjekt1 {
 		//
 	}
 
+	list_of_books_page::list_of_books_page(String^ input_transfer_id, bool is_librarian_input)
+	{
+		transfer_id = input_transfer_id;
+		is_librarian = is_librarian_input;
+		InitializeComponent();
+		//fill_data_grid();
+		sql_connection_func::fill_datagrid_book(dataGridView1);
+		//
+		//TODO: Add the constructor code here
+		//
+	}
+
 	list_of_books_page::~list_of_books_page()
 	{
 		if (components)

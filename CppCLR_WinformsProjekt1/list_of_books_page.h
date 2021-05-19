@@ -15,7 +15,11 @@ namespace CppCLR_WinformsProjekt1 {
 	public ref class list_of_books_page : public System::Windows::Forms::Form
 	{
 	public:
+		String^ transfer_id;
+		bool is_librarian;
+	public:
 		list_of_books_page(void);
+		list_of_books_page(String^ input_transfer_id, bool is_librarian_input);
 
 	protected:
 		~list_of_books_page();

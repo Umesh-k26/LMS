@@ -8,7 +8,19 @@ namespace CppCLR_WinformsProjekt1 {
 	{
 		InitializeComponent();
 		//fill_data_grid();
-		sql_connection_func::fill_datagrid_borrow_history(dataGridView1);
+		sql_connection_func::fill_datagrid_borrow_history(dataGridView1, is_librarian, transfer_id);
+		//
+		//TODO: Add the constructor code here
+		//
+	}
+
+	borrow_history_page::borrow_history_page(String^ input_transfer_id, bool is_librarian_input)
+	{
+		transfer_id = input_transfer_id;
+		is_librarian = is_librarian_input;
+		InitializeComponent();
+		//fill_data_grid();
+		sql_connection_func::fill_datagrid_borrow_history(dataGridView1, is_librarian, transfer_id);
 		//
 		//TODO: Add the constructor code here
 		//
@@ -77,7 +89,7 @@ namespace CppCLR_WinformsProjekt1 {
 			{
 				this->Show();
 				//fill_data_grid();
-				sql_connection_func::fill_datagrid_borrow_history(dataGridView1);
+				sql_connection_func::fill_datagrid_borrow_history(dataGridView1, is_librarian, transfer_id);
 			}
 
 		}
@@ -124,7 +136,7 @@ namespace CppCLR_WinformsProjekt1 {
 			MessageBox::Show(ex->Message);
 
 		}*/
-		sql_connection_func::fill_datagrid_borrow_history_filtered(str_list_detail_search_order, this->search_bar->Text, dataGridView1);
+		sql_connection_func::fill_datagrid_borrow_history_filtered(str_list_detail_search_order, this->search_bar->Text, dataGridView1, is_librarian, transfer_id);
 	}
 
 	System::Void borrow_history_page::clear_all_button_Click(System::Object^ sender, System::EventArgs^ e)

@@ -16,7 +16,11 @@ namespace CppCLR_WinformsProjekt1 {
 	public ref class borrow_history_page : public System::Windows::Forms::Form
 	{
 	public:
+		String^ transfer_id;
+		bool is_librarian;
+	public:
 		borrow_history_page(void);
+		borrow_history_page(String^ input_transfer_id, bool is_librarian_input);
 
 	protected:
 		~borrow_history_page();

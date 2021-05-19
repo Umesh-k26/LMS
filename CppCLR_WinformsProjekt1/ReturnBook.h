@@ -15,8 +15,11 @@ namespace CppCLR_WinformsProjekt1 {
 	public ref class ReturnBook : public System::Windows::Forms::Form
 	{
 	public:
+		String^ transfer_id;
+		bool is_librarian;
+	public:
 		ReturnBook(void);
-
+		ReturnBook(String^ input_transfer_id, bool is_librarian_input);
 
 	protected:
 		~ReturnBook();
