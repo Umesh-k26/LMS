@@ -20,38 +20,18 @@ namespace connection_to_librarian_db {
 			}
 			if (count == 1)
 			{
-				/*MessageBox::Show("Username and password is correct");
-
-				CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
-				this->Hide();
-				if (f2->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-				{
-					this->username_txt->Text = "";
-					this->password_txt->Text = "";
-					this->Show();
-
-				}*/
 				//
 				//	IN FORM 1 IF THIS IS TRUE THEN OPEN FORM 2 WITH ALL BUTTONS ALLOWED FOR LIBRARAIN
 				//
 				MessageBox::Show("You are librarian");
 				return true;
-
 			}
-			/*else if (count > 1)
-			{
-				MessageBox::Show("Duplicate username and password ...Access denied");
-			}
-			else
-				MessageBox::Show("Username and password is incorrect ...Please try again");
-			*/
-
 		}
 		catch (Exception^ ex)
 		{
-			//MessageBox::Show(ex->Message);
-
+			MessageBox::Show(ex->Message);
 		}
+		conDataBase->Close();
 		return false;
 	}
 }

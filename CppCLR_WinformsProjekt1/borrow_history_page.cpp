@@ -39,7 +39,6 @@ namespace CppCLR_WinformsProjekt1 {
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT order_id AS ID, book_id AS 'Book ID', student_id AS 'Borrower ID', date_issue AS 'Issue Date', date_returned AS 'Return Date', borrow_fine AS 'Fine', borrow_status AS 'Status' FROM library_system.borrow_history;", conDataBase);
-		MySqlDataReader^ myReader;
 
 		try {
 			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
@@ -56,7 +55,7 @@ namespace CppCLR_WinformsProjekt1 {
 			MessageBox::Show(ex->Message);
 
 		}
-
+		conDataBase->Close();
 	}
 
 	System::Void borrow_history_page::borrow_history_page_Load(System::Object^ sender, System::EventArgs^ e) 

@@ -82,14 +82,13 @@ namespace extra_func {
 					return value_fine;
 				}
 			}
-
-
 		}
 		catch (Exception^ ex)
 		{
 			MessageBox::Show(ex->Message);
-
 		}
+
+		conDataBase->Close();
 		return 0;
 	}
 }

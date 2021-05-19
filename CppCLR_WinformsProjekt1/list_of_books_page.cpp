@@ -39,7 +39,6 @@ namespace CppCLR_WinformsProjekt1 {
 		
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS ID, book_name as Title, book_author AS Author, book_edition_no AS Edition, book_publisher AS Publisher, book_borrow_status AS Status FROM library_system.book_data;", conDataBase);
-		MySqlDataReader^ myReader;
 
 		try {
 			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "profile_order.h";
+#include "profile_order.h"
 #include "connection_sql_func.h"
 namespace CppCLR_WinformsProjekt1 {
 

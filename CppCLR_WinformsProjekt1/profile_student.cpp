@@ -85,8 +85,8 @@ namespace CppCLR_WinformsProjekt1 {
 		catch (Exception^ ex)
 		{
 			MessageBox::Show(ex->Message);
-
 		}
+		conDataBase->Close();
 	}
 
 	System::Void profile_student::update_profile_button_Click(System::Object^ sender, System::EventArgs^ e)
@@ -113,30 +113,21 @@ namespace CppCLR_WinformsProjekt1 {
 		{
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system.student_data WHERE student_id = " + this->student_id_txt->Text + ";", conDataBase);
-			MySqlDataReader^ myReader;
+
 			try {
 				conDataBase->Open();
-				myReader = cmdDataBase->ExecuteReader();
+				cmdDataBase->ExecuteNonQuery();
 				MessageBox::Show("Profile is deleted");
-				while (myReader->Read())
-				{
-
-				}
-
-
 			}
 			catch (Exception^ ex)
 			{
 				MessageBox::Show(ex->Message);
-
 			}
+			conDataBase->Close();
 			this->DialogResult = System::Windows::Forms::DialogResult::OK;
 			this->Close();
 		}
-		else
-		{
-			//Do nothing
-		}
+
 	}
 
 	System::Void profile_student::confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e)
@@ -151,22 +142,15 @@ namespace CppCLR_WinformsProjekt1 {
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("UPDATE library_system.student_data set student_id = \
 		" + this->student_id_txt->Text + ",student_name = '" + this->name_txt->Text + "',student_dob = '" + this->dob_student_txt->Text + "', student_profession = '" + this->profession_txt->Text + "', student_email='" + this->email_id_txt->Text + "', student_mobile=" + this->mobile_no_txt->Text + ", student_address = '" + this->address_txt->Text + "'WHERE student_id = " + this->student_id_txt->Text + ";", conDataBase);
-		MySqlDataReader^ myReader;
+
 		try {
 			conDataBase->Open();
-			myReader = cmdDataBase->ExecuteReader();
+			cmdDataBase->ExecuteNonQuery();
 			MessageBox::Show("Profile is updated");
-			while (myReader->Read())
-			{
-
-			}
-
-
 		}
 		catch (Exception^ ex)
 		{
 			MessageBox::Show(ex->Message);
-
 		}
 		//this->dob_student_txt->Visible = true;
 		this->update_profile_button->Visible = true;
@@ -184,7 +168,7 @@ namespace CppCLR_WinformsProjekt1 {
 		//
 		//	FORM NOT RELOADING OVER HERE NEED TO FIX
 		//
-
+		conDataBase->Close();
 	}
 
 	void profile_student::fill_data_grid() 
@@ -192,7 +176,6 @@ namespace CppCLR_WinformsProjekt1 {
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history WHERE student_id = " + this->student_id_txt->Text + " AND borrow_status = 'BORROWED';", conDataBase);
-		MySqlDataReader^ myReader;
 		//student_id,student_name,student_mobile, student_profession, student_no_book_stat 
 		try {
 			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
@@ -207,9 +190,8 @@ namespace CppCLR_WinformsProjekt1 {
 		catch (Exception^ ex)
 		{
 			MessageBox::Show(ex->Message);
-
 		}
-
+		conDataBase->Close();
 	}
 
 	System::Void profile_student::back_button_Click(System::Object^ sender, System::EventArgs^ e) 

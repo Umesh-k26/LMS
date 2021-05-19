@@ -103,4 +103,3 @@ namespace CppCLR_WinformsProjekt1 {
 		this->Close();
 	}
 }
-

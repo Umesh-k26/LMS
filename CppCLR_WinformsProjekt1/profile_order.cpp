@@ -113,7 +113,7 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 		fill_student_data();
 		fill_book_data();
-
+		conDataBase->Close();
 	}
 
 	void profile_order::fill_student_data()
@@ -160,8 +160,8 @@ namespace CppCLR_WinformsProjekt1 {
 		catch (Exception^ ex)
 		{
 			MessageBox::Show(ex->Message);
-
 		}
+		conDataBase->Close();
 	}
 
 	void profile_order::fill_book_data()
@@ -210,8 +210,8 @@ namespace CppCLR_WinformsProjekt1 {
 		catch (Exception^ ex)
 		{
 			MessageBox::Show(ex->Message);
-
 		}
+		conDataBase->Close();
 	}
 
 	System::Void profile_order::back_button_Click(System::Object^ sender, System::EventArgs^ e)

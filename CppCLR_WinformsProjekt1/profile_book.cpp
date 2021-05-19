@@ -87,8 +87,8 @@ namespace CppCLR_WinformsProjekt1 {
 		catch (Exception^ ex)
 		{
 			MessageBox::Show(ex->Message);
-
 		}
+		conDataBase->Close();
 	}
 
 	System::Void profile_book::update_profile_button_Click(System::Object^ sender, System::EventArgs^ e)
@@ -106,23 +106,17 @@ namespace CppCLR_WinformsProjekt1 {
 		{
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system.book_data WHERE book_id = " + this->book_id_txt->Text + ";", conDataBase);
-			MySqlDataReader^ myReader;
+			
 			try {
 				conDataBase->Open();
-				myReader = cmdDataBase->ExecuteReader();
+				cmdDataBase->ExecuteNonQuery();
 				MessageBox::Show("Profile is deleted");
-				while (myReader->Read())
-				{
-
-				}
-
-
 			}
 			catch (Exception^ ex)
 			{
 				MessageBox::Show(ex->Message);
-
 			}
+			conDataBase->Close();
 			this->DialogResult = System::Windows::Forms::DialogResult::OK;
 			this->Close();
 		}
@@ -147,7 +141,6 @@ namespace CppCLR_WinformsProjekt1 {
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id, book_name, book_author, book_edition_no, book_publisher, book_borrow_status FROM library_system.book_data WHERE book_name = '" + this->bookname_txt->Text + "' AND book_edition_no = " + this->edition_no_txt->Text + ";", conDataBase);
-		MySqlDataReader^ myReader;
 		//
 		//
 		//	THIS PART IS NOT FILLING THE DATA PROPERLY IN DATAGRIDVIEW NEED TO CHECK
@@ -167,9 +160,8 @@ namespace CppCLR_WinformsProjekt1 {
 		catch (Exception^ ex)
 		{
 			MessageBox::Show(ex->Message);
-
 		}
-
+		conDataBase->Close();
 	}
 
 	System::Void profile_book::dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) 
@@ -239,6 +231,7 @@ namespace CppCLR_WinformsProjekt1 {
 			{
 				MessageBox::Show(ex->Message);
 			}
+			conDataBase->Close();
 		}
 	}
 

@@ -54,12 +54,9 @@ namespace CppCLR_WinformsProjekt1 {
 		MySqlCommand^ cmdDataBase6 = gcnew MySqlCommand("SELECT * FROM  library_system.borrow_history \
 			WHERE  book_id ='" + this->book_id_txt->Text + "'\
             AND student_id = '" + this->stud_id_txt->Text + "'\
-			AND date_issue = CURDATE()\
-			; ", conDataBase);
+			AND date_issue = CURDATE(); ", conDataBase);
 
 		MySqlDataReader^ myReader;
-
-
 		try {
 			conDataBase->Open();
 			myReader = cmdDataBase1->ExecuteReader();
@@ -150,6 +147,7 @@ namespace CppCLR_WinformsProjekt1 {
 		{
 			MessageBox::Show(ex->Message);
 		}
+		conDataBase->Close();
 	}
 
 	System::Void BorrowBook::BackButton_Click(System::Object^ sender, System::EventArgs^ e) {

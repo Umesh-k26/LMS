@@ -1,8 +1,7 @@
 #pragma once
-//#include "sdf.h"
+
 #include "pch.h"
 #include "Form2.h"
-#include "connection_sql_func.h"
 #include "login_to_librarian_db.h"
 
 namespace CppCLRWinformsProjekt {
@@ -15,32 +14,14 @@ namespace CppCLRWinformsProjekt {
 	using namespace System::Drawing;
 	using namespace MySql::Data::MySqlClient;
 
-	/// <summary>
-	/// Zusammenfassung für Form1
-	/// </summary>
-
 	public ref class Form1 : public System::Windows::Forms::Form
 	{
 	public:
-		Form1(void)
-		{
-			InitializeComponent();
-			//
-			//TODO: Konstruktorcode hier hinzufügen.
-			//
-		}
+		Form1(void);
 
 	protected:
-		/// <summary>
-		/// Verwendete Ressourcen bereinigen.
-		/// </summary>
-		~Form1()
-		{
-			if (components)
-			{
-				delete components;
-			}
-		}
+		~Form1();
+
 	private: System::Windows::Forms::Button^ login_button;
 	protected:
 
@@ -53,9 +34,6 @@ namespace CppCLRWinformsProjekt {
 
 
 	private: System::Windows::Forms::Label^ username_lbl;
-
-
-
 	private: System::Windows::Forms::Label^ password_lbl;
 	private: System::Windows::Forms::GroupBox^ SignIn_box;
 
@@ -63,16 +41,10 @@ namespace CppCLRWinformsProjekt {
 	protected:
 
 	private:
-		/// <summary>
-		/// Erforderliche Designervariable.
-		/// </summary>
 		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung.
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
-		/// </summary>
+
 		void InitializeComponent(void)
 		{
 			this->login_button = (gcnew System::Windows::Forms::Button());
@@ -93,7 +65,7 @@ namespace CppCLRWinformsProjekt {
 			this->login_button->TabIndex = 0;
 			this->login_button->Text = L"Login";
 			this->login_button->UseVisualStyleBackColor = true;
-			this->login_button->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+			this->login_button->Click += gcnew System::EventHandler(this, &Form1::LoginButton_Click);
 			// 
 			// username_txt
 			// 
@@ -119,7 +91,6 @@ namespace CppCLRWinformsProjekt {
 			this->username_lbl->Size = System::Drawing::Size(55, 13);
 			this->username_lbl->TabIndex = 5;
 			this->username_lbl->Text = L"Username";
-			this->username_lbl->Click += gcnew System::EventHandler(this, &Form1::label1_Click);
 			// 
 			// password_lbl
 			// 
@@ -130,7 +101,6 @@ namespace CppCLRWinformsProjekt {
 			this->password_lbl->Size = System::Drawing::Size(53, 13);
 			this->password_lbl->TabIndex = 6;
 			this->password_lbl->Text = L"Password";
-			this->password_lbl->Click += gcnew System::EventHandler(this, &Form1::password_lbl_Click);
 			// 
 			// SignIn_box
 			// 
@@ -157,7 +127,6 @@ namespace CppCLRWinformsProjekt {
 			this->MinimumSize = System::Drawing::Size(725, 624);
 			this->Name = L"Form1";
 			this->Text = L"Form1";
-			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &Form1::Form1_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
 			this->SignIn_box->ResumeLayout(false);
 			this->SignIn_box->PerformLayout();
@@ -165,79 +134,8 @@ namespace CppCLRWinformsProjekt {
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		if (connection_to_librarian_db::is_librarian(this->username_txt->Text, this->password_txt->Text) == true)
-		{
-			MessageBox::Show("Username and password is correct");
+	private: System::Void LoginButton_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e);
 
-			CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2(this->username_txt->Text, true);
-			this->Hide();
-			if (f2->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-			{
-				this->username_txt->Text = "";
-				this->password_txt->Text = "";
-				this->Show();
-			}
-		}
-		else
-		{
-			MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE \
-	    username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
-
-			MySqlDataReader^ myReader;
-			try {
-				conDataBase->Open();
-				myReader = cmdDataBase->ExecuteReader();
-				int count = 0;
-				while (myReader->Read())
-				{
-					count += 1;
-				}
-				if (count == 1)
-				{
-					MessageBox::Show("Username and password is correct");
-
-					CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2(this->username_txt->Text, false);
-					this->Hide();
-					if (f2->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-					{
-						this->username_txt->Text = "";
-						this->password_txt->Text = "";
-						this->Show();
-
-					}
-
-				}
-				else if (count > 1)
-				{
-					MessageBox::Show("Duplicate username and password ...Access denied");
-				}
-				else
-					MessageBox::Show("Username and password is incorrect ...Please try again");
-
-
-			}
-			catch (Exception^ ex)
-			{
-				MessageBox::Show(ex->Message);
-
-			}
-
-		}
-		
-	}
-	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
-
-		CenterToScreen();
-		WindowState = FormWindowState::Maximized;
-	}
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void password_lbl_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void Form1_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
-	}
 	};
 }

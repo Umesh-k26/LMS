@@ -39,8 +39,7 @@ namespace CppCLR_WinformsProjekt1 {
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT student_id AS ID, student_name AS Name, student_mobile AS Mobile, student_email as 'E-Mail', student_no_book_stat AS 'No. of Books Borrowed' FROM library_system.student_data;", conDataBase);
-		MySqlDataReader^ myReader;
-		//student_id,student_name,student_mobile, student_profession, student_no_book_stat 
+
 		try {
 			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
 			sda->SelectCommand = cmdDataBase;
@@ -54,8 +53,8 @@ namespace CppCLR_WinformsProjekt1 {
 		catch (Exception^ ex)
 		{
 			MessageBox::Show(ex->Message);
-
 		}
+		conDataBase->Close();
 	}
 
 	System::Void list_of_students_page::list_of_students_page_Load(System::Object^ sender, System::EventArgs^ e)
@@ -91,13 +90,6 @@ namespace CppCLR_WinformsProjekt1 {
 	{
 		if (e->ColumnIndex == 0)
 		{
-			/*CppCLR_WinformsProjekt1::testing^ testing_f = gcnew CppCLR_WinformsProjekt1::testing;
-			this->Hide();
-			//testing_f->ShowDialog();
-			if (testing_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-			{
-				this->Show();
-			}*/
 			int row_num = e->RowIndex;
 			int col_num = e->ColumnIndex + 1;
 			String^ str = this->dataGridView1->Rows[row_num]->Cells[col_num]->Value->ToString();
@@ -115,8 +107,6 @@ namespace CppCLR_WinformsProjekt1 {
 			}
 
 		}
-
-
 
 	}
 	System::Void list_of_students_page::search_button_student_Click(System::Object^ sender, System::EventArgs^ e)
@@ -143,32 +133,6 @@ namespace CppCLR_WinformsProjekt1 {
 			str_list_detail_search_person = "student_no_book_stat";
 		}
 
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
-		/*String^ constring = sql_connection_func::sql_user_pass_string();
-
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
-		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
-		//student_id,student_name,student_mobile, student_profession, student_no_book_stat
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT student_id AS ID, student_name AS Name, student_mobile AS Mobile, student_email as 'E-Mail', student_no_book_stat AS 'No. of Books Borrowed' FROM library_system.student_data\
-		WHERE " + str_list_detail_search_person + " LIKE '%" + this->search_bar_student->Text + "%';", conDataBase);
-		MySqlDataReader^ myReader;
-
-		try {
-			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
-			sda->SelectCommand = cmdDataBase;
-			DataTable^ dbdataset = gcnew DataTable();
-			sda->Fill(dbdataset);
-			BindingSource^ bSource = gcnew BindingSource();
-			bSource->DataSource = dbdataset;
-			dataGridView1->DataSource = bSource;
-			sda->Update(dbdataset);
-		}
-		catch (Exception^ ex)
-		{
-			MessageBox::Show(ex->Message);
-
-		}*/
 		sql_connection_func::fill_datagrid_students_filtered(str_list_detail_search_person, this->search_bar_student->Text, dataGridView1);
 
 	}
