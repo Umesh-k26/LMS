@@ -15,7 +15,11 @@ namespace CppCLR_WinformsProjekt1 {
 	public ref class RegisterLibrarian : public System::Windows::Forms::Form
 	{
 	public:
+		String^ transfer_id;
+		bool is_librarian;
+	public:
 		RegisterLibrarian(void);
+		RegisterLibrarian(String^ input_transfer_id, bool is_librarian_input);
 
 	protected:
 		/// <summary>

@@ -17,7 +17,11 @@ namespace CppCLR_WinformsProjekt1 {
 	public ref class AddBook : public System::Windows::Forms::Form
 	{
 	public:
+		String^ transfer_id;
+		bool is_librarian;
+	public:
 		AddBook(void);
+		AddBook(String^ input_transfer_id, bool is_librarian_input);
 
 	protected:
 		~AddBook();

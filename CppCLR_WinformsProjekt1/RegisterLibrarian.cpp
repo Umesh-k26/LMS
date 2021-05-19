@@ -7,6 +7,12 @@ namespace CppCLR_WinformsProjekt1 {
 	{
 		InitializeComponent();
 	}
+	RegisterLibrarian::RegisterLibrarian(String^ input_transfer_id, bool is_librarian_input)
+	{
+		transfer_id = input_transfer_id;
+		is_librarian = is_librarian_input;
+		InitializeComponent();
+	}
 	RegisterLibrarian::~RegisterLibrarian()
 	{
 		if (components)

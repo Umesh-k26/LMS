@@ -11,10 +11,11 @@ namespace CppCLR_WinformsProjekt1 {
 		//
 	}
 
-	profile_student::profile_student(String^ label_text_id)
+	profile_student::profile_student(String^ label_text_id, bool is_librarian_input)
 	{
 		InitializeComponent();
 		transfer_id_student = label_text_id;
+		is_librarian = is_librarian_input;
 		//
 		//TODO: Add the constructor code here
 		//

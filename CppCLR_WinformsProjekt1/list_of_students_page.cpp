@@ -14,6 +14,19 @@ namespace CppCLR_WinformsProjekt1 {
 		sql_connection_func::fill_datagrid_student(dataGridView1);
 	}
 
+	list_of_students_page::list_of_students_page(String^ input_id_transfer, bool is_librarian_input)
+	{
+		InitializeComponent();
+		transfer_id = input_id_transfer;
+		is_librarian = is_librarian_input;
+		//fill_listbox1();
+		//fill_data_grid();
+		//
+		//TODO: Add the constructor code here
+		//
+		sql_connection_func::fill_datagrid_student(dataGridView1);
+	}
+
 	list_of_students_page::~list_of_students_page()
 	{
 		if (components)
@@ -90,7 +103,7 @@ namespace CppCLR_WinformsProjekt1 {
 			String^ str = this->dataGridView1->Rows[row_num]->Cells[col_num]->Value->ToString();
 
 			MessageBox::Show("Your id is " + str);
-			CppCLR_WinformsProjekt1::profile_student^ profile_student_f = gcnew CppCLR_WinformsProjekt1::profile_student(str);
+			CppCLR_WinformsProjekt1::profile_student^ profile_student_f = gcnew CppCLR_WinformsProjekt1::profile_student(str, is_librarian);
 			this->Hide();
 			//testing_f->ShowDialog();
 

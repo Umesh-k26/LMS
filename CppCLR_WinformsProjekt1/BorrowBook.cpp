@@ -6,6 +6,12 @@ namespace CppCLR_WinformsProjekt1 {
 	{
 		InitializeComponent();
 	}
+	BorrowBook::BorrowBook(String^ input_transfer_id, bool is_librarian_input)
+	{
+		InitializeComponent();
+		transfer_id = input_transfer_id;
+		is_librarian = is_librarian_input;
+	}
 	BorrowBook::~BorrowBook()
 	{
 		if (components)

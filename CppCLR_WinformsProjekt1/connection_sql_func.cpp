@@ -119,51 +119,88 @@ namespace sql_connection_func {
 	//
 	//FUNCTION FOR FILLING BORROW HISTORY DATAGRID IN BORROW HISTORY PAGE
 	//
-	void fill_datagrid_borrow_history(System::Windows::Forms::DataGridView^ dataGridView1)
+	void fill_datagrid_borrow_history(System::Windows::Forms::DataGridView^ dataGridView1, bool is_librarian_input, String^ transfer_id_input)
 	{
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT order_id AS ID, book_id AS 'Book ID', student_id AS 'Borrower ID', date_issue AS 'Issue Date', date_returned AS 'Return Date', borrow_fine AS 'Fine', borrow_status AS 'Status' FROM library_system.borrow_history;", conDataBase);
-		MySqlDataReader^ myReader;
-
-		try {
-			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
-			sda->SelectCommand = cmdDataBase;
-			DataTable^ dbdataset = gcnew DataTable();
-			sda->Fill(dbdataset);
-			BindingSource^ bSource = gcnew BindingSource();
-			bSource->DataSource = dbdataset;
-			dataGridView1->DataSource = bSource;
-			sda->Update(dbdataset);
-		}
-		catch (Exception^ ex)
+		if (is_librarian_input == true)
 		{
-			MessageBox::Show(ex->Message);
+			MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT order_id AS ID, book_id AS 'Book ID', student_id AS 'Borrower ID', date_issue AS 'Issue Date', date_returned AS 'Return Date', borrow_fine AS 'Fine', borrow_status AS 'Status' FROM library_system.borrow_history;", conDataBase);
+			MySqlDataReader^ myReader;
+
+			try {
+				MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
+				sda->SelectCommand = cmdDataBase;
+				DataTable^ dbdataset = gcnew DataTable();
+				sda->Fill(dbdataset);
+				BindingSource^ bSource = gcnew BindingSource();
+				bSource->DataSource = dbdataset;
+				dataGridView1->DataSource = bSource;
+				sda->Update(dbdataset);
+			}
+			catch (Exception^ ex)
+			{
+				MessageBox::Show(ex->Message);
+
+			}
+		}
+
+		else
+		{
+			MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history WHERE student_id = " + transfer_id_input + ";", conDataBase);
+			MySqlDataReader^ myReader;
+			//student_id,student_name,student_mobile, student_profession, student_no_book_stat 
+			try {
+				MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
+				sda->SelectCommand = cmdDataBase;
+				DataTable^ dbdataset = gcnew DataTable();
+				sda->Fill(dbdataset);
+				BindingSource^ bSource = gcnew BindingSource();
+				bSource->DataSource = dbdataset;
+				dataGridView1->DataSource = bSource;
+				sda->Update(dbdataset);
+			}
+			catch (Exception^ ex)
+			{
+				MessageBox::Show(ex->Message);
+
+			}
 
 		}
+		
+		
 	}
 
-	void fill_datagrid_borrow_history_filtered(String^ str_list_detail_search_order, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView1)
+	void fill_datagrid_borrow_history_filtered(String^ str_list_detail_search_order, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView1, bool is_librarian_input, String^ transfer_id_input)
 	{
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT order_id AS ID, book_id AS 'Book ID', student_id AS 'Borrower ID', date_issue AS 'Issue Date', date_returned AS 'Return Date', borrow_fine AS 'Fine', borrow_status AS 'Status' FROM library_system.borrow_history\
-		WHERE " + str_list_detail_search_order + " LIKE '%" + search_bar_text + "%';", conDataBase);
-		MySqlDataReader^ myReader;
-
-		try {
-			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
-			sda->SelectCommand = cmdDataBase;
-			DataTable^ dbdataset = gcnew DataTable();
-			sda->Fill(dbdataset);
-			BindingSource^ bSource = gcnew BindingSource();
-			bSource->DataSource = dbdataset;
-			dataGridView1->DataSource = bSource;
-			sda->Update(dbdataset);
-		}
-		catch (Exception^ ex)
+		if (is_librarian_input == true)
 		{
-			MessageBox::Show(ex->Message);
+			MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT order_id AS ID, book_id AS 'Book ID', student_id AS 'Borrower ID', date_issue AS 'Issue Date', date_returned AS 'Return Date', borrow_fine AS 'Fine', borrow_status AS 'Status' FROM library_system.borrow_history\
+		WHERE " + str_list_detail_search_order + " LIKE '%" + search_bar_text + "%' AND student_id = "+ transfer_id_input+";", conDataBase);
+			MySqlDataReader^ myReader;
+
+			try {
+				MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
+				sda->SelectCommand = cmdDataBase;
+				DataTable^ dbdataset = gcnew DataTable();
+				sda->Fill(dbdataset);
+				BindingSource^ bSource = gcnew BindingSource();
+				bSource->DataSource = dbdataset;
+				dataGridView1->DataSource = bSource;
+				sda->Update(dbdataset);
+			}
+			catch (Exception^ ex)
+			{
+				MessageBox::Show(ex->Message);
+
+			}
+		}
+		else
+		{
 
 		}
+		
 	}
 
 

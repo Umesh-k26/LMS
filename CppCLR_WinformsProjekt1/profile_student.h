@@ -16,10 +16,10 @@ namespace CppCLR_WinformsProjekt1 {
 	{
 	public:
 		String^ transfer_id_student;
-
+		bool is_librarian;
 	public:
 		profile_student(void);
-		profile_student(String^ label_text_id);
+		profile_student(String^ label_text_id, bool is_librarian_input);
 
 	protected:
 		~profile_student();

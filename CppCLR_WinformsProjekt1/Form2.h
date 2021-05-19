@@ -26,7 +26,6 @@ namespace CppCLR_WinformsProjekt1 {
 	{
 	public: 
 		String^ transfer_id;
-	public:
 		bool is_librarian;
 	public:
 		Form2(void)
@@ -246,7 +245,7 @@ namespace CppCLR_WinformsProjekt1 {
 	}
 
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-		CppCLR_WinformsProjekt1::list_of_students_page^ list_of_students_f = gcnew CppCLR_WinformsProjekt1::list_of_students_page;
+		CppCLR_WinformsProjekt1::list_of_students_page^ list_of_students_f = gcnew CppCLR_WinformsProjekt1::list_of_students_page(transfer_id, is_librarian);
 		this->Hide();
 		//list_of_students_f->ShowDialog();
 		if (list_of_students_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
@@ -274,7 +273,7 @@ namespace CppCLR_WinformsProjekt1 {
 		/*CppCLR_WinformsProjekt1::AddBook^ addbook_f = gcnew CppCLR_WinformsProjekt1::AddBook;
 		this->Hide();
 		addbook_f->ShowDialog();*/
-		CppCLR_WinformsProjekt1::AddBook^ addbook_f = gcnew CppCLR_WinformsProjekt1::AddBook;
+		CppCLR_WinformsProjekt1::AddBook^ addbook_f = gcnew CppCLR_WinformsProjekt1::AddBook(transfer_id, is_librarian);
 		this->Hide();
 		if (addbook_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
@@ -282,7 +281,7 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 	}
 	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
-		CppCLR_WinformsProjekt1::RegisterStudent^ registerstudent_f = gcnew CppCLR_WinformsProjekt1::RegisterStudent;
+		CppCLR_WinformsProjekt1::RegisterStudent^ registerstudent_f = gcnew CppCLR_WinformsProjekt1::RegisterStudent(transfer_id, is_librarian);
 		this->Hide();
 		if (registerstudent_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
@@ -291,7 +290,7 @@ namespace CppCLR_WinformsProjekt1 {
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		CppCLR_WinformsProjekt1::list_of_books_page^ list_of_books_f = gcnew CppCLR_WinformsProjekt1::list_of_books_page;
+		CppCLR_WinformsProjekt1::list_of_books_page^ list_of_books_f = gcnew CppCLR_WinformsProjekt1::list_of_books_page(transfer_id, is_librarian);
 		this->Hide();
 		//list_of_books_f->ShowDialog();
 		if (list_of_books_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
@@ -300,7 +299,7 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 	}
 	private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
-		CppCLR_WinformsProjekt1::borrow_history_page^ borrow_history_page_f = gcnew CppCLR_WinformsProjekt1::borrow_history_page;
+		CppCLR_WinformsProjekt1::borrow_history_page^ borrow_history_page_f = gcnew CppCLR_WinformsProjekt1::borrow_history_page(transfer_id, is_librarian);
 		this->Hide();
 		if (borrow_history_page_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
@@ -308,7 +307,7 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 	}
 	private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
-		CppCLR_WinformsProjekt1::BorrowBook^ borrowbook_f = gcnew CppCLR_WinformsProjekt1::BorrowBook;
+		CppCLR_WinformsProjekt1::BorrowBook^ borrowbook_f = gcnew CppCLR_WinformsProjekt1::BorrowBook(transfer_id, is_librarian);
 		this->Hide();
 		if (borrowbook_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
@@ -316,7 +315,7 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 	}
 	private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
-		CppCLR_WinformsProjekt1::ReturnBook^ returnbook_f = gcnew CppCLR_WinformsProjekt1::ReturnBook;
+		CppCLR_WinformsProjekt1::ReturnBook^ returnbook_f = gcnew CppCLR_WinformsProjekt1::ReturnBook(transfer_id, is_librarian);
 		this->Hide();
 		if (returnbook_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
@@ -328,7 +327,7 @@ namespace CppCLR_WinformsProjekt1 {
 		this->Close();
 	}
 	private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) {
-		CppCLR_WinformsProjekt1::RegisterLibrarian^ registerlibrarian_f = gcnew CppCLR_WinformsProjekt1::RegisterLibrarian;
+		CppCLR_WinformsProjekt1::RegisterLibrarian^ registerlibrarian_f = gcnew CppCLR_WinformsProjekt1::RegisterLibrarian(transfer_id, is_librarian);
 		this->Hide();
 		if (registerlibrarian_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
@@ -336,7 +335,7 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 	}
 private: System::Void view_profile_user_Click(System::Object^ sender, System::EventArgs^ e) {
-	CppCLR_WinformsProjekt1::profile_student^ profile_student_f = gcnew CppCLR_WinformsProjekt1::profile_student(transfer_id);
+	CppCLR_WinformsProjekt1::profile_student^ profile_student_f = gcnew CppCLR_WinformsProjekt1::profile_student(transfer_id, is_librarian);
 	this->Hide();
 	if (profile_student_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 	{

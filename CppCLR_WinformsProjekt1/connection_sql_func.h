@@ -23,6 +23,6 @@ namespace sql_connection_func {
 	void fill_datagrid_books_filtered(String^ str_list_detail_search_book, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView1);
 
 	//FUNCTION FOR FILLING BORROW HISTORY DATAGRID IN BORROW HISTORY PAGE
-	void fill_datagrid_borrow_history(System::Windows::Forms::DataGridView^ dataGridView1);
-	void fill_datagrid_borrow_history_filtered(String^ str_list_detail_search_order, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView1);
+	void fill_datagrid_borrow_history(System::Windows::Forms::DataGridView^ dataGridView1, bool is_librarian_input, String^ transfer_id_input);
+	void fill_datagrid_borrow_history_filtered(String^ str_list_detail_search_order, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView1, bool is_librarian_input, String^ transfer_id_input);
 }
