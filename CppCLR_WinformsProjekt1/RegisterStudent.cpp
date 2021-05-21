@@ -30,21 +30,21 @@ namespace CppCLR_WinformsProjekt1 {
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
 		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system.student_data (student_name, student_dob, student_address, student_email, \
-		student_mobile, student_profession, student_no_book_stat,student_fine, student_gender) \
-		VALUES('" + this->name_txt->Text + "',\
-		'" + this->dateTimePicker->Text + "',\
-		'" + this->address_txt->Text + "',\
-		'" + this->email_id_txt->Text + "',\
-		" + this->mobile_no_txt->Text + ",\
-		'" + this->profession_comboBox->Text + "',\
-		" + this->status_no_txt->Text + ", 0, '" + Gender + "')	;", conDataBase);
+			student_mobile, student_profession, student_no_book_stat,student_fine, student_gender) \
+			VALUES('" + this->name_txt->Text + "',\
+			'" + this->dateTimePicker->Text + "',\
+			'" + this->address_txt->Text + "',\
+			'" + this->email_id_txt->Text + "',\
+			" + this->mobile_no_txt->Text + ",\
+			'" + this->profession_comboBox->Text + "',\
+			" + this->status_no_txt->Text + ", 0, '" + Gender + "')	;", conDataBase);
 
 		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("USE library_system;INSERT INTO user_pass (student_id, user_password) \
-		VALUES((SELECT student_id FROM student_data WHERE student_email = '" + this->email_id_txt->Text + "'), \
-		'" + this->password_txt->Text + "');", conDataBase);
+			VALUES((SELECT student_id FROM student_data WHERE student_email = '" + this->email_id_txt->Text + "'), \
+			'" + this->password_txt->Text + "');", conDataBase);
 
 		MySqlCommand^ cmdDataBase3 = gcnew MySqlCommand("SELECT * FROM library_system.student_data \
-	    WHERE student_email = '" + this->email_id_txt->Text + "';", conDataBase);
+			WHERE student_email = '" + this->email_id_txt->Text + "';", conDataBase);
 
 		MySqlDataReader^ myReader;
 		try {

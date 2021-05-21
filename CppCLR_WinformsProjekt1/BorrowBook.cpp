@@ -39,17 +39,17 @@ namespace CppCLR_WinformsProjekt1 {
 		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT * FROM library_system.student_data WHERE student_id = '" + this->stud_id_txt->Text + "';", conDataBase);
 		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system.book_data WHERE book_id = '" + this->book_id_txt->Text + "';", conDataBase);
 		MySqlCommand^ cmdDataBase3 = gcnew MySqlCommand("UPDATE  library_system.book_data set\
-     book_borrow_status = 'BORROWED' WHERE \
-     book_id ='" + this->book_id_txt->Text + "' ; \
-     UPDATE library_system.student_data set\
-     student_no_book_stat = student_no_book_stat +1 WHERE \
-     student_id ='" + this->stud_id_txt->Text + "' ", conDataBase);
+			book_borrow_status = 'BORROWED' WHERE \
+			book_id ='" + this->book_id_txt->Text + "' ; \
+			UPDATE library_system.student_data set\
+			student_no_book_stat = student_no_book_stat +1 WHERE \
+			student_id ='" + this->stud_id_txt->Text + "' ", conDataBase);
 
 		MySqlCommand^ cmdDataBase5 = gcnew MySqlCommand("INSERT INTO library_system.borrow_history \
-		(book_id, student_id,date_issue) \
-		VALUES('" + this->book_id_txt->Text + "',\
-		'" + this->stud_id_txt->Text + "',\
-		CURDATE());", conDataBase);
+			(book_id, student_id,date_issue) \
+			VALUES('" + this->book_id_txt->Text + "',\
+			'" + this->stud_id_txt->Text + "',\
+			CURDATE());", conDataBase);
 
 		MySqlCommand^ cmdDataBase6 = gcnew MySqlCommand("SELECT * FROM  library_system.borrow_history \
 			WHERE  book_id ='" + this->book_id_txt->Text + "'\
@@ -123,8 +123,6 @@ namespace CppCLR_WinformsProjekt1 {
 
 
 					}
-
-
 					else if (Book_status == "BORROWED")
 					{
 						if (copies_available > 0)
@@ -135,13 +133,7 @@ namespace CppCLR_WinformsProjekt1 {
 					}
 
 				}
-
-				else if (count2 > 1)
-					MessageBox::Show("Duplicate ID's of same book_id detected. Please resolve before updating.");
-
 			}
-			else if (count1 > 1)
-				MessageBox::Show("Duplicate ID's of same student_id detected. Please resolve before updating.");
 		}
 		catch (Exception^ ex)
 		{

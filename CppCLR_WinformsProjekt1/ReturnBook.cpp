@@ -60,7 +60,7 @@ namespace CppCLR_WinformsProjekt1 {
 			else if (count == 1)
 			{
 				if (Borrow_status == "RETURNED")
-					MessageBox::Show("Book with given Order id is already Returned! .Please resolve if any before updating");
+					MessageBox::Show("Book with given Order id is already Returned!");
 
 				else if (Borrow_status = "BORROWED")
 				{
@@ -78,13 +78,10 @@ namespace CppCLR_WinformsProjekt1 {
 					}
 					myReader->Close();
 					if (count1 == 0)
-						MessageBox::Show("Book id of Borrowed book with given order_id is not found. Please resolve before updating.");
+						MessageBox::Show("Book id of Borrowed book with given order_id is not found.");
 					else if (count1 == 1)
 					{
-
-						myReader->Close();
-						MySqlCommand^ cmdDataBase3 = gcnew MySqlCommand("SELECT * FROM library_system.student_data \
-                       WHERE student_id ='" + Student_id + "';", conDataBase);
+						MySqlCommand^ cmdDataBase3 = gcnew MySqlCommand("SELECT * FROM library_system.student_data WHERE student_id ='" + Student_id + "';", conDataBase);
 						myReader = cmdDataBase3->ExecuteReader();
 
 						int count2 = 0;
@@ -97,14 +94,13 @@ namespace CppCLR_WinformsProjekt1 {
 						myReader->Close();
 						if (count2 == 0)
 						{
-							MessageBox::Show("student who borrowed  book with given order_id is not found. Please resolve before updating.");
+							MessageBox::Show("student who borrowed  book with given order_id is not found.");
 						}
 
 						else if (count2 == 1)
 						{
-							MySqlCommand^ cmdDataBase4 = gcnew MySqlCommand("UPDATE library_system.borrow_history set \
-                       date_returned = CURDATE(),borrow_status = 'RETURNED'\
-		               WHERE order_id = '" + this->order_id_txt->Text + "';", conDataBase);
+							MySqlCommand^ cmdDataBase4 = gcnew MySqlCommand("UPDATE library_system.borrow_history set date_returned = CURDATE(),borrow_status = 'RETURNED'\
+								WHERE order_id = '" + this->order_id_txt->Text + "';", conDataBase);
 
 
 							//Below Query Updates Borrow_history (Table) except fine coloumn
@@ -114,19 +110,19 @@ namespace CppCLR_WinformsProjekt1 {
 							int fine = extra_func::calculate_fine(order_id, Student_id, profession);
 
 							MySqlCommand^ cmdDataBase5 = gcnew MySqlCommand("UPDATE library_system.book_data set copies_available = copies_available +1 WHERE \
-                       book_name = '" + Book_name + "'\
-                       AND book_author = '" + Book_author + "'\
-                       AND book_publisher = '" + Book_publisher + "'\
-                       AND book_edition_no = " + Book_edition_no + "\
-                       ; UPDATE library_system.book_data set book_borrow_status = 'AVAILABLE' WHERE book_id = " + Book_id + " ;", conDataBase);
+								book_name = '" + Book_name + "'\
+								AND book_author = '" + Book_author + "'\
+								AND book_publisher = '" + Book_publisher + "'\
+								AND book_edition_no = " + Book_edition_no + "\
+								; UPDATE library_system.book_data set book_borrow_status = 'AVAILABLE' WHERE book_id = " + Book_id + " ;", conDataBase);
 
 							MySqlCommand^ cmdDataBase6 = gcnew MySqlCommand("UPDATE  library_system.student_data\
-                       set student_no_book_stat = student_no_book_stat - 1,student_fine = student_fine + '" + fine + "' \
-                       WHERE student_id ='" + Student_id + "';", conDataBase);
+								set student_no_book_stat = student_no_book_stat - 1,student_fine = student_fine + '" + fine + "' \
+								WHERE student_id ='" + Student_id + "';", conDataBase);
 
 							MySqlCommand^ cmdDataBase7 = gcnew MySqlCommand("UPDATE library_system.borrow_history set \
-                       borrow_fine= '" + fine + "'\
-		               WHERE order_id = '" + this->order_id_txt->Text + "';", conDataBase);
+								borrow_fine= '" + fine + "'\
+								WHERE order_id = '" + this->order_id_txt->Text + "';", conDataBase);
 
 
 							//Below Query Updates Book_data (Table) {increases copies_available by 1 for all copies and book_borrow_Status = AVAILABLE for partciular book id}
@@ -141,20 +137,14 @@ namespace CppCLR_WinformsProjekt1 {
 							MessageBox::Show("Returned book successfully! \n book_id = " + Book_id + ",student_id = " + Student_id + ",order_id = " + this->order_id_txt->Text + " ");
 						}
 					}
-					else if (count1 > 1)
-						MessageBox::Show("Duplicate ID's of same book_id detected. Please resolve before updating.");
-
 				}
 				else
-					MessageBox::Show("borrow_status is neither 'BORROWED' nor 'RETURNED' of given order_id, detected. Please resolve before updating.");
+					MessageBox::Show("Invalid Borrow status.");
 			}
-			else if (count > 1)
-				MessageBox::Show("Duplicate ID's of same order_id detected. Please resolve before updating.");
 		}
 		catch (Exception^ ex)
 		{
 			MessageBox::Show(ex->Message);
-
 		}
 	}
 

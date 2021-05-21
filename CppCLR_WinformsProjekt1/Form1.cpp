@@ -32,8 +32,8 @@ namespace CppCLRWinformsProjekt {
 		else
 		{
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE \
-	    username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
+			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from library_system.user_pass WHERE \
+				student_id='" + this->username_txt->Text + "' and user_password = '" + this->password_txt->Text + "' ;", conDataBase);
 
 			MySqlDataReader^ myReader;
 			try {

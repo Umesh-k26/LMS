@@ -6,19 +6,17 @@ namespace CppCLR_WinformsProjekt1 {
 	profile_book::profile_book(void)
 	{
 		InitializeComponent();
-		//
-		//TODO: Add the constructor code here
-		//
-		//fill_data_grid();
 	}
 
-	profile_book::profile_book(String^ label_book_id)
+	profile_book::profile_book(String^ label_book_id, bool isLibrarian)
 	{
 		InitializeComponent();
-		//
-		//TODO: Add the constructor code here
-		//
 		transfer_id_book = label_book_id;
+		if (isLibrarian == false)
+		{
+			this->update_profile_button->Visible = false;
+			this->delete_profile_button->Visible = false;
+		}
 		//fill_data_grid();
 	}
 
@@ -33,11 +31,9 @@ namespace CppCLR_WinformsProjekt1 {
 	System::Void profile_book::profile_book_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		CenterToScreen();
-		//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
 		WindowState = FormWindowState::Maximized;
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from test.student_data WHERE username='" + this->username_txt->Text + "' and password = '" + this->password_txt->Text + "' ;", conDataBase);
 
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.book_data\
 		WHERE book_id = " + transfer_id_book + ";", conDataBase);
@@ -47,17 +43,17 @@ namespace CppCLR_WinformsProjekt1 {
 			conDataBase->Open();
 			myReader = cmdDataBase->ExecuteReader();
 
+			String^ printing_name;
+			String^ printing_id;
+			String^ printing_author;
+			String^ printing_publisher;
+			String^ printing_price;
+			String^ printing_edition_no;
+			String^ printing_book_borrow_stat;
+			String^ printing_category;
+			String^ printing_copies_avilable;
 			while (myReader->Read())
 			{
-				String^ printing_name;
-				String^ printing_id;
-				String^ printing_author;
-				String^ printing_publisher;
-				String^ printing_price;
-				String^ printing_edition_no;
-				String^ printing_book_borrow_stat;
-				String^ printing_category;
-				String^ printing_copies_avilable;
 				printing_id = myReader->GetString("book_id");
 				printing_name = myReader->GetString("book_name");
 				printing_author = myReader->GetString("book_author");
@@ -99,14 +95,14 @@ namespace CppCLR_WinformsProjekt1 {
 		this->update_profile_button->Visible = false;
 	}
 
-	System::Void profile_book::delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e) 
+	System::Void profile_book::delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		MessageBox::Show("Delete Profile");
 		if (MessageBox::Show("The profile will be deleted. Do you want to contiue?", "Warning", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK)
 		{
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system.book_data WHERE book_id = " + this->book_id_txt->Text + ";", conDataBase);
-			
+
 			try {
 				conDataBase->Open();
 				cmdDataBase->ExecuteNonQuery();
@@ -140,7 +136,8 @@ namespace CppCLR_WinformsProjekt1 {
 	{
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id, book_name, book_author, book_edition_no, book_publisher, book_borrow_status FROM library_system.book_data WHERE book_name = '" + this->bookname_txt->Text + "' AND book_edition_no = " + this->edition_no_txt->Text + ";", conDataBase);
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id, book_name, book_author, book_edition_no, book_publisher, book_borrow_status FROM library_system.book_data \
+			WHERE book_name = '" + this->bookname_txt->Text + "' AND book_edition_no = " + this->edition_no_txt->Text + ";", conDataBase);
 		//
 		//
 		//	THIS PART IS NOT FILLING THE DATA PROPERLY IN DATAGRIDVIEW NEED TO CHECK
@@ -164,7 +161,7 @@ namespace CppCLR_WinformsProjekt1 {
 		conDataBase->Close();
 	}
 
-	System::Void profile_book::dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) 
+	System::Void profile_book::dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
 	{
 		if (e->ColumnIndex == 0)
 		{
@@ -172,7 +169,7 @@ namespace CppCLR_WinformsProjekt1 {
 			int col_num = e->ColumnIndex + 1;
 			String^ str = this->dataGridView1->Rows[row_num]->Cells[col_num]->Value->ToString();
 			MessageBox::Show("Your id is " + str);
-			CppCLR_WinformsProjekt1::profile_book^ profile_book_f = gcnew CppCLR_WinformsProjekt1::profile_book(str);
+			CppCLR_WinformsProjekt1::profile_book^ profile_book_f = gcnew CppCLR_WinformsProjekt1::profile_book(str, transfer_isLibrarian);
 			this->Hide();
 			//profile_book_f->ShowDialog();
 
@@ -184,7 +181,7 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 	}
 
-	System::Void profile_book::back_button_Click(System::Object^ sender, System::EventArgs^ e) 
+	System::Void profile_book::back_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
@@ -204,18 +201,20 @@ namespace CppCLR_WinformsProjekt1 {
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
 			MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system.book_data \
-			(book_name, book_author, book_publisher, book_price,book_edition_no,no_of_copies, category) \
-			VALUES('" + this->bookname_txt->Text + "',\
-			'" + this->author_txt->Text + "',\
-			'" + this->publisher_txt->Text + "',\
-			'" + this->price_txt->Text + "',\
-			'" + this->edition_no_txt->Text + "',\
-			'" + this->no_copies_txt->Text + "',\
-			'" + this->category_txt->Text + "');", conDataBase);
+				(book_name, book_author, book_publisher, book_price,book_edition_no,no_of_copies, category, copies_available) \
+				VALUES('" + this->bookname_txt->Text + "',\
+				'" + this->author_txt->Text + "',\
+				'" + this->publisher_txt->Text + "',\
+				'" + this->price_txt->Text + "',\
+				'" + this->edition_no_txt->Text + "',\
+				'" + this->no_copies_txt->Text + "',\
+				'" + this->category_txt->Text + "',\
+				'" + this->copies_available_txt->Text + "');", conDataBase);
 
 			MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("UPDATE library_system.book_data SET \
-			no_of_copies = no_of_copies + '" + num_new_copies + "' WHERE book_name = '" + this->bookname_txt->Text + "' AND \
-			book_edition_no = '" + this->edition_no_txt->Text + "';", conDataBase);
+				no_of_copies = no_of_copies + '" + num_new_copies + "', copies_available = copies_available + '" + num_new_copies + "'\
+				WHERE book_name = '" + this->bookname_txt->Text + "' AND \
+				book_edition_no = '" + this->edition_no_txt->Text + "';", conDataBase);
 
 			try {
 				conDataBase->Open();

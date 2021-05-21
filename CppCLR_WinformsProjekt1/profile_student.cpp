@@ -29,7 +29,7 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 	}
 
-	System::Void profile_student::profile_student_Load(System::Object^ sender, System::EventArgs^ e) 
+	System::Void profile_student::profile_student_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		CenterToScreen();
 		//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
@@ -106,7 +106,7 @@ namespace CppCLR_WinformsProjekt1 {
 
 	}
 
-	System::Void profile_student::delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e) 
+	System::Void profile_student::delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		MessageBox::Show("Delete Profile");
 		if (MessageBox::Show("The profile will be deleted. Do you want to contiue?", "Warning", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK)
@@ -126,6 +126,10 @@ namespace CppCLR_WinformsProjekt1 {
 			conDataBase->Close();
 			this->DialogResult = System::Windows::Forms::DialogResult::OK;
 			this->Close();
+		}
+		else
+		{
+			//Do nothing
 		}
 
 	}
@@ -171,7 +175,7 @@ namespace CppCLR_WinformsProjekt1 {
 		conDataBase->Close();
 	}
 
-	void profile_student::fill_data_grid() 
+	void profile_student::fill_data_grid()
 	{
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
@@ -194,7 +198,7 @@ namespace CppCLR_WinformsProjekt1 {
 		conDataBase->Close();
 	}
 
-	System::Void profile_student::back_button_Click(System::Object^ sender, System::EventArgs^ e) 
+	System::Void profile_student::back_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();

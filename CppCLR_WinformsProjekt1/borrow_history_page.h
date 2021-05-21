@@ -65,9 +65,10 @@ namespace CppCLR_WinformsProjekt1 {
 			// back_button_borrow_his
 			// 
 			this->back_button_borrow_his->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"back_button_borrow_his.Image")));
-			this->back_button_borrow_his->Location = System::Drawing::Point(12, 12);
+			this->back_button_borrow_his->Location = System::Drawing::Point(8, 8);
+			this->back_button_borrow_his->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->back_button_borrow_his->Name = L"back_button_borrow_his";
-			this->back_button_borrow_his->Size = System::Drawing::Size(75, 52);
+			this->back_button_borrow_his->Size = System::Drawing::Size(50, 34);
 			this->back_button_borrow_his->TabIndex = 0;
 			this->back_button_borrow_his->UseVisualStyleBackColor = true;
 			this->back_button_borrow_his->Click += gcnew System::EventHandler(this, &borrow_history_page::back_button_borrow_his_Click);
@@ -79,14 +80,15 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Open });
-			this->dataGridView1->Location = System::Drawing::Point(242, 103);
+			this->dataGridView1->Location = System::Drawing::Point(129, 101);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(956, 383);
+			this->dataGridView1->Size = System::Drawing::Size(915, 451);
 			this->dataGridView1->TabIndex = 1;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &borrow_history_page::dataGridView1_CellContentClick);
 			// 
@@ -102,9 +104,10 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// search_bar
 			// 
-			this->search_bar->Location = System::Drawing::Point(194, 12);
+			this->search_bar->Location = System::Drawing::Point(129, 8);
+			this->search_bar->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->search_bar->Name = L"search_bar";
-			this->search_bar->Size = System::Drawing::Size(500, 26);
+			this->search_bar->Size = System::Drawing::Size(335, 20);
 			this->search_bar->TabIndex = 2;
 			// 
 			// list_detail_search_order
@@ -112,16 +115,18 @@ namespace CppCLR_WinformsProjekt1 {
 			this->list_detail_search_order->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->list_detail_search_order->FormattingEnabled = true;
 			this->list_detail_search_order->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Order ID", L"Student ID", L"Book ID" });
-			this->list_detail_search_order->Location = System::Drawing::Point(700, 12);
+			this->list_detail_search_order->Location = System::Drawing::Point(467, 8);
+			this->list_detail_search_order->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->list_detail_search_order->Name = L"list_detail_search_order";
-			this->list_detail_search_order->Size = System::Drawing::Size(146, 28);
+			this->list_detail_search_order->Size = System::Drawing::Size(99, 21);
 			this->list_detail_search_order->TabIndex = 3;
 			// 
 			// search_button
 			// 
-			this->search_button->Location = System::Drawing::Point(852, 12);
+			this->search_button->Location = System::Drawing::Point(568, 8);
+			this->search_button->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->search_button->Name = L"search_button";
-			this->search_button->Size = System::Drawing::Size(119, 40);
+			this->search_button->Size = System::Drawing::Size(79, 26);
 			this->search_button->TabIndex = 4;
 			this->search_button->Text = L"Search";
 			this->search_button->UseVisualStyleBackColor = true;
@@ -129,9 +134,10 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// clear_all_button
 			// 
-			this->clear_all_button->Location = System::Drawing::Point(992, 12);
+			this->clear_all_button->Location = System::Drawing::Point(661, 8);
+			this->clear_all_button->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->clear_all_button->Name = L"clear_all_button";
-			this->clear_all_button->Size = System::Drawing::Size(140, 39);
+			this->clear_all_button->Size = System::Drawing::Size(93, 25);
 			this->clear_all_button->TabIndex = 5;
 			this->clear_all_button->Text = L"Clear Search";
 			this->clear_all_button->UseVisualStyleBackColor = true;
@@ -139,9 +145,10 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// exit_button
 			// 
-			this->exit_button->Location = System::Drawing::Point(1243, 12);
+			this->exit_button->Location = System::Drawing::Point(829, 8);
+			this->exit_button->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->exit_button->Name = L"exit_button";
-			this->exit_button->Size = System::Drawing::Size(82, 38);
+			this->exit_button->Size = System::Drawing::Size(55, 25);
 			this->exit_button->TabIndex = 7;
 			this->exit_button->Text = L"Exit";
 			this->exit_button->UseVisualStyleBackColor = true;
@@ -149,9 +156,9 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			// borrow_history_page
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1337, 685);
+			this->ClientSize = System::Drawing::Size(1242, 675);
 			this->Controls->Add(this->exit_button);
 			this->Controls->Add(this->clear_all_button);
 			this->Controls->Add(this->search_button);
@@ -159,6 +166,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Controls->Add(this->search_bar);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->back_button_borrow_his);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"borrow_history_page";
 			this->Text = L"borrow_history_page";
 			this->Load += gcnew System::EventHandler(this, &borrow_history_page::borrow_history_page_Load);
