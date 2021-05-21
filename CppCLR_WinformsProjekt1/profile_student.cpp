@@ -6,9 +6,6 @@ namespace CppCLR_WinformsProjekt1 {
 	profile_student::profile_student(void)
 	{
 		InitializeComponent();
-		//
-		//TODO: Add the constructor code here
-		//
 	}
 
 	profile_student::profile_student(String^ label_text_id, bool is_librarian_input)
@@ -16,9 +13,6 @@ namespace CppCLR_WinformsProjekt1 {
 		InitializeComponent();
 		transfer_id_student = label_text_id;
 		is_librarian = is_librarian_input;
-		//
-		//TODO: Add the constructor code here
-		//
 	}
 
 	profile_student::~profile_student()
@@ -36,7 +30,14 @@ namespace CppCLR_WinformsProjekt1 {
 		WindowState = FormWindowState::Maximized;
 		//this->label1->Text = list_of_students_page::global_student_id_passed;
 		//this->label1->Text = transfer_id_student;
-
+		if (is_librarian == false)
+		{
+			this->delete_profile_button->Visible = false;
+		}
+		else
+		{
+			this->delete_profile_button->Visible = true;
+		}
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.student_data\
 		WHERE student_id = " + transfer_id_student + ";", conDataBase);
@@ -54,12 +55,14 @@ namespace CppCLR_WinformsProjekt1 {
 				String^ printing_mobile;
 				String^ printing_address;
 				//String^ printing_dob;
+				String^ printing_member_stat;
 				printing_id = myReader->GetString("student_id");
 				printing_name = myReader->GetString("student_name");
 				printing_profession = myReader->GetString("student_profession");
 				printing_email = myReader->GetString("student_email");
 				printing_mobile = myReader->GetString("student_mobile");
 				printing_address = myReader->GetString("student_address");
+				printing_member_stat = myReader->GetString("membership_stat");
 				//printing_dob = myReader->GetString("student_dob");
 
 				MySql::Data::Types::MySqlDateTime new_dob;
@@ -77,7 +80,7 @@ namespace CppCLR_WinformsProjekt1 {
 				//listBox1->Items->Add(printing_names);
 
 				this->dateTimePicker->Value = new_dob.GetDateTime();
-
+				this->member_stat_text->Text = printing_member_stat;
 			}
 			fill_data_grid();
 
@@ -112,11 +115,14 @@ namespace CppCLR_WinformsProjekt1 {
 		if (MessageBox::Show("The profile will be deleted. Do you want to contiue?", "Warning", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK)
 		{
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system.student_data WHERE student_id = " + this->student_id_txt->Text + ";", conDataBase);
+			//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system.student_data WHERE student_id = " + this->student_id_txt->Text + ";", conDataBase);
+			MySqlCommand^ update_member_stat_cmdDataBase = gcnew MySqlCommand("UPDATE library_system.student_data set student_id = " + this->student_id_txt->Text + ", membership_stat = 'DEACTIVATED' WHERE student_id = " + this->student_id_txt->Text + ";", conDataBase);
+			MySqlCommand^ delete_user_pass_cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system.user_pass WHERE student_id = " + this->student_id_txt->Text + ";", conDataBase);
 
 			try {
 				conDataBase->Open();
-				cmdDataBase->ExecuteNonQuery();
+				update_member_stat_cmdDataBase->ExecuteNonQuery();
+				delete_user_pass_cmdDataBase->ExecuteNonQuery();
 				MessageBox::Show("Profile is deleted");
 			}
 			catch (Exception^ ex)
@@ -169,9 +175,7 @@ namespace CppCLR_WinformsProjekt1 {
 		//this->Refresh();
 		//profile_student(transfer_id_student);
 		profile_student_Load(sender, e);
-		//
-		//	FORM NOT RELOADING OVER HERE NEED TO FIX
-		//
+
 		conDataBase->Close();
 	}
 
@@ -179,7 +183,8 @@ namespace CppCLR_WinformsProjekt1 {
 	{
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history WHERE student_id = " + this->student_id_txt->Text + " AND borrow_status = 'BORROWED';", conDataBase);
+		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history WHERE student_id = " + this->student_id_txt->Text + " AND borrow_status = 'BORROWED';", conDataBase);
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history WHERE student_id = " + this->student_id_txt->Text + ";", conDataBase);
 		//student_id,student_name,student_mobile, student_profession, student_no_book_stat 
 		try {
 			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();

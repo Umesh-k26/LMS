@@ -16,7 +16,10 @@ namespace CppCLR_WinformsProjekt1 {
 	{
 	public:
 		String^ transfer_id_student;
-		bool is_librarian;
+	private: System::Windows::Forms::TextBox^ member_stat_text;
+	public:
+	private: System::Windows::Forms::Label^ member_stat_label;
+		   bool is_librarian;
 	public:
 		profile_student(void);
 		profile_student(String^ label_text_id, bool is_librarian_input);
@@ -92,6 +95,8 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Open = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
 			this->back_button = (gcnew System::Windows::Forms::Button());
+			this->member_stat_label = (gcnew System::Windows::Forms::Label());
+			this->member_stat_text = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
@@ -109,6 +114,8 @@ namespace CppCLR_WinformsProjekt1 {
 			// 
 			this->groupBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Right));
+			this->groupBox1->Controls->Add(this->member_stat_text);
+			this->groupBox1->Controls->Add(this->member_stat_label);
 			this->groupBox1->Controls->Add(this->profession_selector);
 			this->groupBox1->Controls->Add(this->dob_student_txt);
 			this->groupBox1->Controls->Add(this->student_id_txt);
@@ -350,6 +357,23 @@ namespace CppCLR_WinformsProjekt1 {
 			this->back_button->TabIndex = 22;
 			this->back_button->UseVisualStyleBackColor = true;
 			this->back_button->Click += gcnew System::EventHandler(this, &profile_student::back_button_Click);
+			// 
+			// member_stat_label
+			// 
+			this->member_stat_label->AutoSize = true;
+			this->member_stat_label->Location = System::Drawing::Point(101, 582);
+			this->member_stat_label->Name = L"member_stat_label";
+			this->member_stat_label->Size = System::Drawing::Size(147, 20);
+			this->member_stat_label->TabIndex = 20;
+			this->member_stat_label->Text = L"Membership Status";
+			// 
+			// member_stat_text
+			// 
+			this->member_stat_text->Location = System::Drawing::Point(343, 586);
+			this->member_stat_text->Name = L"member_stat_text";
+			this->member_stat_text->ReadOnly = true;
+			this->member_stat_text->Size = System::Drawing::Size(142, 26);
+			this->member_stat_text->TabIndex = 21;
 			// 
 			// profile_student
 			// 
