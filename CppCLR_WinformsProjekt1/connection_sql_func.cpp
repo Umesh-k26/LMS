@@ -13,8 +13,8 @@ namespace sql_connection_func {
 	String^ sql_user_pass_string()
 	{
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=lovebcmm**,02";
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 
 		return constring;
 	}
@@ -73,7 +73,7 @@ namespace sql_connection_func {
 	void fill_datagrid_book(System::Windows::Forms::DataGridView^ dataGridView1)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS ID, book_name as Title, book_author AS Author, book_edition_no AS Edition, book_publisher AS Publisher, book_borrow_status AS Status FROM library_system.book_data;", conDataBase);
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS ID, book_name as Title, book_author AS Author, book_edition_no AS Edition, book_publisher AS Publisher, book_borrow_status AS Status FROM library_system.book_data WHERE book_lost = 'NO';", conDataBase);
 
 		try {
 			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
