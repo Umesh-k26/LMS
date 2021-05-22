@@ -46,16 +46,17 @@ namespace CppCLR_WinformsProjekt1 {
 			conDataBase->Open();
 			myReader = cmdDataBase->ExecuteReader();
 
+			String^ printing_name;
+			String^ printing_id;
+			String^ printing_profession;
+			String^ printing_email;
+			String^ printing_mobile;
+			String^ printing_address;
+			//String^ printing_dob;
+			String^ printing_member_stat;
 			while (myReader->Read())
 			{
-				String^ printing_name;
-				String^ printing_id;
-				String^ printing_profession;
-				String^ printing_email;
-				String^ printing_mobile;
-				String^ printing_address;
-				//String^ printing_dob;
-				String^ printing_member_stat;
+				
 				printing_id = myReader->GetString("student_id");
 				printing_name = myReader->GetString("student_name");
 				printing_profession = myReader->GetString("student_profession");
@@ -63,7 +64,7 @@ namespace CppCLR_WinformsProjekt1 {
 				printing_mobile = myReader->GetString("student_mobile");
 				printing_address = myReader->GetString("student_address");
 				printing_member_stat = myReader->GetString("membership_stat");
-				//printing_dob = myReader->GetString("student_dob");
+				student_no_book_stat = myReader->GetInt32("student_no_book_stat");
 
 				MySql::Data::Types::MySqlDateTime new_dob;
 				new_dob = myReader->GetMySqlDateTime("student_dob");
@@ -111,6 +112,12 @@ namespace CppCLR_WinformsProjekt1 {
 
 	System::Void profile_student::delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
+		if (student_no_book_stat > 0)
+		{
+			MessageBox::Show("Cannot delete since he/she hasn't returned all the books borrowed.", "Warning", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return;
+		}
+
 		MessageBox::Show("Delete Profile");
 		if (MessageBox::Show("The profile will be deleted. Do you want to contiue?", "Warning", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK)
 		{

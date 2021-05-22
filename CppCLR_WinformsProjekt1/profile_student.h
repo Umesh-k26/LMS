@@ -16,6 +16,8 @@ namespace CppCLR_WinformsProjekt1 {
 	{
 	public:
 		String^ transfer_id_student;
+		int student_no_book_stat;
+
 	private: System::Windows::Forms::TextBox^ member_stat_text;
 	public:
 	private: System::Windows::Forms::Label^ member_stat_label;
