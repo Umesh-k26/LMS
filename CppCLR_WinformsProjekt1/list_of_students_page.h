@@ -18,13 +18,31 @@ namespace CppCLR_WinformsProjekt1 {
 	/// <summary>
 	/// Summary for list_of_students_page
 	/// </summary>
+	/// This is a public ref class which inherits System::Windows::Forms::Form as public
 	public ref class list_of_students_page : public System::Windows::Forms::Form
 	{
+	
 	public:
+		/// <summary>
+		/// Public variable for transfering the ID of the user
+		/// </summary>
 		String^ transfer_id;
+		/// <summary>
+		/// Public variables for transfering whether the user is a librarian or not
+		/// </summary>
 		bool is_librarian;
 	public:
+		/// <summary>
+		/// Constructor function for this form
+		/// </summary>
+		/// <param name="void"></param>
 		list_of_students_page(void);
+
+		/// <summary>
+		/// Constructor function for this form with transferable variables as parameters
+		/// </summary>
+		/// <param name="input_id_transfer"></param>
+		/// <param name="is_librarian_input"></param>
 		list_of_students_page(String^ input_id_transfer, bool is_librarian_input);
 
 	protected:
@@ -234,8 +252,16 @@ namespace CppCLR_WinformsProjekt1 {
 			*/
 	private: void fill_data_grid();
 
-	private: System::Void list_of_students_page_Load(System::Object^ sender, System::EventArgs^ e);
+	
+	private: 
+		/// <summary>
+		/// load form
+		/// </summary>
+		System::Void list_of_students_page_Load(System::Object^ sender, System::EventArgs^ e);
 
+	/// <summary>
+	/// Function for button which goes back to the previous form
+	/// </summary>
 	private: System::Void back_button_student_list_Click(System::Object^ sender, System::EventArgs^ e);
 
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e);

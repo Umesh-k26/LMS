@@ -2,7 +2,10 @@
 #include "list_of_students_page.h"
 
 namespace CppCLR_WinformsProjekt1 {
-
+	/// <summary>
+	/// Constructor calls the function to fill the Data Grid with list of students
+	/// </summary>
+	/// <param name="void"></param>
 	list_of_students_page::list_of_students_page(void)
 	{
 		InitializeComponent();
@@ -14,6 +17,11 @@ namespace CppCLR_WinformsProjekt1 {
 		sql_connection_func::fill_datagrid_student(dataGridView1);
 	}
 
+	/// <summary>
+	/// Constructor calls the function to fill the Data Grid with list of students
+	/// </summary>
+	/// <param name="input_id_transfer"></param>
+	/// <param name="is_librarian_input"></param>
 	list_of_students_page::list_of_students_page(String^ input_id_transfer, bool is_librarian_input)
 	{
 		InitializeComponent();
@@ -27,6 +35,9 @@ namespace CppCLR_WinformsProjekt1 {
 		sql_connection_func::fill_datagrid_student(dataGridView1);
 	}
 
+	/// <summary>
+	/// Destructor function for the form
+	/// </summary>
 	list_of_students_page::~list_of_students_page()
 	{
 		if (components)
@@ -57,6 +68,12 @@ namespace CppCLR_WinformsProjekt1 {
 		conDataBase->Close();
 	}
 
+	/// <summary>
+	/// System Function to load the form in full screen mode
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+	/// <returns></returns>
 	System::Void list_of_students_page::list_of_students_page_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		CenterToScreen();
@@ -65,6 +82,12 @@ namespace CppCLR_WinformsProjekt1 {
 		this->list_detail_search_person->SelectedIndex = 1;
 
 	}
+	/// <summary>
+	/// Function for button which goes back to the previous form
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+	/// <returns></returns>
 	System::Void list_of_students_page::back_button_student_list_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		//CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
@@ -86,6 +109,12 @@ namespace CppCLR_WinformsProjekt1 {
 		//String^ str = text_combo_data(this->list_detail_search_person->Text);
 		//MessageBox::Show(str);
 	}
+	/// <summary>
+	/// Button OnClick function to open profile of student
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+	/// <returns></returns>
 	System::Void list_of_students_page::dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
 	{
 		if (e->ColumnIndex == 0)
@@ -109,6 +138,12 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 
 	}
+	/// <summary>
+	/// Button OnClick function to search and fill the Data Grid with filtered results
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+	/// <returns></returns>
 	System::Void list_of_students_page::search_button_student_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		String^ str_list_detail_search_person;
@@ -136,10 +171,22 @@ namespace CppCLR_WinformsProjekt1 {
 		sql_connection_func::fill_datagrid_students_filtered(str_list_detail_search_person, this->search_bar_student->Text, dataGridView1);
 
 	}
+	/// <summary>
+	/// Exit Button Function to Exit the application
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+	/// <returns></returns>
 	System::Void list_of_students_page::exit_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		Application::Exit();
 	}
+	/// <summary>
+	/// Clear Search result function to present default data
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+	/// <returns></returns>
 	System::Void list_of_students_page::clear_all_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->search_bar_student->Text = "";
