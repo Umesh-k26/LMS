@@ -18,46 +18,93 @@ namespace CppCLR_WinformsProjekt1 {
 	/// <summary>
 	/// Summary for list_of_students_page
 	/// </summary>
-	/// This is a public ref class which inherits System::Windows::Forms::Form as public
+	///This is a public ref class whose object lifetime is administered automatically. When the object is no longer accessible or goes out of scope, the memory is released.
+	/// It supports the Windows Runtime type system.
 	public ref class list_of_students_page : public System::Windows::Forms::Form
 	{
-	
+
 	public:
 		/// <summary>
 		/// Public variable for transfering the ID of the user
 		/// </summary>
+		/// It transfers the ID of the user as String which is part of the public ref class and a member of System.
 		String^ transfer_id;
 		/// <summary>
 		/// Public variables for transfering whether the user is a librarian or not
 		/// </summary>
+		/// It transfers a boolean value with true representing the user is a librarian and false if the user is not a librarian
 		bool is_librarian;
 	public:
 		/// <summary>
-		/// Constructor function for this form
+		/// Constructor function for the form
 		/// </summary>
 		/// <param name="void"></param>
 		list_of_students_page(void);
 
 		/// <summary>
-		/// Constructor function for this form with transferable variables as parameters
+		/// Constructor function for the form with transferable variables as parameters
 		/// </summary>
-		/// <param name="input_id_transfer"></param>
-		/// <param name="is_librarian_input"></param>
+		/// <param name="input_id_transfer">
+		/// It is the input argument for the ID to be transfered while calling the constructor
+		/// </param>
+		/// <param name="is_librarian_input">
+		/// It is the input argument for the boolean value, if the User is a librarian or not, to be transfered while calling the constructor
+		/// </param>
 		list_of_students_page(String^ input_id_transfer, bool is_librarian_input);
 
 	protected:
+		/// <summary>
+		/// Destructor function for the form
+		/// </summary>
 		~list_of_students_page();
 
-	private: System::Windows::Forms::TextBox^ search_bar_student;
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	private: System::Windows::Forms::Button^ back_button_student_list;
+	private: 
+		/// <summary>
+		/// TextBox for the Search Bar
+		/// </summary>
+		/// @see search_button_student, list_detail_search_person, clear_all_button
+		System::Windows::Forms::TextBox^ search_bar_student;
+	private: 
+		/// <summary>
+		/// Data Grid to present the General details of Non-Librarian Users which includes Students, Faculty and Alumni.
+		/// </summary>
+		/// @see Open
+		System::Windows::Forms::DataGridView^ dataGridView1;
+	private:
+		/// <summary>
+		/// Back Button to navigate backward
+		/// </summary>
+		System::Windows::Forms::Button^ back_button_student_list;
 
 	private: System::Windows::Forms::Button^ button3;
-	private: System::Windows::Forms::DataGridViewButtonColumn^ Open;
-	private: System::Windows::Forms::Button^ search_button_student;
-	private: System::Windows::Forms::ComboBox^ list_detail_search_person;
-	private: System::Windows::Forms::Button^ exit_button;
-	private: System::Windows::Forms::Button^ clear_all_button;
+	private: 
+		/// <summary>
+		/// A dedicated button inside the Data Grid to open the profile of Non-Librarian Users with more details
+		/// </summary>
+		/// @see dataGridView1
+		System::Windows::Forms::DataGridViewButtonColumn^ Open;
+	private: 
+		/// <summary>
+		/// Search Button to show search results based on input in the Search Bar and Drop Down List
+		/// </summary>
+		/// @see search_bar_student, list_detail_search_person, clear_all_button
+		System::Windows::Forms::Button^ search_button_student;
+	private: 
+		/// <summary>
+		/// Drop Down List to filter the list based on different attributes of Non-Librarian Users.
+		/// </summary>
+		System::Windows::Forms::ComboBox^ list_detail_search_person;
+	private: 
+		/// <summary>
+		/// Exit Button to exit the application
+		/// </summary>
+		System::Windows::Forms::Button^ exit_button;
+	private: 
+		/// <summary>
+		/// Clear All Search Results Button to show default data
+		/// </summary>
+		/// @see search_bar_student, list_detail_search_person, search_button_student
+		System::Windows::Forms::Button^ clear_all_button;
 
 	protected:
 
@@ -74,6 +121,7 @@ namespace CppCLR_WinformsProjekt1 {
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
+		/// To Initialize all the components required to load the form
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(list_of_students_page::typeid));
@@ -252,29 +300,82 @@ namespace CppCLR_WinformsProjekt1 {
 			*/
 	private: void fill_data_grid();
 
-	
-	private: 
+
+	private:
 		/// <summary>
-		/// load form
+		/// System::Void function to load the form
 		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
 		System::Void list_of_students_page_Load(System::Object^ sender, System::EventArgs^ e);
 
-	/// <summary>
-	/// Function for button which goes back to the previous form
-	/// </summary>
-	private: System::Void back_button_student_list_Click(System::Object^ sender, System::EventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function for OnClick of back button
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void back_button_student_list_Click(System::Object^ sender, System::EventArgs^ e);
 
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e);
 
-	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function for OnClick cell in the Data Grid
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled by the Data Grid.
+		/// </param>
+		System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 
-	private: System::Void search_button_student_Click(System::Object^ sender, System::EventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function for OnClick Search Button
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void search_button_student_Click(System::Object^ sender, System::EventArgs^ e);
 
 	private: System::Void list_detail_search_person_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {}
 
-	private: System::Void exit_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function for OnClick Exit Button
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void exit_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-	private: System::Void clear_all_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function for OnClick Clear All Search Results
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void clear_all_button_Click(System::Object^ sender, System::EventArgs^ e);
 
 	};
 }
