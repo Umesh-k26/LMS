@@ -3,20 +3,20 @@
 
 namespace CppCLR_WinformsProjekt1 {
 
+	///Constructor calls for functions to Initialize all the components of the form
+	///@see InitializeComponent()
 	profile_order::profile_order(void)
 	{
 		InitializeComponent();
-		//
-		//TODO: Add the constructor code here
-		//
 	}
 
+	/// <summary>
+	///Constructor calls for functions to Initialize all the components of the form
+	/// </summary>
+	/// @see transfer_order_id, InitializeComponent()
 	profile_order::profile_order(String^ input_for_orderid)
 	{
 		InitializeComponent();
-		//
-		//TODO: Add the constructor code here
-		//
 		transfer_order_id = input_for_orderid;
 	}
 
@@ -28,19 +28,16 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 	}
 
+	/// <summary>
+	/// It loads the Form in full screen mode and fills all the textboxes
+	/// </summary>
+	/// @see fill_user_data(), fill_book_data()
 	System::Void profile_order::profile_order_Load(System::Object^ sender, System::EventArgs^ e) 
 	{
 
 		CenterToScreen();
 		//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
 		WindowState = FormWindowState::Maximized;
-
-		//
-		//
-		//
-		//		NEED TO ADD LOADING PROFILES
-		//
-		//
 		this->order_id_txt->Text = transfer_order_id;
 		enum column_id_for_order_history
 		{
@@ -111,12 +108,15 @@ namespace CppCLR_WinformsProjekt1 {
 			MessageBox::Show(ex->Message);
 
 		}
-		fill_student_data();
+		fill_user_data();
 		fill_book_data();
 		conDataBase->Close();
 	}
 
-	void profile_order::fill_student_data()
+	/// <summary>
+	/// It fills all the required textboxes related to user data with all the data from the database
+	/// </summary>
+	void profile_order::fill_user_data()
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
@@ -164,6 +164,9 @@ namespace CppCLR_WinformsProjekt1 {
 		conDataBase->Close();
 	}
 
+	/// <summary>
+	/// It fills all the required textboxes related to book data with all the data from the database
+	/// </summary>
 	void profile_order::fill_book_data()
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
@@ -214,6 +217,9 @@ namespace CppCLR_WinformsProjekt1 {
 		conDataBase->Close();
 	}
 
+	/// <summary>
+	/// Function for Back Button which goes back to the previous Form by closing the current form
+	/// </summary>
 	System::Void profile_order::back_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;

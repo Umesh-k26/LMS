@@ -9,9 +9,6 @@ namespace CppCLR_WinformsProjekt1 {
 		InitializeComponent();
 		//fill_listbox1();
 		//fill_data_grid();
-		//
-		//TODO: Add the constructor code here
-		//
 		sql_connection_func::fill_datagrid_student(dataGridView1);
 	}
 
@@ -26,9 +23,6 @@ namespace CppCLR_WinformsProjekt1 {
 		is_librarian = is_librarian_input;
 		//fill_listbox1();
 		//fill_data_grid();
-		//
-		//TODO: Add the constructor code here
-		//
 		sql_connection_func::fill_datagrid_student(dataGridView1);
 	}
 

@@ -11,54 +11,184 @@ namespace CppCLR_WinformsProjekt1 {
 	using namespace System::Drawing;
 	using namespace MySql::Data::MySqlClient;
 
-
+	// <summary>
+	/// Summary for profile_student
+	/// </summary>
+	///This is a public ref class whose object lifetime is administered automatically. When the object is no longer accessible or goes out of scope, the memory is released.
+	/// It supports the Windows Runtime type system.
 	public ref class profile_student : public System::Windows::Forms::Form
 	{
 	public:
-		String^ transfer_id_student;
-		int student_no_book_stat;
+		/// <summary>
+		/// Public variable for transfering the ID of the user
+		/// </summary>
+		/// It transfers the ID of the user as String which is part of the public ref class and a member of System.
+		String^ transfer_id;
 
-	private: System::Windows::Forms::TextBox^ member_stat_text;
+		/// <summary>
+		/// Public variable to denote number of books currently borrowed by the User
+		/// </summary>
+		int user_no_book_stat;
+
+		/// <summary>
+		/// Public variables for transfering whether the user is a librarian or not
+		/// </summary>
+		/// It transfers a boolean value with true representing the user is a librarian and false if the user is not a librarian
+		bool is_librarian;
+	   
 	public:
-	private: System::Windows::Forms::Label^ member_stat_label;
-		   bool is_librarian;
-	public:
+		// <summary>
+		/// Constructor function for the form
+		/// </summary>
+		/// <param name="void"></param>
 		profile_student(void);
-		profile_student(String^ label_text_id, bool is_librarian_input);
+
+		/// <summary>
+		/// Constructor function for the form with transferable variables as parameters
+		/// </summary>
+		/// <param name="input_id_transfer">
+		/// It is the input argument for the ID to be transfered while calling the constructor
+		/// </param>
+		/// <param name="is_librarian_input">
+		/// It is the input argument for the boolean value, if the User is a librarian or not, to be transfered while calling the constructor
+		/// </param>
+		profile_student(String^ input_id_transfer, bool is_librarian_input);
 
 	protected:
+		/// <summary>
+		/// Destructor function for the form
+		/// </summary>
 		~profile_student();
-
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::GroupBox^ groupBox1;
-
-	private: System::Windows::Forms::DateTimePicker^ dateTimePicker;
-	private: System::Windows::Forms::Label^ name_lbl;
-	private: System::Windows::Forms::Label^ dob_lbl;
-	private: System::Windows::Forms::Label^ profession_lbl;
-
-	private: System::Windows::Forms::Label^ email_id_lbl;
-	private: System::Windows::Forms::Label^ mobile_no_lbl;
-	private: System::Windows::Forms::TextBox^ address_txt;
-	private: System::Windows::Forms::Label^ address_lbl;
-	private: System::Windows::Forms::TextBox^ mobile_no_txt;
-	private: System::Windows::Forms::TextBox^ name_txt;
-	private: System::Windows::Forms::TextBox^ email_id_txt;
-	private: System::Windows::Forms::TextBox^ profession_txt;
-	private: System::Windows::Forms::TextBox^ student_id_txt;
-	private: System::Windows::Forms::TextBox^ dob_student_txt;
-	private: System::Windows::Forms::Button^ delete_profile_button;
-	private: System::Windows::Forms::Button^ update_profile_button;
-	private: System::Windows::Forms::Button^ confirm_change_button;
-	private: System::Windows::Forms::ComboBox^ profession_selector;
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	private: System::Windows::Forms::DataGridViewButtonColumn^ Open;
-	private: System::Windows::Forms::Button^ back_button;
-
-
-
-
+	
 	protected:
+
+	private: 
+		/// <summary>
+		/// Label for ID of the Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::Label^ user_id_lbl;
+	private:
+		/// <summary>
+		/// A mechanism to group all the required labels and textboxes
+		/// </summary>
+		System::Windows::Forms::GroupBox^ user_profile_group;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Status of Membership
+		/// </summary>
+		System::Windows::Forms::TextBox^ member_stat_text;
+	private: 
+		/// <summary>
+		/// A Date-Time Picker for choosing Date of Birth
+		/// </summary>
+		System::Windows::Forms::DateTimePicker^ dateTimePicker;
+	private: 
+		/// <summary>
+		/// Label for Name of the Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::Label^ name_lbl;
+	private: 
+		/// <summary>
+		/// Label for Date of Birth of the Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::Label^ dob_lbl;
+	private:
+		/// <summary>
+		/// Label for Profession of the Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::Label^ profession_lbl;
+	private: 
+		/// <summary>
+		/// Label for Membership Status of the Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::Label^ member_stat_label;
+	private: 
+		/// <summary>
+		/// Label for Email of the Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::Label^ email_id_lbl;
+	private: 
+		/// <summary>
+		/// Label for Mobile Number of the Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::Label^ mobile_no_lbl;
+	private:
+		/// <summary>
+		/// A Read-Only TextBox with Address of Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::TextBox^ address_txt;
+	private: 
+		/// <summary>
+		/// Label for Address of the Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::Label^ address_lbl;
+	private:
+		/// <summary>
+		/// A Read-Only TextBox with Mobile Number of Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::TextBox^ mobile_no_txt;
+	private:
+		/// <summary>
+		/// A Read-Only TextBox with Name of Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::TextBox^ name_txt;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Email of Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::TextBox^ email_id_txt;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Profession of Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::TextBox^ profession_txt;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with User ID of Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::TextBox^ student_id_txt;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Date of Birth of Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::TextBox^ dob_student_txt;
+	private:
+		/// <summary>
+		/// Button to delete profile of the User
+		/// </summary>
+		System::Windows::Forms::Button^ delete_profile_button;
+	private: 
+		/// <summary>
+		/// Button to Initiate Update Profile Mode
+		/// </summary>
+		System::Windows::Forms::Button^ update_profile_button;
+	private: 
+		/// <summary>
+		/// Button to Confirm the Changes made to the profile
+		/// </summary>
+		System::Windows::Forms::Button^ confirm_change_button;
+	private: 
+		/// <summary>
+		/// A drop down list to choose Profession of the User between Student, Faculty, Alumni
+		/// </summary>
+		System::Windows::Forms::ComboBox^ profession_selector;
+	private:
+		/// <summary>
+		/// Data Grid to present the General Data of the Books Borrowed by the User
+		/// </summary>
+		/// @see Open
+		System::Windows::Forms::DataGridView^ dataGridView1;
+	private:
+		/// <summary>
+		/// A dedicated button inside the Data Grid to open the profile of Borrow History with more details
+		/// </summary>
+		/// @see dataGridView1
+		System::Windows::Forms::DataGridViewButtonColumn^ Open;
+	private: 
+		/// <summary>
+		/// Back Button to navigate backward
+		/// </summary>
+		System::Windows::Forms::Button^ back_button;
 
 	private:
 		/// <summary>
@@ -71,11 +201,14 @@ namespace CppCLR_WinformsProjekt1 {
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
+		/// To Initialize all the components required to load the form
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(profile_student::typeid));
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->user_id_lbl = (gcnew System::Windows::Forms::Label());
+			this->user_profile_group = (gcnew System::Windows::Forms::GroupBox());
+			this->member_stat_text = (gcnew System::Windows::Forms::TextBox());
+			this->member_stat_label = (gcnew System::Windows::Forms::Label());
 			this->profession_selector = (gcnew System::Windows::Forms::ComboBox());
 			this->dob_student_txt = (gcnew System::Windows::Forms::TextBox());
 			this->student_id_txt = (gcnew System::Windows::Forms::TextBox());
@@ -97,51 +230,66 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Open = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
 			this->back_button = (gcnew System::Windows::Forms::Button());
-			this->member_stat_label = (gcnew System::Windows::Forms::Label());
-			this->member_stat_text = (gcnew System::Windows::Forms::TextBox());
-			this->groupBox1->SuspendLayout();
+			this->user_profile_group->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// label1
+			// user_id_lbl
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(54, 38);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(26, 20);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"ID";
+			this->user_id_lbl->AutoSize = true;
+			this->user_id_lbl->Location = System::Drawing::Point(54, 38);
+			this->user_id_lbl->Name = L"user_id_lbl";
+			this->user_id_lbl->Size = System::Drawing::Size(26, 20);
+			this->user_id_lbl->TabIndex = 0;
+			this->user_id_lbl->Text = L"ID";
 			// 
-			// groupBox1
+			// user_profile_group
 			// 
-			this->groupBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+			this->user_profile_group->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->groupBox1->Controls->Add(this->member_stat_text);
-			this->groupBox1->Controls->Add(this->member_stat_label);
-			this->groupBox1->Controls->Add(this->profession_selector);
-			this->groupBox1->Controls->Add(this->dob_student_txt);
-			this->groupBox1->Controls->Add(this->student_id_txt);
-			this->groupBox1->Controls->Add(this->dateTimePicker);
-			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Controls->Add(this->name_lbl);
-			this->groupBox1->Controls->Add(this->dob_lbl);
-			this->groupBox1->Controls->Add(this->profession_lbl);
-			this->groupBox1->Controls->Add(this->email_id_lbl);
-			this->groupBox1->Controls->Add(this->mobile_no_lbl);
-			this->groupBox1->Controls->Add(this->address_txt);
-			this->groupBox1->Controls->Add(this->address_lbl);
-			this->groupBox1->Controls->Add(this->mobile_no_txt);
-			this->groupBox1->Controls->Add(this->name_txt);
-			this->groupBox1->Controls->Add(this->email_id_txt);
-			this->groupBox1->Controls->Add(this->profession_txt);
-			this->groupBox1->Location = System::Drawing::Point(141, 14);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->groupBox1->Size = System::Drawing::Size(598, 649);
-			this->groupBox1->TabIndex = 18;
-			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Student Profile";
+			this->user_profile_group->Controls->Add(this->member_stat_text);
+			this->user_profile_group->Controls->Add(this->member_stat_label);
+			this->user_profile_group->Controls->Add(this->profession_selector);
+			this->user_profile_group->Controls->Add(this->dob_student_txt);
+			this->user_profile_group->Controls->Add(this->student_id_txt);
+			this->user_profile_group->Controls->Add(this->dateTimePicker);
+			this->user_profile_group->Controls->Add(this->user_id_lbl);
+			this->user_profile_group->Controls->Add(this->name_lbl);
+			this->user_profile_group->Controls->Add(this->dob_lbl);
+			this->user_profile_group->Controls->Add(this->profession_lbl);
+			this->user_profile_group->Controls->Add(this->email_id_lbl);
+			this->user_profile_group->Controls->Add(this->mobile_no_lbl);
+			this->user_profile_group->Controls->Add(this->address_txt);
+			this->user_profile_group->Controls->Add(this->address_lbl);
+			this->user_profile_group->Controls->Add(this->mobile_no_txt);
+			this->user_profile_group->Controls->Add(this->name_txt);
+			this->user_profile_group->Controls->Add(this->email_id_txt);
+			this->user_profile_group->Controls->Add(this->profession_txt);
+			this->user_profile_group->Location = System::Drawing::Point(141, 14);
+			this->user_profile_group->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->user_profile_group->Name = L"user_profile_group";
+			this->user_profile_group->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->user_profile_group->Size = System::Drawing::Size(598, 649);
+			this->user_profile_group->TabIndex = 18;
+			this->user_profile_group->TabStop = false;
+			this->user_profile_group->Text = L"User Profile";
+			// 
+			// member_stat_text
+			// 
+			this->member_stat_text->Location = System::Drawing::Point(343, 586);
+			this->member_stat_text->Name = L"member_stat_text";
+			this->member_stat_text->ReadOnly = true;
+			this->member_stat_text->Size = System::Drawing::Size(142, 26);
+			this->member_stat_text->TabIndex = 21;
+			// 
+			// member_stat_label
+			// 
+			this->member_stat_label->AutoSize = true;
+			this->member_stat_label->Location = System::Drawing::Point(101, 582);
+			this->member_stat_label->Name = L"member_stat_label";
+			this->member_stat_label->Size = System::Drawing::Size(147, 20);
+			this->member_stat_label->TabIndex = 20;
+			this->member_stat_label->Text = L"Membership Status";
 			// 
 			// profession_selector
 			// 
@@ -336,7 +484,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(687, 558);
+			this->dataGridView1->Size = System::Drawing::Size(576, 558);
 			this->dataGridView1->TabIndex = 20;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &profile_student::dataGridView1_CellContentClick);
 			// 
@@ -360,23 +508,6 @@ namespace CppCLR_WinformsProjekt1 {
 			this->back_button->UseVisualStyleBackColor = true;
 			this->back_button->Click += gcnew System::EventHandler(this, &profile_student::back_button_Click);
 			// 
-			// member_stat_label
-			// 
-			this->member_stat_label->AutoSize = true;
-			this->member_stat_label->Location = System::Drawing::Point(101, 582);
-			this->member_stat_label->Name = L"member_stat_label";
-			this->member_stat_label->Size = System::Drawing::Size(147, 20);
-			this->member_stat_label->TabIndex = 20;
-			this->member_stat_label->Text = L"Membership Status";
-			// 
-			// member_stat_text
-			// 
-			this->member_stat_text->Location = System::Drawing::Point(343, 586);
-			this->member_stat_text->Name = L"member_stat_text";
-			this->member_stat_text->ReadOnly = true;
-			this->member_stat_text->Size = System::Drawing::Size(142, 26);
-			this->member_stat_text->TabIndex = 21;
-			// 
 			// profile_student
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
@@ -387,30 +518,94 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Controls->Add(this->confirm_change_button);
 			this->Controls->Add(this->update_profile_button);
 			this->Controls->Add(this->delete_profile_button);
-			this->Controls->Add(this->groupBox1);
+			this->Controls->Add(this->user_profile_group);
 			this->Name = L"profile_student";
 			this->Text = L"profile_student";
 			this->Load += gcnew System::EventHandler(this, &profile_student::profile_student_Load);
-			this->groupBox1->ResumeLayout(false);
-			this->groupBox1->PerformLayout();
+			this->user_profile_group->ResumeLayout(false);
+			this->user_profile_group->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	private: System::Void profile_student_Load(System::Object^ sender, System::EventArgs^ e);
+	private: 
+		/// <summary>
+		/// System::Void function to load the form
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void profile_student_Load(System::Object^ sender, System::EventArgs^ e);
 
-	private: System::Void update_profile_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private: 
+		/// <summary>
+		/// System::Void function to toggle into Update Mode to update the file
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void update_profile_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-	private: System::Void delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private: 
+		/// <summary>
+		/// System::Void function to Delete Profile
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-	private: System::Void confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private: 
+		/// <summary>
+		/// System::Void function to toggle into Read Mode and Send the Confirmed Changes
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-	private: void fill_data_grid();
+	private:
+		/// <summary>
+		/// Void Function to Fill the Data Grid
+		/// </summary>
+		void fill_data_grid();
 
-	private: System::Void back_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private: 
+		/// <summary>
+		/// System::Void function for OnClick of back button
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void back_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function for OnClick cell in the Data Grid
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled by the Data Grid.
+		/// </param>
+		System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 
 };
 }

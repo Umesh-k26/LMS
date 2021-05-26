@@ -3,16 +3,23 @@
 
 namespace CppCLR_WinformsProjekt1 {
 
+	///Constructor calls for functions to Initialize all the components of the form
+	///@see InitializeComponent()
 	profile_book::profile_book(void)
 	{
 		InitializeComponent();
 	}
 
+	/// <summary>
+	///Constructor calls for functions to Initialize all the components of the form and make buttons visible based on the User being a librarian or not
+	/// </summary>
+	/// @see transfer_id, is_librarian, InitializeComponent()
 	profile_book::profile_book(String^ label_book_id, bool isLibrarian)
 	{
 		InitializeComponent();
 		transfer_id_book = label_book_id;
-		if (isLibrarian == false)
+		transfer_isLibrarian = isLibrarian;
+		if (transfer_isLibrarian == false)
 		{
 			this->update_profile_button->Visible = false;
 			this->delete_profile_button->Visible = false;
@@ -28,6 +35,9 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 	}
 
+	/// <summary>
+	/// It loads the Form in full screen mode and fills all the textboxes and fill the Data Grid
+	/// </summary>
 	System::Void profile_book::profile_book_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		CenterToScreen();
@@ -90,6 +100,9 @@ namespace CppCLR_WinformsProjekt1 {
 		conDataBase->Close();
 	}
 
+	/// <summary>
+	/// Button OnClick To Switch into Update Mode and make some Read-Only Fields as Re-Writable
+	/// </summary>
 	System::Void profile_book::update_profile_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		MessageBox::Show("Update Profile");
@@ -98,6 +111,9 @@ namespace CppCLR_WinformsProjekt1 {
 		this->update_profile_button->Visible = false;
 	}
 
+	/// <summary>
+	/// Button OnClick To Switch the particular copy to Lost and removed from showing in the list
+	/// </summary>
 	System::Void profile_book::delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		MessageBox::Show("Delete Profile");
@@ -133,6 +149,9 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 	}
 
+	/// <summary>
+	/// Button OnClick function to switch back into Read-Only Mode and updating the profile of the Book and changing it in the databse as well
+	/// </summary>
 	System::Void profile_book::confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->numeric_updown_no_copies->Visible = false;
@@ -143,18 +162,15 @@ namespace CppCLR_WinformsProjekt1 {
 		profile_book_Load(sender, e);
 	}
 
+	/// <summary>
+	/// Function to fill the Data Grid with the list of copies of the same book with general details
+	/// </summary>
 	void profile_book::fill_data_grid()
 	{
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id, book_name, book_author, book_edition_no, book_publisher, book_borrow_status FROM library_system.book_data \
 			WHERE book_name = '" + this->bookname_txt->Text + "' AND book_edition_no = " + this->edition_no_txt->Text + " AND book_lost = 'NO';", conDataBase);
-		//
-		//
-		//	THIS PART IS NOT FILLING THE DATA PROPERLY IN DATAGRIDVIEW NEED TO CHECK
-		//
-
-
 		try {
 			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
 			sda->SelectCommand = cmdDataBase;
@@ -172,6 +188,9 @@ namespace CppCLR_WinformsProjekt1 {
 		conDataBase->Close();
 	}
 
+	/// <summary>
+	/// Button OnClick function to Open Profile of other copy of the book with more details
+	/// </summary>
 	System::Void profile_book::dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
 	{
 		if (e->ColumnIndex == 0)
@@ -192,11 +211,18 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 	}
 
+	/// <summary>
+	/// Function for Back Button which goes back to the previous Form by closing the current form
+	/// </summary>
 	System::Void profile_book::back_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
+
+	/// <summary>
+	/// Function to be run after the Librarian wants to add more copies of the same book to the database
+	/// </summary>
 
 	void profile_book::updating_no_of_copies(int num_new_copies)
 	{
