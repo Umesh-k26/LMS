@@ -1,10 +1,8 @@
 #pragma once
 
 #include "pch.h"
-#include "Form2.h"
-#include "login_to_librarian_db.h"
 
-namespace CppCLRWinformsProjekt {
+namespace LMS {
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -14,13 +12,13 @@ namespace CppCLRWinformsProjekt {
 	using namespace System::Drawing;
 	using namespace MySql::Data::MySqlClient;
 
-	public ref class Form1 : public System::Windows::Forms::Form
+	public ref class LoginPage : public System::Windows::Forms::Form
 	{
 	public:
-		Form1(void);
+		LoginPage(void);
 
 	protected:
-		~Form1();
+		~LoginPage();
 
 	private: System::Windows::Forms::Button^ login_button;
 	protected:
@@ -65,7 +63,7 @@ namespace CppCLRWinformsProjekt {
 			this->login_button->TabIndex = 0;
 			this->login_button->Text = L"Login";
 			this->login_button->UseVisualStyleBackColor = true;
-			this->login_button->Click += gcnew System::EventHandler(this, &Form1::LoginButton_Click);
+			this->login_button->Click += gcnew System::EventHandler(this, &LoginPage::LoginButton_Click);
 			// 
 			// username_txt
 			// 
@@ -118,16 +116,16 @@ namespace CppCLRWinformsProjekt {
 			this->SignIn_box->TabStop = false;
 			this->SignIn_box->Text = L"Sign In";
 			// 
-			// Form1
+			// LoginPage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(709, 585);
 			this->Controls->Add(this->SignIn_box);
 			this->MinimumSize = System::Drawing::Size(725, 624);
-			this->Name = L"Form1";
-			this->Text = L"Form1";
-			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
+			this->Name = L"LoginPage";
+			this->Text = L"LoginPage";
+			this->Load += gcnew System::EventHandler(this, &LoginPage::LoginPage_Load);
 			this->SignIn_box->ResumeLayout(false);
 			this->SignIn_box->PerformLayout();
 			this->ResumeLayout(false);
@@ -135,7 +133,7 @@ namespace CppCLRWinformsProjekt {
 		}
 #pragma endregion
 	private: System::Void LoginButton_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void LoginPage_Load(System::Object^ sender, System::EventArgs^ e);
 
 	};
 }

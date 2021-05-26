@@ -20,10 +20,10 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{eb3e5742-e260-47b3-96f0-01388f59380a}</ProjectGuid>
+    <ProjectGuid>{7774f696-08b1-48d4-bcf2-c5a074f8a3af}</ProjectGuid>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
-    <RootNamespace>CppCLR_WinformsProjekt1</RootNamespace>
+    <RootNamespace>LMS</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -75,15 +75,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -92,6 +100,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -106,6 +116,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -119,6 +131,8 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -132,6 +146,8 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -140,140 +156,40 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ResourceCompile Include="app.rc" />
+    <ResourceCompile Include="src\app.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AddBook.h">
+    <ClInclude Include="src\HomePage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="BorrowBook.h">
+    <ClInclude Include="src\LoginPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="borrow_history_page.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="connection_sql_func.h" />
-    <ClInclude Include="fine_function.h" />
-    <ClInclude Include="Form1.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="Form2.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="list_of_books_page.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="list_of_students_page.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="login_to_librarian_db.h" />
-    <ClInclude Include="pch.h" />
-    <ClInclude Include="profile_book.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="profile_order.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="profile_student.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="RegisterLibrarian.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="RegisterStudent.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="Resource.h" />
-    <ClInclude Include="ReturnBook.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="testing.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
+    <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\Resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AddBook.cpp" />
-    <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="BorrowBook.cpp" />
-    <ClCompile Include="borrow_history_page.cpp" />
-    <ClCompile Include="connection_sql_func.cpp" />
-    <ClCompile Include="CppCLR_WinformsProjekt.cpp" />
-    <ClCompile Include="fine_function.cpp" />
-    <ClCompile Include="Form1.cpp" />
-    <ClCompile Include="Form2.cpp" />
-    <ClCompile Include="list_of_books_page.cpp" />
-    <ClCompile Include="list_of_students_page.cpp" />
-    <ClCompile Include="login_to_librarian_db.cpp" />
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="src\AssemblyInfo.cpp" />
+    <ClCompile Include="src\HomePage.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\LoginPage.cpp" />
+    <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="profile_book.cpp" />
-    <ClCompile Include="profile_order.cpp" />
-    <ClCompile Include="profile_student.cpp" />
-    <ClCompile Include="RegisterLibrarian.cpp" />
-    <ClCompile Include="RegisterStudent.cpp" />
-    <ClCompile Include="ReturnBook.cpp" />
-    <ClCompile Include="testing.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="app.ico" />
+    <Image Include="src\app.ico" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=8.0.23.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Messaging" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="AddBook.resx">
-      <DependentUpon>AddBook.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BorrowBook.resx">
-      <DependentUpon>BorrowBook.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="borrow_history_page.resx">
-      <DependentUpon>borrow_history_page.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="list_of_books_page.resx">
-      <DependentUpon>list_of_books_page.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="list_of_students_page.resx">
-      <DependentUpon>list_of_students_page.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="profile_book.resx">
-      <DependentUpon>profile_book.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="profile_order.resx">
-      <DependentUpon>profile_order.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="profile_student.resx">
-      <DependentUpon>profile_student.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RegisterLibrarian.resx">
-      <DependentUpon>RegisterLibrarian.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RegisterStudent.resx">
-      <DependentUpon>RegisterStudent.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReturnBook.resx">
-      <DependentUpon>ReturnBook.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="testing.resx">
-      <DependentUpon>testing.h</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
