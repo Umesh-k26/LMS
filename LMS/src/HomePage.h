@@ -15,12 +15,21 @@ namespace LMS {
 	public ref class HomePage : public System::Windows::Forms::Form
 	{
 	public:
+		String^ transfer_id;
+		bool is_librarian;
+	public:
 		HomePage(void)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
+		}
+		HomePage(String^ input_transfer_id, bool is_librarian_input)
+		{
+			transfer_id = input_transfer_id;
+			is_librarian = is_librarian_input;
+			InitializeComponent();
 		}
 
 	protected:
@@ -48,11 +57,17 @@ namespace LMS {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"HomePage";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->SuspendLayout();
+			// 
+			// HomePage
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(1150, 636);
+			this->Name = L"HomePage";
+			this->Text = L"HomePage";
+			this->ResumeLayout(false);
+
 		}
 #pragma endregion
 	};
