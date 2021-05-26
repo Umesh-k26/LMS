@@ -11,78 +11,278 @@ namespace CppCLR_WinformsProjekt1 {
 	using namespace System::Drawing;
 	using namespace MySql::Data::MySqlClient;
 
+	// <summary>
+	/// Summary for profile_order
+	/// </summary>
+	///This is a public ref class whose object lifetime is administered automatically. When the object is no longer accessible or goes out of scope, the memory is released.
+	/// It supports the Windows Runtime type system.
 	public ref class profile_order : public System::Windows::Forms::Form
 	{
+		/// <summary>
+		/// Public variable for transfering the ID of the Order
+		/// </summary>
+		/// It transfers the ID of the user as String which is part of the public ref class and a member of System.
 		String^ transfer_order_id;
 
 	public:
+		// <summary>
+		/// Constructor function for the form
+		/// </summary>
+		/// <param name="void"></param>
 		profile_order(void);
 
+		/// <summary>
+		/// Constructor function for the form with transferable variables as parameters
+		/// </summary>
+		/// <param name="input_for_orderid">
+		///  It is the input argument for the ID to be transfered while calling the constructor
+		/// </param>
 		profile_order(String^ input_for_orderid);
 
 	protected:
+		/// <summary>
+		/// Destructor function for the form
+		/// </summary>
 		~profile_order();
-
-	private: System::Windows::Forms::GroupBox^ groupBox1;
-	protected:
-	private: System::Windows::Forms::TextBox^ dob_student_txt;
-	private: System::Windows::Forms::TextBox^ student_id_txt;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ name_lbl;
-	private: System::Windows::Forms::Label^ dob_lbl;
-	private: System::Windows::Forms::Label^ profession_lbl;
-	private: System::Windows::Forms::Label^ email_id_lbl;
-	private: System::Windows::Forms::Label^ mobile_no_lbl;
-	private: System::Windows::Forms::TextBox^ address_txt;
-	private: System::Windows::Forms::Label^ address_lbl;
-	private: System::Windows::Forms::TextBox^ mobile_no_txt;
-	private: System::Windows::Forms::TextBox^ name_txt;
-	private: System::Windows::Forms::TextBox^ email_id_txt;
-	private: System::Windows::Forms::TextBox^ profession_txt;
-	private: System::Windows::Forms::GroupBox^ groupBox2;
-	private: System::Windows::Forms::Label^ no_copies_lbl;
-	private: System::Windows::Forms::TextBox^ no_copies_txt;
-	private: System::Windows::Forms::TextBox^ borrow_stat_txt;
-	private: System::Windows::Forms::Label^ borrow_stat_lbl;
-	private: System::Windows::Forms::TextBox^ book_id_txt;
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ bookname_lbl;
-	private: System::Windows::Forms::Label^ author_lbl;
-	private: System::Windows::Forms::TextBox^ price_txt;
-	private: System::Windows::Forms::Label^ publisher_lbl;
-	private: System::Windows::Forms::TextBox^ edition_no_txt;
-	private: System::Windows::Forms::Label^ edition_no_lbl;
-	private: System::Windows::Forms::TextBox^ publisher_txt;
-	private: System::Windows::Forms::Label^ price_lbl;
-	private: System::Windows::Forms::TextBox^ author_txt;
-	private: System::Windows::Forms::TextBox^ bookname_txt;
-	private: System::Windows::Forms::Label^ date_issue_lbl;
-	private: System::Windows::Forms::Label^ date_return_lbl;
-	private: System::Windows::Forms::Label^ fine_lbl;
-	private: System::Windows::Forms::TextBox^ date_issue_txt;
-	private: System::Windows::Forms::TextBox^ date_return_txt;
-
-	private: System::Windows::Forms::TextBox^ order_fine_txt;
-	private: System::Windows::Forms::Label^ order_id_lbl;
-	private: System::Windows::Forms::TextBox^ order_id_txt;
-	private: System::Windows::Forms::Button^ back_button;
-	private: System::Windows::Forms::Label^ copies_available_lbl;
-	private: System::Windows::Forms::TextBox^ copies_available_txt;
-
-
+	private: 
+		/// <summary>
+		/// A mechanism to group all the required labels and textboxes for Borrower/User
+		/// </summary>
+		System::Windows::Forms::GroupBox^ user_profile_group;
+	private:
+		/// <summary>
+		/// A Read-Only TextBox with Date of Birth of Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::TextBox^ dob_student_txt;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with User ID of Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::TextBox^ student_id_txt;
+	private: 
+		/// <summary>
+		/// Label for ID of the Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::Label^ user_id_lbl;
 
 	private:
+		/// <summary>
+		/// Label for Name of the Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::Label^ name_lbl;
+	private:
+		/// <summary>
+		/// Label for Date of Birth of the Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::Label^ dob_lbl;
+	private: 
+		/// <summary>
+		/// Label for Profession of the Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::Label^ profession_lbl;
+	private:
+		/// <summary>
+		/// Label for Email of the Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::Label^ email_id_lbl;
+	private:
+		/// <summary>
+		/// Label for Mobile Number of the Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::Label^ mobile_no_lbl;
+	private:
+		/// <summary>
+		/// A Read-Only TextBox with Address of Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::TextBox^ address_txt;
+	private: 
+		/// <summary>
+		/// Label for Address of the Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::Label^ address_lbl;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Mobile Number of Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::TextBox^ mobile_no_txt;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Name of Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::TextBox^ name_txt;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Email of Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::TextBox^ email_id_txt;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Profession of Non-Librarian User
+		/// </summary>
+		System::Windows::Forms::TextBox^ profession_txt;
+	private: 
+		/// <summary>
+		/// A mechanism to group all the required labels and textboxes for book
+		/// </summary>
+		System::Windows::Forms::GroupBox^ book_profile_group;
+
+	private:
+		/// <summary>
+		/// Label for Number of Copies in the Library of the Book
+		/// </summary>
+		System::Windows::Forms::Label^ no_copies_lbl;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Number of Copies in the Library of the Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ no_copies_txt;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Borrow Status of the Book as BORROWED or AVAILABLE
+		/// </summary>
+		System::Windows::Forms::TextBox^ borrow_stat_txt;
+	private: 
+		/// <summary>
+		/// Label for Book Status 
+		/// </summary>
+		System::Windows::Forms::Label^ borrow_stat_lbl;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Book ID
+		/// </summary>
+		System::Windows::Forms::TextBox^ book_id_txt;
+	private: 
+		/// <summary>
+		/// Label for Book ID
+		/// </summary>
+		System::Windows::Forms::Label^ book_id_lbl;
+	private: 
+		/// <summary>
+		/// Label for Book Name
+		/// </summary>
+		System::Windows::Forms::Label^ bookname_lbl;
+	private: 
+		/// <summary>
+		/// Label for Book Author
+		/// </summary>
+		System::Windows::Forms::Label^ author_lbl;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Price of the Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ price_txt;
+	private:
+		/// <summary>
+		/// Label for Book Publisher
+		/// </summary>
+		System::Windows::Forms::Label^ publisher_lbl;
+	private:
+		/// <summary>
+		/// A Read-Only TextBox with Edition No of the Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ edition_no_txt;
+	private:
+		/// <summary>
+		/// Label for Book Edition
+		/// </summary>
+		System::Windows::Forms::Label^ edition_no_lbl;
+	private:
+		/// <summary>
+		/// A Read-Only TextBox with Name of Publisher of Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ publisher_txt;
+	private: 
+		/// <summary>
+		/// Label for Book Price
+		/// </summary>
+		System::Windows::Forms::Label^ price_lbl;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Author of the Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ author_txt;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Name of the Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ bookname_txt;
+	private: 
+		/// <summary>
+		/// Label for Date of Issue
+		/// </summary>
+		System::Windows::Forms::Label^ date_issue_lbl;
+	private:
+		/// <summary>
+		/// Label for Date of Return
+		/// </summary>
+		System::Windows::Forms::Label^ date_return_lbl;
+	private:
+		/// <summary>
+		/// Label for Fine
+		/// </summary>
+		System::Windows::Forms::Label^ fine_lbl;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Date of Issuing of the Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ date_issue_txt;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Date of Return
+		/// </summary>
+		System::Windows::Forms::TextBox^ date_return_txt;
+
+	private:
+		/// <summary>
+		/// A Read-Only TextBox with Amount of Fine due
+		/// </summary>
+		System::Windows::Forms::TextBox^ order_fine_txt;
+	private: 
+		/// <summary>
+		/// Label for Order ID
+		/// </summary>
+		System::Windows::Forms::Label^ order_id_lbl;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Order ID
+		/// </summary>
+		System::Windows::Forms::TextBox^ order_id_txt;
+	private: 
+		/// <summary>
+		/// Back Button to navigate backward
+		/// </summary>
+		System::Windows::Forms::Button^ back_button;
+	private:
+		/// <summary>
+		/// Label for Number of Copies Currently Available
+		/// </summary>
+		System::Windows::Forms::Label^ copies_available_lbl;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Number of Copies Currently Available
+		/// </summary>
+		System::Windows::Forms::TextBox^ copies_available_txt;
+
+	private:
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
 		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		/// To Initialize all the components required to load the form
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(profile_order::typeid));
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->user_profile_group = (gcnew System::Windows::Forms::GroupBox());
 			this->dob_student_txt = (gcnew System::Windows::Forms::TextBox());
 			this->student_id_txt = (gcnew System::Windows::Forms::TextBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->user_id_lbl = (gcnew System::Windows::Forms::Label());
 			this->name_lbl = (gcnew System::Windows::Forms::Label());
 			this->dob_lbl = (gcnew System::Windows::Forms::Label());
 			this->profession_lbl = (gcnew System::Windows::Forms::Label());
@@ -94,13 +294,15 @@ namespace CppCLR_WinformsProjekt1 {
 			this->name_txt = (gcnew System::Windows::Forms::TextBox());
 			this->email_id_txt = (gcnew System::Windows::Forms::TextBox());
 			this->profession_txt = (gcnew System::Windows::Forms::TextBox());
-			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->book_profile_group = (gcnew System::Windows::Forms::GroupBox());
+			this->copies_available_lbl = (gcnew System::Windows::Forms::Label());
+			this->copies_available_txt = (gcnew System::Windows::Forms::TextBox());
 			this->no_copies_lbl = (gcnew System::Windows::Forms::Label());
 			this->no_copies_txt = (gcnew System::Windows::Forms::TextBox());
 			this->borrow_stat_txt = (gcnew System::Windows::Forms::TextBox());
 			this->borrow_stat_lbl = (gcnew System::Windows::Forms::Label());
 			this->book_id_txt = (gcnew System::Windows::Forms::TextBox());
-			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->book_id_lbl = (gcnew System::Windows::Forms::Label());
 			this->bookname_lbl = (gcnew System::Windows::Forms::Label());
 			this->author_lbl = (gcnew System::Windows::Forms::Label());
 			this->price_txt = (gcnew System::Windows::Forms::TextBox());
@@ -120,37 +322,35 @@ namespace CppCLR_WinformsProjekt1 {
 			this->order_id_lbl = (gcnew System::Windows::Forms::Label());
 			this->order_id_txt = (gcnew System::Windows::Forms::TextBox());
 			this->back_button = (gcnew System::Windows::Forms::Button());
-			this->copies_available_txt = (gcnew System::Windows::Forms::TextBox());
-			this->copies_available_lbl = (gcnew System::Windows::Forms::Label());
-			this->groupBox1->SuspendLayout();
-			this->groupBox2->SuspendLayout();
+			this->user_profile_group->SuspendLayout();
+			this->book_profile_group->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// groupBox1
+			// user_profile_group
 			// 
-			this->groupBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->groupBox1->Controls->Add(this->dob_student_txt);
-			this->groupBox1->Controls->Add(this->student_id_txt);
-			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Controls->Add(this->name_lbl);
-			this->groupBox1->Controls->Add(this->dob_lbl);
-			this->groupBox1->Controls->Add(this->profession_lbl);
-			this->groupBox1->Controls->Add(this->email_id_lbl);
-			this->groupBox1->Controls->Add(this->mobile_no_lbl);
-			this->groupBox1->Controls->Add(this->address_txt);
-			this->groupBox1->Controls->Add(this->address_lbl);
-			this->groupBox1->Controls->Add(this->mobile_no_txt);
-			this->groupBox1->Controls->Add(this->name_txt);
-			this->groupBox1->Controls->Add(this->email_id_txt);
-			this->groupBox1->Controls->Add(this->profession_txt);
-			this->groupBox1->Location = System::Drawing::Point(88, 86);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->groupBox1->Size = System::Drawing::Size(599, 545);
-			this->groupBox1->TabIndex = 19;
-			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Student Profile";
+			this->user_profile_group->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->user_profile_group->Controls->Add(this->dob_student_txt);
+			this->user_profile_group->Controls->Add(this->student_id_txt);
+			this->user_profile_group->Controls->Add(this->user_id_lbl);
+			this->user_profile_group->Controls->Add(this->name_lbl);
+			this->user_profile_group->Controls->Add(this->dob_lbl);
+			this->user_profile_group->Controls->Add(this->profession_lbl);
+			this->user_profile_group->Controls->Add(this->email_id_lbl);
+			this->user_profile_group->Controls->Add(this->mobile_no_lbl);
+			this->user_profile_group->Controls->Add(this->address_txt);
+			this->user_profile_group->Controls->Add(this->address_lbl);
+			this->user_profile_group->Controls->Add(this->mobile_no_txt);
+			this->user_profile_group->Controls->Add(this->name_txt);
+			this->user_profile_group->Controls->Add(this->email_id_txt);
+			this->user_profile_group->Controls->Add(this->profession_txt);
+			this->user_profile_group->Location = System::Drawing::Point(88, 86);
+			this->user_profile_group->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->user_profile_group->Name = L"user_profile_group";
+			this->user_profile_group->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->user_profile_group->Size = System::Drawing::Size(599, 545);
+			this->user_profile_group->TabIndex = 19;
+			this->user_profile_group->TabStop = false;
+			this->user_profile_group->Text = L"User Profile";
 			// 
 			// dob_student_txt
 			// 
@@ -168,14 +368,14 @@ namespace CppCLR_WinformsProjekt1 {
 			this->student_id_txt->Size = System::Drawing::Size(146, 26);
 			this->student_id_txt->TabIndex = 17;
 			// 
-			// label1
+			// user_id_lbl
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(54, 38);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(26, 20);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"ID";
+			this->user_id_lbl->AutoSize = true;
+			this->user_id_lbl->Location = System::Drawing::Point(54, 38);
+			this->user_id_lbl->Name = L"user_id_lbl";
+			this->user_id_lbl->Size = System::Drawing::Size(26, 20);
+			this->user_id_lbl->TabIndex = 0;
+			this->user_id_lbl->Text = L"ID";
 			// 
 			// name_lbl
 			// 
@@ -282,35 +482,54 @@ namespace CppCLR_WinformsProjekt1 {
 			this->profession_txt->Size = System::Drawing::Size(148, 26);
 			this->profession_txt->TabIndex = 8;
 			// 
-			// groupBox2
+			// book_profile_group
 			// 
-			this->groupBox2->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->groupBox2->Controls->Add(this->copies_available_lbl);
-			this->groupBox2->Controls->Add(this->copies_available_txt);
-			this->groupBox2->Controls->Add(this->no_copies_lbl);
-			this->groupBox2->Controls->Add(this->no_copies_txt);
-			this->groupBox2->Controls->Add(this->borrow_stat_txt);
-			this->groupBox2->Controls->Add(this->borrow_stat_lbl);
-			this->groupBox2->Controls->Add(this->book_id_txt);
-			this->groupBox2->Controls->Add(this->label2);
-			this->groupBox2->Controls->Add(this->bookname_lbl);
-			this->groupBox2->Controls->Add(this->author_lbl);
-			this->groupBox2->Controls->Add(this->price_txt);
-			this->groupBox2->Controls->Add(this->publisher_lbl);
-			this->groupBox2->Controls->Add(this->edition_no_txt);
-			this->groupBox2->Controls->Add(this->edition_no_lbl);
-			this->groupBox2->Controls->Add(this->publisher_txt);
-			this->groupBox2->Controls->Add(this->price_lbl);
-			this->groupBox2->Controls->Add(this->author_txt);
-			this->groupBox2->Controls->Add(this->bookname_txt);
-			this->groupBox2->Location = System::Drawing::Point(724, 95);
-			this->groupBox2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->groupBox2->Size = System::Drawing::Size(434, 554);
-			this->groupBox2->TabIndex = 20;
-			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Book Profile";
+			this->book_profile_group->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->book_profile_group->Controls->Add(this->copies_available_lbl);
+			this->book_profile_group->Controls->Add(this->copies_available_txt);
+			this->book_profile_group->Controls->Add(this->no_copies_lbl);
+			this->book_profile_group->Controls->Add(this->no_copies_txt);
+			this->book_profile_group->Controls->Add(this->borrow_stat_txt);
+			this->book_profile_group->Controls->Add(this->borrow_stat_lbl);
+			this->book_profile_group->Controls->Add(this->book_id_txt);
+			this->book_profile_group->Controls->Add(this->book_id_lbl);
+			this->book_profile_group->Controls->Add(this->bookname_lbl);
+			this->book_profile_group->Controls->Add(this->author_lbl);
+			this->book_profile_group->Controls->Add(this->price_txt);
+			this->book_profile_group->Controls->Add(this->publisher_lbl);
+			this->book_profile_group->Controls->Add(this->edition_no_txt);
+			this->book_profile_group->Controls->Add(this->edition_no_lbl);
+			this->book_profile_group->Controls->Add(this->publisher_txt);
+			this->book_profile_group->Controls->Add(this->price_lbl);
+			this->book_profile_group->Controls->Add(this->author_txt);
+			this->book_profile_group->Controls->Add(this->bookname_txt);
+			this->book_profile_group->Location = System::Drawing::Point(724, 95);
+			this->book_profile_group->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->book_profile_group->Name = L"book_profile_group";
+			this->book_profile_group->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->book_profile_group->Size = System::Drawing::Size(434, 554);
+			this->book_profile_group->TabIndex = 20;
+			this->book_profile_group->TabStop = false;
+			this->book_profile_group->Text = L"Book Profile";
+			// 
+			// copies_available_lbl
+			// 
+			this->copies_available_lbl->AutoSize = true;
+			this->copies_available_lbl->Location = System::Drawing::Point(26, 445);
+			this->copies_available_lbl->Name = L"copies_available_lbl";
+			this->copies_available_lbl->Size = System::Drawing::Size(125, 20);
+			this->copies_available_lbl->TabIndex = 27;
+			this->copies_available_lbl->Text = L"Copies Available";
+			this->copies_available_lbl->Click += gcnew System::EventHandler(this, &profile_order::label3_Click);
+			// 
+			// copies_available_txt
+			// 
+			this->copies_available_txt->Location = System::Drawing::Point(250, 439);
+			this->copies_available_txt->Name = L"copies_available_txt";
+			this->copies_available_txt->ReadOnly = true;
+			this->copies_available_txt->Size = System::Drawing::Size(148, 26);
+			this->copies_available_txt->TabIndex = 26;
+			this->copies_available_txt->TextChanged += gcnew System::EventHandler(this, &profile_order::textBox1_TextChanged);
 			// 
 			// no_copies_lbl
 			// 
@@ -354,14 +573,14 @@ namespace CppCLR_WinformsProjekt1 {
 			this->book_id_txt->Size = System::Drawing::Size(147, 26);
 			this->book_id_txt->TabIndex = 21;
 			// 
-			// label2
+			// book_id_lbl
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(26, 36);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(26, 20);
-			this->label2->TabIndex = 20;
-			this->label2->Text = L"ID";
+			this->book_id_lbl->AutoSize = true;
+			this->book_id_lbl->Location = System::Drawing::Point(26, 36);
+			this->book_id_lbl->Name = L"book_id_lbl";
+			this->book_id_lbl->Size = System::Drawing::Size(26, 20);
+			this->book_id_lbl->TabIndex = 20;
+			this->book_id_lbl->Text = L"ID";
 			// 
 			// bookname_lbl
 			// 
@@ -552,25 +771,6 @@ namespace CppCLR_WinformsProjekt1 {
 			this->back_button->UseVisualStyleBackColor = true;
 			this->back_button->Click += gcnew System::EventHandler(this, &profile_order::back_button_Click);
 			// 
-			// copies_available_txt
-			// 
-			this->copies_available_txt->Location = System::Drawing::Point(250, 439);
-			this->copies_available_txt->Name = L"copies_available_txt";
-			this->copies_available_txt->ReadOnly = true;
-			this->copies_available_txt->Size = System::Drawing::Size(148, 26);
-			this->copies_available_txt->TabIndex = 26;
-			this->copies_available_txt->TextChanged += gcnew System::EventHandler(this, &profile_order::textBox1_TextChanged);
-			// 
-			// copies_available_lbl
-			// 
-			this->copies_available_lbl->AutoSize = true;
-			this->copies_available_lbl->Location = System::Drawing::Point(26, 445);
-			this->copies_available_lbl->Name = L"copies_available_lbl";
-			this->copies_available_lbl->Size = System::Drawing::Size(125, 20);
-			this->copies_available_lbl->TabIndex = 27;
-			this->copies_available_lbl->Text = L"Copies Available";
-			this->copies_available_lbl->Click += gcnew System::EventHandler(this, &profile_order::label3_Click);
-			// 
 			// profile_order
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
@@ -585,27 +785,56 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Controls->Add(this->fine_lbl);
 			this->Controls->Add(this->date_return_lbl);
 			this->Controls->Add(this->date_issue_lbl);
-			this->Controls->Add(this->groupBox2);
-			this->Controls->Add(this->groupBox1);
+			this->Controls->Add(this->book_profile_group);
+			this->Controls->Add(this->user_profile_group);
 			this->Name = L"profile_order";
 			this->Text = L"profile_order";
 			this->Load += gcnew System::EventHandler(this, &profile_order::profile_order_Load);
-			this->groupBox1->ResumeLayout(false);
-			this->groupBox1->PerformLayout();
-			this->groupBox2->ResumeLayout(false);
-			this->groupBox2->PerformLayout();
+			this->user_profile_group->ResumeLayout(false);
+			this->user_profile_group->PerformLayout();
+			this->book_profile_group->ResumeLayout(false);
+			this->book_profile_group->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void profile_order_Load(System::Object^ sender, System::EventArgs^ e);
+		
+	private: 
+		/// <summary>
+		/// System::Void function to load the form
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void profile_order_Load(System::Object^ sender, System::EventArgs^ e);
 
-	private: void fill_student_data();
+	private: 
+		/// <summary>
+		/// Fill textboxes with data of the Borrower/User
+		/// </summary>
+		void fill_user_data();
 
-	private: void fill_book_data();
+	private: 
+		/// <summary>
+		/// Fill textboxes with data of the Book Borrowed
+		/// </summary>
+		void fill_book_data();
 
-	private: System::Void back_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private: 
+		/// <summary>
+		/// System::Void function for OnClick of back button
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void back_button_Click(System::Object^ sender, System::EventArgs^ e);
 
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {}
 	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {}

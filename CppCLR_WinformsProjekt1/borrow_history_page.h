@@ -12,28 +12,93 @@ namespace CppCLR_WinformsProjekt1 {
 	using namespace System::Drawing;
 	using namespace MySql::Data::MySqlClient;
 
-
+	/// <summary>
+	/// Summary for borrow_history_page
+	/// </summary>
+	///This is a public ref class whose object lifetime is administered automatically. When the object is no longer accessible or goes out of scope, the memory is released.
+	/// It supports the Windows Runtime type system.
 	public ref class borrow_history_page : public System::Windows::Forms::Form
 	{
 	public:
+		/// <summary>
+		/// Public variable for transfering the ID of the user
+		/// </summary>
+		/// It transfers the ID of the user as String which is part of the public ref class and a member of System.
 		String^ transfer_id;
+		/// <summary>
+		/// Public variables for transfering whether the user is a librarian or not
+		/// </summary>
+		/// It transfers a boolean value with true representing the user is a librarian and false if the user is not a librarian
 		bool is_librarian;
 	public:
+		/// <summary>
+		/// Constructor function for the form
+		/// </summary>
+		/// <param name="void"></param>
 		borrow_history_page(void);
+
+		/// <summary>
+		/// Constructor function for the form with transferable variables as parameters
+		/// </summary>
+		/// <param name="input_id_transfer">
+		/// It is the input argument for the ID to be transfered while calling the constructor
+		/// </param>
+		/// <param name="is_librarian_input">
+		/// It is the input argument for the boolean value, if the User is a librarian or not, to be transfered while calling the constructor
+		/// </param>
 		borrow_history_page(String^ input_transfer_id, bool is_librarian_input);
 
 	protected:
+		/// <summary>
+		/// Destructor function for the form
+		/// </summary>
 		~borrow_history_page();
 
-	private: System::Windows::Forms::Button^ back_button_borrow_his;
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	private: System::Windows::Forms::DataGridViewButtonColumn^ Open;
-	private: System::Windows::Forms::TextBox^ search_bar;
-	private: System::Windows::Forms::ComboBox^ list_detail_search_order;
-	private: System::Windows::Forms::Button^ search_button;
-	private: System::Windows::Forms::Button^ clear_all_button;
-
-	private: System::Windows::Forms::Button^ exit_button;
+	private: 
+		/// <summary>
+		/// Back Button to navigate backward
+		/// </summary>
+		System::Windows::Forms::Button^ back_button_borrow_his;
+	private: 
+		/// <summary>
+		/// Data Grid to present the General details of Book Borrowed and Book Borrower.
+		/// </summary>
+		/// @see Open
+		System::Windows::Forms::DataGridView^ dataGridView1;
+	private: 
+		/// <summary>
+		/// A dedicated button inside the Data Grid to open the profile of Borrow History with more details
+		/// </summary>
+		/// @see dataGridView1
+		System::Windows::Forms::DataGridViewButtonColumn^ Open;
+	private:
+		/// <summary>
+		/// TextBox for the Search Bar
+		/// </summary>
+		/// @see search_button, list_detail_search_order, clear_all_button
+		System::Windows::Forms::TextBox^ search_bar;
+	private: 
+		/// <summary>
+		/// Drop Down List to filter the list based on different attributes of Borrow History.
+		/// </summary>
+		System::Windows::Forms::ComboBox^ list_detail_search_order;
+	private: 
+		/// <summary>
+		/// Search Button to show search results based on input in the Search Bar and Drop Down List
+		/// </summary>
+		/// @see search_bar, list_detail_search_order, clear_all_button
+		System::Windows::Forms::Button^ search_button;
+	private: 
+		/// <summary>
+		/// Clear All Search Results Button to show default data
+		/// </summary>
+		/// @see search_bar, list_detail_search_order, search_button
+		System::Windows::Forms::Button^ clear_all_button;
+	private: 
+		/// <summary>
+		/// Exit Button to exit the application
+		/// </summary>
+		System::Windows::Forms::Button^ exit_button;
 
 	protected:
 
@@ -48,6 +113,7 @@ namespace CppCLR_WinformsProjekt1 {
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
+		/// To Initialize all the components required to load the form
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(borrow_history_page::typeid));
@@ -176,21 +242,79 @@ namespace CppCLR_WinformsProjekt1 {
 
 		}
 #pragma endregion
-	private: System::Void back_button_borrow_his_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->DialogResult = System::Windows::Forms::DialogResult::OK;
-		this->Close();
-	}
+
+	private:
+		/// <summary>
+		/// System::Void function for OnClick of back button
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void back_button_borrow_his_Click(System::Object^ sender, System::EventArgs^ e);
 
 	private: void fill_data_grid();
 
-	private: System::Void borrow_history_page_Load(System::Object^ sender, System::EventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function to load the form
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void borrow_history_page_Load(System::Object^ sender, System::EventArgs^ e);
 
-	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+	private: 
+		/// <summary>
+		/// System::Void function for OnClick cell in the Data Grid
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled by the Data Grid.
+		/// </param>
+		System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 
-	private: System::Void search_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private: 
+		/// <summary>
+		/// System::Void function for OnClick Search Button
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void search_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-	private: System::Void clear_all_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private: 
+		/// <summary>
+		/// System::Void function for OnClick Clear All Search Results
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void clear_all_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-	private: System::Void exit_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private: 
+		/// <summary>
+		/// System::Void function for OnClick Exit Button
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void exit_button_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

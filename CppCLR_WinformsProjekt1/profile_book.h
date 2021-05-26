@@ -10,53 +10,203 @@ namespace CppCLR_WinformsProjekt1 {
 	using namespace System::Drawing;
 	using namespace MySql::Data::MySqlClient;
 
-
+	// <summary>
+	/// Summary for profile_book
+	/// </summary>
+	///This is a public ref class whose object lifetime is administered automatically. When the object is no longer accessible or goes out of scope, the memory is released.
+	/// It supports the Windows Runtime type system.
 	public ref class profile_book : public System::Windows::Forms::Form
 	{
 	public:
+		/// <summary>
+		/// Public variable for transfering the ID of the Book
+		/// </summary>
+		/// It transfers the ID of the user as String which is part of the public ref class and a member of System.
 		String^ transfer_id_book;
-	private: System::Windows::Forms::TextBox^ book_lost_stat_text;
-	public:
-	private: System::Windows::Forms::Label^ book_lost_stat_lbl;
-		   bool transfer_isLibrarian;
+
+		/// <summary>
+		/// Public variables for transfering whether the user is a librarian or not
+		/// </summary>
+		/// It transfers a boolean value with true representing the user is a librarian and false if the user is not a librarian
+		bool transfer_isLibrarian;
 
 	public:
+		// <summary>
+		/// Constructor function for the form
+		/// </summary>
+		/// <param name="void"></param>
 		profile_book(void);
+
+		/// <summary>
+		/// Constructor function for the form with transferable variables as parameters
+		/// </summary>
+		/// <param name="label_book_id">
+		/// It is the input argument for the ID to be transfered while calling the constructor
+		/// </param>
+		/// <param name="isLibrarian">
+		/// It is the input argument for the boolean value, if the User is a librarian or not, to be transfered while calling the constructor
+		/// </param>
 		profile_book(String^ label_book_id, bool isLibrarian);
 
 	protected:
+		/// <summary>
+		/// Destructor function for the form
+		/// </summary>
 		~profile_book();
 
-	private: System::Windows::Forms::GroupBox^ groupBox1;
-	private: System::Windows::Forms::TextBox^ book_id_txt;
-	protected:
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox for Status if Book is Lost or Not
+		/// </summary>
+		System::Windows::Forms::TextBox^ book_lost_stat_text;
+	private: 
+		/// <summary>
+		/// Label for Status if Book is Lost or Not
+		/// </summary>
+		System::Windows::Forms::Label^ book_lost_stat_lbl;
 
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ bookname_lbl;
-	private: System::Windows::Forms::Label^ author_lbl;
-	private: System::Windows::Forms::TextBox^ price_txt;
-	private: System::Windows::Forms::Label^ publisher_lbl;
-	private: System::Windows::Forms::TextBox^ edition_no_txt;
-	private: System::Windows::Forms::Label^ edition_no_lbl;
-	private: System::Windows::Forms::TextBox^ publisher_txt;
-	private: System::Windows::Forms::Label^ price_lbl;
-	private: System::Windows::Forms::TextBox^ author_txt;
-	private: System::Windows::Forms::TextBox^ bookname_txt;
-	private: System::Windows::Forms::Button^ update_profile_button;
-	private: System::Windows::Forms::Button^ delete_profile_button;
-	private: System::Windows::Forms::Button^ confirm_change_button;
-	private: System::Windows::Forms::TextBox^ borrow_stat_txt;
-	private: System::Windows::Forms::Label^ borrow_stat_lbl;
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	private: System::Windows::Forms::DataGridViewButtonColumn^ Open;
-	private: System::Windows::Forms::TextBox^ no_copies_txt;
-	private: System::Windows::Forms::Label^ no_copies_lbl;
-	private: System::Windows::Forms::Button^ back_button;
-	private: System::Windows::Forms::NumericUpDown^ numeric_updown_no_copies;
-	private: System::Windows::Forms::TextBox^ category_txt;
-	private: System::Windows::Forms::Label^ category_lbl;
-	private: System::Windows::Forms::TextBox^ copies_available_txt;
-	private: System::Windows::Forms::Label^ copies_available_lbl;
+	private:
+		/// <summary>
+		/// A mechanism to group all the required labels and textboxes
+		/// </summary>
+		System::Windows::Forms::GroupBox^ book_profile_group;
+	private:
+		/// <summary>
+		/// A Read-Only TextBox with Book ID
+		/// </summary>
+		System::Windows::Forms::TextBox^ book_id_txt;
+	private: 
+		/// <summary>
+		/// Label for Book ID
+		/// </summary>
+		System::Windows::Forms::Label^ book_id_lbl;
+	private:
+		/// <summary>
+		/// Label for Book Name
+		/// </summary>
+		System::Windows::Forms::Label^ bookname_lbl;
+	private:
+		/// <summary>
+		/// Label for Book Author
+		/// </summary>
+		System::Windows::Forms::Label^ author_lbl;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Price of the Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ price_txt;
+	private: 
+		/// <summary>
+		/// Label for Book Publisher
+		/// </summary>
+		System::Windows::Forms::Label^ publisher_lbl;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Edition No of the Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ edition_no_txt;
+	private:
+		/// <summary>
+		/// Label for Book Edition
+		/// </summary>
+		System::Windows::Forms::Label^ edition_no_lbl;
+	private:
+		/// <summary>
+		/// A Read-Only TextBox with Name of Publisher of Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ publisher_txt;
+	private:
+		/// <summary>
+		/// Label for Book Price
+		/// </summary>
+		System::Windows::Forms::Label^ price_lbl;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Author of the Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ author_txt;
+	private:
+		/// <summary>
+		/// A Read-Only TextBox with Name of the Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ bookname_txt;
+	private: 
+		/// <summary>
+		/// Button to Initiate Update Profile Mode
+		/// </summary>
+		System::Windows::Forms::Button^ update_profile_button;
+	private: 
+		/// <summary>
+		/// Button to delete profile of the User
+		/// </summary>
+		System::Windows::Forms::Button^ delete_profile_button;
+	private:
+		/// <summary>
+		/// Button to Confirm the Changes made to the profile
+		/// </summary>
+		System::Windows::Forms::Button^ confirm_change_button;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Borrow Status of the Book as BORROWED or AVAILABLE
+		/// </summary>
+		System::Windows::Forms::TextBox^ borrow_stat_txt;
+	private:
+		/// <summary>
+		/// Label for Book Status 
+		/// </summary>
+		System::Windows::Forms::Label^ borrow_stat_lbl;
+	private: 
+		/// <summary>
+		/// Data Grid to present other Copies of the Book with general details
+		/// </summary>
+		/// @see Open
+		System::Windows::Forms::DataGridView^ dataGridView1;
+	private: 
+		/// <summary>
+		/// A dedicated button inside the Data Grid to open the profile of other copies of the same book
+		/// </summary>
+		/// @see dataGridView1
+		System::Windows::Forms::DataGridViewButtonColumn^ Open;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Number of Copies in the Library of the Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ no_copies_txt;
+	private: 
+		/// <summary>
+		/// Label for Number of Copies in the Library of the Book
+		/// </summary>
+		System::Windows::Forms::Label^ no_copies_lbl;
+	private: 
+		/// <summary>
+		/// Back Button to navigate backward
+		/// </summary>
+		System::Windows::Forms::Button^ back_button;
+	private:
+		/// <summary>
+		/// A numeric UpDown for adding new copies to the database
+		/// </summary>
+		System::Windows::Forms::NumericUpDown^ numeric_updown_no_copies;
+	private:
+		/// <summary>
+		/// A Read-Only TextBox with Category of the Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ category_txt;
+	private: 
+		/// <summary>
+		/// Label for Book Category
+		/// </summary>
+		System::Windows::Forms::Label^ category_lbl;
+	private: 
+		/// <summary>
+		/// A Read-Only TextBox with Number of Copies Currently Available
+		/// </summary>
+		System::Windows::Forms::TextBox^ copies_available_txt;
+	private:
+		/// <summary>
+		/// Label for Number of Copies Currently Available
+		/// </summary>
+		System::Windows::Forms::Label^ copies_available_lbl;
 
 	private:
 
@@ -67,10 +217,11 @@ namespace CppCLR_WinformsProjekt1 {
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
+		/// To Initialize all the components required to load the form
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(profile_book::typeid));
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->book_profile_group = (gcnew System::Windows::Forms::GroupBox());
 			this->book_lost_stat_text = (gcnew System::Windows::Forms::TextBox());
 			this->book_lost_stat_lbl = (gcnew System::Windows::Forms::Label());
 			this->copies_available_txt = (gcnew System::Windows::Forms::TextBox());
@@ -82,7 +233,7 @@ namespace CppCLR_WinformsProjekt1 {
 			this->borrow_stat_txt = (gcnew System::Windows::Forms::TextBox());
 			this->borrow_stat_lbl = (gcnew System::Windows::Forms::Label());
 			this->book_id_txt = (gcnew System::Windows::Forms::TextBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->book_id_lbl = (gcnew System::Windows::Forms::Label());
 			this->bookname_lbl = (gcnew System::Windows::Forms::Label());
 			this->author_lbl = (gcnew System::Windows::Forms::Label());
 			this->price_txt = (gcnew System::Windows::Forms::TextBox());
@@ -100,44 +251,44 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Open = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
 			this->back_button = (gcnew System::Windows::Forms::Button());
 			this->numeric_updown_no_copies = (gcnew System::Windows::Forms::NumericUpDown());
-			this->groupBox1->SuspendLayout();
+			this->book_profile_group->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numeric_updown_no_copies))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// groupBox1
+			// book_profile_group
 			// 
-			this->groupBox1->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->groupBox1->Controls->Add(this->book_lost_stat_text);
-			this->groupBox1->Controls->Add(this->book_lost_stat_lbl);
-			this->groupBox1->Controls->Add(this->copies_available_txt);
-			this->groupBox1->Controls->Add(this->copies_available_lbl);
-			this->groupBox1->Controls->Add(this->category_txt);
-			this->groupBox1->Controls->Add(this->category_lbl);
-			this->groupBox1->Controls->Add(this->no_copies_lbl);
-			this->groupBox1->Controls->Add(this->no_copies_txt);
-			this->groupBox1->Controls->Add(this->borrow_stat_txt);
-			this->groupBox1->Controls->Add(this->borrow_stat_lbl);
-			this->groupBox1->Controls->Add(this->book_id_txt);
-			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Controls->Add(this->bookname_lbl);
-			this->groupBox1->Controls->Add(this->author_lbl);
-			this->groupBox1->Controls->Add(this->price_txt);
-			this->groupBox1->Controls->Add(this->publisher_lbl);
-			this->groupBox1->Controls->Add(this->edition_no_txt);
-			this->groupBox1->Controls->Add(this->edition_no_lbl);
-			this->groupBox1->Controls->Add(this->publisher_txt);
-			this->groupBox1->Controls->Add(this->price_lbl);
-			this->groupBox1->Controls->Add(this->author_txt);
-			this->groupBox1->Controls->Add(this->bookname_txt);
-			this->groupBox1->Location = System::Drawing::Point(735, 58);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->groupBox1->Size = System::Drawing::Size(434, 572);
-			this->groupBox1->TabIndex = 19;
-			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Book Profile";
+			this->book_profile_group->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->book_profile_group->Controls->Add(this->book_lost_stat_text);
+			this->book_profile_group->Controls->Add(this->book_lost_stat_lbl);
+			this->book_profile_group->Controls->Add(this->copies_available_txt);
+			this->book_profile_group->Controls->Add(this->copies_available_lbl);
+			this->book_profile_group->Controls->Add(this->category_txt);
+			this->book_profile_group->Controls->Add(this->category_lbl);
+			this->book_profile_group->Controls->Add(this->no_copies_lbl);
+			this->book_profile_group->Controls->Add(this->no_copies_txt);
+			this->book_profile_group->Controls->Add(this->borrow_stat_txt);
+			this->book_profile_group->Controls->Add(this->borrow_stat_lbl);
+			this->book_profile_group->Controls->Add(this->book_id_txt);
+			this->book_profile_group->Controls->Add(this->book_id_lbl);
+			this->book_profile_group->Controls->Add(this->bookname_lbl);
+			this->book_profile_group->Controls->Add(this->author_lbl);
+			this->book_profile_group->Controls->Add(this->price_txt);
+			this->book_profile_group->Controls->Add(this->publisher_lbl);
+			this->book_profile_group->Controls->Add(this->edition_no_txt);
+			this->book_profile_group->Controls->Add(this->edition_no_lbl);
+			this->book_profile_group->Controls->Add(this->publisher_txt);
+			this->book_profile_group->Controls->Add(this->price_lbl);
+			this->book_profile_group->Controls->Add(this->author_txt);
+			this->book_profile_group->Controls->Add(this->bookname_txt);
+			this->book_profile_group->Location = System::Drawing::Point(735, 58);
+			this->book_profile_group->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->book_profile_group->Name = L"book_profile_group";
+			this->book_profile_group->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->book_profile_group->Size = System::Drawing::Size(434, 572);
+			this->book_profile_group->TabIndex = 19;
+			this->book_profile_group->TabStop = false;
+			this->book_profile_group->Text = L"Book Profile";
 			// 
 			// book_lost_stat_text
 			// 
@@ -233,14 +384,14 @@ namespace CppCLR_WinformsProjekt1 {
 			this->book_id_txt->Size = System::Drawing::Size(148, 26);
 			this->book_id_txt->TabIndex = 21;
 			// 
-			// label1
+			// book_id_lbl
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(26, 35);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(26, 20);
-			this->label1->TabIndex = 20;
-			this->label1->Text = L"ID";
+			this->book_id_lbl->AutoSize = true;
+			this->book_id_lbl->Location = System::Drawing::Point(26, 35);
+			this->book_id_lbl->Name = L"book_id_lbl";
+			this->book_id_lbl->Size = System::Drawing::Size(26, 20);
+			this->book_id_lbl->TabIndex = 20;
+			this->book_id_lbl->Text = L"ID";
 			// 
 			// bookname_lbl
 			// 
@@ -435,33 +586,104 @@ namespace CppCLR_WinformsProjekt1 {
 			this->Controls->Add(this->confirm_change_button);
 			this->Controls->Add(this->update_profile_button);
 			this->Controls->Add(this->delete_profile_button);
-			this->Controls->Add(this->groupBox1);
+			this->Controls->Add(this->book_profile_group);
 			this->Name = L"profile_book";
 			this->Text = L"profile_book";
 			this->Load += gcnew System::EventHandler(this, &profile_book::profile_book_Load);
-			this->groupBox1->ResumeLayout(false);
-			this->groupBox1->PerformLayout();
+			this->book_profile_group->ResumeLayout(false);
+			this->book_profile_group->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numeric_updown_no_copies))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	private: System::Void profile_book_Load(System::Object^ sender, System::EventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function to load the form
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void profile_book_Load(System::Object^ sender, System::EventArgs^ e);
 
-	private: System::Void update_profile_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function to toggle into Update Mode to update the file
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void update_profile_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-	private: System::Void delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function to Delete Profile
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-	private: System::Void confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function to toggle into Read Mode and Send the Confirmed Changes
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-	private: void fill_data_grid();
+	private:
+		/// <summary>
+		/// Void Function to Fill the Data Grid
+		/// </summary>
+		void fill_data_grid();
 
-	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+	private: 
+		/// <summary>
+		/// System::Void function for OnClick cell in the Data Grid
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled by the Data Grid.
+		/// </param>
+		System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 
-	private: System::Void back_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function for OnClick of back button
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void back_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-	private: void updating_no_of_copies(int num_new_copies);
+	private: 
+		/// <summary>
+		/// Void function to add new copies to the database
+		/// </summary>
+		/// <param name="num_new_copies">
+		/// Argument passed for how many number of copies to be added
+		/// </param>
+		void updating_no_of_copies(int num_new_copies);
 
 	private: System::Void copies_available_txt_TextChanged(System::Object^ sender, System::EventArgs^ e) {}
 };

@@ -3,17 +3,19 @@
 
 namespace CppCLR_WinformsProjekt1 {
 
-
+	///Constructor calls for functions to Initialize all the components of the form and to fill the Data Grid with list of history of Book Borrowing
+	///@see InitializeComponent(), sql_connection_func::fill_datagrid_borrow_history()
 	borrow_history_page::borrow_history_page(void)
 	{
 		InitializeComponent();
 		//fill_data_grid();
 		sql_connection_func::fill_datagrid_borrow_history(dataGridView1, is_librarian, transfer_id);
-		//
-		//TODO: Add the constructor code here
-		//
 	}
 
+	/// <summary>
+	/// Constructor calls for functions to Initialize all the components of the form and to fill the Data Grid with list of history of Book Borrowing
+	/// </summary>
+	/// @see transfer_id, is_librarian, InitializeComponent(), sql_connection_func::fill_datagrid_borrow_history()
 	borrow_history_page::borrow_history_page(String^ input_transfer_id, bool is_librarian_input)
 	{
 		transfer_id = input_transfer_id;
@@ -21,9 +23,6 @@ namespace CppCLR_WinformsProjekt1 {
 		InitializeComponent();
 		//fill_data_grid();
 		sql_connection_func::fill_datagrid_borrow_history(dataGridView1, is_librarian, transfer_id);
-		//
-		//TODO: Add the constructor code here
-		//
 	}
 
 	borrow_history_page::~borrow_history_page()
@@ -34,7 +33,16 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 	}
 
-	void borrow_history_page::fill_data_grid() 
+	/// <summary>
+	/// Function for Back Button which goes back to the previous Form by closing the current form
+	/// </summary>
+	System::Void borrow_history_page::back_button_borrow_his_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+		this->Close();
+	}
+
+	void borrow_history_page::fill_data_grid()
 	{
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
@@ -58,6 +66,9 @@ namespace CppCLR_WinformsProjekt1 {
 		conDataBase->Close();
 	}
 
+	/// <summary>
+	/// It loads the Form in full screen mode
+	/// </summary>
 	System::Void borrow_history_page::borrow_history_page_Load(System::Object^ sender, System::EventArgs^ e) 
 	{
 		CenterToScreen();
@@ -66,6 +77,9 @@ namespace CppCLR_WinformsProjekt1 {
 		this->list_detail_search_order->SelectedIndex = 0;
 	}
 
+	/// <summary>
+	/// Button OnClick function to Open Profile of Book Borrowed and Book Borrower along with their details
+	/// </summary>
 	System::Void borrow_history_page::dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) 
 	{
 		if (e->ColumnIndex == 0)
@@ -94,6 +108,10 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 	}
 
+	/// <summary>
+	/// Button OnClick function to search and fill the Data Grid with filtered results from the Drop Down List
+	/// </summary>
+	/// @see sql_connection_func::fill_datagrid_borrow_history_filtered()
 	System::Void borrow_history_page::search_button_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 		String^ str_list_detail_search_order;
@@ -138,12 +156,19 @@ namespace CppCLR_WinformsProjekt1 {
 		sql_connection_func::fill_datagrid_borrow_history_filtered(str_list_detail_search_order, this->search_bar->Text, dataGridView1, is_librarian, transfer_id);
 	}
 
+	/// <summary>
+	/// Clear Search Results function and present original default data.
+	/// </summary>
+	/// @see search_button_Click()
 	System::Void borrow_history_page::clear_all_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->search_bar->Text = "";
 		search_button_Click(sender, e);
 	}
 
+	/// <summary>
+	/// Exit Button Function to Exit the application from the current Form
+	/// </summary>
 	System::Void borrow_history_page::exit_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		Application::Exit();

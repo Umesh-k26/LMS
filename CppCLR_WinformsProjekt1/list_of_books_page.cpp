@@ -3,7 +3,8 @@
 
 namespace CppCLR_WinformsProjekt1 {
 
-
+	///Constructor calls for functions to Initialize all the components of the form and to fill the Data Grid with list of all Books
+	///@see InitializeComponent(), sql_connection_func::fill_datagrid_book()
 	list_of_books_page::list_of_books_page(void)
 	{
 		InitializeComponent();
@@ -11,6 +12,10 @@ namespace CppCLR_WinformsProjekt1 {
 		sql_connection_func::fill_datagrid_book(dataGridView1);
 	}
 
+	/// <summary>
+	/// Constructor calls for functions to Initialize all the components of the form and to fill the Data Grid with list of all Books
+	/// </summary>
+	/// @see transfer_id, is_librarian, InitializeComponent(), sql_connection_func::fill_datagrid_book()
 	list_of_books_page::list_of_books_page(String^ input_transfer_id, bool is_librarian_input)
 	{
 		transfer_id = input_transfer_id;
@@ -50,6 +55,9 @@ namespace CppCLR_WinformsProjekt1 {
 		conDataBase->Close();
 	}
 
+	/// <summary>
+	/// It loads the Form in full screen mode
+	/// </summary>
 	System::Void list_of_books_page::list_of_books_page_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		CenterToScreen();
@@ -58,6 +66,9 @@ namespace CppCLR_WinformsProjekt1 {
 		this->list_detail_search_book->SelectedIndex = 1;
 	}
 
+	/// <summary>
+	/// Function for Back Button which goes back to the previous Form by closing the current form
+	/// </summary>
 	System::Void list_of_books_page::back_button_book_list_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
@@ -67,17 +78,19 @@ namespace CppCLR_WinformsProjekt1 {
 		f2->ShowDialog();*/
 	}
 
+	/// <summary>
+	/// Exit Button Function to Exit the application from the current Form
+	/// </summary>
 	System::Void list_of_books_page::exit_button_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 		Application::Exit();
 	}
 
+	/// <summary>
+	/// Button OnClick function to Open Profile of Books with their details
+	/// </summary>
 	System::Void list_of_books_page::dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) 
 	{
-		//
-		// Copy code from list_of_students to open a different form and also try to use different DialogBox::OK
-		//
-		//
 		if (e->ColumnIndex == 0)
 		{
 			int row_num = e->RowIndex;
@@ -98,6 +111,10 @@ namespace CppCLR_WinformsProjekt1 {
 
 	}
 
+	/// <summary>
+	/// Button OnClick function to search and fill the Data Grid with filtered results from the Drop Down List
+	/// </summary>
+	/// @see sql_connection_func::fill_datagrid_books_filtered()
 	System::Void list_of_books_page::search_button_book_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		String^ str_list_detail_search_book;
@@ -122,6 +139,10 @@ namespace CppCLR_WinformsProjekt1 {
 	
 	}
 
+	/// <summary>
+	/// Clear Search Results function and present original default data.
+	/// </summary>
+	/// @see search_button_student_Click()
 	System::Void list_of_books_page::clear_all_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->search_bar_book->Text = "";

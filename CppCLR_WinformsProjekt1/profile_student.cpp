@@ -3,15 +3,21 @@
 
 namespace CppCLR_WinformsProjekt1 {
 
+	///Constructor calls for functions to Initialize all the components of the form
+	///@see InitializeComponent()
 	profile_student::profile_student(void)
 	{
 		InitializeComponent();
 	}
 
-	profile_student::profile_student(String^ label_text_id, bool is_librarian_input)
+	/// <summary>
+	///Constructor calls for functions to Initialize all the components of the form
+	/// </summary>
+	/// @see transfer_id, is_librarian, InitializeComponent()
+	profile_student::profile_student(String^ input_id_transfer, bool is_librarian_input)
 	{
 		InitializeComponent();
-		transfer_id_student = label_text_id;
+		transfer_id = input_id_transfer;
 		is_librarian = is_librarian_input;
 	}
 
@@ -23,13 +29,15 @@ namespace CppCLR_WinformsProjekt1 {
 		}
 	}
 
+	/// <summary>
+	/// It loads the Form in full screen mode and fills all the textboxes and fill the Data Grid
+	/// </summary>
 	System::Void profile_student::profile_student_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		CenterToScreen();
 		//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
 		WindowState = FormWindowState::Maximized;
-		//this->label1->Text = list_of_students_page::global_student_id_passed;
-		//this->label1->Text = transfer_id_student;
+
 		if (is_librarian == false)
 		{
 			this->delete_profile_button->Visible = false;
@@ -38,9 +46,10 @@ namespace CppCLR_WinformsProjekt1 {
 		{
 			this->delete_profile_button->Visible = true;
 		}
+
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.student_data\
-		WHERE student_id = " + transfer_id_student + ";", conDataBase);
+		WHERE student_id = " + transfer_id + ";", conDataBase);
 		MySqlDataReader^ myReader;
 		try {
 			conDataBase->Open();
@@ -64,7 +73,7 @@ namespace CppCLR_WinformsProjekt1 {
 				printing_mobile = myReader->GetString("student_mobile");
 				printing_address = myReader->GetString("student_address");
 				printing_member_stat = myReader->GetString("membership_stat");
-				student_no_book_stat = myReader->GetInt32("student_no_book_stat");
+				user_no_book_stat = myReader->GetInt32("student_no_book_stat");
 
 				MySql::Data::Types::MySqlDateTime new_dob;
 				new_dob = myReader->GetMySqlDateTime("student_dob");
@@ -93,6 +102,9 @@ namespace CppCLR_WinformsProjekt1 {
 		conDataBase->Close();
 	}
 
+	/// <summary>
+	/// Button OnClick To Switch into Update Mode and make some Read-Only Fields as Re-Writable
+	/// </summary>
 	System::Void profile_student::update_profile_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		MessageBox::Show("Update profile");
@@ -110,9 +122,12 @@ namespace CppCLR_WinformsProjekt1 {
 
 	}
 
+	/// <summary>
+	/// Button OnClick To Deactivate the Membership of the User, upon passing through checks if the User as returned all the books
+	/// </summary>
 	System::Void profile_student::delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (student_no_book_stat > 0)
+		if (user_no_book_stat > 0)
 		{
 			MessageBox::Show("Cannot delete since he/she hasn't returned all the books borrowed.", "Warning", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			return;
@@ -147,6 +162,9 @@ namespace CppCLR_WinformsProjekt1 {
 
 	}
 
+	/// <summary>
+	/// Button OnClick function to switch back into Read-Only Mode and updating the profile of the User and changing it in the databse as well
+	/// </summary>
 	System::Void profile_student::confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		MessageBox::Show("Changes made");
@@ -180,19 +198,21 @@ namespace CppCLR_WinformsProjekt1 {
 		this->address_txt->ReadOnly = true;
 		this->profession_selector->Visible = false;
 		//this->Refresh();
-		//profile_student(transfer_id_student);
+		//profile_student(transfer_id);
 		profile_student_Load(sender, e);
 
 		conDataBase->Close();
 	}
 
+	/// <summary>
+	/// Function to fill the Data Grid with the list of the books the User has Borrowed with some general details
+	/// </summary>
 	void profile_student::fill_data_grid()
 	{
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history WHERE student_id = " + this->student_id_txt->Text + " AND borrow_status = 'BORROWED';", conDataBase);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history WHERE student_id = " + this->student_id_txt->Text + ";", conDataBase);
-		//student_id,student_name,student_mobile, student_profession, student_no_book_stat 
 		try {
 			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
 			sda->SelectCommand = cmdDataBase;
@@ -210,12 +230,18 @@ namespace CppCLR_WinformsProjekt1 {
 		conDataBase->Close();
 	}
 
+	/// <summary>
+	/// Function for Back Button which goes back to the previous Form by closing the current form
+	/// </summary>
 	System::Void profile_student::back_button_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
 
+	/// <summary>
+	/// Button OnClick function to Open Profile of Book Borrowed and Book Borrower along with their details
+	/// </summary>
 	System::Void profile_student::dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
 	{
 		if (e->ColumnIndex == 0)
