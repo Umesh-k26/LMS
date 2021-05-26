@@ -1,7 +1,8 @@
 #include "pch.h"
 #include "LoginPage.h"
 #include "HomePage.h"
-
+#include "login_to_librarian_db.h"
+#include "connection_sql_func.h"
 namespace LMS {
 	LoginPage::LoginPage(void)
 	{
@@ -21,7 +22,7 @@ namespace LMS {
 		//UNCOMMENT line no : 24 to 73 AFTER CREATING 'connection_to_librarian_db', 'sql_connection_func' namespaces
 		//***********************************************************************************************
 
-		/*if (connection_to_librarian_db::is_librarian(this->username_txt->Text, this->password_txt->Text) == true)
+		if (connection_to_librarian_db::is_librarian(this->username_txt->Text, this->password_txt->Text) == true)
 		{
 			MessageBox::Show("Username and password is correct");
 
@@ -70,13 +71,13 @@ namespace LMS {
 			{
 				MessageBox::Show(ex->Message);
 			}
-		}*/
+		}
 
 		//*****************************************************************
 		//DELETE line no : 79 to 113 after above part is uncommented
 		//*****************************************************************
 
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		/*String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from library_system.user_pass WHERE \
 				student_id='" + this->username_txt->Text + "' and user_password = '" + this->password_txt->Text + "' ;", conDataBase);
@@ -110,7 +111,7 @@ namespace LMS {
 		catch (Exception^ ex)
 		{
 			MessageBox::Show(ex->Message);
-		}
+		}*/
 	}
 
 	System::Void LoginPage::LoginPage_Load(System::Object^ sender, System::EventArgs^ e) {

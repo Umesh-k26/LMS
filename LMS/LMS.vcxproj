@@ -159,18 +159,24 @@
     <ResourceCompile Include="src\app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\connection_sql_func.h" />
+    <ClInclude Include="src\fine_function.h" />
     <ClInclude Include="src\HomePage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="src\LoginPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="src\login_to_librarian_db.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AssemblyInfo.cpp" />
+    <ClCompile Include="src\connection_sql_func.cpp" />
+    <ClCompile Include="src\fine_function.cpp" />
     <ClCompile Include="src\HomePage.cpp" />
+    <ClCompile Include="src\login_to_librarian_db.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\LoginPage.cpp" />
     <ClCompile Include="src\pch.cpp">
@@ -190,6 +196,11 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="src\HomePage.resx">
+      <DependentUpon>src\HomePage.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
