@@ -159,9 +159,18 @@
     <ResourceCompile Include="src\app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\borrow_history_page.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="src\connection_sql_func.h" />
     <ClInclude Include="src\fine_function.h" />
     <ClInclude Include="src\HomePage.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="src\list_of_books_page.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="src\list_of_member_page.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="src\LoginPage.h">
@@ -169,13 +178,25 @@
     </ClInclude>
     <ClInclude Include="src\login_to_librarian_db.h" />
     <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\profile_book.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="src\profile_member.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="src\profile_order.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="src\Resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AssemblyInfo.cpp" />
+    <ClCompile Include="src\borrow_history_page.cpp" />
     <ClCompile Include="src\connection_sql_func.cpp" />
     <ClCompile Include="src\fine_function.cpp" />
     <ClCompile Include="src\HomePage.cpp" />
+    <ClCompile Include="src\list_of_books_page.cpp" />
+    <ClCompile Include="src\list_of_member_page.cpp" />
     <ClCompile Include="src\login_to_librarian_db.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\LoginPage.cpp" />
@@ -185,6 +206,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\profile_book.cpp" />
+    <ClCompile Include="src\profile_member.cpp" />
+    <ClCompile Include="src\profile_order.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\app.ico" />
@@ -198,8 +222,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="src\borrow_history_page.resx">
+      <DependentUpon>src\borrow_history_page.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\HomePage.resx">
       <DependentUpon>src\HomePage.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\list_of_books_page.resx">
+      <DependentUpon>src\list_of_books_page.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\list_of_member_page.resx">
+      <DependentUpon>src\list_of_member_page.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\profile_book.resx">
+      <DependentUpon>src\profile_book.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\profile_member.resx">
+      <DependentUpon>src\profile_member.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\profile_order.resx">
+      <DependentUpon>src\profile_order.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

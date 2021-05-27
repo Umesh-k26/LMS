@@ -21,7 +21,7 @@ namespace sql_connection_func {
 	// 
 	//FUNCTION FOR FILLING STUDENT DATAGRID IN LIST OF STUDENTS PAGE
 	//
-	void fill_datagrid_student(System::Windows::Forms::DataGridView^ dataGridView1)
+	void fill_datagrid_member(System::Windows::Forms::DataGridView^ dataGridView1)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT student_id AS ID, student_name AS Name, student_mobile AS Mobile, student_email as 'E-Mail', student_no_book_stat AS 'No. of Books Borrowed' FROM library_system.student_data;", conDataBase);
@@ -44,7 +44,7 @@ namespace sql_connection_func {
 		conDataBase->Close();
 	}
 
-	void fill_datagrid_students_filtered(String^ str_list_detail_search_person, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView1)
+	void fill_datagrid_members_filtered(String^ str_list_detail_search_person, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView1)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT student_id AS ID, student_name AS Name, student_mobile AS Mobile, student_email as 'E-Mail', student_no_book_stat AS 'No. of Books Borrowed' FROM library_system.student_data\

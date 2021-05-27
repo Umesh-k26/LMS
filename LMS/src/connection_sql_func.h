@@ -15,8 +15,8 @@ namespace sql_connection_func {
 	String^ sql_user_pass_string();
 
 	//FUNCTION FOR FILLING STUDENT DATAGRID IN LIST OF STUDENTS PAGE
-	void fill_datagrid_student(System::Windows::Forms::DataGridView^ dataGridView1);
-	void fill_datagrid_students_filtered(String^ str_list_detail_search_person, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView1);
+	void fill_datagrid_member(System::Windows::Forms::DataGridView^ dataGridView1);
+	void fill_datagrid_members_filtered(String^ str_list_detail_search_person, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView1);
 
 	//FUNCTION FOR FILLING BOOK DATAGRID IN LIST OF BOOKS PAGE
 	void fill_datagrid_book(System::Windows::Forms::DataGridView^ dataGridView1);
