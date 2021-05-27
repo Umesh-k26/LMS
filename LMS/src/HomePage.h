@@ -4,15 +4,15 @@
 // Keep in mind the new naming scheme instead of "student" it is now "member"
 // shift to cpp file after completing
 //***********************************************************************************************
-/*#include "list_of_members_page.h"
-#include "AddBook.h"
-#include "RegisterMember.h"
+#include "list_of_member_page.h"
 #include "list_of_books_page.h"
 #include "borrow_history_page.h"
+#include "profile_member.h"
+/*#include "AddBook.h"
+#include "RegisterMember.h"
 #include "BorrowBook.h"
 #include "ReturnBook.h"
-#include "RegisterLibrarian.h"
-#include "profile_member.h"*/
+#include "RegisterLibrarian.h"*/
 
 //NEW HEADER FILES NEED NOT BE NAMED EXACTLY SAME AS ABOVE BUT BETTER TO FOLLOW OLDER CONVENTION
 namespace LMS {
@@ -260,22 +260,21 @@ private: System::Void borrowbook_btn_Click(System::Object^ sender, System::Event
 }
 
 private: System::Void booklist_btn_Click(System::Object^ sender, System::EventArgs^ e) 	{
-	/*CppCLR_WinformsProjekt1::list_of_books_page^ list_of_books_f = gcnew CppCLR_WinformsProjekt1::list_of_books_page(transfer_id, is_librarian);
+	LMS::list_of_books_page^ list_of_books_f = gcnew LMS::list_of_books_page(transfer_id, is_librarian);
 	this->Hide();
-	//list_of_books_f->ShowDialog();
 	if (list_of_books_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 	{
 		this->Show();
-	}*/
+	}
 }
 
 private: System::Void borrowhistory_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-	/*CppCLR_WinformsProjekt1::borrow_history_page^ borrow_history_page_f = gcnew CppCLR_WinformsProjekt1::borrow_history_page(transfer_id, is_librarian);
+	LMS::borrow_history_page^ borrow_history_page_f = gcnew LMS::borrow_history_page(transfer_id, is_librarian);
 	this->Hide();
 	if (borrow_history_page_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 	{
 		this->Show();
-	}*/
+	}
 }
 
 private: System::Void returnbook_btn_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -288,16 +287,13 @@ private: System::Void returnbook_btn_Click(System::Object^ sender, System::Event
 }
 
 private: System::Void member_list_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-	//
-	//	CHANGE TO LIST OF MEMBERS
-	//
-	/*CppCLR_WinformsProjekt1::list_of_students_page^ list_of_students_f = gcnew CppCLR_WinformsProjekt1::list_of_students_page(transfer_id, is_librarian);
+
+	LMS::list_of_member_page^ list_of_member_f = gcnew LMS::list_of_member_page(transfer_id, is_librarian);
 	this->Hide();
-	//list_of_students_f->ShowDialog();
-	if (list_of_students_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	if (list_of_member_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 	{
 		this->Show();
-	}*/
+	}
 }
 
 private: System::Void addbook_btn_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -334,12 +330,12 @@ private: System::Void view_profile_member_btn_Click(System::Object^ sender, Syst
 	//
 	//	CHANGE TO PROFILE MEMBER
 	//
-	/*CppCLR_WinformsProjekt1::profile_student^ profile_student_f = gcnew CppCLR_WinformsProjekt1::profile_student(transfer_id, is_librarian);
+	LMS::profile_member^ profile_member_f = gcnew LMS::profile_member(transfer_id, is_librarian);
 	this->Hide();
-	if (profile_student_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	if (profile_member_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 	{
 		this->Show();
-	}*/
+	}
 }
 
 private: System::Void exit_button_Click(System::Object^ sender, System::EventArgs^ e) {
