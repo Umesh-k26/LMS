@@ -11,10 +11,13 @@ namespace sql_connection_func {
 	using namespace System::Drawing;
 	using namespace MySql::Data::MySqlClient;
 
-	//FUNCTION FOR SETTING USERNAME PASSWORD TO ESTABLISH CONNECTION TO MYSQL SERVER
+	///FUNCTION FOR SETTING USERNAME PASSWORD TO ESTABLISH CONNECTION TO MYSQL SERVER
 	String^ sql_user_pass_string();
 
-	//FUNCTION FOR FILLING STUDENT DATAGRID IN LIST OF STUDENTS PAGE
+	/// <summary>
+	/// //FUNCTION FOR FILLING STUDENT DATAGRID IN LIST OF STUDENTS PAGE
+	/// </summary>
+	/// <param name="dataGridView1"></param>
 	void fill_datagrid_member(System::Windows::Forms::DataGridView^ dataGridView1);
 	void fill_datagrid_members_filtered(String^ str_list_detail_search_person, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView1);
 
