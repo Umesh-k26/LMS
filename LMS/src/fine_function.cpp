@@ -17,7 +17,6 @@ namespace fine_func {
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT DATEDIFF(date_returned, date_issue) AS fine_column FROM library_system.borrow_history WHERE order_id = " + order_id_input + ";", conDataBase);
 		MySqlDataReader^ myReader;
-
 		try {
 			conDataBase->Open();
 			myReader = cmdDataBase1->ExecuteReader();
