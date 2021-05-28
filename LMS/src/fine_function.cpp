@@ -9,7 +9,7 @@ namespace fine_func {
 	int calculate_fine(int order_id_input, int student_id_input, String^ borrow_proffesion_input)
 	{
 		int value_fine = 0;
-		int num_date_difference;
+		int num_date_difference = 0;
 
 		int default_student_allowance = 7, default_faculty_allowance = 14, default_alumni_allowance = 10;
 		int perday_student = 10, perday_faculty = 20, perday_alumni = 20;
@@ -17,7 +17,6 @@ namespace fine_func {
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT DATEDIFF(date_returned, date_issue) AS fine_column FROM library_system.borrow_history WHERE order_id = " + order_id_input + ";", conDataBase);
 		MySqlDataReader^ myReader;
-
 		try {
 			conDataBase->Open();
 			myReader = cmdDataBase1->ExecuteReader();
