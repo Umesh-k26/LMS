@@ -159,6 +159,9 @@
     <ResourceCompile Include="src\app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\BorrowBook.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="src\borrow_history_page.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -188,9 +191,13 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="src\Resource.h" />
+    <ClInclude Include="src\ReturnBook.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AssemblyInfo.cpp" />
+    <ClCompile Include="src\BorrowBook.cpp" />
     <ClCompile Include="src\borrow_history_page.cpp" />
     <ClCompile Include="src\connection_sql_func.cpp" />
     <ClCompile Include="src\fine_function.cpp" />
@@ -209,6 +216,7 @@
     <ClCompile Include="src\profile_book.cpp" />
     <ClCompile Include="src\profile_member.cpp" />
     <ClCompile Include="src\profile_order.cpp" />
+    <ClCompile Include="src\ReturnBook.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\app.ico" />
@@ -224,6 +232,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="src\BorrowBook.resx">
+      <DependentUpon>src\BorrowBook.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\borrow_history_page.resx">
       <DependentUpon>src\borrow_history_page.h</DependentUpon>
     </EmbeddedResource>
@@ -244,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\profile_order.resx">
       <DependentUpon>src\profile_order.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\ReturnBook.resx">
+      <DependentUpon>src\ReturnBook.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
