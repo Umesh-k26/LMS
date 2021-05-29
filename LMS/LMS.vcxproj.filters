@@ -59,6 +59,12 @@
     <ClInclude Include="src\profile_order.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\BorrowBook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ReturnBook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp">
@@ -101,6 +107,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\profile_order.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BorrowBook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ReturnBook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

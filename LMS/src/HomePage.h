@@ -8,10 +8,10 @@
 #include "list_of_books_page.h"
 #include "borrow_history_page.h"
 #include "profile_member.h"
-/*#include "AddBook.h"
-#include "RegisterMember.h"
 #include "BorrowBook.h"
 #include "ReturnBook.h"
+/*#include "AddBook.h"
+#include "RegisterMember.h"
 #include "RegisterLibrarian.h"*/
 
 //NEW HEADER FILES NEED NOT BE NAMED EXACTLY SAME AS ABOVE BUT BETTER TO FOLLOW OLDER CONVENTION
@@ -176,6 +176,7 @@ namespace LMS {
 			this->borrowbook_btn->TabIndex = 7;
 			this->borrowbook_btn->Text = L"Borrow A Book";
 			this->borrowbook_btn->UseVisualStyleBackColor = true;
+			//this->borrowbook_btn->UseWaitCursor = true;
 			this->borrowbook_btn->Click += gcnew System::EventHandler(this, &HomePage::borrowbook_btn_Click);
 			// 
 			// returnbook_btn
@@ -251,12 +252,12 @@ namespace LMS {
 		}
 #pragma endregion
 private: System::Void borrowbook_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-	/*LMS::BorrowBook^ borrowbook_f = gcnew LMS::BorrowBook(transfer_id, is_librarian);
+	LMS::BorrowBook^ borrowbook_f = gcnew LMS::BorrowBook();
 	this->Hide();
 	if (borrowbook_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 	{
 		this->Show();
-	}*/
+	}
 }
 
 private: System::Void booklist_btn_Click(System::Object^ sender, System::EventArgs^ e) 	{
@@ -278,12 +279,12 @@ private: System::Void borrowhistory_btn_Click(System::Object^ sender, System::Ev
 }
 
 private: System::Void returnbook_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-	/*CppCLR_WinformsProjekt1::ReturnBook^ returnbook_f = gcnew CppCLR_WinformsProjekt1::ReturnBook(transfer_id, is_librarian);
+	LMS::ReturnBook^ returnbook_f = gcnew LMS::ReturnBook();
 	this->Hide();
 	if (returnbook_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 	{
 		this->Show();
-	}*/
+	}
 }
 
 private: System::Void member_list_btn_Click(System::Object^ sender, System::EventArgs^ e) {
