@@ -49,7 +49,7 @@ System::Void LMS::list_of_books_page::back_button_book_list_Click(System::Object
 {
 	this->DialogResult = System::Windows::Forms::DialogResult::OK;
 	this->Close();
-	/*CppCLR_WinformsProjekt1::Form2^ f2 = gcnew CppCLR_WinformsProjekt1::Form2;
+	/*LMS::Form2^ f2 = gcnew LMS::Form2;
 	this->Hide();
 	f2->ShowDialog();*/
 }

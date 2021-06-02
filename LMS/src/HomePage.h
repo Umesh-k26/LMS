@@ -10,9 +10,9 @@
 #include "profile_member.h"
 #include "BorrowBook.h"
 #include "ReturnBook.h"
-/*#include "AddBook.h"
+#include "AddBook.h"
 #include "RegisterMember.h"
-#include "RegisterLibrarian.h"*/
+#include "RegisterLibrarian.h"
 
 //NEW HEADER FILES NEED NOT BE NAMED EXACTLY SAME AS ABOVE BUT BETTER TO FOLLOW OLDER CONVENTION
 namespace LMS {
@@ -298,33 +298,33 @@ private: System::Void member_list_btn_Click(System::Object^ sender, System::Even
 }
 
 private: System::Void addbook_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-	/*CppCLR_WinformsProjekt1::AddBook^ addbook_f = gcnew CppCLR_WinformsProjekt1::AddBook(transfer_id, is_librarian);
+	LMS::AddBook^ addbook_f = gcnew LMS::AddBook(transfer_id, is_librarian);
 	this->Hide();
 	if (addbook_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 	{
 		this->Show();
-	}*/
+	}
 }
 
 private: System::Void register_member_btn_Click(System::Object^ sender, System::EventArgs^ e) {
 	//
 	//	CHANGE TO REGISTER MEMBER
 	//
-	/*CppCLR_WinformsProjekt1::RegisterStudent^ registerstudent_f = gcnew CppCLR_WinformsProjekt1::RegisterStudent(transfer_id, is_librarian);
+	LMS::RegisterMember^ RegisterMember_f = gcnew LMS::RegisterMember(transfer_id, is_librarian);
 	this->Hide();
-	if (registerstudent_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	if (RegisterMember_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 	{
 		this->Show();
-	}*/
+	}
 }
 
 private: System::Void registerlibrarian_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-	/*CppCLR_WinformsProjekt1::RegisterLibrarian^ registerlibrarian_f = gcnew CppCLR_WinformsProjekt1::RegisterLibrarian(transfer_id, is_librarian);
+	LMS::RegisterLibrarian^ registerlibrarian_f = gcnew LMS::RegisterLibrarian(transfer_id, is_librarian);
 	this->Hide();
 	if (registerlibrarian_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 	{
 		this->Show();
-	}*/
+	}
 }
 
 private: System::Void view_profile_member_btn_Click(System::Object^ sender, System::EventArgs^ e) {

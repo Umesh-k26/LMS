@@ -159,6 +159,9 @@
     <ResourceCompile Include="src\app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\AddBook.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="src\BorrowBook.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -190,12 +193,19 @@
     <ClInclude Include="src\profile_order.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="src\RegisterLibrarian.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="src\RegisterMember.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="src\Resource.h" />
     <ClInclude Include="src\ReturnBook.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\AddBook.cpp" />
     <ClCompile Include="src\AssemblyInfo.cpp" />
     <ClCompile Include="src\BorrowBook.cpp" />
     <ClCompile Include="src\borrow_history_page.cpp" />
@@ -216,6 +226,8 @@
     <ClCompile Include="src\profile_book.cpp" />
     <ClCompile Include="src\profile_member.cpp" />
     <ClCompile Include="src\profile_order.cpp" />
+    <ClCompile Include="src\RegisterLibrarian.cpp" />
+    <ClCompile Include="src\RegisterMember.cpp" />
     <ClCompile Include="src\ReturnBook.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -258,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\profile_order.resx">
       <DependentUpon>src\profile_order.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\RegisterMember.resx">
+      <DependentUpon>src\RegisterMember.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\ReturnBook.resx">
       <DependentUpon>src\ReturnBook.h</DependentUpon>

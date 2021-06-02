@@ -65,6 +65,15 @@
     <ClInclude Include="src\ReturnBook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\AddBook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RegisterMember.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RegisterLibrarian.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp">
@@ -113,6 +122,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ReturnBook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AddBook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RegisterMember.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RegisterLibrarian.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
