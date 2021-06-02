@@ -227,7 +227,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -237,6 +239,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\borrow_history_page.resx">
       <DependentUpon>src\borrow_history_page.h</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="src\HomePage.resx">
       <DependentUpon>src\HomePage.h</DependentUpon>

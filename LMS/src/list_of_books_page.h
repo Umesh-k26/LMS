@@ -113,6 +113,7 @@ namespace LMS {
 		/// To Initialize all the components required to load the form
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(list_of_books_page::typeid));
 			this->list_of_books_dataGridView = (gcnew System::Windows::Forms::DataGridView());
 			this->Open_profile = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
 			this->back_button_book_list = (gcnew System::Windows::Forms::Button());
@@ -155,9 +156,10 @@ namespace LMS {
 			// 
 			// back_button_book_list
 			// 
+			this->back_button_book_list->Image = Image::FromFile("src\\back-icon.png");
 			this->back_button_book_list->Location = System::Drawing::Point(12, 12);
 			this->back_button_book_list->Name = L"back_button_book_list";
-			this->back_button_book_list->Size = System::Drawing::Size(52, 51);
+			this->back_button_book_list->Size = System::Drawing::Size(89, 51);
 			this->back_button_book_list->TabIndex = 1;
 			this->back_button_book_list->UseVisualStyleBackColor = true;
 			this->back_button_book_list->Click += gcnew System::EventHandler(this, &list_of_books_page::back_button_book_list_Click);

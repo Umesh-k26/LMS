@@ -113,6 +113,7 @@ namespace LMS {
 		/// To Initialize all the components required to load the form
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(list_of_member_page::typeid));
 			this->list_of_member_dataGridView = (gcnew System::Windows::Forms::DataGridView());
 			this->Open_Profile = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
 			this->search_bar_member = (gcnew System::Windows::Forms::TextBox());
@@ -162,6 +163,7 @@ namespace LMS {
 			// 
 			// back_button_member_list
 			// 
+			this->back_button_member_list->Image = Image::FromFile("src\\back-icon.png");
 			this->back_button_member_list->Location = System::Drawing::Point(12, 12);
 			this->back_button_member_list->Name = L"back_button_member_list";
 			this->back_button_member_list->Size = System::Drawing::Size(75, 45);
