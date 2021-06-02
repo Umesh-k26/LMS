@@ -112,6 +112,7 @@ namespace LMS {
 		/// To Initialize all the components required to load the form
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(borrow_history_page::typeid));
 			this->back_button_borrow_his = (gcnew System::Windows::Forms::Button());
 			this->borrow_history_dataGridView = (gcnew System::Windows::Forms::DataGridView());
 			this->Open_profile = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
@@ -125,6 +126,8 @@ namespace LMS {
 			// 
 			// back_button_borrow_his
 			// 
+			//this->back_button_borrow_his->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"back_button_borrow_his.Image")));
+			this->back_button_borrow_his->Image = Image::FromFile("src\\back-icon.png");
 			this->back_button_borrow_his->Location = System::Drawing::Point(12, 12);
 			this->back_button_borrow_his->Name = L"back_button_borrow_his";
 			this->back_button_borrow_his->Size = System::Drawing::Size(75, 52);

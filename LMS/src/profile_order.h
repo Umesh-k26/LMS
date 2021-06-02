@@ -277,6 +277,7 @@ namespace LMS {
 		/// To Initialize all the components required to load the form
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(profile_order::typeid));
 			this->member_profile_group = (gcnew System::Windows::Forms::GroupBox());
 			this->dob_member_txt = (gcnew System::Windows::Forms::TextBox());
 			this->member_id_txt = (gcnew System::Windows::Forms::TextBox());
@@ -759,7 +760,8 @@ namespace LMS {
 			// 
 			// back_button
 			// 
-			this->back_button->Location = System::Drawing::Point(74, 905);
+			this->back_button->Image = Image::FromFile("src\\back-icon.png");
+			this->back_button->Location = System::Drawing::Point(12, 12);
 			this->back_button->Name = L"back_button";
 			this->back_button->Size = System::Drawing::Size(74, 44);
 			this->back_button->TabIndex = 35;
