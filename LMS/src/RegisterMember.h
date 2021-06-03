@@ -54,7 +54,8 @@ namespace LMS {
 	private: System::Windows::Forms::Button^ back_button;
 
 	private: System::Windows::Forms::DateTimePicker^ dateTimePicker;
-	private: System::Windows::Forms::GroupBox^ register_student_grp_box;
+	private: System::Windows::Forms::GroupBox^ register_member_grp_box;
+
 
 	private: System::Windows::Forms::RadioButton^ female_rbtn;
 
@@ -95,7 +96,7 @@ namespace LMS {
 			this->status_no_txt = (gcnew System::Windows::Forms::TextBox());
 			this->back_button = (gcnew System::Windows::Forms::Button());
 			this->dateTimePicker = (gcnew System::Windows::Forms::DateTimePicker());
-			this->register_student_grp_box = (gcnew System::Windows::Forms::GroupBox());
+			this->register_member_grp_box = (gcnew System::Windows::Forms::GroupBox());
 			this->profession_comboBox = (gcnew System::Windows::Forms::ComboBox());
 			this->re_password_txt = (gcnew System::Windows::Forms::TextBox());
 			this->password_txt = (gcnew System::Windows::Forms::TextBox());
@@ -103,7 +104,7 @@ namespace LMS {
 			this->re_password_lbl = (gcnew System::Windows::Forms::Label());
 			this->female_rbtn = (gcnew System::Windows::Forms::RadioButton());
 			this->male_rbtn = (gcnew System::Windows::Forms::RadioButton());
-			this->register_student_grp_box->SuspendLayout();
+			this->register_member_grp_box->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// name_lbl
@@ -236,35 +237,35 @@ namespace LMS {
 			this->dateTimePicker->Size = System::Drawing::Size(99, 20);
 			this->dateTimePicker->TabIndex = 16;
 			// 
-			// register_student_grp_box
+			// register_member_grp_box
 			// 
-			this->register_student_grp_box->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->register_student_grp_box->Controls->Add(this->profession_comboBox);
-			this->register_student_grp_box->Controls->Add(this->re_password_txt);
-			this->register_student_grp_box->Controls->Add(this->password_txt);
-			this->register_student_grp_box->Controls->Add(this->password_lbl);
-			this->register_student_grp_box->Controls->Add(this->re_password_lbl);
-			this->register_student_grp_box->Controls->Add(this->female_rbtn);
-			this->register_student_grp_box->Controls->Add(this->male_rbtn);
-			this->register_student_grp_box->Controls->Add(this->status_no_txt);
-			this->register_student_grp_box->Controls->Add(this->dateTimePicker);
-			this->register_student_grp_box->Controls->Add(this->name_lbl);
-			this->register_student_grp_box->Controls->Add(this->dob_lbl);
-			this->register_student_grp_box->Controls->Add(this->profession_lbl);
-			this->register_student_grp_box->Controls->Add(this->status_lbl);
-			this->register_student_grp_box->Controls->Add(this->email_id_lbl);
-			this->register_student_grp_box->Controls->Add(this->mobile_no_lbl);
-			this->register_student_grp_box->Controls->Add(this->address_txt);
-			this->register_student_grp_box->Controls->Add(this->address_lbl);
-			this->register_student_grp_box->Controls->Add(this->mobile_no_txt);
-			this->register_student_grp_box->Controls->Add(this->name_txt);
-			this->register_student_grp_box->Controls->Add(this->email_id_txt);
-			this->register_student_grp_box->Location = System::Drawing::Point(235, 51);
-			this->register_student_grp_box->Name = L"register_student_grp_box";
-			this->register_student_grp_box->Size = System::Drawing::Size(333, 570);
-			this->register_student_grp_box->TabIndex = 17;
-			this->register_student_grp_box->TabStop = false;
-			this->register_student_grp_box->Text = L"Register Member";
+			this->register_member_grp_box->Anchor = System::Windows::Forms::AnchorStyles::None;
+			this->register_member_grp_box->Controls->Add(this->profession_comboBox);
+			this->register_member_grp_box->Controls->Add(this->re_password_txt);
+			this->register_member_grp_box->Controls->Add(this->password_txt);
+			this->register_member_grp_box->Controls->Add(this->password_lbl);
+			this->register_member_grp_box->Controls->Add(this->re_password_lbl);
+			this->register_member_grp_box->Controls->Add(this->female_rbtn);
+			this->register_member_grp_box->Controls->Add(this->male_rbtn);
+			this->register_member_grp_box->Controls->Add(this->status_no_txt);
+			this->register_member_grp_box->Controls->Add(this->dateTimePicker);
+			this->register_member_grp_box->Controls->Add(this->name_lbl);
+			this->register_member_grp_box->Controls->Add(this->dob_lbl);
+			this->register_member_grp_box->Controls->Add(this->profession_lbl);
+			this->register_member_grp_box->Controls->Add(this->status_lbl);
+			this->register_member_grp_box->Controls->Add(this->email_id_lbl);
+			this->register_member_grp_box->Controls->Add(this->mobile_no_lbl);
+			this->register_member_grp_box->Controls->Add(this->address_txt);
+			this->register_member_grp_box->Controls->Add(this->address_lbl);
+			this->register_member_grp_box->Controls->Add(this->mobile_no_txt);
+			this->register_member_grp_box->Controls->Add(this->name_txt);
+			this->register_member_grp_box->Controls->Add(this->email_id_txt);
+			this->register_member_grp_box->Location = System::Drawing::Point(235, 51);
+			this->register_member_grp_box->Name = L"register_member_grp_box";
+			this->register_member_grp_box->Size = System::Drawing::Size(333, 570);
+			this->register_member_grp_box->TabIndex = 17;
+			this->register_member_grp_box->TabStop = false;
+			this->register_member_grp_box->Text = L"Register Member";
 			// 
 			// profession_comboBox
 			// 
@@ -338,15 +339,15 @@ namespace LMS {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(843, 633);
-			this->Controls->Add(this->register_student_grp_box);
+			this->Controls->Add(this->register_member_grp_box);
 			this->Controls->Add(this->back_button);
 			this->Controls->Add(this->register_button);
 			this->MinimumSize = System::Drawing::Size(857, 666);
 			this->Name = L"RegisterMember";
 			this->Text = L"Register Member";
 			this->Load += gcnew System::EventHandler(this, &RegisterMember::RegisterMember_Load);
-			this->register_student_grp_box->ResumeLayout(false);
-			this->register_student_grp_box->PerformLayout();
+			this->register_member_grp_box->ResumeLayout(false);
+			this->register_member_grp_box->PerformLayout();
 			this->ResumeLayout(false);
 
 		}

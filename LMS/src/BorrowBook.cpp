@@ -52,32 +52,32 @@ System::Void LMS::BorrowBook::borrow_button_Click(System::Object^ sender, System
 	String^ constring = sql_connection_func::sql_user_pass_string();
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
 
-	MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT * FROM library_system.student_data WHERE student_id = '" + this->member_id_txt->Text + "';", conDataBase);
+	MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT * FROM library_system_db.member_data WHERE member_id = '" + this->member_id_txt->Text + "';", conDataBase);
 
 
-	MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system.book_data WHERE book_id = '" + this->book_id_txt->Text + "';", conDataBase);
+	MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system_db.book_data WHERE book_id = '" + this->book_id_txt->Text + "';", conDataBase);
 
 
-	MySqlCommand^ cmdDataBase3 = gcnew MySqlCommand("UPDATE  library_system.book_data set\
+	MySqlCommand^ cmdDataBase3 = gcnew MySqlCommand("UPDATE  library_system_db.book_data set\
     book_borrow_status = 'BORROWED' WHERE \
     book_id ='" + this->book_id_txt->Text + "' ; \
-    UPDATE library_system.student_data set\
-    student_no_book_stat = student_no_book_stat +1 WHERE \
-    student_id ='" + this->member_id_txt->Text + "' ", conDataBase);
+    UPDATE library_system_db.member_data set\
+    member_no_book_stat = member_no_book_stat +1 WHERE \
+    member_id ='" + this->member_id_txt->Text + "' ", conDataBase);
 
 
 
-	MySqlCommand^ cmdDataBase5 = gcnew MySqlCommand("INSERT INTO library_system.borrow_history \
-	(book_id, student_id,date_issue) \
+	MySqlCommand^ cmdDataBase5 = gcnew MySqlCommand("INSERT INTO library_system_db.borrow_history \
+	(book_id, member_id,date_issue) \
 	VALUES('" + this->book_id_txt->Text + "',\
 	'" + this->member_id_txt->Text + "',\
 	CURDATE());", conDataBase);
 
 
 
-	MySqlCommand^ cmdDataBase6 = gcnew MySqlCommand("SELECT * FROM  library_system.borrow_history \
+	MySqlCommand^ cmdDataBase6 = gcnew MySqlCommand("SELECT * FROM  library_system_db.borrow_history \
 	WHERE  book_id ='" + this->book_id_txt->Text + "'\
-    AND student_id = '" + this->member_id_txt->Text + "'\
+    AND member_id = '" + this->member_id_txt->Text + "'\
 	AND date_issue = CURDATE()\
 	; ", conDataBase);
 
@@ -123,13 +123,13 @@ System::Void LMS::BorrowBook::borrow_button_Click(System::Object^ sender, System
 
 					myReader->Close();
 
-					//Below query updates borrow_status(coloumn) in book data (table) and in student_data(table) updates no_borrowed_books (coloumn)
+					//Below query updates borrow_status(coloumn) in book data (table) and in member_data(table) updates no_borrowed_books (coloumn)
 					cmdDataBase3->ExecuteNonQuery();
 
 					//Below query updates borrow_history(table) inserts new row for this order.
 					cmdDataBase5->ExecuteNonQuery();
 
-					MySqlCommand^ cmdDataBase4 = gcnew MySqlCommand("UPDATE  library_system.book_data set copies_available = copies_available -1 WHERE book_name ='" + Book_name + "'\
+					MySqlCommand^ cmdDataBase4 = gcnew MySqlCommand("UPDATE  library_system_db.book_data set copies_available = copies_available -1 WHERE book_name ='" + Book_name + "'\
                              AND book_author ='" + Book_author + "' \
                              AND book_publisher ='" + Book_publisher + "'\
                              AND book_edition_no ='" + Book_edition_no + "' \
@@ -168,7 +168,7 @@ System::Void LMS::BorrowBook::borrow_button_Click(System::Object^ sender, System
 
 		}
 		else if (count1 > 1)
-			MessageBox::Show("Duplicate ID's of same student_id detected. Please resolve before updating.");
+			MessageBox::Show("Duplicate ID's of same member_id detected. Please resolve before updating.");
 	}
 	catch (Exception^ ex)
 	{

@@ -29,7 +29,7 @@ namespace LMS {
 	System::Void RegisterLibrarian::RegisterLibrarian_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system.library_user_pass \
+		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system_db.library_user_pass \
 		VALUES('" + this->librarian_username_txt->Text + "',\
 		'" + this->password_txt->Text + "',\
 		'" + this->name_txt->Text + "',\
@@ -39,7 +39,7 @@ namespace LMS {
 		'" + this->mobile_no_txt->Text + "',\
 		'" + Gender + "')	;", conDataBase);
 
-		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system.library_user_pass \
+		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system_db.library_user_pass \
 	    WHERE library_username = '" + this->librarian_username_txt->Text + "';", conDataBase);
 
 		MySqlDataReader^ myReader;

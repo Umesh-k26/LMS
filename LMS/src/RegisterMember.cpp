@@ -30,8 +30,8 @@ namespace LMS {
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
-		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system.student_data (student_name, student_dob, student_address, student_email, \
-			student_mobile, student_profession, student_no_book_stat,student_fine, student_gender) \
+		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system_db.member_data (member_name, member_dob, member_address, member_email, \
+			member_mobile, member_profession, member_no_book_stat,member_fine, member_gender) \
 			VALUES('" + this->name_txt->Text + "',\
 			'" + this->dateTimePicker->Text + "',\
 			'" + this->address_txt->Text + "',\
@@ -40,12 +40,12 @@ namespace LMS {
 			'" + this->profession_comboBox->Text + "',\
 			" + this->status_no_txt->Text + ", 0, '" + Gender + "')	;", conDataBase);
 
-		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("USE library_system;INSERT INTO user_pass (student_id, user_password) \
-			VALUES((SELECT student_id FROM student_data WHERE student_email = '" + this->email_id_txt->Text + "'), \
+		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("USE library_system_db;INSERT INTO user_pass (member_id, user_password) \
+			VALUES((SELECT member_id FROM member_data WHERE member_email = '" + this->email_id_txt->Text + "'), \
 			'" + this->password_txt->Text + "');", conDataBase);
 
-		MySqlCommand^ cmdDataBase3 = gcnew MySqlCommand("SELECT * FROM library_system.student_data \
-			WHERE student_email = '" + this->email_id_txt->Text + "';", conDataBase);
+		MySqlCommand^ cmdDataBase3 = gcnew MySqlCommand("SELECT * FROM library_system_db.member_data \
+			WHERE member_email = '" + this->email_id_txt->Text + "';", conDataBase);
 
 		MySqlDataReader^ myReader;
 		try {
@@ -74,8 +74,8 @@ namespace LMS {
 
 			if (myReader->Read())
 			{
-				int student_id = myReader->GetInt32("student_id");
-				MessageBox::Show("Your id is " + student_id);
+				int member_id = myReader->GetInt32("member_id");
+				MessageBox::Show("Your id is " + member_id);
 			}
 			myReader->Close();
 

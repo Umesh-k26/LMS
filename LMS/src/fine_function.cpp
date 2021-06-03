@@ -19,7 +19,7 @@ namespace fine_func {
 		int perday_student = 10, perday_faculty = 20, perday_alumni = 20;
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT DATEDIFF(date_returned, date_issue) AS fine_column FROM library_system.borrow_history WHERE order_id = " + order_id_input + ";", conDataBase);
+		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT DATEDIFF(date_returned, date_issue) AS fine_column FROM library_system_db.borrow_history WHERE order_id = " + order_id_input + ";", conDataBase);
 		MySqlDataReader^ myReader;
 		try {
 			conDataBase->Open();
@@ -32,11 +32,11 @@ namespace fine_func {
 			}
 			myReader->Close();
 
-			/*MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT student_profession FROM library_system.student_data WHERE student_id = " + member_id_input + ";", conDataBase);
+			/*MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT member_profession FROM library_system_db.member_data WHERE member_id = " + member_id_input + ";", conDataBase);
 			myReader = cmdDataBase2->ExecuteReader();
 			while (myReader->Read())
 			{
-				borrow_profession_input = myReader->GetString("student_profession");
+				borrow_profession_input = myReader->GetString("member_profession");
 			}
 			myReader->Close();*/
 

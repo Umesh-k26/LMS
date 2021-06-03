@@ -135,7 +135,7 @@ System::Void LMS::profile_member::delete_profile_button_Click(System::Object^ se
 	if (MessageBox::Show("The profile will be deleted. Do you want to contiue?", "Warning", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system_db.student_data WHERE student_id = " + this->member_id_txt->Text + ";", conDataBase);
+		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system_db.member_data WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
 		MySqlCommand^ update_member_stat_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.member_data set member_id = " + this->member_id_txt->Text + ", membership_stat = 'DEACTIVATED' WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
 		MySqlCommand^ delete_user_pass_cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system_db.user_pass WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
 
@@ -209,7 +209,7 @@ void LMS::profile_member::fill_data_grid()
 {
 
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-	//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.borrow_history WHERE student_id = " + this->member_id_txt->Text + " AND borrow_status = 'BORROWED';", conDataBase);
+	//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.borrow_history WHERE member_id = " + this->member_id_txt->Text + " AND borrow_status = 'BORROWED';", conDataBase);
 	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT order_id AS 'Order ID', book_id AS 'Book ID', member_id AS 'Member ID', date_issue AS 'Date of Issue', date_returned AS 'Date of Return', borrow_fine AS 'Fine', borrow_status AS 'Status' FROM library_system_db.borrow_history WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
 	try {
 		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
