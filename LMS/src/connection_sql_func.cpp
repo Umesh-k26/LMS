@@ -2,9 +2,8 @@
 #include "fine_function.h"
 #include "connection_sql_func.h"
 
-//
-//	SQL FUNCTION DEFINITIONS
-//
+///	SQL function definitions to fill datagrids and to connect to database
+
 namespace sql_connection_func {
 
 	//
@@ -13,18 +12,23 @@ namespace sql_connection_func {
 	String^ sql_user_pass_string()
 	{
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=lovebcmm**,02";
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
-
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		return constring;
 	}
+
 	// 
-	//FUNCTION FOR FILLING STUDENT DATAGRID IN LIST OF STUDENTS PAGE
+	//FUNCTION FOR FILLING MEMBER DATAGRID IN LIST OF MEMBERS PAGE
 	//
-	void fill_datagrid_member(System::Windows::Forms::DataGridView^ dataGridView1)
+	
+	/// <summary>
+	/// Void function to fill member datagrid
+	/// </summary>
+	/// <param name="dataGridView"></param>
+	void fill_datagrid_member(System::Windows::Forms::DataGridView^ dataGridView)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT student_id AS ID, student_name AS Name, student_mobile AS Mobile, student_email as 'E-Mail', student_no_book_stat AS 'No. of Books Borrowed' FROM library_system.student_data;", conDataBase);
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT member_id AS ID, member_name AS Name, member_mobile AS Mobile, member_email as 'E-Mail', member_no_book_stat AS 'No. of Books Borrowed' FROM library_system_db.member_data WHERE membership_stat = 'ACTIVATED';", conDataBase);
 
 		try {
 			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
@@ -33,7 +37,7 @@ namespace sql_connection_func {
 			sda->Fill(dbdataset);
 			BindingSource^ bSource = gcnew BindingSource();
 			bSource->DataSource = dbdataset;
-			dataGridView1->DataSource = bSource;
+			dataGridView->DataSource = bSource;
 			sda->Update(dbdataset);
 		}
 		catch (Exception^ ex)
@@ -44,11 +48,14 @@ namespace sql_connection_func {
 		conDataBase->Close();
 	}
 
-	void fill_datagrid_members_filtered(String^ str_list_detail_search_person, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView1)
+	/// <summary>
+	/// void function to fill filtered member datagrid
+	/// </summary>
+	void fill_datagrid_members_filtered(String^ str_list_detail_search_person, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT student_id AS ID, student_name AS Name, student_mobile AS Mobile, student_email as 'E-Mail', student_no_book_stat AS 'No. of Books Borrowed' FROM library_system.student_data\
-		WHERE " + str_list_detail_search_person + " LIKE '%" + search_bar_text + "%';", conDataBase);
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT member_id AS ID, member_name AS Name, member_mobile AS Mobile, member_email as 'E-Mail', member_no_book_stat AS 'No. of Books Borrowed' FROM library_system_db.member_data\
+		WHERE " + str_list_detail_search_person + " LIKE '%" + search_bar_text + "%' AND membership_stat = 'ACTIVATED';", conDataBase);
 
 		try {
 			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
@@ -57,7 +64,7 @@ namespace sql_connection_func {
 			sda->Fill(dbdataset);
 			BindingSource^ bSource = gcnew BindingSource();
 			bSource->DataSource = dbdataset;
-			dataGridView1->DataSource = bSource;
+			dataGridView->DataSource = bSource;
 			sda->Update(dbdataset);
 		}
 		catch (Exception^ ex)
@@ -70,10 +77,14 @@ namespace sql_connection_func {
 	//
 	//FUNCTION FOR FILLING BOOK DATAGRID IN LIST OF BOOKS PAGE
 	//
-	void fill_datagrid_book(System::Windows::Forms::DataGridView^ dataGridView1)
+
+	/// <summary>
+	/// void function to fill book datagrid
+	/// </summary>
+	void fill_datagrid_book(System::Windows::Forms::DataGridView^ dataGridView)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS ID, book_name as Title, book_author AS Author, book_edition_no AS Edition, book_publisher AS Publisher, book_borrow_status AS Status FROM library_system.book_data WHERE book_lost = 'NO';", conDataBase);
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS ID, book_name as Title, book_author AS Author, book_edition_no AS Edition, book_publisher AS Publisher, book_borrow_status AS Status FROM library_system_db.book_data WHERE book_lost = 'NO';", conDataBase);
 
 		try {
 			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
@@ -82,7 +93,7 @@ namespace sql_connection_func {
 			sda->Fill(dbdataset);
 			BindingSource^ bSource = gcnew BindingSource();
 			bSource->DataSource = dbdataset;
-			dataGridView1->DataSource = bSource;
+			dataGridView->DataSource = bSource;
 			sda->Update(dbdataset);
 		}
 		catch (Exception^ ex)
@@ -93,10 +104,13 @@ namespace sql_connection_func {
 		conDataBase->Close();
 	}
 
-	void fill_datagrid_books_filtered(String^ str_list_detail_search_book, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView1)
+	/// <summary>
+	/// void function to fill filtered book datagrid
+	/// </summary>
+	void fill_datagrid_books_filtered(String^ str_list_detail_search_book, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS ID, book_name as Title, book_author AS Author, book_edition_no AS Edition, book_publisher AS Publisher, book_borrow_status AS Status FROM library_system.book_data\
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS ID, book_name as Title, book_author AS Author, book_edition_no AS Edition, book_publisher AS Publisher, book_borrow_status AS Status FROM library_system_db.book_data\
 		WHERE " + str_list_detail_search_book + " LIKE '%" + search_bar_text + "%';", conDataBase);
 
 		try {
@@ -106,7 +120,7 @@ namespace sql_connection_func {
 			sda->Fill(dbdataset);
 			BindingSource^ bSource = gcnew BindingSource();
 			bSource->DataSource = dbdataset;
-			dataGridView1->DataSource = bSource;
+			dataGridView->DataSource = bSource;
 			sda->Update(dbdataset);
 		}
 		catch (Exception^ ex)
@@ -119,12 +133,16 @@ namespace sql_connection_func {
 	//
 	//FUNCTION FOR FILLING BORROW HISTORY DATAGRID IN BORROW HISTORY PAGE
 	//
-	void fill_datagrid_borrow_history(System::Windows::Forms::DataGridView^ dataGridView1, bool is_librarian_input, String^ transfer_id_input)
+
+	/// <summary>
+	/// void function to fill borrow history datagrid
+	/// </summary>
+	void fill_datagrid_borrow_history(System::Windows::Forms::DataGridView^ dataGridView, bool is_librarian_input, String^ transfer_id_input)
 	{
 		if (is_librarian_input == true)
 		{
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT order_id AS ID, book_id AS 'Book ID', student_id AS 'Borrower ID', date_issue AS 'Issue Date', date_returned AS 'Return Date', borrow_fine AS 'Fine', borrow_status AS 'Status' FROM library_system.borrow_history;", conDataBase);
+			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT order_id AS ID, book_id AS 'Book ID', member_id AS 'Member ID', date_issue AS 'Issue Date', date_returned AS 'Return Date', borrow_fine AS 'Fine', borrow_status AS 'Status' FROM library_system_db.borrow_history;", conDataBase);
 
 			try {
 				MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
@@ -133,7 +151,7 @@ namespace sql_connection_func {
 				sda->Fill(dbdataset);
 				BindingSource^ bSource = gcnew BindingSource();
 				bSource->DataSource = dbdataset;
-				dataGridView1->DataSource = bSource;
+				dataGridView->DataSource = bSource;
 				sda->Update(dbdataset);
 			}
 			catch (Exception^ ex)
@@ -147,7 +165,8 @@ namespace sql_connection_func {
 		else
 		{
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history WHERE student_id = " + transfer_id_input + ";", conDataBase);
+			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT order_id AS ID, book_id AS 'Book ID', member_id AS 'Member ID', date_issue AS \
+			'Issue Date', date_returned AS 'Return Date', borrow_fine AS 'Fine', borrow_status AS 'Status' FROM library_system_db.borrow_history WHERE member_id = " + transfer_id_input + ";", conDataBase);
 
 			try {
 				MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
@@ -156,7 +175,7 @@ namespace sql_connection_func {
 				sda->Fill(dbdataset);
 				BindingSource^ bSource = gcnew BindingSource();
 				bSource->DataSource = dbdataset;
-				dataGridView1->DataSource = bSource;
+				dataGridView->DataSource = bSource;
 				sda->Update(dbdataset);
 			}
 			catch (Exception^ ex)
@@ -170,13 +189,16 @@ namespace sql_connection_func {
 
 	}
 
-	void fill_datagrid_borrow_history_filtered(String^ str_list_detail_search_order, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView1, bool is_librarian_input, String^ transfer_id_input)
+	/// <summary>
+	/// void function to fill filtered borrow history datagrid
+	/// </summary>
+	void fill_datagrid_borrow_history_filtered(String^ str_list_detail_search_order, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView, bool is_librarian_input, String^ transfer_id_input)
 	{
 		if (is_librarian_input == true)
 		{
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT order_id AS ID, book_id AS 'Book ID', student_id AS 'Borrower ID', date_issue AS \
-			'Issue Date', date_returned AS 'Return Date', borrow_fine AS 'Fine', borrow_status AS 'Status' FROM library_system.borrow_history\
+			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT order_id AS ID, book_id AS 'Book ID', member_id AS 'Member ID', date_issue AS \
+			'Issue Date', date_returned AS 'Return Date', borrow_fine AS 'Fine', borrow_status AS 'Status' FROM library_system_db.borrow_history\
 			WHERE " + str_list_detail_search_order + " LIKE '%" + search_bar_text + "%';", conDataBase);
 
 			try {
@@ -186,7 +208,7 @@ namespace sql_connection_func {
 				sda->Fill(dbdataset);
 				BindingSource^ bSource = gcnew BindingSource();
 				bSource->DataSource = dbdataset;
-				dataGridView1->DataSource = bSource;
+				dataGridView->DataSource = bSource;
 				sda->Update(dbdataset);
 			}
 			catch (Exception^ ex)
@@ -198,9 +220,9 @@ namespace sql_connection_func {
 		else
 		{
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT order_id AS ID, book_id AS 'Book ID', student_id AS 'Borrower ID', date_issue AS \
-			'Issue Date', date_returned AS 'Return Date', borrow_fine AS 'Fine', borrow_status AS 'Status' FROM library_system.borrow_history\
-			WHERE " + str_list_detail_search_order + " LIKE '%" + search_bar_text + "%' AND student_id = " + transfer_id_input + ";", conDataBase);
+			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT order_id AS ID, book_id AS 'Book ID', member_id AS 'Member ID', date_issue AS \
+			'Issue Date', date_returned AS 'Return Date', borrow_fine AS 'Fine', borrow_status AS 'Status' FROM library_system_db.borrow_history\
+			WHERE " + str_list_detail_search_order + " LIKE '%" + search_bar_text + "%' AND member_id = " + transfer_id_input + ";", conDataBase);
 
 			try {
 				MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
@@ -209,7 +231,7 @@ namespace sql_connection_func {
 				sda->Fill(dbdataset);
 				BindingSource^ bSource = gcnew BindingSource();
 				bSource->DataSource = dbdataset;
-				dataGridView1->DataSource = bSource;
+				dataGridView->DataSource = bSource;
 				sda->Update(dbdataset);
 			}
 			catch (Exception^ ex)

@@ -46,8 +46,8 @@ System::Void LMS::profile_member::profile_member_Load(System::Object^ sender, Sy
 	}
 
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.student_data\
-		WHERE student_id = " + transfer_id + ";", conDataBase);
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.member_data\
+		WHERE member_id = " + transfer_id + ";", conDataBase);
 	MySqlDataReader^ myReader;
 	try {
 		conDataBase->Open();
@@ -64,17 +64,17 @@ System::Void LMS::profile_member::profile_member_Load(System::Object^ sender, Sy
 		while (myReader->Read())
 		{
 
-			printing_id = myReader->GetString("student_id");
-			printing_name = myReader->GetString("student_name");
-			printing_profession = myReader->GetString("student_profession");
-			printing_email = myReader->GetString("student_email");
-			printing_mobile = myReader->GetString("student_mobile");
-			printing_address = myReader->GetString("student_address");
+			printing_id = myReader->GetString("member_id");
+			printing_name = myReader->GetString("member_name");
+			printing_profession = myReader->GetString("member_profession");
+			printing_email = myReader->GetString("member_email");
+			printing_mobile = myReader->GetString("member_mobile");
+			printing_address = myReader->GetString("member_address");
 			printing_member_stat = myReader->GetString("membership_stat");
-			member_no_book_stat = myReader->GetInt32("student_no_book_stat");
+			member_no_book_stat = myReader->GetInt32("member_no_book_stat");
 
 			MySql::Data::Types::MySqlDateTime new_dob;
-			new_dob = myReader->GetMySqlDateTime("student_dob");
+			new_dob = myReader->GetMySqlDateTime("member_dob");
 			this->name_txt->Text = printing_name;
 			this->member_id_txt->Text = printing_id;
 			this->email_id_txt->Text = printing_email;
@@ -135,9 +135,9 @@ System::Void LMS::profile_member::delete_profile_button_Click(System::Object^ se
 	if (MessageBox::Show("The profile will be deleted. Do you want to contiue?", "Warning", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system.student_data WHERE student_id = " + this->member_id_txt->Text + ";", conDataBase);
-		MySqlCommand^ update_member_stat_cmdDataBase = gcnew MySqlCommand("UPDATE library_system.student_data set student_id = " + this->member_id_txt->Text + ", membership_stat = 'DEACTIVATED' WHERE student_id = " + this->member_id_txt->Text + ";", conDataBase);
-		MySqlCommand^ delete_user_pass_cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system.user_pass WHERE student_id = " + this->member_id_txt->Text + ";", conDataBase);
+		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system_db.student_data WHERE student_id = " + this->member_id_txt->Text + ";", conDataBase);
+		MySqlCommand^ update_member_stat_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.member_data set member_id = " + this->member_id_txt->Text + ", membership_stat = 'DEACTIVATED' WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
+		MySqlCommand^ delete_user_pass_cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system_db.user_pass WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
 
 		try {
 			conDataBase->Open();
@@ -173,8 +173,8 @@ System::Void LMS::profile_member::confirm_change_button_Click(System::Object^ se
 
 
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("UPDATE library_system.student_data set student_id = \
-		" + this->member_id_txt->Text + ",student_name = '" + this->name_txt->Text + "',student_dob = '" + this->dob_member_txt->Text + "', student_profession = '" + this->profession_txt->Text + "', student_email='" + this->email_id_txt->Text + "', student_mobile=" + this->mobile_no_txt->Text + ", student_address = '" + this->address_txt->Text + "'WHERE student_id = " + this->member_id_txt->Text + ";", conDataBase);
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.member_data set member_id = \
+		" + this->member_id_txt->Text + ",member_name = '" + this->name_txt->Text + "',member_dob = '" + this->dob_member_txt->Text + "', member_profession = '" + this->profession_txt->Text + "', member_email='" + this->email_id_txt->Text + "', member_mobile=" + this->mobile_no_txt->Text + ", member_address = '" + this->address_txt->Text + "'WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
 
 	try {
 		conDataBase->Open();
@@ -209,8 +209,8 @@ void LMS::profile_member::fill_data_grid()
 {
 
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-	//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history WHERE student_id = " + this->member_id_txt->Text + " AND borrow_status = 'BORROWED';", conDataBase);
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history WHERE student_id = " + this->member_id_txt->Text + ";", conDataBase);
+	//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.borrow_history WHERE student_id = " + this->member_id_txt->Text + " AND borrow_status = 'BORROWED';", conDataBase);
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT order_id AS 'Order ID', book_id AS 'Book ID', member_id AS 'Member ID', date_issue AS 'Date of Issue', date_returned AS 'Date of Return', borrow_fine AS 'Fine', borrow_status AS 'Status' FROM library_system_db.borrow_history WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
 	try {
 		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
 		sda->SelectCommand = cmdDataBase;

@@ -118,7 +118,7 @@ System::Void LMS::list_of_books_page::search_button_book_Click(System::Object^ s
 /// <summary>
 /// Clear Search Results function and present original default data.
 /// </summary>
-/// @see search_button_student_Click()
+/// @see search_button_book_Click()
 System::Void LMS::list_of_books_page::clear_all_button_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	this->search_bar_book->Text = "";

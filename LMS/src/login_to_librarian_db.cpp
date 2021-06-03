@@ -3,10 +3,14 @@
 #include "connection_sql_func.h"
 
 namespace connection_to_librarian_db {
+
+	/// <summary>
+	/// This function returns a boolean value for the user being a librarian or not by checking in the database
+	/// </summary>
 	bool is_librarian(String^ username_input, String^ password_input)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.library_user_pass WHERE \
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.library_user_pass WHERE \
 	    library_username='" + username_input + "' and library_password = '" + password_input + "' ;", conDataBase);
 
 		MySqlDataReader^ myReader;

@@ -57,13 +57,13 @@ namespace LMS {
 		/// <summary>
 		/// TextBox for the Search Bar
 		/// </summary>
-		/// @see search_button_member, list_detail_search_person, clear_all_button
+		/// @see search_button_member, list_detail_search_member, clear_all_button
 		System::Windows::Forms::TextBox^ search_bar_member;
 	private:
 		/// <summary>
 		/// Data Grid to present the General details of Members which includes Students, Faculty and Alumni.
 		/// </summary>
-		/// @see Open
+		/// @see Open_Profile
 		System::Windows::Forms::DataGridView^ list_of_member_dataGridView;
 	private:
 		/// <summary>
@@ -75,13 +75,13 @@ namespace LMS {
 		/// <summary>
 		/// A dedicated button inside the Data Grid to open the profile of Members with more details
 		/// </summary>
-		/// @see dataGridView1
+		/// @see list_of_member_dataGridView
 		System::Windows::Forms::DataGridViewButtonColumn^ Open_Profile;
 	private:
 		/// <summary>
 		/// Search Button to show search results based on input in the Search Bar and Drop Down List
 		/// </summary>
-		/// @see search_bar_member, list_detail_search_person, clear_all_button
+		/// @see search_bar_member, list_detail_search_member, clear_all_button
 		System::Windows::Forms::Button^ search_button_member;
 	private:
 		/// <summary>
@@ -97,7 +97,7 @@ namespace LMS {
 		/// <summary>
 		/// Clear All Search Results Button to show default data
 		/// </summary>
-		/// @see search_bar_member, list_detail_search_person, search_button_member
+		/// @see search_bar_member, list_detail_search_member, search_button_member
 		System::Windows::Forms::Button^ clear_all_button;
 	private:
 		/// <summary>

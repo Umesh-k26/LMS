@@ -86,9 +86,9 @@ System::Void LMS::borrow_history_page::search_button_Click(System::Object^ sende
 	{
 		str_list_detail_search_order = "order_id";
 	}
-	if (String::Equals(this->list_detail_search_order->Text, "Student ID"))
+	if (String::Equals(this->list_detail_search_order->Text, "Member ID"))
 	{
-		str_list_detail_search_order = "student_id";
+		str_list_detail_search_order = "member_id";
 	}
 	if (String::Equals(this->list_detail_search_order->Text, "Book ID"))
 	{

@@ -11,21 +11,89 @@ namespace sql_connection_func {
 	using namespace System::Drawing;
 	using namespace MySql::Data::MySqlClient;
 
-	///FUNCTION FOR SETTING USERNAME PASSWORD TO ESTABLISH CONNECTION TO MYSQL SERVER
+	/// <summary>
+	/// Function for setting username password to establish connection to MySQL server
+	/// </summary>
+	/// <returns>
+	/// String for connection to sql database with username and password to database
+	/// </returns>
 	String^ sql_user_pass_string();
 
 	/// <summary>
-	/// //FUNCTION FOR FILLING STUDENT DATAGRID IN LIST OF STUDENTS PAGE
+	/// Function for filling Member Datagrid in List of Member page
 	/// </summary>
-	/// <param name="dataGridView1"></param>
-	void fill_datagrid_member(System::Windows::Forms::DataGridView^ dataGridView1);
-	void fill_datagrid_members_filtered(String^ str_list_detail_search_person, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView1);
+	/// <param name="dataGridView">
+	/// Passing the dataGridView in which data needs to be presented
+	/// </param>
+	void fill_datagrid_member(System::Windows::Forms::DataGridView^ dataGridView);
 
-	//FUNCTION FOR FILLING BOOK DATAGRID IN LIST OF BOOKS PAGE
-	void fill_datagrid_book(System::Windows::Forms::DataGridView^ dataGridView1);
-	void fill_datagrid_books_filtered(String^ str_list_detail_search_book, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView1);
+	/// <summary>
+	/// Function for filling Member Datagrid in List of Member page with filtered results
+	/// </summary>
+	/// <param name="str_list_detail_search_person">
+	/// Filtering on the basis of what has been chosen as a filter
+	/// </param>
+	/// <param name="search_bar_text">
+	/// The text in the search bar of which similar search results need to be found
+	/// </param>
+	/// <param name="dataGridView">
+	/// Passing the dataGridView in which data needs to be presented
+	/// </param>
+	void fill_datagrid_members_filtered(String^ str_list_detail_search_person, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView);
+	
+	/// <summary>
+	/// Function for filling Book Datagrid in List of Books page
+	/// </summary>
+	/// <param name="dataGridView">
+	/// Passing the dataGridView in which data needs to be presented
+	/// </param>
+	void fill_datagrid_book(System::Windows::Forms::DataGridView^ dataGridView);
 
-	//FUNCTION FOR FILLING BORROW HISTORY DATAGRID IN BORROW HISTORY PAGE
-	void fill_datagrid_borrow_history(System::Windows::Forms::DataGridView^ dataGridView1, bool is_librarian_input, String^ transfer_id_input);
-	void fill_datagrid_borrow_history_filtered(String^ str_list_detail_search_order, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView1, bool is_librarian_input, String^ transfer_id_input);
+	/// <summary>
+	/// Function for filling Book Datagrid in List of Books page with filtered results
+	/// </summary>
+	/// <param name="str_list_detail_search_book">
+	/// Filtering on the basis of what has been chosen as a filter
+	/// </param>
+	/// <param name="search_bar_text">
+	/// The text in the search bar of which similar search results need to be found
+	/// </param>
+	/// <param name="dataGridView">
+	/// Passing the dataGridView in which data needs to be presented
+	/// </param>
+	void fill_datagrid_books_filtered(String^ str_list_detail_search_book, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView);
+
+	/// <summary>
+	/// Function for filling Borrow History Datagrid in Borrow History page
+	/// </summary>
+	/// <param name="dataGridView">
+	/// Passing the dataGridView in which data needs to be presented
+	/// </param>
+	/// <param name="is_librarian_input">
+	/// It is the input argument for the boolean value, if the User is a librarian or not
+	/// </param>
+	/// <param name="transfer_id_input">
+	/// It is the input argument for the ID to be transfered for presenting data if needed
+	/// </param>
+	void fill_datagrid_borrow_history(System::Windows::Forms::DataGridView^ dataGridView, bool is_librarian_input, String^ transfer_id_input);
+
+	/// <summary>
+	/// Function for filling Borrow History Datagrid in Borrow History page with filtered results
+	/// </summary>
+	/// <param name="str_list_detail_search_order">
+	/// Filtering on the basis of what has been chosen as a filter
+	/// </param>
+	/// <param name="search_bar_text">
+	/// The text in the search bar of which similar search results need to be found
+	/// </param>
+	/// <param name="dataGridView">
+	/// Passing the dataGridView in which data needs to be presented
+	/// </param>
+	/// <param name="is_librarian_input">
+	/// It is the input argument for the boolean value, if the User is a librarian or not
+	/// </param>
+	/// <param name="transfer_id_input">
+	/// It is the input argument for the ID to be transfered for presenting data if needed
+	/// </param>
+	void fill_datagrid_borrow_history_filtered(String^ str_list_detail_search_order, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView, bool is_librarian_input, String^ transfer_id_input);
 }

@@ -11,7 +11,7 @@ LMS::profile_book::profile_book(void)
 /// <summary>
 ///Constructor calls for functions to Initialize all the components of the form and make buttons visible based on the User being a librarian or not
 /// </summary>
-/// @see transfer_id, is_librarian, InitializeComponent()
+/// @see transfer_id_book, transfer_isLibrarian, InitializeComponent()
 LMS::profile_book::profile_book(String^ label_book_id, bool isLibrarian)
 {
 	InitializeComponent();
@@ -43,7 +43,7 @@ System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System
 
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.book_data\
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.book_data\
 		WHERE book_id = " + transfer_id_book + ";", conDataBase);
 	MySqlDataReader^ myReader;
 
@@ -118,11 +118,11 @@ System::Void LMS::profile_book::delete_profile_button_Click(System::Object^ send
 	if (MessageBox::Show("The profile will be deleted. Do you want to contiue?", "Warning", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ update_lost_cmdDataBase = gcnew MySqlCommand("UPDATE library_system.book_data SET book_lost = 'YES' WHERE book_id = " + this->book_id_txt->Text + ";", conDataBase);
+		MySqlCommand^ update_lost_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.book_data SET book_lost = 'YES' WHERE book_id = " + this->book_id_txt->Text + ";", conDataBase);
 		//
 		//	STILL NEED TO ADD FUNCTION TO REMOVE THE NUMBER OF COPIES
 		//
-		MySqlCommand^ update_no_copies_cmdDataBase = gcnew MySqlCommand("UPDATE library_system.book_data set copies_available = copies_available - 1, no_of_copies= no_of_copies-1 WHERE \
+		MySqlCommand^ update_no_copies_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.book_data set copies_available = copies_available - 1, no_of_copies= no_of_copies-1 WHERE \
 								book_name = '" + this->bookname_txt->Text + "'\
 								AND book_author = '" + this->author_txt->Text + "'\
 								AND book_publisher = '" + this->publisher_txt->Text + "'\
@@ -167,7 +167,7 @@ void LMS::profile_book::fill_data_grid()
 {
 
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id, book_name, book_author, book_edition_no, book_publisher, book_borrow_status FROM library_system.book_data \
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS 'Book ID', book_name AS 'Name', book_author AS 'Author', book_edition_no AS 'Edition No', book_publisher AS 'Publisher', book_borrow_status AS 'Borrow Status' FROM library_system_db.book_data \
 			WHERE book_name = '" + this->bookname_txt->Text + "' AND book_edition_no = " + this->edition_no_txt->Text + " AND book_lost = 'NO';", conDataBase);
 	try {
 		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
@@ -235,7 +235,7 @@ void LMS::profile_book::updating_no_of_copies(int num_new_copies)
 
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
-		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system.book_data \
+		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system_db.book_data \
 				(book_name, book_author, book_publisher, book_price,book_edition_no,no_of_copies, category, copies_available) \
 				VALUES('" + this->bookname_txt->Text + "',\
 				'" + this->author_txt->Text + "',\
@@ -246,7 +246,7 @@ void LMS::profile_book::updating_no_of_copies(int num_new_copies)
 				'" + this->category_txt->Text + "',\
 				'" + this->copies_available_txt->Text + "');", conDataBase);
 
-		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("UPDATE library_system.book_data SET \
+		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("UPDATE library_system_db.book_data SET \
 				no_of_copies = no_of_copies + '" + num_new_copies + "', copies_available = copies_available + '" + num_new_copies + "'\
 				WHERE book_name = '" + this->bookname_txt->Text + "' AND \
 				book_edition_no = '" + this->edition_no_txt->Text + "';", conDataBase);

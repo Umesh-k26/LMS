@@ -6,7 +6,11 @@
 //	FINE FUNCTION DEFINITION
 //
 namespace fine_func {
-	int calculate_fine(int order_id_input, int student_id_input, String^ borrow_proffesion_input)
+
+	/// <summary>
+	/// This function calculates the fine that the borrower needs to pay after returning the book depending upon the profession
+	/// </summary>
+	int calculate_fine(int order_id_input, int member_id_input, String^ borrow_profession_input)
 	{
 		int value_fine = 0;
 		int num_date_difference = 0;
@@ -28,56 +32,56 @@ namespace fine_func {
 			}
 			myReader->Close();
 
-			/*MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT student_profession FROM library_system.student_data WHERE student_id = " + student_id_input + ";", conDataBase);
+			/*MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT student_profession FROM library_system.student_data WHERE student_id = " + member_id_input + ";", conDataBase);
 			myReader = cmdDataBase2->ExecuteReader();
 			while (myReader->Read())
 			{
-				borrow_proffesion_input = myReader->GetString("student_profession");
+				borrow_profession_input = myReader->GetString("student_profession");
 			}
 			myReader->Close();*/
 
-			if (borrow_proffesion_input == "Student")
+			if (borrow_profession_input == "Student")
 			{
 				if (num_date_difference <= default_student_allowance)
 				{
-					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrow_proffesion_input + "\n Fine = " + value_fine);
+					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrow_profession_input + "\n Fine = " + value_fine);
 					return 0;
 				}
 				else
 				{
 					num_date_difference = num_date_difference - default_student_allowance;
 					value_fine = num_date_difference * perday_student;
-					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrow_proffesion_input + "\n Fine = " + value_fine);
+					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrow_profession_input + "\n Fine = " + value_fine);
 					return value_fine;
 				}
 			}
-			if (borrow_proffesion_input == "Faculty")
+			if (borrow_profession_input == "Faculty")
 			{
 				if (num_date_difference <= default_faculty_allowance)
 				{
-					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrow_proffesion_input + "\n Fine = " + value_fine);
+					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrow_profession_input + "\n Fine = " + value_fine);
 					return 0;
 				}
 				else
 				{
 					num_date_difference = num_date_difference - default_faculty_allowance;
 					value_fine = num_date_difference * perday_faculty;
-					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrow_proffesion_input + "\n Fine = " + value_fine);
+					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrow_profession_input + "\n Fine = " + value_fine);
 					return value_fine;
 				}
 			}
-			if (borrow_proffesion_input == "Alumni")
+			if (borrow_profession_input == "Alumni")
 			{
 				if (num_date_difference <= default_alumni_allowance)
 				{
-					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrow_proffesion_input + "\n Fine = " + value_fine);
+					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrow_profession_input + "\n Fine = " + value_fine);
 					return 0;
 				}
 				else
 				{
 					num_date_difference = num_date_difference - default_alumni_allowance;
 					value_fine = num_date_difference * perday_alumni;
-					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrow_proffesion_input + "\n Fine = " + value_fine);
+					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrow_profession_input + "\n Fine = " + value_fine);
 					return value_fine;
 				}
 			}
