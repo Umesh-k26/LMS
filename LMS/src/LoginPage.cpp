@@ -38,8 +38,8 @@ namespace LMS {
 		else
 		{
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from library_system.user_pass WHERE \
-				student_id='" + this->username_txt->Text + "' and user_password = '" + this->password_txt->Text + "' ;", conDataBase);
+			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from library_system_db.user_pass WHERE \
+				member_id='" + this->username_txt->Text + "' and user_password = '" + this->password_txt->Text + "' ;", conDataBase);
 
 			MySqlDataReader^ myReader;
 			try {

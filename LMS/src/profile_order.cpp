@@ -41,14 +41,14 @@ System::Void LMS::profile_order::profile_order_Load(System::Object^ sender, Syst
 	{
 		column_order_id = 0,
 		column_book_id = 1,
-		column_student_id = 2,
+		column_member_id = 2,
 		column_issue_ = 3,
 		column_return_ = 4,
 		column_fine_ = 5,
 		column_stat_ = 6,
 	};
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.borrow_history\
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.borrow_history\
 		WHERE order_id = " + transfer_order_id + ";", conDataBase);
 	MySqlDataReader^ myReader;
 	//MessageBox::Show(transfer_order_id);
@@ -59,7 +59,7 @@ System::Void LMS::profile_order::profile_order_Load(System::Object^ sender, Syst
 
 		while (myReader->Read())
 		{
-			String^ printing_student_id;
+			String^ printing_member_id;
 			String^ printing_book_id;
 			//String^ printing_date_issue;
 			//String^ printing_date_return;
@@ -83,13 +83,13 @@ System::Void LMS::profile_order::profile_order_Load(System::Object^ sender, Syst
 				this->order_fine_txt->Text = printing_fine;
 			}
 
-			printing_student_id = myReader->GetString("student_id");
+			printing_member_id = myReader->GetString("member_id");
 			printing_book_id = myReader->GetString("book_id");
 			//printing_date_issue = myReader->GetString("date_issue");
 			//printing_date_return = myReader->GetString("date_returned");
 			//printing_fine = myReader->GetString("borrow_fine");
 
-			this->member_id_txt->Text = printing_student_id;
+			this->member_id_txt->Text = printing_member_id;
 			this->book_id_txt->Text = printing_book_id;
 			//this->date_issue_txt->Text = printing_date_issue;
 			//this->date_return_txt->Text = printing_date_return;
@@ -118,7 +118,7 @@ void LMS::profile_order::fill_user_data()
 {
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.student_data WHERE student_id = " + this->member_id_txt->Text + ";", conDataBase);
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.member_data WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
 	MySqlDataReader^ myReader;
 	try {
 		conDataBase->Open();
@@ -133,15 +133,15 @@ void LMS::profile_order::fill_user_data()
 			String^ printing_mobile;
 			String^ printing_address;
 			//String^ printing_dob;
-			//printing_id = myReader->GetString("student_id");
+			//printing_id = myReader->GetString("member_id");
 			MySql::Data::Types::MySqlDateTime print_dob;
-			printing_name = myReader->GetString("student_name");
-			printing_profession = myReader->GetString("student_profession");
-			printing_email = myReader->GetString("student_email");
-			printing_mobile = myReader->GetString("student_mobile");
-			printing_address = myReader->GetString("student_address");
-			//printing_dob = myReader->GetString("student_dob");
-			print_dob = myReader->GetMySqlDateTime("student_dob");
+			printing_name = myReader->GetString("member_name");
+			printing_profession = myReader->GetString("member_profession");
+			printing_email = myReader->GetString("member_email");
+			printing_mobile = myReader->GetString("member_mobile");
+			printing_address = myReader->GetString("member_address");
+			//printing_dob = myReader->GetString("member_dob");
+			print_dob = myReader->GetMySqlDateTime("member_dob");
 			this->name_txt->Text = printing_name;
 			//this->member_id_txt->Text = printing_id;
 			this->email_id_txt->Text = printing_email;
@@ -169,7 +169,7 @@ void LMS::profile_order::fill_book_data()
 {
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system.book_data WHERE book_id = " + this->book_id_txt->Text + ";", conDataBase);
+	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.book_data WHERE book_id = " + this->book_id_txt->Text + ";", conDataBase);
 	MySqlDataReader^ myReader;
 	try {
 		conDataBase->Open();

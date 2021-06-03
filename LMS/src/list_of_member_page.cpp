@@ -72,23 +72,23 @@ System::Void LMS::list_of_member_page::search_button_member_Click(System::Object
 	String^ str_list_detail_search_member;
 	if (this->list_detail_search_member->Text == "Name")
 	{
-		str_list_detail_search_member = "student_name";
+		str_list_detail_search_member = "member_name";
 	}
 	if (String::Equals(this->list_detail_search_member->Text, "ID"))
 	{
-		str_list_detail_search_member = "student_id";
+		str_list_detail_search_member = "member_id";
 	}
 	if (String::Equals(this->list_detail_search_member->Text, "Phone"))
 	{
-		str_list_detail_search_member = "student_mobile";
+		str_list_detail_search_member = "member_mobile";
 	}
 	if (String::Equals(this->list_detail_search_member->Text, "Email"))
 	{
-		str_list_detail_search_member = "student_email";
+		str_list_detail_search_member = "member_email";
 	}
 	if (String::Equals(this->list_detail_search_member->Text, "Number of books borrowed currently"))
 	{
-		str_list_detail_search_member = "student_no_book_stat";
+		str_list_detail_search_member = "member_no_book_stat";
 	}
 
 	sql_connection_func::fill_datagrid_members_filtered(str_list_detail_search_member, this->search_bar_member->Text, list_of_member_dataGridView);

@@ -174,7 +174,7 @@ namespace LMS {
 			// 
 			this->list_detail_search_order->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->list_detail_search_order->FormattingEnabled = true;
-			this->list_detail_search_order->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Order ID", L"Student ID", L"Book ID" });
+			this->list_detail_search_order->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Order ID", L"Member ID", L"Book ID" });
 			this->list_detail_search_order->Location = System::Drawing::Point(700, 12);
 			this->list_detail_search_order->Name = L"list_detail_search_order";
 			this->list_detail_search_order->Size = System::Drawing::Size(146, 28);
