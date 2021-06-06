@@ -29,6 +29,7 @@ namespace LMS {
 		/// Public variable to denote number of books currently borrowed by the Member
 		/// </summary>
 		int member_no_book_stat;
+	public:
 
 		/// <summary>
 		/// Public variables for transfering whether the user is a librarian or not
@@ -186,6 +187,31 @@ namespace LMS {
 		/// Back Button to navigate backward
 		/// </summary>
 		System::Windows::Forms::Button^ back_button;
+
+	private:
+		/// <summary>
+		/// Change Password of the Member
+		/// </summary>
+		System::Windows::Forms::Button^ change_pass_btn;
+
+	private: 
+		/// <summary>
+		/// TextBox for entering new Password
+		/// </summary>
+		System::Windows::Forms::TextBox^ new_pass_txt;
+
+	private:
+		/// <summary>
+		/// Label of New Password
+		/// </summary>
+		System::Windows::Forms::Label^ new_pass_lbl;
+
+	private: 
+		/// <summary>
+		/// Confirm new password button 
+		/// </summary>
+		System::Windows::Forms::Button^ confirm_newpass_btn;
+
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -200,9 +226,10 @@ namespace LMS {
 		/// To Initialize all the components required to load the form
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(profile_member::typeid));
 			this->member_id_lbl = (gcnew System::Windows::Forms::Label());
 			this->member_profile_group = (gcnew System::Windows::Forms::GroupBox());
+			this->new_pass_txt = (gcnew System::Windows::Forms::TextBox());
+			this->new_pass_lbl = (gcnew System::Windows::Forms::Label());
 			this->member_stat_text = (gcnew System::Windows::Forms::TextBox());
 			this->member_stat_label = (gcnew System::Windows::Forms::Label());
 			this->profession_selector = (gcnew System::Windows::Forms::ComboBox());
@@ -226,6 +253,8 @@ namespace LMS {
 			this->member_borrow_history_dataGridView = (gcnew System::Windows::Forms::DataGridView());
 			this->Open_profile = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
 			this->back_button = (gcnew System::Windows::Forms::Button());
+			this->change_pass_btn = (gcnew System::Windows::Forms::Button());
+			this->confirm_newpass_btn = (gcnew System::Windows::Forms::Button());
 			this->member_profile_group->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->member_borrow_history_dataGridView))->BeginInit();
 			this->SuspendLayout();
@@ -243,6 +272,8 @@ namespace LMS {
 			// 
 			this->member_profile_group->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Right));
+			this->member_profile_group->Controls->Add(this->new_pass_txt);
+			this->member_profile_group->Controls->Add(this->new_pass_lbl);
 			this->member_profile_group->Controls->Add(this->member_stat_text);
 			this->member_profile_group->Controls->Add(this->member_stat_label);
 			this->member_profile_group->Controls->Add(this->profession_selector);
@@ -265,10 +296,28 @@ namespace LMS {
 			this->member_profile_group->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->member_profile_group->Name = L"member_profile_group";
 			this->member_profile_group->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->member_profile_group->Size = System::Drawing::Size(598, 649);
+			this->member_profile_group->Size = System::Drawing::Size(598, 793);
 			this->member_profile_group->TabIndex = 18;
 			this->member_profile_group->TabStop = false;
 			this->member_profile_group->Text = L"Member Profile";
+			// 
+			// new_pass_txt
+			// 
+			this->new_pass_txt->Location = System::Drawing::Point(343, 667);
+			this->new_pass_txt->Name = L"new_pass_txt";
+			this->new_pass_txt->Size = System::Drawing::Size(141, 26);
+			this->new_pass_txt->TabIndex = 23;
+			this->new_pass_txt->Visible = false;
+			// 
+			// new_pass_lbl
+			// 
+			this->new_pass_lbl->AutoSize = true;
+			this->new_pass_lbl->Location = System::Drawing::Point(135, 667);
+			this->new_pass_lbl->Name = L"new_pass_lbl";
+			this->new_pass_lbl->Size = System::Drawing::Size(113, 20);
+			this->new_pass_lbl->TabIndex = 22;
+			this->new_pass_lbl->Text = L"New Password";
+			this->new_pass_lbl->Visible = false;
 			// 
 			// member_stat_text
 			// 
@@ -496,19 +545,44 @@ namespace LMS {
 			// 
 			// back_button
 			// 
-			this->back_button->Image = Image::FromFile("src\\back-icon.png");
 			this->back_button->Location = System::Drawing::Point(12, 832);
+			this->back_button->Image = Image::FromFile("src\\back-icon.png");
 			this->back_button->Name = L"back_button";
 			this->back_button->Size = System::Drawing::Size(81, 45);
 			this->back_button->TabIndex = 22;
 			this->back_button->UseVisualStyleBackColor = true;
 			this->back_button->Click += gcnew System::EventHandler(this, &profile_member::back_button_Click);
 			// 
+			// change_pass_btn
+			// 
+			this->change_pass_btn->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->change_pass_btn->Location = System::Drawing::Point(935, 214);
+			this->change_pass_btn->Name = L"change_pass_btn";
+			this->change_pass_btn->Size = System::Drawing::Size(198, 57);
+			this->change_pass_btn->TabIndex = 23;
+			this->change_pass_btn->Text = L"CHANGE PASSWORD";
+			this->change_pass_btn->UseVisualStyleBackColor = true;
+			this->change_pass_btn->Click += gcnew System::EventHandler(this, &profile_member::change_pass_btn_Click);
+			// 
+			// confirm_newpass_btn
+			// 
+			this->confirm_newpass_btn->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->confirm_newpass_btn->Location = System::Drawing::Point(941, 296);
+			this->confirm_newpass_btn->Name = L"confirm_newpass_btn";
+			this->confirm_newpass_btn->Size = System::Drawing::Size(191, 55);
+			this->confirm_newpass_btn->TabIndex = 24;
+			this->confirm_newpass_btn->Text = L"CONFIRM NEW PASSWORD";
+			this->confirm_newpass_btn->UseVisualStyleBackColor = true;
+			this->confirm_newpass_btn->Visible = false;
+			this->confirm_newpass_btn->Click += gcnew System::EventHandler(this, &profile_member::confirm_newpass_btn_Click);
+			// 
 			// profile_member
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1149, 909);
+			this->Controls->Add(this->confirm_newpass_btn);
+			this->Controls->Add(this->change_pass_btn);
 			this->Controls->Add(this->back_button);
 			this->Controls->Add(this->member_borrow_history_dataGridView);
 			this->Controls->Add(this->confirm_change_button);
@@ -603,5 +677,27 @@ namespace LMS {
 		/// </param>
 		System::Void member_borrow_history_dataGridView_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 
-	};
+	private: 
+		/// <summary>
+		/// System::Void function for OnClick of change password
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void change_pass_btn_Click(System::Object^ sender, System::EventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function for OnClick of confirm new password
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void confirm_newpass_btn_Click(System::Object^ sender, System::EventArgs^ e);
+};
 }
