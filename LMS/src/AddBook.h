@@ -13,38 +13,139 @@ namespace LMS {
 	/// <summary>
 	/// Summary for AddBook
 	/// </summary>
+	///This is a public ref class whose object lifetime is administered automatically. When the object is no longer accessible or goes out of scope, the memory is released.
+	/// It supports the Windows Runtime type system.
 	public ref class AddBook : public System::Windows::Forms::Form
 	{
 	public:
+		/// <summary>
+		/// Public variable for transfering the ID of the Book
+		/// </summary>
+		/// It transfers the ID of the user as String which is part of the public ref class and a member of System.
 		String^ transfer_id;
+
+		/// <summary>
+		/// Public variables for transfering whether the user is a librarian or not
+		/// </summary>
+		/// It transfers a boolean value with true representing the user is a librarian and false if the user is not a librarian
 		bool is_librarian;
+
 	public:
+		// <summary>
+		/// Constructor function for the form
+		/// </summary>
+		/// <param name="void"></param>
 		AddBook(void);
+
+		/// <summary>
+		/// Constructor function for the form with transferable variables as parameters
+		/// </summary>
+		/// <param name="input_transfer_id">
+		/// It is the input argument for the ID to be transfered while calling the constructor
+		/// </param>
+		/// <param name="is_librarian_input">
+		/// It is the input argument for the boolean value, if the User is a librarian or not, to be transfered while calling the constructor
+		/// </param>
 		AddBook(String^ input_transfer_id, bool is_librarian_input);
 
 	protected:
+		/// <summary>
+		/// Destructor function for the form
+		/// </summary>
 		~AddBook();
 
-	private: System::Windows::Forms::Label^ bookname_lbl;
-	private: System::Windows::Forms::Label^ author_lbl;
-	private: System::Windows::Forms::Label^ publisher_lbl;
-	private: System::Windows::Forms::Label^ category_lbl;
-	private: System::Windows::Forms::Label^ edition_no_lbl;
-	private: System::Windows::Forms::Label^ no_of_copies_lbl;
-	private: System::Windows::Forms::Label^ price_lbl;
-	private: System::Windows::Forms::TextBox^ bookname_txt;
-	private: System::Windows::Forms::TextBox^ author_txt;
-	private: System::Windows::Forms::TextBox^ publisher_txt;
-	private: System::Windows::Forms::TextBox^ category_txt;
-	private: System::Windows::Forms::TextBox^ edition_no_txt;
-	private: System::Windows::Forms::TextBox^ no_of_copies_txt;
-	private: System::Windows::Forms::TextBox^ price_txt;
-	private: System::Windows::Forms::Button^ add_button;
-	private: System::Windows::Forms::Button^ back_button;
+	private:
+		/// <summary>
+		/// Label for Book Name
+		/// </summary>
+		System::Windows::Forms::Label^ bookname_lbl;
+	private:
+		/// <summary>
+		/// Label for Book Author
+		/// </summary>
+		System::Windows::Forms::Label^ author_lbl;
+	private:
+		/// <summary>
+		/// Label for Book Publisher
+		/// </summary>
+		System::Windows::Forms::Label^ publisher_lbl;
+	private:
+		/// <summary>
+		/// Label for Book Category
+		/// </summary>
+		System::Windows::Forms::Label^ category_lbl;
+	private:
+		/// <summary>
+		/// Label for Edition No. of the Book
+		/// </summary>
+		System::Windows::Forms::Label^ edition_no_lbl;
+	private:
+		/// <summary>
+		/// Label for No. of copies being added
+		/// </summary>
+		System::Windows::Forms::Label^ no_of_copies_lbl;
+	private:
+		/// <summary>
+		/// Label for Price of the Book
+		/// </summary>
+		System::Windows::Forms::Label^ price_lbl;
+	private:
+		/// <summary>
+		/// Input TextBox for Name of the Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ bookname_txt;
+	private:
+		/// <summary>
+		/// Input TextBox for Author of the Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ author_txt;
+	private:
+		/// <summary>
+		/// Input TextBox for Book's Publisher
+		/// </summary>
+		System::Windows::Forms::TextBox^ publisher_txt;
+	private:
+		/// <summary>
+		/// Input TextBox for Category of the Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ category_txt;
+	private:
+		/// <summary>
+		/// Input TextBox for Edition Number of the Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ edition_no_txt;
+	private:
+		/// <summary>
+		/// Input TextBox for No. of copies being added
+		/// </summary>
+		System::Windows::Forms::TextBox^ no_of_copies_txt;
+	private:
+		/// <summary>
+		/// Input TextBox for Price of the Book
+		/// </summary>
+		System::Windows::Forms::TextBox^ price_txt;
+	private:
+		/// <summary>
+		/// Button to Add Books into the Library Database
+		/// </summary>
+		System::Windows::Forms::Button^ add_button;
+	private:
+		/// <summary>
+		/// Button for navigating to HomePage
+		/// </summary>
+		System::Windows::Forms::Button^ back_button;
 
-	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private:
+		/// <summary>
+		/// A mechanism to group all the required labels and textboxes
+		/// </summary>
+		System::Windows::Forms::GroupBox^ groupBox1;
 
-	private: System::Windows::Forms::ListBox^ id_listbox;
+	private:
+		/// <summary>
+		/// ListBox to display the ID's of the books added
+		/// </summary>
+		System::Windows::Forms::ListBox^ id_listbox;
 
 	protected:
 
@@ -61,6 +162,7 @@ namespace LMS {
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
+		/// To Initialize all the components required to load the form
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(AddBook::typeid));
@@ -287,8 +389,40 @@ namespace LMS {
 		}
 #pragma endregion
 
-	private: System::Void AddBook_Load(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void AddBook_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void BackButton_Click(System::Object^ sender, System::EventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function to Load AddBook form
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void AddBook_Load(System::Object^ sender, System::EventArgs^ e);
+
+	private:
+		/// <summary>
+		/// System::Void function to Add Books into the Library database considering the details provided 
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void AddBook_Click(System::Object^ sender, System::EventArgs^ e);
+
+	private:
+		/// <summary>
+		/// System::Void function for OnClick of back button
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void BackButton_Click(System::Object^ sender, System::EventArgs^ e);
 	};
 }

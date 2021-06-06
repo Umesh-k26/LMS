@@ -20,7 +20,7 @@ namespace sql_connection_func {
 	// 
 	//FUNCTION FOR FILLING MEMBER DATAGRID IN LIST OF MEMBERS PAGE
 	//
-	
+
 	/// <summary>
 	/// Void function to fill member datagrid
 	/// </summary>

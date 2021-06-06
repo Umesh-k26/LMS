@@ -1,9 +1,5 @@
 #pragma once
-//***********************************************************************************************
-//UNCOMMENT button click functions after adding all other form files
-// Keep in mind the new naming scheme instead of "student" it is now "member"
-// shift to cpp file after completing
-//***********************************************************************************************
+
 #include "list_of_member_page.h"
 #include "list_of_books_page.h"
 #include "borrow_history_page.h"
@@ -14,7 +10,6 @@
 #include "RegisterMember.h"
 #include "RegisterLibrarian.h"
 
-//NEW HEADER FILES NEED NOT BE NAMED EXACTLY SAME AS ABOVE BUT BETTER TO FOLLOW OLDER CONVENTION
 namespace LMS {
 
 	using namespace System;
@@ -28,58 +23,115 @@ namespace LMS {
 	/// <summary>
 	/// Summary for HomePage
 	/// </summary>
+	/// This is a public ref class whose object lifetime is administered automatically. When the object is no longer accessible or goes out of scope, the memory is released.
+	/// It supports the Windows Runtime type system.
 	public ref class HomePage : public System::Windows::Forms::Form
 	{
 	public:
+		/// <summary>
+		/// Public variable for transfering the ID of the Book
+		/// </summary>
+		/// It transfers the ID of the user as String which is part of the public ref class and a member of System.
 		String^ transfer_id;
+
+		/// <summary>
+		/// Public variables for transfering whether the user is a librarian or not
+		/// </summary>
+		/// It transfers a boolean value with true representing the user is a librarian and false if the user is not a librarian
 		bool is_librarian;
+
 	public:
-		HomePage(void)
-		{
-			InitializeComponent();
-		}
-		HomePage(String^ input_transfer_id, bool is_librarian_input)
-		{
-			transfer_id = input_transfer_id;
-			is_librarian = is_librarian_input;
-			InitializeComponent();
-		}
+		// <summary>
+		/// Constructor function for the form
+		/// </summary>
+		/// <param name="void"></param>
+		HomePage(void);
+
+		/// <summary>
+		/// Constructor function for the form with transferable variables as parameters
+		/// </summary>
+		/// <param name="input_transfer_id">
+		/// It is the input argument for the ID to be transfered while calling the constructor
+		/// </param>
+		/// <param name="is_librarian_input">
+		/// It is the input argument for the boolean value, if the User is a librarian or not, to be transfered while calling the constructor
+		/// </param>
+		HomePage(String^ input_transfer_id, bool is_librarian_input);
 
 	protected:
 		/// <summary>
-		/// Clean up any resources being used.
+		/// Destructor function for the form
 		/// </summary>
-		~HomePage()
-		{
-			if (components)
-			{
-				delete components;
-			}
-		}
+		~HomePage();
 
-	private: System::Windows::Forms::Button^ exit_button;
-	private: System::Windows::Forms::Button^ booklist_btn;
-	private: System::Windows::Forms::Button^ member_list_btn;
-	private: System::Windows::Forms::Button^ addbook_btn;
-	private: System::Windows::Forms::Button^ register_member_btn;
-	private: System::Windows::Forms::Button^ borrowhistory_btn;
-	private: System::Windows::Forms::Button^ borrowbook_btn;
-	private: System::Windows::Forms::Button^ returnbook_btn;
-	private: System::Windows::Forms::Button^ logout_button;
-	private: System::Windows::Forms::Button^ registerlibrarian_btn;
-	private: System::Windows::Forms::Button^ view_profile_member_btn;
+	private:
+		/// <summary>
+		/// Button to Exit Appilcation
+		/// </summary>
+		System::Windows::Forms::Button^ exit_button;
+	private:
+		/// <summary>
+		/// Button to view Books List
+		/// </summary>
+		System::Windows::Forms::Button^ booklist_btn;
+	private:
+		/// <summary>
+		/// Button to view Member List
+		/// </summary>
+		System::Windows::Forms::Button^ member_list_btn;
+	private:
+		/// <summary>
+		/// Button to Navigate to Add Book page
+		/// </summary>
+		System::Windows::Forms::Button^ addbook_btn;
+	private:
+		/// <summary>
+		/// Button to Navigate to Member Registration page
+		/// </summary>
+		System::Windows::Forms::Button^ register_member_btn;
+	private:
+		/// <summary>
+		/// Button to view Borrow History
+		/// </summary>
+		System::Windows::Forms::Button^ borrowhistory_btn;
+	private:
+		/// <summary>
+		/// Button to Navigate to Borrow Book page
+		/// </summary>
+		System::Windows::Forms::Button^ borrowbook_btn;
+	private:
+		/// <summary>
+		/// Button to Navigate to Return Book page
+		/// </summary>
+		System::Windows::Forms::Button^ returnbook_btn;
+	private:
+		/// <summary>
+		/// Button to Logout user
+		/// </summary>
+		System::Windows::Forms::Button^ logout_button;
+	private:
+		/// <summary>
+		/// Button to Navigate to Librarian Registration page
+		/// </summary>
+		System::Windows::Forms::Button^ registerlibrarian_btn;
+	private:
+		/// <summary>
+		/// Button to View Profile of the Member
+		/// </summary>
+		System::Windows::Forms::Button^ view_profile_member_btn;
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
+		/// To Initialize all the components required to load the form
 		void InitializeComponent(void)
 		{
 			this->exit_button = (gcnew System::Windows::Forms::Button());
@@ -251,116 +303,149 @@ namespace LMS {
 
 		}
 #pragma endregion
-private: System::Void borrowbook_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-	LMS::BorrowBook^ borrowbook_f = gcnew LMS::BorrowBook();
-	this->Hide();
-	if (borrowbook_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		this->Show();
-	}
-}
+	private:
+		/// <summary>
+		/// System::Void function to Navigate to BorrowBook page
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void borrowbook_btn_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: System::Void booklist_btn_Click(System::Object^ sender, System::EventArgs^ e) 	{
-	LMS::list_of_books_page^ list_of_books_f = gcnew LMS::list_of_books_page(transfer_id, is_librarian);
-	this->Hide();
-	if (list_of_books_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		this->Show();
-	}
-}
+	private:
+		/// <summary>
+		/// System::Void function to view Book List
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void booklist_btn_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: System::Void borrowhistory_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-	LMS::borrow_history_page^ borrow_history_page_f = gcnew LMS::borrow_history_page(transfer_id, is_librarian);
-	this->Hide();
-	if (borrow_history_page_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		this->Show();
-	}
-}
+	private:
+		/// <summary>
+		/// System::Void function to view Borrow History
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void borrowhistory_btn_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: System::Void returnbook_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-	LMS::ReturnBook^ returnbook_f = gcnew LMS::ReturnBook();
-	this->Hide();
-	if (returnbook_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		this->Show();
-	}
-}
+	private:
+		/// <summary>
+		/// System::Void function to Navigate to Return Book page
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void returnbook_btn_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: System::Void member_list_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+	private:
 
-	LMS::list_of_member_page^ list_of_member_f = gcnew LMS::list_of_member_page(transfer_id, is_librarian);
-	this->Hide();
-	if (list_of_member_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		this->Show();
-	}
-}
+		/// <summary>
+		/// System::Void function to view Member List
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void member_list_btn_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: System::Void addbook_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-	LMS::AddBook^ addbook_f = gcnew LMS::AddBook(transfer_id, is_librarian);
-	this->Hide();
-	if (addbook_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		this->Show();
-	}
-}
+	private:
+		/// <summary>
+		/// System::Void function to Navigate to AddBook page
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void addbook_btn_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: System::Void register_member_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-	//
-	//	CHANGE TO REGISTER MEMBER
-	//
-	LMS::RegisterMember^ RegisterMember_f = gcnew LMS::RegisterMember(transfer_id, is_librarian);
-	this->Hide();
-	if (RegisterMember_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		this->Show();
-	}
-}
+	private:
+		/// <summary>
+		/// System::Void function to Navigate to Register Member page
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void register_member_btn_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: System::Void registerlibrarian_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-	LMS::RegisterLibrarian^ registerlibrarian_f = gcnew LMS::RegisterLibrarian(transfer_id, is_librarian);
-	this->Hide();
-	if (registerlibrarian_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		this->Show();
-	}
-}
+	private:
+		/// <summary>
+		/// System::Void function to Navigate to Register Librarian page
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void registerlibrarian_btn_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: System::Void view_profile_member_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-	//
-	//	CHANGE TO PROFILE MEMBER
-	//
-	LMS::profile_member^ profile_member_f = gcnew LMS::profile_member(transfer_id, is_librarian);
-	this->Hide();
-	if (profile_member_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		this->Show();
-	}
-}
+	private:
+		/// <summary>
+		/// System::Void function to View Member Profile page
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void view_profile_member_btn_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: System::Void exit_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	Application::Exit();
-}
+	private:
+		/// <summary>
+		/// System::Void function to Exit the Application
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void exit_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: System::Void logout_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->DialogResult = System::Windows::Forms::DialogResult::OK;
-	this->Close();
-}
+	private:
+		/// <summary>
+		/// System::Void function Logout user
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void logout_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: System::Void HomePage_Load(System::Object^ sender, System::EventArgs^ e) {
-	CenterToScreen();
-	WindowState = FormWindowState::Maximized;
-	if (is_librarian == false)
-	{
-		this->borrowbook_btn->Visible = false;
-		this->member_list_btn->Visible = false;
-		this->returnbook_btn->Visible = false;
-		this->addbook_btn->Visible = false;
-		this->registerlibrarian_btn->Visible = false;
-		this->register_member_btn->Visible = false;
-		this->view_profile_member_btn->Visible = true;
-	}
-}
-};
+	private:
+		/// <summary>
+		/// System::Void function to load the form
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void HomePage_Load(System::Object^ sender, System::EventArgs^ e);
+	};
 }

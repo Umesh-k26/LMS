@@ -30,13 +30,13 @@ namespace LMS {
 		~BorrowBook();
 
 
-	private: 
+	private:
 		/// <summary>
 		/// A mechanism to group all the required labels and textboxes for Borrower/User
 		/// </summary>
 		System::Windows::Forms::GroupBox^ BorrowBook_group;
 
-	private: 
+	private:
 		/// <summary>
 		/// A TextBox to take input of member_id, to Borrow a book for member 
 		/// </summary>
@@ -48,7 +48,7 @@ namespace LMS {
 		/// </summary>
 		System::Windows::Forms::TextBox^ book_id_txt;
 
-	private: 
+	private:
 		/// <summary>
 		/// Label for Book id
 		/// </summary>
@@ -68,14 +68,14 @@ namespace LMS {
 		System::Windows::Forms::Button^ borrow_button;
 
 
-	private: 
+	private:
 		/// <summary>
 		/// Back button to navigate backward.
 		/// </summary>
 		System::Windows::Forms::Button^ Back_button;
 
-	
-	
+
+
 	private: System::IO::FileSystemWatcher^ fileSystemWatcher1;
 
 
@@ -217,7 +217,7 @@ namespace LMS {
 	}
 
 
-	private: System::Void BorrowBook_Load(System::Object^ sender, System::EventArgs^ e); 
+	private: System::Void BorrowBook_Load(System::Object^ sender, System::EventArgs^ e);
 
 	private: System::Void borrow_button_Click(System::Object^ sender, System::EventArgs^ e);
 
@@ -228,5 +228,5 @@ namespace LMS {
 
 	private: System::Void book_id_lbl_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-};
+	};
 }

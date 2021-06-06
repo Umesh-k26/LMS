@@ -102,7 +102,7 @@ namespace LMS {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -231,17 +231,17 @@ namespace LMS {
 
 		}
 #pragma endregion
-private:
-	/// <summary>
-	/// System::Void function for OnClick of back button
-	/// </summary>
-	/// <param name="sender">
-	///Provides a reference to the object that raised the event
-	/// </param>
-	/// <param name="e">
-	///Passes an object specific to the event that is being handled.
-	/// </param>
-	System::Void back_button_borrow_his_Click(System::Object^ sender, System::EventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function for OnClick of back button
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void back_button_borrow_his_Click(System::Object^ sender, System::EventArgs^ e);
 
 	private:
 		/// <summary>
@@ -302,5 +302,5 @@ private:
 		///Passes an object specific to the event that is being handled.
 		/// </param>
 		System::Void exit_button_Click(System::Object^ sender, System::EventArgs^ e);
-};
+	};
 }

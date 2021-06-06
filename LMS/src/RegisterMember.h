@@ -12,61 +12,185 @@ namespace LMS {
 	/// <summary>
 	/// Summary for RegisterMember
 	/// </summary>
+	/// This is a public ref class whose object lifetime is administered automatically. When the object is no longer accessible or goes out of scope, the memory is released.
+	/// It supports the Windows Runtime type system.
 	public ref class RegisterMember : public System::Windows::Forms::Form
 	{
 	public:
+		/// <summary>
+		/// Public variable for transfering the ID of the Book
+		/// </summary>
+		/// It transfers the ID of the user as String which is part of the public ref class and a member of System.
 		String^ transfer_id;
+
+		/// <summary>
+		/// Public variables for transfering whether the user is a librarian or not
+		/// </summary>
+		/// It transfers a boolean value with true representing the user is a librarian and false if the user is not a librarian
 		bool is_librarian;
 
 	public:
+		// <summary>
+		/// Constructor function for the form
+		/// </summary>
+		/// <param name="void"></param>
 		RegisterMember(void);
+
+		/// <summary>
+		/// Constructor function for the form with transferable variables as parameters
+		/// </summary>
+		/// <param name="input_transfer_id">
+		/// It is the input argument for the ID to be transfered while calling the constructor
+		/// </param>
+		/// <param name="is_librarian_input">
+		/// It is the input argument for the boolean value, if the User is a librarian or not, to be transfered while calling the constructor
+		/// </param>
 		RegisterMember(String^ input_transfer_id, bool is_librarian_input);
 
 	protected:
+		/// <summary>
+		/// Destructor function for the form
+		/// </summary>
 		~RegisterMember();
 
+		/// <summary>
+		/// Protected variables for storing Gender
+		/// </summary>
 		String^ Gender;
 
-	private: System::Windows::Forms::Label^ name_lbl;
-	protected:
+	private:
+		/// <summary>
+		/// Label for Name of the Member
+		/// </summary>
+		System::Windows::Forms::Label^ name_lbl;
 
-	private: System::Windows::Forms::Label^ dob_lbl;
-	protected:
+	private:
+		/// <summary>
+		/// Label for Date of Birth of the Member
+		/// </summary>
+		System::Windows::Forms::Label^ dob_lbl;
 
-	private: System::Windows::Forms::Label^ profession_lbl;
+	private:
+		/// <summary>
+		/// Label for Profession of the Member
+		/// </summary>
+		System::Windows::Forms::Label^ profession_lbl;
 
-	private: System::Windows::Forms::Label^ email_id_lbl;
+	private:
+		/// <summary>
+		/// Label for 'E-mail ID' of the Member
+		/// </summary>
+		System::Windows::Forms::Label^ email_id_lbl;
 
-	private: System::Windows::Forms::Label^ mobile_no_lbl;
+	private:
+		/// <summary>
+		/// Label for Contact Number of the Member
+		/// </summary>
+		System::Windows::Forms::Label^ mobile_no_lbl;
 
-	private: System::Windows::Forms::Label^ address_lbl;
+	private:
+		/// <summary>
+		/// Label for member's address
+		/// </summary>
+		System::Windows::Forms::Label^ address_lbl;
 
-	private: System::Windows::Forms::TextBox^ name_txt;
-
-
-	private: System::Windows::Forms::TextBox^ email_id_txt;
-	private: System::Windows::Forms::TextBox^ mobile_no_txt;
-	private: System::Windows::Forms::TextBox^ address_txt;
-	private: System::Windows::Forms::Button^ register_button;
-
-	private: System::Windows::Forms::Label^ status_lbl;
-	private: System::Windows::Forms::TextBox^ status_no_txt;
-	private: System::Windows::Forms::Button^ back_button;
-
-	private: System::Windows::Forms::DateTimePicker^ dateTimePicker;
-	private: System::Windows::Forms::GroupBox^ register_member_grp_box;
+	private:
+		/// <summary>
+		/// Input TextBox for name of the Member
+		/// </summary>
+		System::Windows::Forms::TextBox^ name_txt;
 
 
-	private: System::Windows::Forms::RadioButton^ female_rbtn;
+	private:
+		/// <summary>
+		/// Input TextBox for E-mail ID of the Member
+		/// </summary>
+		System::Windows::Forms::TextBox^ email_id_txt;
+	private:
+		/// <summary>
+		/// Input TextBox for Contact number of the Member
+		/// </summary>
+		System::Windows::Forms::TextBox^ mobile_no_txt;
+	private:
+		/// <summary>
+		/// Input TextBox for address of the Member
+		/// </summary>
+		System::Windows::Forms::TextBox^ address_txt;
+	private:
+		/// <summary>
+		/// Button to validate Registration
+		/// </summary>
+		System::Windows::Forms::Button^ register_button;
 
-	private: System::Windows::Forms::RadioButton^ male_rbtn;
-	private: System::Windows::Forms::TextBox^ re_password_txt;
+	private:
+		/// <summary>
+		/// Label for Current Borrow Status
+		/// </summary>
+		System::Windows::Forms::Label^ status_lbl;
+	private:
+		/// <summary>
+		/// Input TextBox for Current Borrow Status (Number of Books borrowed)
+		/// </summary>
+		System::Windows::Forms::TextBox^ status_no_txt;
+	private:
+		/// <summary>
+		/// Button for navigating to HomePage
+		/// </summary>
+		System::Windows::Forms::Button^ back_button;
 
-	private: System::Windows::Forms::TextBox^ password_txt;
-	private: System::Windows::Forms::Label^ password_lbl;
-	private: System::Windows::Forms::Label^ re_password_lbl;
-	private: System::Windows::Forms::ComboBox^ profession_comboBox;
+	private:
+		/// <summary>
+		/// A Date-Time Picker for choosing Date of Birth
+		/// </summary>
+		System::Windows::Forms::DateTimePicker^ dateTimePicker;
+	private:
+		/// <summary>
+		/// A mechanism to group all the required labels and textboxes
+		/// </summary>
+		System::Windows::Forms::GroupBox^ register_member_grp_box;
 
+
+	private:
+		/// <summary>
+		/// Radio Button for Gender = Female
+		/// </summary>
+		System::Windows::Forms::RadioButton^ female_rbtn;
+
+	private:
+		/// <summary>
+		/// Radio Button for Gender = Male
+		/// </summary>
+		System::Windows::Forms::RadioButton^ male_rbtn;
+
+	private:
+		/// <summary>
+		/// Input TextBox for re-enter Password
+		/// </summary>
+		System::Windows::Forms::TextBox^ re_password_txt;
+
+	private:
+		/// <summary>
+		/// Input TextBox for Re-entering Password
+		/// </summary>
+		System::Windows::Forms::TextBox^ password_txt;
+
+	private:
+		/// <summary>
+		/// Label for Password
+		/// </summary>
+		System::Windows::Forms::Label^ password_lbl;
+	private:
+		/// <summary>
+		/// Label for Re-entering Password
+		/// </summary>
+		System::Windows::Forms::Label^ re_password_lbl;
+
+	private:
+		/// <summary>
+		/// ComboBox for Profession
+		/// </summary>
+		/// Accepted Professions : Faculty, Alumini, Student
+		System::Windows::Forms::ComboBox^ profession_comboBox;
 
 	private:
 		/// <summary>
@@ -79,6 +203,7 @@ namespace LMS {
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
+		/// To Initialize all the components required to load the form
 		void InitializeComponent(void)
 		{
 			this->name_lbl = (gcnew System::Windows::Forms::Label());
@@ -352,15 +477,66 @@ namespace LMS {
 
 		}
 #pragma endregion
-	private: System::Void RegisterMember_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void RegisterMember_Load(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void BackButton_Click(System::Object^ sender, System::EventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function to Register Member considering the details provided 
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void RegisterMember_Click(System::Object^ sender, System::EventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function to load the form
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void RegisterMember_Load(System::Object^ sender, System::EventArgs^ e);
 
-	private: System::Void male_rbtn_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-		Gender = "Male";
-	}
-	private: System::Void female_rbtn_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-		Gender = "Female";
-	}
+	private:
+		/// <summary>
+		/// System::Void function for OnClick of back button
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void BackButton_Click(System::Object^ sender, System::EventArgs^ e);
+
+	private:
+		/// <summary>
+		/// System::Void function to Check Gender = 'Male'
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void male_rbtn_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+			Gender = "Male";
+		}
+	private:
+		/// <summary>
+		/// System::Void function to Check Gender = 'Female'
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void female_rbtn_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+			Gender = "Female";
+		}
 	};
 }

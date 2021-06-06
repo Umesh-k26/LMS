@@ -103,7 +103,7 @@ namespace LMS {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -239,7 +239,7 @@ namespace LMS {
 
 		}
 #pragma endregion
-private:
+	private:
 		/// <summary>
 		/// System::Void function for OnClick of back button
 		/// </summary>
@@ -249,9 +249,9 @@ private:
 		/// <param name="e">
 		///Passes an object specific to the event that is being handled.
 		/// </param>
-	System::Void back_button_member_list_Click(System::Object^ sender, System::EventArgs^ e);
+		System::Void back_button_member_list_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: 
+	private:
 		/// <summary>
 		/// System::Void function for OnClick cell in the Data Grid
 		/// </summary>
@@ -261,9 +261,9 @@ private:
 		/// <param name="e">
 		///Passes an object specific to the event that is being handled by the Data Grid.
 		/// </param>
-	System::Void list_of_member_dataGridView_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+		System::Void list_of_member_dataGridView_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 
-private:
+	private:
 		/// <summary>
 		/// System::Void function for OnClick Search Button
 		/// </summary>
@@ -273,9 +273,9 @@ private:
 		/// <param name="e">
 		///Passes an object specific to the event that is being handled.
 		/// </param>
-	System::Void search_button_member_Click(System::Object^ sender, System::EventArgs^ e);
+		System::Void search_button_member_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: 
+	private:
 		/// <summary>
 		/// System::Void function for OnClick Clear All Search Results
 		/// </summary>
@@ -285,9 +285,9 @@ private:
 		/// <param name="e">
 		///Passes an object specific to the event that is being handled.
 		/// </param>
-	System::Void clear_all_button_Click(System::Object^ sender, System::EventArgs^ e);
+		System::Void clear_all_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-private: 
+	private:
 		/// <summary>
 		/// System::Void function for OnClick Exit Button
 		/// </summary>
@@ -297,9 +297,9 @@ private:
 		/// <param name="e">
 		///Passes an object specific to the event that is being handled.
 		/// </param>
-	System::Void exit_button_Click(System::Object^ sender, System::EventArgs^ e);
+		System::Void exit_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-private:
+	private:
 		/// <summary>
 		/// System::Void function to load the form
 		/// </summary>
@@ -309,6 +309,6 @@ private:
 		/// <param name="e">
 		///Passes an object specific to the event that is being handled.
 		/// </param>
-	System::Void list_of_member_page_Load(System::Object^ sender, System::EventArgs^ e);
-};
+		System::Void list_of_member_page_Load(System::Object^ sender, System::EventArgs^ e);
+	};
 }

@@ -211,7 +211,7 @@ namespace LMS {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -684,5 +684,5 @@ namespace LMS {
 		/// Argument passed for how many number of copies to be added
 		/// </param>
 		void updating_no_of_copies(int num_new_copies);
-};
+	};
 }

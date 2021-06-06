@@ -31,25 +31,25 @@ namespace LMS {
 		~ReturnBook();
 
 
-	private: 
+	private:
 		/// <summary>
 		/// Label for Order_id
 		/// </summary>
 		System::Windows::Forms::Label^ order_id_lbl;
 
-	private: 
+	private:
 		/// <summary>
 		/// A TextBox  to return Book the book with input  Order_id 
 		/// </summary>
 		System::Windows::Forms::TextBox^ order_id_txt;
 
-	private: 
+	private:
 		/// <summary>
 		/// Return button to return a book
 		/// </summary>
 		System::Windows::Forms::Button^ return_button;
 
-	private: 
+	private:
 		/// <summary>
 		/// Back button to navigate backward
 		/// </summary>

@@ -12,37 +12,67 @@ namespace LMS {
 	using namespace System::Drawing;
 	using namespace MySql::Data::MySqlClient;
 
+	/// <summary>
+	/// Summary for LoginPage
+	/// </summary>
+	/// This is a public ref class whose object lifetime is administered automatically. When the object is no longer accessible or goes out of scope, the memory is released.
+	/// It supports the Windows Runtime type system.
 	public ref class LoginPage : public System::Windows::Forms::Form
 	{
 	public:
+		// <summary>
+		/// Constructor function for the form
+		/// </summary>
+		/// <param name="void"></param>
 		LoginPage(void);
 
 	protected:
+		/// <summary>
+		/// Destructor function for the form
+		/// </summary>
 		~LoginPage();
 
-	private: System::Windows::Forms::Button^ login_button;
-	protected:
+	private:
+		/// <summary>
+		/// Button for user Login details Authentication
+		/// </summary>
+		System::Windows::Forms::Button^ login_button;
 
-	private: System::Windows::Forms::TextBox^ username_txt;
-	private: System::Windows::Forms::TextBox^ password_txt;
-	protected:
-
-	protected:
-
-
-
-	private: System::Windows::Forms::Label^ username_lbl;
-	private: System::Windows::Forms::Label^ password_lbl;
-	private: System::Windows::Forms::GroupBox^ SignIn_box;
-
-
-	protected:
+	private:
+		/// <summary>
+		/// Input TextBox for username of the Person
+		/// </summary>
+		System::Windows::Forms::TextBox^ username_txt;
+	private:
+		/// <summary>
+		/// Input TextBox for password of the Person
+		/// </summary>
+		System::Windows::Forms::TextBox^ password_txt;
+	private:
+		/// <summary>
+		/// Label for username of the Person
+		/// </summary>
+		System::Windows::Forms::Label^ username_lbl;
+	private:
+		/// <summary>
+		/// Label for Password of the Person
+		/// </summary>
+		System::Windows::Forms::Label^ password_lbl;
+	private:
+		/// <summary>
+		/// A mechanism to group all the required labels and textboxes
+		/// </summary>
+		System::Windows::Forms::GroupBox^ SignIn_box;
 
 	private:
 		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
-
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		/// To Initialize all the components required to load the form
 		void InitializeComponent(void)
 		{
 			this->login_button = (gcnew System::Windows::Forms::Button());
@@ -132,8 +162,29 @@ namespace LMS {
 
 		}
 #pragma endregion
-	private: System::Void LoginButton_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void LoginPage_Load(System::Object^ sender, System::EventArgs^ e);
+	private:
+		/// <summary>
+		/// System::Void function for Login details Authentication process
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void LoginButton_Click(System::Object^ sender, System::EventArgs^ e);
+
+	private:
+		/// <summary>
+		/// System::Void function to load the form
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
+		System::Void LoginPage_Load(System::Object^ sender, System::EventArgs^ e);
 
 	};
 }

@@ -190,7 +190,7 @@ namespace LMS {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -603,5 +603,5 @@ namespace LMS {
 		/// </param>
 		System::Void member_borrow_history_dataGridView_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 
-};
+	};
 }

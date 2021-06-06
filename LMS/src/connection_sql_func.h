@@ -40,7 +40,7 @@ namespace sql_connection_func {
 	/// Passing the dataGridView in which data needs to be presented
 	/// </param>
 	void fill_datagrid_members_filtered(String^ str_list_detail_search_person, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView);
-	
+
 	/// <summary>
 	/// Function for filling Book Datagrid in List of Books page
 	/// </summary>

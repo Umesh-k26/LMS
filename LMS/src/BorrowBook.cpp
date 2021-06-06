@@ -5,7 +5,7 @@
 /// Constructor calls for functions to Initialize all the components of the form
 ///@see InitializeComponent()
 /// </summary>
-LMS ::BorrowBook :: BorrowBook(void)
+LMS::BorrowBook::BorrowBook(void)
 {
 	InitializeComponent();
 }
