@@ -109,8 +109,8 @@ System::Void LMS::profile_member::update_profile_button_Click(System::Object^ se
 	//this->dob_member_txt->Visible = false;
 	this->update_profile_button->Visible = false;
 	this->confirm_change_button->Visible = true;
-	this->dateTimePicker->Visible = true;
-	this->name_txt->ReadOnly = false;
+	//this->dateTimePicker->Visible = true;
+	//this->name_txt->ReadOnly = true;
 	this->profession_txt->ReadOnly = true;
 	this->email_id_txt->ReadOnly = false;
 	this->mobile_no_txt->ReadOnly = false;
@@ -189,7 +189,7 @@ System::Void LMS::profile_member::confirm_change_button_Click(System::Object^ se
 	this->update_profile_button->Visible = true;
 	this->confirm_change_button->Visible = false;
 	this->dateTimePicker->Visible = false;
-	this->name_txt->ReadOnly = true;
+	//this->name_txt->ReadOnly = true;
 	this->profession_txt->ReadOnly = true;
 	this->email_id_txt->ReadOnly = true;
 	this->mobile_no_txt->ReadOnly = true;
@@ -257,4 +257,46 @@ System::Void LMS::profile_member::member_borrow_history_dataGridView_CellContent
 		}
 
 	}
+}
+
+/// <summary>
+/// Function to change the password of the Member
+/// </summary>
+System::Void LMS::profile_member::change_pass_btn_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	this->new_pass_lbl->Visible = true;
+	this->new_pass_txt->Visible = true;
+	this->confirm_newpass_btn->Visible = true;
+	this->change_pass_btn->Visible = false;
+}
+
+/// <summary>
+/// Function to confirm the changes of new password
+/// </summary>
+
+System::Void LMS::profile_member::confirm_newpass_btn_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	if (MessageBox::Show("The password will be changed. Do you want to contiue?", "Warning", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK)
+	{
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+		MySqlCommand^ change_pass_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.user_pass set member_id = " + this->member_id_txt->Text + ", user_password = "+ this->new_pass_txt->Text +" WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
+		try {
+			conDataBase->Open();
+			change_pass_cmdDataBase->ExecuteNonQuery();
+			MessageBox::Show("Password is updated");
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->Message);
+		}
+		this->new_pass_lbl->Visible = false;
+		this->new_pass_txt->Visible = false;
+		this->confirm_newpass_btn->Visible = false;
+		this->change_pass_btn->Visible = true;
+	}
+	else
+	{
+		//do nothing
+	}
+	
 }
