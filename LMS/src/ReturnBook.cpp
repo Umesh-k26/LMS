@@ -39,10 +39,10 @@ System::Void LMS::ReturnBook::ReturnBook_Load(System::Object^ sender, System::Ev
 System::Void LMS::ReturnBook::return_button_Click(System::Object^ sender, System::EventArgs^ e)
 {
 
-	String^ constring = sql_connection_func::sql_user_pass_string();
-	MySqlConnection^ conDataBase = gcnew MySqlConnection(constring);
+	String^ connect_database = sql_connection_func::sql_user_pass_string();
+	MySqlConnection^ conDataBase = gcnew MySqlConnection(connect_database);
 
-	MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT * FROM library_system_db.borrow_history WHERE\
+	MySqlCommand^ Order_data = gcnew MySqlCommand("SELECT * FROM library_system_db.borrow_history WHERE\
      order_id = '" + this->order_id_txt->Text + "';", conDataBase);
 
 	MySqlDataReader^ myReader;
@@ -56,7 +56,7 @@ System::Void LMS::ReturnBook::return_button_Click(System::Object^ sender, System
 
 	try {
 		conDataBase->Open();
-		myReader = cmdDataBase1->ExecuteReader();
+		myReader = Order_data->ExecuteReader();
 
 		int count = 0;
 		String^ Borrow_status;
@@ -80,10 +80,10 @@ System::Void LMS::ReturnBook::return_button_Click(System::Object^ sender, System
 
 			else if (Borrow_status = "BORROWED")
 			{
-				MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system_db.book_data WHERE book_id ='" + Book_id + "';", conDataBase);
+				MySqlCommand^ Book_data = gcnew MySqlCommand("SELECT * FROM library_system_db.book_data WHERE book_id ='" + Book_id + "';", conDataBase);
 
 				int count1 = 0;
-				myReader = cmdDataBase2->ExecuteReader();
+				myReader = Book_data->ExecuteReader();
 				while (myReader->Read())
 				{
 					count1 += 1;
@@ -98,11 +98,11 @@ System::Void LMS::ReturnBook::return_button_Click(System::Object^ sender, System
 				else if (count1 == 1)
 				{
 
-					MySqlCommand^ cmdDataBase3 = gcnew MySqlCommand("SELECT * FROM library_system_db.member_data \
+					MySqlCommand^ Member_data = gcnew MySqlCommand("SELECT * FROM library_system_db.member_data \
                     WHERE member_id ='" + Member_id + "';", conDataBase);
 
 
-					myReader = cmdDataBase3->ExecuteReader();
+					myReader = Member_data->ExecuteReader();
 
 
 					int count2 = 0;
@@ -120,18 +120,18 @@ System::Void LMS::ReturnBook::return_button_Click(System::Object^ sender, System
 
 					else if (count2 == 1)
 					{
-						MySqlCommand^ cmdDataBase4 = gcnew MySqlCommand("UPDATE library_system_db.borrow_history set \
+						MySqlCommand^ Update_borrow_history_data = gcnew MySqlCommand("UPDATE library_system_db.borrow_history set \
                        date_returned = CURDATE(),borrow_status = 'RETURNED'\
 		               WHERE order_id = '" + this->order_id_txt->Text + "';", conDataBase);
 
 
 						//Below Query Updates Borrow_history (Table) except fine coloumn
-						cmdDataBase4->ExecuteNonQuery();
+						Update_borrow_history_data->ExecuteNonQuery();
 
 						int order_id = Convert::ToInt32(this->order_id_txt->Text);
 						int fine = fine_func::calculate_fine(order_id, Member_id, profession);
 
-						MySqlCommand^ cmdDataBase5 = gcnew MySqlCommand("UPDATE library_system_db.book_data set copies_available = copies_available +1 WHERE \
+						MySqlCommand^ Update_book_data = gcnew MySqlCommand("UPDATE library_system_db.book_data set copies_available = copies_available +1 WHERE \
                        book_name = '" + Book_name + "'\
                        AND book_author = '" + Book_author + "'\
                        AND book_publisher = '" + Book_publisher + "'\
@@ -140,24 +140,24 @@ System::Void LMS::ReturnBook::return_button_Click(System::Object^ sender, System
                        set book_borrow_status = 'AVAILABLE' \
                        WHERE book_id = " + Book_id + " ;", conDataBase);
 
-						MySqlCommand^ cmdDataBase6 = gcnew MySqlCommand("UPDATE  library_system_db.member_data\
+						MySqlCommand^ Update_member_data = gcnew MySqlCommand("UPDATE  library_system_db.member_data\
                        set member_no_book_stat = member_no_book_stat - 1,\
 					   member_fine = member_fine + '" + fine + "' \
                        WHERE member_id ='" + Member_id + "';", conDataBase);
 
-						MySqlCommand^ cmdDataBase7 = gcnew MySqlCommand("UPDATE library_system_db.borrow_history set \
+						MySqlCommand^ Update_borrow_history_fine = gcnew MySqlCommand("UPDATE library_system_db.borrow_history set \
                        borrow_fine= '" + fine + "'\
 		               WHERE order_id = '" + this->order_id_txt->Text + "';", conDataBase);
 
 
 						//Below Query Updates Book_data (Table) {increases copies_available by 1 for all copies and book_borrow_Status = AVAILABLE for partciular book id}
-						cmdDataBase5->ExecuteNonQuery();
+						Update_book_data->ExecuteNonQuery();
 
 						//Below Query Updates member_data(Table)
-						cmdDataBase6->ExecuteNonQuery();
+						Update_member_data->ExecuteNonQuery();
 
 						//Below Query Updates fine coloumn in borrow_history by using fine function
-						cmdDataBase7->ExecuteNonQuery();
+						Update_borrow_history_fine->ExecuteNonQuery();
 
 						MessageBox::Show("Returned book successfully! \nBook_id = " + Book_id + " \nMember_id = " + Member_id + " \nOrder_id = " + this->order_id_txt->Text + " ");
 					}
