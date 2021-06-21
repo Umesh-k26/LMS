@@ -58,12 +58,12 @@ namespace LMS {
 		/// <summary>
 		/// A Read-Only TextBox for Status if Book is Lost or Not
 		/// </summary>
-		System::Windows::Forms::TextBox^ book_lost_stat_text;
+
 	private:
 		/// <summary>
 		/// Label for Status if Book is Lost or Not
 		/// </summary>
-		System::Windows::Forms::Label^ book_lost_stat_lbl;
+
 
 	private:
 		/// <summary>
@@ -221,10 +221,7 @@ namespace LMS {
 		/// To Initialize all the components required to load the form
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(profile_book::typeid));
 			this->book_profile_group = (gcnew System::Windows::Forms::GroupBox());
-			this->book_lost_stat_text = (gcnew System::Windows::Forms::TextBox());
-			this->book_lost_stat_lbl = (gcnew System::Windows::Forms::Label());
 			this->copies_available_txt = (gcnew System::Windows::Forms::TextBox());
 			this->copies_available_lbl = (gcnew System::Windows::Forms::Label());
 			this->category_txt = (gcnew System::Windows::Forms::TextBox());
@@ -260,8 +257,6 @@ namespace LMS {
 			// book_profile_group
 			// 
 			this->book_profile_group->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->book_profile_group->Controls->Add(this->book_lost_stat_text);
-			this->book_profile_group->Controls->Add(this->book_lost_stat_lbl);
 			this->book_profile_group->Controls->Add(this->copies_available_txt);
 			this->book_profile_group->Controls->Add(this->copies_available_lbl);
 			this->book_profile_group->Controls->Add(this->category_txt);
@@ -290,23 +285,6 @@ namespace LMS {
 			this->book_profile_group->TabIndex = 19;
 			this->book_profile_group->TabStop = false;
 			this->book_profile_group->Text = L"Book Profile";
-			// 
-			// book_lost_stat_text
-			// 
-			this->book_lost_stat_text->Location = System::Drawing::Point(250, 532);
-			this->book_lost_stat_text->Name = L"book_lost_stat_text";
-			this->book_lost_stat_text->ReadOnly = true;
-			this->book_lost_stat_text->Size = System::Drawing::Size(145, 26);
-			this->book_lost_stat_text->TabIndex = 31;
-			// 
-			// book_lost_stat_lbl
-			// 
-			this->book_lost_stat_lbl->AutoSize = true;
-			this->book_lost_stat_lbl->Location = System::Drawing::Point(34, 543);
-			this->book_lost_stat_lbl->Name = L"book_lost_stat_lbl";
-			this->book_lost_stat_lbl->Size = System::Drawing::Size(81, 20);
-			this->book_lost_stat_lbl->TabIndex = 30;
-			this->book_lost_stat_lbl->Text = L"Book Lost";
 			// 
 			// copies_available_txt
 			// 
@@ -558,9 +536,9 @@ namespace LMS {
 			// 
 			// back_button
 			// 
-			this->back_button->Image = Image::FromFile("src\\back-icon.png");
 			this->back_button->Location = System::Drawing::Point(12, 700);
 			this->back_button->Name = L"back_button";
+			this->back_button->Image = Image::FromFile("src\\back-icon.png");
 			this->back_button->Size = System::Drawing::Size(74, 48);
 			this->back_button->TabIndex = 25;
 			this->back_button->UseVisualStyleBackColor = true;

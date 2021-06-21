@@ -84,7 +84,7 @@ namespace sql_connection_func {
 	void fill_datagrid_book(System::Windows::Forms::DataGridView^ dataGridView)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS ID, book_name as Title, book_author AS Author, book_edition_no AS Edition, book_publisher AS Publisher, book_borrow_status AS Status FROM library_system_db.book_data WHERE book_lost = 'NO';", conDataBase);
+		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS ID, book_name as Title, book_author AS Author, book_edition_no AS Edition, book_publisher AS Publisher, book_borrow_status AS Status FROM library_system_db.book_data WHERE NOT book_borrow_status = 'LOST';", conDataBase);
 
 		try {
 			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
@@ -111,7 +111,7 @@ namespace sql_connection_func {
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS ID, book_name as Title, book_author AS Author, book_edition_no AS Edition, book_publisher AS Publisher, book_borrow_status AS Status FROM library_system_db.book_data\
-		WHERE " + str_list_detail_search_book + " LIKE '%" + search_bar_text + "%';", conDataBase);
+		WHERE " + str_list_detail_search_book + " LIKE '%" + search_bar_text + "%' AND NOT book_borrow_status = 'LOST';", conDataBase);
 
 		try {
 			MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();

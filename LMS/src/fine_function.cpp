@@ -44,7 +44,7 @@ namespace fine_func {
 			{
 				if (num_date_difference <= default_student_allowance)
 				{
-					MessageBox::Show("No of days overdue = " + num_date_difference + "\n Profession = " + borrow_profession_input + "\n Fine = " + value_fine);
+					MessageBox::Show("No of days overdue = 0 \n Profession = " + borrow_profession_input + "\n Fine = " + value_fine);
 					return 0;
 				}
 				else
