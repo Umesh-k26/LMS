@@ -60,7 +60,7 @@ System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System
 		String^ printing_book_borrow_stat;
 		String^ printing_category;
 		String^ printing_copies_avilable;
-		String^ printing_lost_stat;
+		//String^ printing_lost_stat;
 		while (myReader->Read())
 		{
 			printing_id = myReader->GetString("book_id");
@@ -72,7 +72,7 @@ System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System
 			printing_book_borrow_stat = myReader->GetString("book_borrow_status");
 			printing_category = myReader->GetString("category");
 			printing_copies_avilable = myReader->GetString("copies_available");
-			printing_lost_stat = myReader->GetString("book_lost");
+			//printing_lost_stat = myReader->GetString("book_lost");
 			this->bookname_txt->Text = printing_name;
 			this->book_id_txt->Text = printing_id;
 			this->author_txt->Text = printing_author;
@@ -82,7 +82,7 @@ System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System
 			this->borrow_stat_txt->Text = printing_book_borrow_stat;
 			this->category_txt->Text = printing_category;
 			this->copies_available_txt->Text = printing_copies_avilable;
-			this->book_lost_stat_text->Text = printing_lost_stat;
+			//this->book_lost_stat_text->Text = printing_lost_stat;
 			//listBox1->Items->Add(printing_names);
 
 		}
@@ -118,7 +118,7 @@ System::Void LMS::profile_book::delete_profile_button_Click(System::Object^ send
 	if (MessageBox::Show("The profile will be deleted. Do you want to contiue?", "Warning", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ update_lost_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.book_data SET book_lost = 'YES' WHERE book_id = " + this->book_id_txt->Text + ";", conDataBase);
+		MySqlCommand^ update_lost_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.book_data SET book_borrow_status = 'LOST' WHERE book_id = " + this->book_id_txt->Text + ";", conDataBase);
 		//
 		//	STILL NEED TO ADD FUNCTION TO REMOVE THE NUMBER OF COPIES
 		//
@@ -168,7 +168,7 @@ void LMS::profile_book::fill_data_grid()
 
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS 'Book ID', book_name AS 'Name', book_author AS 'Author', book_edition_no AS 'Edition No', book_publisher AS 'Publisher', book_borrow_status AS 'Borrow Status' FROM library_system_db.book_data \
-			WHERE book_name = '" + this->bookname_txt->Text + "' AND book_edition_no = " + this->edition_no_txt->Text + " AND book_lost = 'NO';", conDataBase);
+			WHERE book_name = '" + this->bookname_txt->Text + "' AND book_edition_no = " + this->edition_no_txt->Text + " AND NOT book_borrow_status = 'LOST';", conDataBase);
 	try {
 		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
 		sda->SelectCommand = cmdDataBase;
