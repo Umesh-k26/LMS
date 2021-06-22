@@ -12,6 +12,8 @@ namespace connection_to_librarian_db {
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.library_user_pass WHERE \
 	    library_username='" + username_input + "' and library_password = '" + password_input + "' ;", conDataBase);
+		/*MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.library_user_pass WHERE \
+	    library_username='" + username_input + "' and library_password = '" + sql_connection_func::password_hasher(username_input, password_input) + "' ;", conDataBase);*/
 
 		MySqlDataReader^ myReader;
 		try {

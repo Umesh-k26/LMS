@@ -242,6 +242,21 @@ namespace sql_connection_func {
 		}
 	}
 
+	/// <summary>
+	/// This function hashes the password of the user and also salts it with ID of the user before being hashed
+	/// </summary>
+	String^ password_hasher(String^ input_id, String^ input_pass)
+	{
+		String^ final_password_for_hash = input_pass + input_id;
+		array<Byte>^ byte_array_password = System::Text::Encoding::ASCII->GetBytes(final_password_for_hash);
+		System::Security::Cryptography::MD5CryptoServiceProvider^ md5_hash_gen = gcnew System::Security::Cryptography::MD5CryptoServiceProvider();
+		array<Byte>^ byte_array_hash = md5_hash_gen->ComputeHash(byte_array_password);
+		return BitConverter::ToString(byte_array_hash);
+		
+	}
+
+	
+
 
 }
 

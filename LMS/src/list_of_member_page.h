@@ -312,5 +312,9 @@ namespace LMS {
 		///Passes an object specific to the event that is being handled.
 		/// </param>
 		System::Void list_of_member_page_Load(System::Object^ sender, System::EventArgs^ e);
+
+	
 	};
+
+	
 }

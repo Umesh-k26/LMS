@@ -10,6 +10,7 @@ namespace sql_connection_func {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace MySql::Data::MySqlClient;
+	using namespace System::Security::Cryptography;
 
 	/// <summary>
 	/// Function for setting username password to establish connection to MySQL server
@@ -96,4 +97,18 @@ namespace sql_connection_func {
 	/// It is the input argument for the ID to be transfered for presenting data if needed
 	/// </param>
 	void fill_datagrid_borrow_history_filtered(String^ str_list_detail_search_order, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView, bool is_librarian_input, String^ transfer_id_input);
+
+	/// <summary>
+	/// Function to implement for the password to be stored in a hashed format
+	/// </summary>
+	/// <param name="input_id">
+	/// String for ID of the user
+	/// </param>
+	/// <param name="input_pass">
+	/// String for Password that needs to be hashed
+	/// </param>
+	/// <returns>
+	/// Hashed String
+	/// </returns>
+	String^ password_hasher(String^ input_id, String^ input_pass);
 }

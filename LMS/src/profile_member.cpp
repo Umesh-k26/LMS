@@ -281,7 +281,8 @@ System::Void LMS::profile_member::confirm_newpass_btn_Click(System::Object^ send
 	if (MessageBox::Show("The password will be changed. Do you want to contiue?", "Warning", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK)
 	{
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ change_pass_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.user_pass set member_id = " + this->member_id_txt->Text + ", user_password = "+ this->new_pass_txt->Text +" WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
+		//MySqlCommand^ change_pass_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.user_pass set member_id = " + this->member_id_txt->Text + ", user_password = "+ this->new_pass_txt->Text +" WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
+		MySqlCommand^ change_pass_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.user_pass set member_id = ' " + this->member_id_txt->Text + " ', user_password = '" + sql_connection_func::password_hasher(this->member_id_txt->Text, this->new_pass_txt->Text) + "' WHERE member_id =' " + this->member_id_txt->Text + " ';", conDataBase);
 		try {
 			conDataBase->Open();
 			change_pass_cmdDataBase->ExecuteNonQuery();
