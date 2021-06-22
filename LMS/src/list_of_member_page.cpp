@@ -2,25 +2,24 @@
 #include "list_of_member_page.h"
 
 ///Constructor calls for functions to Initialize all the components of the form and to fill the Data Grid with list of all Members.
-///@see InitializeComponent(), sql_connection_func::fill_datagrid_member()
+///@see InitializeComponent(), filling_datagrid::fill_datagrid_member()
 LMS::list_of_member_page::list_of_member_page(void)
 {
 	InitializeComponent();
-	sql_connection_func::fill_datagrid_member(list_of_member_dataGridView);
+	//sql_connection_func::fill_datagrid_member(list_of_member_dataGridView);
+	filling_datagrid::fill_datagrid_member(list_of_member_dataGridView);
 }
 
 /// <summary>
 /// Constructor calls for functions to Initialize all the components of the form and to fill the Data Grid with list of all Members
 /// </summary>
-/// @see transfer_id, is_librarian, InitializeComponent(), sql_connection_func::fill_datagrid_member()
+/// @see transfer_id, is_librarian, InitializeComponent(), filling_datagrid::fill_datagrid_member()
 LMS::list_of_member_page::list_of_member_page(String^ input_id_transfer, bool is_librarian_input)
 {
 	InitializeComponent();
 	transfer_id = input_id_transfer;
 	is_librarian = is_librarian_input;
-	//fill_listbox1();
-	//fill_data_grid();
-	sql_connection_func::fill_datagrid_member(list_of_member_dataGridView);
+	filling_datagrid::fill_datagrid_member(list_of_member_dataGridView);
 }
 
 LMS::list_of_member_page::~list_of_member_page()
@@ -57,7 +56,7 @@ System::Void LMS::list_of_member_page::list_of_member_dataGridView_CellContentCl
 		if (profile_member_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
 			this->Show();
-			sql_connection_func::fill_datagrid_member(list_of_member_dataGridView);
+			filling_datagrid::fill_datagrid_member(list_of_member_dataGridView);
 		}
 
 	}
@@ -66,7 +65,7 @@ System::Void LMS::list_of_member_page::list_of_member_dataGridView_CellContentCl
 /// <summary>
 /// Button OnClick function to search and fill the Data Grid with filtered results from the Drop Down List
 /// </summary>
-/// @see sql_connection_func::fill_datagrid_members_filtered()
+/// @see filling_datagrid::fill_datagrid_members_filtered()
 System::Void LMS::list_of_member_page::search_button_member_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	String^ str_list_detail_search_member;
@@ -91,7 +90,7 @@ System::Void LMS::list_of_member_page::search_button_member_Click(System::Object
 		str_list_detail_search_member = "member_no_book_stat";
 	}
 
-	sql_connection_func::fill_datagrid_members_filtered(str_list_detail_search_member, this->search_bar_member->Text, list_of_member_dataGridView);
+	filling_datagrid::fill_datagrid_members_filtered(str_list_detail_search_member, this->search_bar_member->Text, list_of_member_dataGridView);
 
 }
 

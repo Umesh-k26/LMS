@@ -86,7 +86,8 @@ System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System
 			//listBox1->Items->Add(printing_names);
 
 		}
-		fill_data_grid();
+		//fill_data_grid();
+		filling_datagrid::fill_datagrid_book_profile(this->bookname_txt->Text, book_copies_dataGridView, this->edition_no_txt->Text);
 		int num_row = this->book_copies_dataGridView->RowCount;
 		this->no_copies_txt->Text = num_row.ToString();
 
