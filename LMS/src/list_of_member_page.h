@@ -1,6 +1,8 @@
 #pragma once
 #include "connection_sql_func.h"
 #include "profile_member.h"
+#include "written_functions/filling_datagrid.h"
+
 namespace LMS {
 
 	using namespace System;

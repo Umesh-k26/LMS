@@ -2,24 +2,24 @@
 #include "list_of_books_page.h"
 
 ///Constructor calls for functions to Initialize all the components of the form and to fill the Data Grid with list of all Books
-///@see InitializeComponent(), sql_connection_func::fill_datagrid_book()
+///@see InitializeComponent(), filling_datagrid::fill_datagrid_book()
 LMS::list_of_books_page::list_of_books_page(void)
 {
 	InitializeComponent();
-	sql_connection_func::fill_datagrid_book(list_of_books_dataGridView);
+	filling_datagrid::fill_datagrid_book(list_of_books_dataGridView);
 }
 
 /// <summary>
 /// Constructor calls for functions to Initialize all the components of the form and to fill the Data Grid with list of all Books
 /// </summary>
-/// @see transfer_id, is_librarian, InitializeComponent(), sql_connection_func::fill_datagrid_book()
+/// @see transfer_id, is_librarian, InitializeComponent(), filling_datagrid::fill_datagrid_book()
 LMS::list_of_books_page::list_of_books_page(String^ input_transfer_id, bool is_librarian_input)
 {
 	transfer_id = input_transfer_id;
 	is_librarian = is_librarian_input;
 	InitializeComponent();
 	//fill_data_grid();
-	sql_connection_func::fill_datagrid_book(list_of_books_dataGridView);
+	filling_datagrid::fill_datagrid_book(list_of_books_dataGridView);
 }
 
 LMS::list_of_books_page::~list_of_books_page()
@@ -80,7 +80,7 @@ System::Void LMS::list_of_books_page::list_of_books_dataGridView_CellContentClic
 		if (profile_book_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
 			this->Show();
-			sql_connection_func::fill_datagrid_book(list_of_books_dataGridView);
+			filling_datagrid::fill_datagrid_book(list_of_books_dataGridView);
 		}
 
 	}
@@ -90,7 +90,7 @@ System::Void LMS::list_of_books_page::list_of_books_dataGridView_CellContentClic
 /// <summary>
 /// Button OnClick function to search and fill the Data Grid with filtered results from the Drop Down List
 /// </summary>
-/// @see sql_connection_func::fill_datagrid_books_filtered()
+/// @see filling_datagrid::fill_datagrid_books_filtered()
 System::Void LMS::list_of_books_page::search_button_book_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	String^ str_list_detail_search_book;
@@ -111,7 +111,7 @@ System::Void LMS::list_of_books_page::search_button_book_Click(System::Object^ s
 		str_list_detail_search_book = "book_edition_no";
 	}
 
-	sql_connection_func::fill_datagrid_books_filtered(str_list_detail_search_book, this->search_bar_book->Text, list_of_books_dataGridView);
+	filling_datagrid::fill_datagrid_books_filtered(str_list_detail_search_book, this->search_bar_book->Text, list_of_books_dataGridView);
 
 }
 

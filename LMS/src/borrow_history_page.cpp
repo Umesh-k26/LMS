@@ -2,24 +2,24 @@
 #include "borrow_history_page.h"
 
 ///Constructor calls for functions to Initialize all the components of the form and to fill the Data Grid with list of history of Book Borrowing
-	///@see InitializeComponent(), sql_connection_func::fill_datagrid_borrow_history()
+	///@see InitializeComponent(), filling_datagrid::fill_datagrid_borrow_history()
 LMS::borrow_history_page::borrow_history_page(void)
 {
 	InitializeComponent();
-	sql_connection_func::fill_datagrid_borrow_history(borrow_history_dataGridView, is_librarian, transfer_id);
+	filling_datagrid::fill_datagrid_borrow_history(borrow_history_dataGridView, is_librarian, transfer_id);
 }
 
 /// <summary>
 /// Constructor calls for functions to Initialize all the components of the form and to fill the Data Grid with list of history of Book Borrowing
 /// </summary>
-/// @see transfer_id, is_librarian, InitializeComponent(), sql_connection_func::fill_datagrid_borrow_history()
+/// @see transfer_id, is_librarian, InitializeComponent(), filling_datagrid::fill_datagrid_borrow_history()
 LMS::borrow_history_page::borrow_history_page(String^ input_transfer_id, bool is_librarian_input)
 {
 	transfer_id = input_transfer_id;
 	is_librarian = is_librarian_input;
 	InitializeComponent();
 	//fill_data_grid();
-	sql_connection_func::fill_datagrid_borrow_history(borrow_history_dataGridView, is_librarian, transfer_id);
+	filling_datagrid::fill_datagrid_borrow_history(borrow_history_dataGridView, is_librarian, transfer_id);
 }
 
 LMS::borrow_history_page::~borrow_history_page()
@@ -69,7 +69,7 @@ System::Void LMS::borrow_history_page::borrow_history_dataGridView_CellContentCl
 		if (profile_order_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
 			this->Show();
-			sql_connection_func::fill_datagrid_borrow_history(borrow_history_dataGridView, is_librarian, transfer_id);
+			filling_datagrid::fill_datagrid_borrow_history(borrow_history_dataGridView, is_librarian, transfer_id);
 		}
 
 	}
@@ -78,7 +78,7 @@ System::Void LMS::borrow_history_page::borrow_history_dataGridView_CellContentCl
 /// <summary>
 /// Button OnClick function to search and fill the Data Grid with filtered results from the Drop Down List
 /// </summary>
-/// @see sql_connection_func::fill_datagrid_borrow_history_filtered()
+/// @see filling_datagrid::fill_datagrid_borrow_history_filtered()
 System::Void LMS::borrow_history_page::search_button_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	String^ str_list_detail_search_order;
@@ -94,7 +94,7 @@ System::Void LMS::borrow_history_page::search_button_Click(System::Object^ sende
 	{
 		str_list_detail_search_order = "book_id";
 	}
-	sql_connection_func::fill_datagrid_borrow_history_filtered(str_list_detail_search_order, this->search_bar->Text, borrow_history_dataGridView, is_librarian, transfer_id);
+	filling_datagrid::fill_datagrid_borrow_history_filtered(str_list_detail_search_order, this->search_bar->Text, borrow_history_dataGridView, is_librarian, transfer_id);
 }
 
 /// <summary>

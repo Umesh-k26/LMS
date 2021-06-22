@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "profile_member.h"
 
+
 ///Constructor calls for functions to Initialize all the components of the form
 ///@see InitializeComponent()
 LMS::profile_member::profile_member(void)
@@ -90,7 +91,8 @@ System::Void LMS::profile_member::profile_member_Load(System::Object^ sender, Sy
 			this->dateTimePicker->Value = new_dob.GetDateTime();
 			this->member_stat_text->Text = printing_member_stat;
 		}
-		fill_data_grid();
+		//fill_data_grid();
+		filling_datagrid::fill_datagrid_member_profile(this->member_id_txt->Text, member_borrow_history_dataGridView);
 
 	}
 	catch (Exception^ ex)
