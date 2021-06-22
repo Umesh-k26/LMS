@@ -122,3 +122,4 @@ System::Void LMS::list_of_member_page::list_of_member_page_Load(System::Object^ 
 	WindowState = FormWindowState::Maximized;
 	this->list_detail_search_member->SelectedIndex = 1;
 }
+
