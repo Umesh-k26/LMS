@@ -205,6 +205,7 @@
     <ClInclude Include="src\ReturnBook.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="src\written_functions\delete_profile_func.h" />
     <ClInclude Include="src\written_functions\filling_datagrid.h" />
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +233,7 @@
     <ClCompile Include="src\RegisterLibrarian.cpp" />
     <ClCompile Include="src\RegisterMember.cpp" />
     <ClCompile Include="src\ReturnBook.cpp" />
+    <ClCompile Include="src\written_functions\delete_profile_func.cpp" />
     <ClCompile Include="src\written_functions\filling_datagrid.cpp" />
   </ItemGroup>
   <ItemGroup>
