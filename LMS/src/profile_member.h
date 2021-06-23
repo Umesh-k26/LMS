@@ -80,7 +80,7 @@ namespace LMS {
 		/// <summary>
 		/// A Date-Time Picker for choosing Date of Birth
 		/// </summary>
-		System::Windows::Forms::DateTimePicker^ dateTimePicker;
+
 	private:
 		/// <summary>
 		/// Label for Name of the Member
@@ -236,7 +236,6 @@ namespace LMS {
 			this->profession_selector = (gcnew System::Windows::Forms::ComboBox());
 			this->dob_member_txt = (gcnew System::Windows::Forms::TextBox());
 			this->member_id_txt = (gcnew System::Windows::Forms::TextBox());
-			this->dateTimePicker = (gcnew System::Windows::Forms::DateTimePicker());
 			this->name_lbl = (gcnew System::Windows::Forms::Label());
 			this->dob_lbl = (gcnew System::Windows::Forms::Label());
 			this->profession_lbl = (gcnew System::Windows::Forms::Label());
@@ -280,7 +279,6 @@ namespace LMS {
 			this->member_profile_group->Controls->Add(this->profession_selector);
 			this->member_profile_group->Controls->Add(this->dob_member_txt);
 			this->member_profile_group->Controls->Add(this->member_id_txt);
-			this->member_profile_group->Controls->Add(this->dateTimePicker);
 			this->member_profile_group->Controls->Add(this->member_id_lbl);
 			this->member_profile_group->Controls->Add(this->name_lbl);
 			this->member_profile_group->Controls->Add(this->dob_lbl);
@@ -363,17 +361,6 @@ namespace LMS {
 			this->member_id_txt->ReadOnly = true;
 			this->member_id_txt->Size = System::Drawing::Size(146, 26);
 			this->member_id_txt->TabIndex = 17;
-			// 
-			// dateTimePicker
-			// 
-			this->dateTimePicker->CustomFormat = L"yyyy-MM-dd";
-			this->dateTimePicker->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
-			this->dateTimePicker->Location = System::Drawing::Point(430, 148);
-			this->dateTimePicker->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->dateTimePicker->Name = L"dateTimePicker";
-			this->dateTimePicker->Size = System::Drawing::Size(146, 26);
-			this->dateTimePicker->TabIndex = 16;
-			this->dateTimePicker->Visible = false;
 			// 
 			// name_lbl
 			// 
@@ -547,12 +534,12 @@ namespace LMS {
 			// back_button
 			// 
 			this->back_button->Location = System::Drawing::Point(12, 832);
-			this->back_button->Image = Image::FromFile("src\\back-icon.png");
 			this->back_button->Name = L"back_button";
 			this->back_button->Size = System::Drawing::Size(81, 45);
 			this->back_button->TabIndex = 22;
 			this->back_button->UseVisualStyleBackColor = true;
 			this->back_button->Click += gcnew System::EventHandler(this, &profile_member::back_button_Click);
+			this->back_button->Image = Image::FromFile("src\\back-icon.png");
 			// 
 			// change_pass_btn
 			// 

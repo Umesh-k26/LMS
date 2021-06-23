@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "profile_member.h"
-
+#include "written_functions/delete_profile_func.h"
 
 ///Constructor calls for functions to Initialize all the components of the form
 ///@see InitializeComponent()
@@ -88,7 +88,7 @@ System::Void LMS::profile_member::profile_member_Load(System::Object^ sender, Sy
 			this->profession_txt->Text = printing_profession;
 			//listBox1->Items->Add(printing_names);
 
-			this->dateTimePicker->Value = new_dob.GetDateTime();
+			//this->dateTimePicker->Value = new_dob.GetDateTime();
 			this->member_stat_text->Text = printing_member_stat;
 		}
 		//fill_data_grid();
@@ -111,7 +111,7 @@ System::Void LMS::profile_member::update_profile_button_Click(System::Object^ se
 	//this->dob_member_txt->Visible = false;
 	this->update_profile_button->Visible = false;
 	this->confirm_change_button->Visible = true;
-	//this->dateTimePicker->Visible = true;
+	
 	//this->name_txt->ReadOnly = true;
 	this->profession_txt->ReadOnly = true;
 	this->email_id_txt->ReadOnly = false;
@@ -136,7 +136,7 @@ System::Void LMS::profile_member::delete_profile_button_Click(System::Object^ se
 	MessageBox::Show("Delete Profile");
 	if (MessageBox::Show("The profile will be deleted. Do you want to contiue?", "Warning", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK)
 	{
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+		/*MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 		//MySqlCommand^ cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system_db.member_data WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
 		MySqlCommand^ update_member_stat_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.member_data set member_id = " + this->member_id_txt->Text + ", membership_stat = 'DEACTIVATED' WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
 		MySqlCommand^ delete_user_pass_cmdDataBase = gcnew MySqlCommand("DELETE FROM library_system_db.user_pass WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
@@ -151,7 +151,17 @@ System::Void LMS::profile_member::delete_profile_button_Click(System::Object^ se
 		{
 			MessageBox::Show(ex->Message);
 		}
-		conDataBase->Close();
+		conDataBase->Close();*/
+		if (delete_profile_func::delete_member_profile(this->member_id_txt->Text) == true)
+		{
+			MessageBox::Show("Profile is deleted");
+		}
+		else
+		{
+			//Exception^ ex;
+			//MessageBox::Show(ex->Message);
+			MessageBox::Show("SOME ERROR HAS OCCURED IN DELETING MEMBER PROFILE", "Error", MessageBoxButtons::OK,MessageBoxIcon::Error);
+		}
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
@@ -171,12 +181,12 @@ System::Void LMS::profile_member::confirm_change_button_Click(System::Object^ se
 
 
 	this->profession_txt->Text = this->profession_selector->Text;
-	this->dob_member_txt->Text = this->dateTimePicker->Text;
+	
 
 
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.member_data set member_id = \
-		" + this->member_id_txt->Text + ",member_name = '" + this->name_txt->Text + "',member_dob = '" + this->dob_member_txt->Text + "', member_profession = '" + this->profession_txt->Text + "', member_email='" + this->email_id_txt->Text + "', member_mobile=" + this->mobile_no_txt->Text + ", member_address = '" + this->address_txt->Text + "'WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
+		" + this->member_id_txt->Text + ",member_name = '" + this->name_txt->Text + "', member_profession = '" + this->profession_txt->Text + "', member_email='" + this->email_id_txt->Text + "', member_mobile=" + this->mobile_no_txt->Text + ", member_address = '" + this->address_txt->Text + "'WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
 
 	try {
 		conDataBase->Open();
@@ -190,7 +200,7 @@ System::Void LMS::profile_member::confirm_change_button_Click(System::Object^ se
 	//this->dob_member_txt->Visible = true;
 	this->update_profile_button->Visible = true;
 	this->confirm_change_button->Visible = false;
-	this->dateTimePicker->Visible = false;
+	//this->dateTimePicker->Visible = false;
 	//this->name_txt->ReadOnly = true;
 	this->profession_txt->ReadOnly = true;
 	this->email_id_txt->ReadOnly = true;

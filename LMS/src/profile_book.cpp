@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "profile_book.h"
-
+#include "written_functions/delete_profile_func.h"
 ///Constructor calls for functions to Initialize all the components of the form
 ///@see InitializeComponent()
 LMS::profile_book::profile_book(void)
@@ -118,27 +118,33 @@ System::Void LMS::profile_book::delete_profile_button_Click(System::Object^ send
 	MessageBox::Show("Delete Profile");
 	if (MessageBox::Show("The profile will be deleted. Do you want to contiue?", "Warning", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK)
 	{
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ update_lost_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.book_data SET book_borrow_status = 'LOST' WHERE book_id = " + this->book_id_txt->Text + ";", conDataBase);
-		//
-		//	STILL NEED TO ADD FUNCTION TO REMOVE THE NUMBER OF COPIES
-		//
-		MySqlCommand^ update_no_copies_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.book_data set copies_available = copies_available - 1, no_of_copies= no_of_copies-1 WHERE \
-								book_name = '" + this->bookname_txt->Text + "'\
-								AND book_author = '" + this->author_txt->Text + "'\
-								AND book_publisher = '" + this->publisher_txt->Text + "'\
-								AND book_edition_no = " + this->edition_no_txt->Text + ";", conDataBase);
-		try {
-			conDataBase->Open();
-			update_lost_cmdDataBase->ExecuteNonQuery();
-			update_no_copies_cmdDataBase->ExecuteNonQuery();
+		//MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+		//MySqlCommand^ update_lost_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.book_data SET book_borrow_status = 'LOST' WHERE book_id = " + this->book_id_txt->Text + ";", conDataBase);
+
+		//MySqlCommand^ update_no_copies_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.book_data set copies_available = copies_available - 1, no_of_copies= no_of_copies-1 WHERE \
+		//						book_name = '" + this->bookname_txt->Text + "'\
+		//						AND book_author = '" + this->author_txt->Text + "'\
+		//						AND book_publisher = '" + this->publisher_txt->Text + "'\
+		//						AND book_edition_no = " + this->edition_no_txt->Text + ";", conDataBase);
+		//try {
+		//	conDataBase->Open();
+		//	update_lost_cmdDataBase->ExecuteNonQuery();
+		//	update_no_copies_cmdDataBase->ExecuteNonQuery();
+		//	MessageBox::Show("Profile is deleted");
+		//}
+		//catch (Exception^ ex)
+		//{
+		//	MessageBox::Show(ex->Message);
+		//}
+		//conDataBase->Close();
+		if (delete_profile_func::delete_book_profile(this->book_id_txt->Text, this->bookname_txt->Text, this->author_txt->Text, this->publisher_txt->Text, this->edition_no_txt->Text) == true)
+		{
 			MessageBox::Show("Profile is deleted");
 		}
-		catch (Exception^ ex)
+		else
 		{
-			MessageBox::Show(ex->Message);
+			MessageBox::Show("SOME ERROR HAS OCCURED IN DELETING MEMBER PROFILE", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
-		conDataBase->Close();
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
