@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "profile_book.h"
 #include "written_functions/delete_profile_func.h"
+#include "written_functions/update_profile_func.h"
 ///Constructor calls for functions to Initialize all the components of the form
 ///@see InitializeComponent()
 LMS::profile_book::profile_book(void)
@@ -143,7 +144,7 @@ System::Void LMS::profile_book::delete_profile_button_Click(System::Object^ send
 		}
 		else
 		{
-			MessageBox::Show("SOME ERROR HAS OCCURED IN DELETING MEMBER PROFILE", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			MessageBox::Show("SOME ERROR HAS OCCURED IN DELETING BOOK PROFILE", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
@@ -163,7 +164,23 @@ System::Void LMS::profile_book::confirm_change_button_Click(System::Object^ send
 	this->confirm_change_button->Visible = false;
 	this->update_profile_button->Visible = true;
 
-	updating_no_of_copies((int)this->numeric_updown_no_copies->Value);
+	//updating_no_of_copies((int)this->numeric_updown_no_copies->Value);
+	if ((int)this->numeric_updown_no_copies->Value <= 0)
+	{
+		MessageBox::Show("" + (int)this->numeric_updown_no_copies->Value + "");
+	}
+	else
+	{
+		MessageBox::Show("" + (int)this->numeric_updown_no_copies->Value + "");
+		if (update_profile_func::update_book_profile(this->book_id_txt->Text, (int)this->numeric_updown_no_copies->Value, this->bookname_txt->Text, this->edition_no_txt->Text) == true)
+		{
+			MessageBox::Show("New copies are added");
+		}
+		else
+		{
+			MessageBox::Show("SOME ERROR HAS OCCURED IN UPDATING BOOK PROFILE", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+	}
 	profile_book_Load(sender, e);
 }
 

@@ -25,3 +25,48 @@ bool update_profile_func::update_member_profile(String^ input_id, String^ profes
 
     return return_val;
 }
+
+bool update_profile_func::update_book_profile(String^ input_id, int num_copies, String^ book_name_input, String^ book_edition_input)
+{
+	bool return_val = false;
+
+	//MessageBox::Show("" + num_copies + "");
+
+	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+
+	MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system_db.book_data (book_name, book_author, book_publisher, book_price, book_edition_no, no_of_copies, category, copies_available)\
+		SELECT  book_name, book_author, book_publisher, book_price, book_edition_no, no_of_copies, category, copies_available\
+		FROM library_system_db.book_data\
+		WHERE book_id = '" + input_id + "'; ", conDataBase);
+
+	MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("UPDATE library_system_db.book_data SET \
+				no_of_copies = no_of_copies + '" + num_copies + "', copies_available = copies_available + '" + num_copies + "'\
+				WHERE book_name = '" + book_name_input + "' AND \
+				book_edition_no = '" + book_edition_input + "';", conDataBase);
+
+	try {
+		conDataBase->Open();
+		for (int i = 0; i < num_copies; i++)
+		{
+			cmdDataBase1->ExecuteNonQuery();
+		}
+			
+
+		//MessageBox::Show("cmdb1 executed");
+		cmdDataBase2->ExecuteNonQuery();
+		//MessageBox::Show("cmdb2 executed");
+		//conDataBase->Close();
+		return_val = true;
+	}
+	catch (Exception^ ex)
+	{
+		//MessageBox::Show(ex->Message);
+		return_val = false;
+	}
+	conDataBase->Close();
+
+
+
+	return return_val;
+
+}
