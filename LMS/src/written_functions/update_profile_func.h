@@ -12,6 +12,6 @@ namespace update_profile_func {
 
 	bool update_member_profile(String^ input_id, String^ profession_input, String^ email_input, String^ mobile_input, String^ address_input);
 	
-	//bool update_book_profile(String^ s);
+	bool update_book_profile(String^ input_id, int num_copies, String^ book_name_input, String^ book_edition_input);
 
 }
