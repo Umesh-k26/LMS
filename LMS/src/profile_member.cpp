@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "profile_member.h"
 #include "written_functions/delete_profile_func.h"
-
+#include "written_functions/update_profile_func.h"
 ///Constructor calls for functions to Initialize all the components of the form
 ///@see InitializeComponent()
 LMS::profile_member::profile_member(void)
@@ -184,7 +184,7 @@ System::Void LMS::profile_member::confirm_change_button_Click(System::Object^ se
 	
 
 
-	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+	/*MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.member_data set member_id = \
 		" + this->member_id_txt->Text + ",member_name = '" + this->name_txt->Text + "', member_profession = '" + this->profession_txt->Text + "', member_email='" + this->email_id_txt->Text + "', member_mobile=" + this->mobile_no_txt->Text + ", member_address = '" + this->address_txt->Text + "'WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
 
@@ -196,6 +196,17 @@ System::Void LMS::profile_member::confirm_change_button_Click(System::Object^ se
 	catch (Exception^ ex)
 	{
 		MessageBox::Show(ex->Message);
+	}
+	conDataBase->Close();
+	*/
+
+	if (update_profile_func::update_member_profile(this->member_id_txt->Text, this->profession_txt->Text, this->email_id_txt->Text, this->mobile_no_txt->Text, this->address_txt->Text) == true)
+	{
+		MessageBox::Show("Profile is updated");
+	}
+	else
+	{
+		MessageBox::Show("SOME ERROR HAS OCCURED IN UPDATING MEMBER PROFILE", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
 	//this->dob_member_txt->Visible = true;
 	this->update_profile_button->Visible = true;
@@ -211,7 +222,7 @@ System::Void LMS::profile_member::confirm_change_button_Click(System::Object^ se
 	//profile_student(transfer_id);
 	profile_member_Load(sender, e);
 
-	conDataBase->Close();
+	
 }
 
 /// <summary>
