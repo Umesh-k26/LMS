@@ -83,6 +83,9 @@
     <ClInclude Include="src\written_functions\update_profile_func.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Borrow_book_functions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp">
@@ -149,6 +152,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\written_functions\update_profile_func.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Borrow_book_functions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

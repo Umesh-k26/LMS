@@ -167,6 +167,7 @@
     <ClInclude Include="src\BorrowBook.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="src\Borrow_book_functions.h" />
     <ClInclude Include="src\borrow_history_page.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -213,6 +214,7 @@
     <ClCompile Include="src\AddBook.cpp" />
     <ClCompile Include="src\AssemblyInfo.cpp" />
     <ClCompile Include="src\BorrowBook.cpp" />
+    <ClCompile Include="src\Borrow_book_functions.cpp" />
     <ClCompile Include="src\borrow_history_page.cpp" />
     <ClCompile Include="src\connection_sql_func.cpp" />
     <ClCompile Include="src\fine_function.cpp" />
