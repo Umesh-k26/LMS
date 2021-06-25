@@ -141,6 +141,7 @@ System::Void LMS::profile_book::delete_profile_button_Click(System::Object^ send
 		if (delete_profile_func::delete_book_profile(this->book_id_txt->Text, this->bookname_txt->Text, this->author_txt->Text, this->publisher_txt->Text, this->edition_no_txt->Text) == true)
 		{
 			MessageBox::Show("Profile is deleted");
+			MessageBox::Show("Pay Fine for the book: Rs " + this->price_txt->Text);
 		}
 		else
 		{
