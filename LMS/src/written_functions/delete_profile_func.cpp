@@ -34,7 +34,7 @@ bool delete_profile_func::delete_member_profile(String^ input_id)
 /// <summary>
 /// This function simply changes the status of the book as lost instead of completetly removing from the database
 /// </summary>
-bool delete_profile_func::delete_book_profile(String^ input_id, String^ book_name_input, String^ book_author_input, String^ book_pub_input, String^ book_edition_input)
+bool delete_profile_func::delete_book_profile(String^ input_id, String^ book_name_input, String^ book_author_input, String^ book_pub_input, String^ book_edition_input, String^ borrow_status_input, String^ final_fine)
 {
 	bool return_val = false;
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
@@ -47,10 +47,15 @@ bool delete_profile_func::delete_book_profile(String^ input_id, String^ book_nam
 								AND book_author = '" + book_author_input + "'\
 								AND book_publisher = '" + book_pub_input + "'\
 								AND book_edition_no = " + book_edition_input + ";", conDataBase);
+	MySqlCommand^ update_last_borrow_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.borrow_history SET borrow_fine = '"+ final_fine+"', date_returned = CURDATE(), borrow_status = 'LOST' WHERE order_id = (SELECT order_id FROM (SELECT * FROM library_system_db.borrow_history WHERE book_id = '"+ input_id+ "' ORDER BY order_id DESC Limit 1) as X);", conDataBase);
 	try {
 		conDataBase->Open();
 		update_lost_cmdDataBase->ExecuteNonQuery();
-		update_no_copies_cmdDataBase->ExecuteNonQuery();
+		//update_no_copies_cmdDataBase->ExecuteNonQuery();
+		if (borrow_status_input == "BORROWED")
+		{
+			update_last_borrow_cmdDataBase->ExecuteNonQuery();
+		}
 		//MessageBox::Show("Profile is deleted");
 		return_val = true;
 	}
