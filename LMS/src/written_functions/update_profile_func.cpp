@@ -70,3 +70,25 @@ bool update_profile_func::update_book_profile(String^ input_id, int num_copies, 
 	return return_val;
 
 }
+
+bool update_profile_func::change_pass_member(String^ input_id, String^ new_pass_input)
+{
+	bool return_val = false;
+	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+	//MySqlCommand^ change_pass_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.user_pass set member_id = " + this->member_id_txt->Text + ", user_password = "+ this->new_pass_txt->Text +" WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
+	MySqlCommand^ change_pass_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.user_pass set member_id = ' " + input_id + " ', user_password = '" + new_pass_input + "' WHERE member_id =' " + input_id + " ';", conDataBase);
+	try {
+		conDataBase->Open();
+		change_pass_cmdDataBase->ExecuteNonQuery();
+		//MessageBox::Show("Password is updated");
+		return_val = true;
+	}
+	catch (Exception^ ex)
+	{
+		//MessageBox::Show(ex->Message);
+		return_val = false;
+	}
+	conDataBase->Close();
+
+	return return_val;
+}

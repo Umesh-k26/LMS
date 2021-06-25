@@ -222,7 +222,7 @@ System::Void LMS::profile_member::confirm_change_button_Click(System::Object^ se
 	//profile_student(transfer_id);
 	profile_member_Load(sender, e);
 
-	
+
 }
 
 /// <summary>
@@ -301,22 +301,31 @@ System::Void LMS::profile_member::confirm_newpass_btn_Click(System::Object^ send
 {
 	if (MessageBox::Show("The password will be changed. Do you want to contiue?", "Warning", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK)
 	{
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		//MySqlCommand^ change_pass_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.user_pass set member_id = " + this->member_id_txt->Text + ", user_password = "+ this->new_pass_txt->Text +" WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
-		MySqlCommand^ change_pass_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.user_pass set member_id = ' " + this->member_id_txt->Text + " ', user_password = '" + sql_connection_func::password_hasher(this->member_id_txt->Text, this->new_pass_txt->Text) + "' WHERE member_id =' " + this->member_id_txt->Text + " ';", conDataBase);
-		try {
-			conDataBase->Open();
-			change_pass_cmdDataBase->ExecuteNonQuery();
+		//MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+		////MySqlCommand^ change_pass_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.user_pass set member_id = " + this->member_id_txt->Text + ", user_password = "+ this->new_pass_txt->Text +" WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
+		//MySqlCommand^ change_pass_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.user_pass set member_id = ' " + this->member_id_txt->Text + " ', user_password = '" + sql_connection_func::password_hasher(this->member_id_txt->Text, this->new_pass_txt->Text) + "' WHERE member_id =' " + this->member_id_txt->Text + " ';", conDataBase);
+		//try {
+		//	conDataBase->Open();
+		//	change_pass_cmdDataBase->ExecuteNonQuery();
+		//	MessageBox::Show("Password is updated");
+		//}
+		//catch (Exception^ ex)
+		//{
+		//	MessageBox::Show(ex->Message);
+		//}
+		if (update_profile_func::change_pass_member(this->member_id_txt->Text, sql_connection_func::password_hasher(this->member_id_txt->Text, this->new_pass_txt->Text)) == true)
+		{
 			MessageBox::Show("Password is updated");
 		}
-		catch (Exception^ ex)
+		else
 		{
-			MessageBox::Show(ex->Message);
+			MessageBox::Show("SOME ERROR HAS OCCURED IN UPDATING PASSWORD", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 		this->new_pass_lbl->Visible = false;
 		this->new_pass_txt->Visible = false;
 		this->confirm_newpass_btn->Visible = false;
 		this->change_pass_btn->Visible = true;
+		this->new_pass_txt->Text = "";
 	}
 	else
 	{
