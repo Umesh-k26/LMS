@@ -14,4 +14,6 @@ namespace update_profile_func {
 	
 	bool update_book_profile(String^ input_id, int num_copies, String^ book_name_input, String^ book_edition_input);
 
+	bool change_pass_member(String^ input_id, String^ new_pass_input);
+
 }
