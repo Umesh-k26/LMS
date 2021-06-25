@@ -42,6 +42,6 @@ namespace delete_profile_func {
 	/// <returns>
 	/// Returns true if it is successful in deleting
 	/// </returns>
-	bool delete_book_profile(String^ input_id, String^ book_name_input, String^ book_author_input, String^ book_pub_input, String^ book_edition_input);
+	bool delete_book_profile(String^ input_id, String^ book_name_input, String^ book_author_input, String^ book_pub_input, String^ book_edition_input, String^ borrow_status_input, String^ final_fine);
 
 }

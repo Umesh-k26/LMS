@@ -138,10 +138,14 @@ System::Void LMS::profile_book::delete_profile_button_Click(System::Object^ send
 		//	MessageBox::Show(ex->Message);
 		//}
 		//conDataBase->Close();
-		if (delete_profile_func::delete_book_profile(this->book_id_txt->Text, this->bookname_txt->Text, this->author_txt->Text, this->publisher_txt->Text, this->edition_no_txt->Text) == true)
+		int total_fine = Int32::Parse(this->price_txt->Text);
+		total_fine = total_fine * 2;
+		if (delete_profile_func::delete_book_profile(this->book_id_txt->Text, this->bookname_txt->Text, this->author_txt->Text, this->publisher_txt->Text, this->edition_no_txt->Text, this->borrow_stat_txt->Text, System::Convert::ToString(total_fine)) == true)
 		{
 			MessageBox::Show("Profile is deleted");
-			MessageBox::Show("Pay Fine for the book: Rs " + this->price_txt->Text);
+			
+			//MessageBox::Show("Pay Fine for the book: Rs " + this->price_txt->Text);
+			MessageBox::Show("Pay Fine for the book: Rs " + System::Convert::ToString(total_fine));
 		}
 		else
 		{
