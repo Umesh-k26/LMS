@@ -64,6 +64,13 @@ namespace LMS {
 
 		MySqlDataReader^ myReader;
 		try {
+			if (this->profession_comboBox->Text == "")
+			{
+				MessageBox::Show(this, "Select your profession from the drop-down list",
+					"Null value Exception", MessageBoxButtons::OK,
+					MessageBoxIcon::Warning);
+				return;
+			}
 			conDataBase->Open();
 
 			while (true)

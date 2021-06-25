@@ -12,8 +12,8 @@ namespace sql_connection_func {
 	String^ sql_user_pass_string()
 	{
 		//String^ constring = L"datasource=localhost;port=3306;username=root;password=lovebcmm**,02";
-		String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
-		//String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
+		//String^ constring = L"datasource=localhost;port=3306;username=root;password=server@?!1234";
+		String^ constring = L"datasource=localhost;port=3306;username=root;password=MySQL";
 		return constring;
 	}
 
