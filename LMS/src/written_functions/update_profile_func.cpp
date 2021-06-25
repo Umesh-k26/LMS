@@ -3,6 +3,9 @@
 #include "connection_sql_func.h"
 
 
+/// <summary>
+/// This function updates details such as Profession, email, mobile number and address of the member whose ID is given as inout
+/// </summary>
 bool update_profile_func::update_member_profile(String^ input_id, String^ profession_input, String^ email_input, String^ mobile_input, String^ address_input)
 {
 	bool return_val = false;
@@ -26,6 +29,9 @@ bool update_profile_func::update_member_profile(String^ input_id, String^ profes
     return return_val;
 }
 
+/// <summary>
+/// This function adds new copies to the database for the particular Book ID
+/// </summary>
 bool update_profile_func::update_book_profile(String^ input_id, int num_copies, String^ book_name_input, String^ book_edition_input)
 {
 	bool return_val = false;
@@ -71,6 +77,9 @@ bool update_profile_func::update_book_profile(String^ input_id, int num_copies, 
 
 }
 
+/// <summary>
+/// This function updates the password of the member by taking Password in hashed form as an input and ID of the member
+/// </summary>
 bool update_profile_func::change_pass_member(String^ input_id, String^ new_pass_input)
 {
 	bool return_val = false;

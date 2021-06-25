@@ -2,6 +2,9 @@
 #include "delete_profile_func.h"
 #include "connection_sql_func.h"
 
+/// <summary>
+/// This function simply deactivates the membership of a member instead of completetly removing from the database
+/// </summary>
 bool delete_profile_func::delete_member_profile(String^ input_id)
 {
 	bool return_value = false;
@@ -28,6 +31,9 @@ bool delete_profile_func::delete_member_profile(String^ input_id)
 	return return_value;
 }
 
+/// <summary>
+/// This function simply changes the status of the book as lost instead of completetly removing from the database
+/// </summary>
 bool delete_profile_func::delete_book_profile(String^ input_id, String^ book_name_input, String^ book_author_input, String^ book_pub_input, String^ book_edition_input)
 {
 	bool return_val = false;
