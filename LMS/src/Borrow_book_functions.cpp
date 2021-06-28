@@ -137,6 +137,7 @@ namespace Borrow_book_functions {
                      member_no_book_stat = member_no_book_stat +1 WHERE \
                      member_id ='" + Memeber_Id + "' ;", conDataBase);
 
+			Update_member_data->ExecuteNonQuery();
 			conDataBase->Close();
 
 		}
