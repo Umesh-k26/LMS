@@ -60,7 +60,7 @@ System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System
 		String^ printing_edition_no;
 		String^ printing_book_borrow_stat;
 		String^ printing_category;
-		String^ printing_copies_avilable;
+		//String^ printing_copies_avilable;
 		//String^ printing_lost_stat;
 		while (myReader->Read())
 		{
@@ -72,7 +72,7 @@ System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System
 			printing_edition_no = myReader->GetString("book_edition_no");
 			printing_book_borrow_stat = myReader->GetString("book_borrow_status");
 			printing_category = myReader->GetString("category");
-			printing_copies_avilable = myReader->GetString("copies_available");
+			//printing_copies_avilable = myReader->GetString("copies_available");
 			//printing_lost_stat = myReader->GetString("book_lost");
 			this->bookname_txt->Text = printing_name;
 			this->book_id_txt->Text = printing_id;
@@ -82,7 +82,7 @@ System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System
 			this->edition_no_txt->Text = printing_edition_no;
 			this->borrow_stat_txt->Text = printing_book_borrow_stat;
 			this->category_txt->Text = printing_category;
-			this->copies_available_txt->Text = printing_copies_avilable;
+			//this->copies_available_txt->Text = printing_copies_avilable;
 			//this->book_lost_stat_text->Text = printing_lost_stat;
 			//listBox1->Items->Add(printing_names);
 
@@ -265,18 +265,17 @@ void LMS::profile_book::updating_no_of_copies(int num_new_copies)
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
 		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system_db.book_data \
-				(book_name, book_author, book_publisher, book_price,book_edition_no,no_of_copies, category, copies_available) \
+				(book_name, book_author, book_publisher, book_price,book_edition_no,no_of_copies, category) \
 				VALUES('" + this->bookname_txt->Text + "',\
 				'" + this->author_txt->Text + "',\
 				'" + this->publisher_txt->Text + "',\
 				'" + this->price_txt->Text + "',\
 				'" + this->edition_no_txt->Text + "',\
 				'" + this->no_copies_txt->Text + "',\
-				'" + this->category_txt->Text + "',\
-				'" + this->copies_available_txt->Text + "');", conDataBase);
+				'" + this->category_txt->Text + "');", conDataBase);
 
 		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("UPDATE library_system_db.book_data SET \
-				no_of_copies = no_of_copies + '" + num_new_copies + "', copies_available = copies_available + '" + num_new_copies + "'\
+				no_of_copies = no_of_copies + '" + num_new_copies + "'\
 				WHERE book_name = '" + this->bookname_txt->Text + "' AND \
 				book_edition_no = '" + this->edition_no_txt->Text + "';", conDataBase);
 

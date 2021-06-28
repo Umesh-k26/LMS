@@ -122,16 +122,7 @@ namespace LMS {
 		/// </summary>
 		System::Windows::Forms::Button^ register_button;
 
-	private:
-		/// <summary>
-		/// Label for Current Borrow Status
-		/// </summary>
-		System::Windows::Forms::Label^ status_lbl;
-	private:
-		/// <summary>
-		/// Input TextBox for Current Borrow Status (Number of Books borrowed)
-		/// </summary>
-		System::Windows::Forms::TextBox^ status_no_txt;
+	
 	private:
 		/// <summary>
 		/// Button for navigating to HomePage
@@ -217,8 +208,6 @@ namespace LMS {
 			this->mobile_no_txt = (gcnew System::Windows::Forms::TextBox());
 			this->address_txt = (gcnew System::Windows::Forms::TextBox());
 			this->register_button = (gcnew System::Windows::Forms::Button());
-			this->status_lbl = (gcnew System::Windows::Forms::Label());
-			this->status_no_txt = (gcnew System::Windows::Forms::TextBox());
 			this->back_button = (gcnew System::Windows::Forms::Button());
 			this->dateTimePicker = (gcnew System::Windows::Forms::DateTimePicker());
 			this->register_member_grp_box = (gcnew System::Windows::Forms::GroupBox());
@@ -325,25 +314,8 @@ namespace LMS {
 			this->register_button->UseVisualStyleBackColor = true;
 			this->register_button->Click += gcnew System::EventHandler(this, &RegisterMember::RegisterMember_Click);
 			// 
-			// status_lbl
-			// 
-			this->status_lbl->AutoSize = true;
-			this->status_lbl->Location = System::Drawing::Point(36, 428);
-			this->status_lbl->Name = L"status_lbl";
-			this->status_lbl->Size = System::Drawing::Size(91, 13);
-			this->status_lbl->TabIndex = 13;
-			this->status_lbl->Text = L"Borrow status No.";
-			// 
-			// status_no_txt
-			// 
-			this->status_no_txt->Location = System::Drawing::Point(172, 425);
-			this->status_no_txt->Name = L"status_no_txt";
-			this->status_no_txt->Size = System::Drawing::Size(100, 20);
-			this->status_no_txt->TabIndex = 14;
-			// 
 			// back_button
 			// 
-			this->back_button->Image = Image::FromFile("src\\back-icon.png");
 			this->back_button->Location = System::Drawing::Point(35, 33);
 			this->back_button->Margin = System::Windows::Forms::Padding(1);
 			this->back_button->Name = L"back_button";
@@ -372,12 +344,10 @@ namespace LMS {
 			this->register_member_grp_box->Controls->Add(this->re_password_lbl);
 			this->register_member_grp_box->Controls->Add(this->female_rbtn);
 			this->register_member_grp_box->Controls->Add(this->male_rbtn);
-			this->register_member_grp_box->Controls->Add(this->status_no_txt);
 			this->register_member_grp_box->Controls->Add(this->dateTimePicker);
 			this->register_member_grp_box->Controls->Add(this->name_lbl);
 			this->register_member_grp_box->Controls->Add(this->dob_lbl);
 			this->register_member_grp_box->Controls->Add(this->profession_lbl);
-			this->register_member_grp_box->Controls->Add(this->status_lbl);
 			this->register_member_grp_box->Controls->Add(this->email_id_lbl);
 			this->register_member_grp_box->Controls->Add(this->mobile_no_lbl);
 			this->register_member_grp_box->Controls->Add(this->address_txt);

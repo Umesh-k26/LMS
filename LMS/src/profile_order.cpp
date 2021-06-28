@@ -184,8 +184,8 @@ void LMS::profile_order::fill_book_data()
 			String^ printing_price;
 			String^ printing_edition_no;
 			String^ printing_book_borrow_stat;
-			String^ printing_no_of_copies;
-			String^ printing_copies_available;
+			/*String^ printing_no_of_copies;
+			String^ printing_copies_available;*/
 
 			printing_name = myReader->GetString("book_name");
 			printing_author = myReader->GetString("book_author");
@@ -193,8 +193,8 @@ void LMS::profile_order::fill_book_data()
 			printing_price = myReader->GetString("book_price");
 			printing_edition_no = myReader->GetString("book_edition_no");
 			printing_book_borrow_stat = myReader->GetString("book_borrow_status");
-			printing_no_of_copies = myReader->GetString("no_of_copies");
-			printing_copies_available = myReader->GetString("copies_available");
+			/*printing_no_of_copies = myReader->GetString("no_of_copies");
+			printing_copies_available = myReader->GetString("copies_available");*/
 			this->bookname_txt->Text = printing_name;
 
 			this->author_txt->Text = printing_author;
@@ -202,8 +202,8 @@ void LMS::profile_order::fill_book_data()
 			this->price_txt->Text = printing_price;
 			this->edition_no_txt->Text = printing_edition_no;
 			this->borrow_stat_txt->Text = printing_book_borrow_stat;
-			this->no_copies_txt->Text = printing_no_of_copies;
-			this->copies_available_txt->Text = printing_copies_available;
+			/*this->no_copies_txt->Text = printing_no_of_copies;
+			this->copies_available_txt->Text = printing_copies_available;*/
 			//listBox1->Items->Add(printing_names);
 
 		}

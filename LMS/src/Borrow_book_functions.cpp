@@ -17,12 +17,10 @@ namespace Borrow_book_functions {
 
 		try
 		{
-
 			conDataBase->Open();
 
 			MySqlCommand^ book_data = gcnew MySqlCommand("SELECT * FROM library_system_db.book_data \
-                WHERE book_id = '" + Book_Id + \
-				"';", conDataBase);
+                WHERE book_id = '" + Book_Id + "';", conDataBase);
 
 			myReader = book_data->ExecuteReader();
 
@@ -33,7 +31,6 @@ namespace Borrow_book_functions {
 
 			myReader->Close();
 			conDataBase->Close();
-
 
 			if (Book_status == "AVAILABLE")
 			{

@@ -131,12 +131,7 @@ System::Void LMS::ReturnBook::return_button_Click(System::Object^ sender, System
 						int order_id = Convert::ToInt32(this->order_id_txt->Text);
 						int fine = fine_func::calculate_fine(order_id, Member_id, profession);
 
-						MySqlCommand^ Update_book_data = gcnew MySqlCommand("UPDATE library_system_db.book_data set copies_available = copies_available +1 WHERE \
-                       book_name = '" + Book_name + "'\
-                       AND book_author = '" + Book_author + "'\
-                       AND book_publisher = '" + Book_publisher + "'\
-                       AND book_edition_no = " + Book_edition_no + "\
-                       ; UPDATE library_system_db.book_data \
+						MySqlCommand^ Update_book_data = gcnew MySqlCommand("UPDATE library_system_db.book_data \
                        set book_borrow_status = 'AVAILABLE' \
                        WHERE book_id = " + Book_id + " ;", conDataBase);
 
