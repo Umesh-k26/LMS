@@ -45,13 +45,15 @@ namespace LMS {
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
 		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system_db.book_data \
-		(book_name, book_author, book_publisher, book_price,book_edition_no, category) \
+		(book_name, book_author, book_publisher, book_price,book_edition_no,no_of_copies, category, copies_available) \
 		VALUES('" + this->bookname_txt->Text + "',\
 		'" + this->author_txt->Text + "',\
 		'" + this->publisher_txt->Text + "',\
 		'" + this->price_txt->Text + "',\
 		'" + this->edition_no_txt->Text + "',\
-		'" + this->category_txt->Text + "');", conDataBase);
+		'" + this->no_of_copies_txt->Text + "',\
+		'" + this->category_txt->Text + "',\
+		'" + this->no_of_copies_txt->Text + "'	);", conDataBase);
 
 		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system_db.book_data WHERE (book_name = '" + this->bookname_txt->Text + "' \
 		AND book_edition_no = " + this->edition_no_txt->Text + ");", conDataBase);
