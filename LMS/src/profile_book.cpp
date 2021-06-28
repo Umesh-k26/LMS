@@ -2,7 +2,10 @@
 #include "profile_book.h"
 #include "written_functions/delete_profile_func.h"
 #include "written_functions/update_profile_func.h"
+
+/// <summary>
 ///Constructor calls for functions to Initialize all the components of the form
+/// </summary>
 ///@see InitializeComponent()
 LMS::profile_book::profile_book(void)
 {
@@ -143,8 +146,6 @@ System::Void LMS::profile_book::delete_profile_button_Click(System::Object^ send
 		if (delete_profile_func::delete_book_profile(this->book_id_txt->Text, this->bookname_txt->Text, this->author_txt->Text, this->publisher_txt->Text, this->edition_no_txt->Text, this->borrow_stat_txt->Text, System::Convert::ToString(total_fine)) == true)
 		{
 			MessageBox::Show("Profile is deleted");
-			
-			//MessageBox::Show("Pay Fine for the book: Rs " + this->price_txt->Text);
 			MessageBox::Show("Pay Fine for the book: Rs " + System::Convert::ToString(total_fine));
 		}
 		else
@@ -177,7 +178,8 @@ System::Void LMS::profile_book::confirm_change_button_Click(System::Object^ send
 	else
 	{
 		MessageBox::Show("" + (int)this->numeric_updown_no_copies->Value + "");
-		if (update_profile_func::update_book_profile(this->book_id_txt->Text, (int)this->numeric_updown_no_copies->Value, this->bookname_txt->Text, this->edition_no_txt->Text) == true)
+		//if (update_profile_func::update_book_profile(this->book_id_txt->Text, (int)this->numeric_updown_no_copies->Value, this->bookname_txt->Text, this->edition_no_txt->Text) == true)
+		if (update_profile_func::update_book_profile(this->book_id_txt->Text, (int)this->numeric_updown_no_copies->Value) == true)
 		{
 			MessageBox::Show("New copies are added");
 		}

@@ -2,7 +2,10 @@
 #include "profile_member.h"
 #include "written_functions/delete_profile_func.h"
 #include "written_functions/update_profile_func.h"
+
+/// <summary>
 ///Constructor calls for functions to Initialize all the components of the form
+/// </summary>
 ///@see InitializeComponent()
 LMS::profile_member::profile_member(void)
 {
