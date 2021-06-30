@@ -2,7 +2,7 @@
 #include "fine_function.h"
 #include "connection_sql_func.h"
 
-///	SQL function definitions to fill datagrids and to connect to database
+///	SQL function definitions to connect to database and to hash password
 
 namespace sql_connection_func {
 
@@ -21,6 +21,7 @@ namespace sql_connection_func {
 	//FUNCTION FOR FILLING MEMBER DATAGRID IN LIST OF MEMBERS PAGE
 	//
 
+	/*
 	/// <summary>
 	/// Void function to fill member datagrid
 	/// </summary>
@@ -242,15 +243,24 @@ namespace sql_connection_func {
 		}
 	}
 
+	*/
 	/// <summary>
 	/// This function hashes the password of the user and also salts it with ID of the user before being hashed
 	/// </summary>
+	/// The function converts the salted string into byte array then it applies MD5 Hashing method and then converts the byte array back into String
 	String^ password_hasher(String^ input_id, String^ input_pass)
 	{
+		//Salting the required password string with username
 		String^ final_password_for_hash = input_pass + input_id;
+
+		//Converting the String into Byte Array Form
 		array<Byte>^ byte_array_password = System::Text::Encoding::ASCII->GetBytes(final_password_for_hash);
+
+		//Hashing the byte Array using MD5 
 		System::Security::Cryptography::MD5CryptoServiceProvider^ md5_hash_gen = gcnew System::Security::Cryptography::MD5CryptoServiceProvider();
 		array<Byte>^ byte_array_hash = md5_hash_gen->ComputeHash(byte_array_password);
+
+		//Convert the Byte Array into String
 		return BitConverter::ToString(byte_array_hash);
 		
 	}
