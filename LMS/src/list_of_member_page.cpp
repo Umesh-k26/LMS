@@ -44,17 +44,27 @@ System::Void LMS::list_of_member_page::back_button_member_list_Click(System::Obj
 /// </summary>
 System::Void LMS::list_of_member_page::list_of_member_dataGridView_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
 {
+	//if the cell selected is the first cell of the row then it carries out the following process
 	if (e->ColumnIndex == 0)
 	{
+		//=======================================================
+		//This section converts the ID from the second column to String form to open profile
 		int row_num = e->RowIndex;
 		int col_num = e->ColumnIndex + 1;
 		String^ str = this->list_of_member_dataGridView->Rows[row_num]->Cells[col_num]->Value->ToString();
 
+		//=======================================================
+
 		MessageBox::Show("Your id is " + str);
+
+		//Constructing profile form by passing the Member ID along with it as well as if the user is librarian or not
 		LMS::profile_member^ profile_member_f = gcnew LMS::profile_member(str, is_librarian);
 		this->Hide();
+
+		//Hiding the current Form and opening the profile form and waits till the time the user clicks on back button
 		if (profile_member_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
+			//When user clicks the back button in the Profile Form it closes that and then shows this form again and fills loads the form
 			this->Show();
 			filling_datagrid::fill_datagrid_member(list_of_member_dataGridView);
 		}
@@ -68,6 +78,7 @@ System::Void LMS::list_of_member_page::list_of_member_dataGridView_CellContentCl
 /// @see filling_datagrid::fill_datagrid_members_filtered()
 System::Void LMS::list_of_member_page::search_button_member_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	//Converting the Item in the list chosen to String with suitable keyword to send to the function for filtering the result
 	String^ str_list_detail_search_member;
 	if (this->list_detail_search_member->Text == "Name")
 	{
@@ -90,6 +101,7 @@ System::Void LMS::list_of_member_page::search_button_member_Click(System::Object
 		str_list_detail_search_member = "member_no_book_stat";
 	}
 
+	//Calls the filtering function to fill the datagrid with required search results
 	filling_datagrid::fill_datagrid_members_filtered(str_list_detail_search_member, this->search_bar_member->Text, list_of_member_dataGridView);
 
 }

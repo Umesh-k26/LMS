@@ -12,18 +12,28 @@ namespace fine_func {
 	/// </summary>
 	int calculate_fine(int order_id_input, int member_id_input, String^ borrow_profession_input)
 	{
+		//Initializing the fine to 0
 		int value_fine = 0;
 		int num_date_difference = 0;
 
+		//Deafult number of days allowed for each type of member
 		int default_student_allowance = 7, default_faculty_allowance = 14, default_alumni_allowance = 10;
+
+		//Fine per day for each type of member
 		int perday_student = 10, perday_faculty = 20, perday_alumni = 20;
 
+		//Creating a connection to database
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("SELECT DATEDIFF(date_returned, date_issue) AS fine_column FROM library_system_db.borrow_history WHERE order_id = " + order_id_input + ";", conDataBase);
+		
+		//This command calculates the difference between the dates of issue and return from borrow_history table
+		MySqlCommand^ datediff_cmdDataBase = gcnew MySqlCommand("SELECT DATEDIFF(date_returned, date_issue) AS fine_column FROM library_system_db.borrow_history WHERE order_id = " + order_id_input + ";", conDataBase);
+		
 		MySqlDataReader^ myReader;
 		try {
+
+			//Open Database
 			conDataBase->Open();
-			myReader = cmdDataBase1->ExecuteReader();
+			myReader = datediff_cmdDataBase->ExecuteReader();
 
 			while (myReader->Read())
 			{
@@ -40,6 +50,7 @@ namespace fine_func {
 			}
 			myReader->Close();*/
 
+			//IF blocks check for each profession of the member and calculates fine based on that
 			if (borrow_profession_input == "Student")
 			{
 				if (num_date_difference <= default_student_allowance)
@@ -91,6 +102,7 @@ namespace fine_func {
 			MessageBox::Show(ex->Message);
 		}
 
+		//Close the connection to DataBase
 		conDataBase->Close();
 		return 0;
 	}
