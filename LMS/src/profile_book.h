@@ -602,7 +602,7 @@ namespace LMS {
 		/// <summary>
 		/// Void Function to Fill the Data Grid
 		/// </summary>
-		void fill_data_grid();
+		//void fill_data_grid();
 
 	private:
 		/// <summary>
@@ -635,6 +635,6 @@ namespace LMS {
 		/// <param name="num_new_copies">
 		/// Argument passed for how many number of copies to be added
 		/// </param>
-		void updating_no_of_copies(int num_new_copies);
+		//void updating_no_of_copies(int num_new_copies);
 	};
 }

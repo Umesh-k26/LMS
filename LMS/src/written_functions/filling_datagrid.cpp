@@ -317,7 +317,7 @@ namespace filling_datagrid {
 	}
 
 //==================================================================================================================
-	//FUNCTION FOR FILLING BORROW HISTORY DATAGRID IN MEMBER PROFILE PAGE
+	//FUNCTION FOR FILLING BOOK COPY DATAGRID IN BOOK PROFILE PAGE
 
 	/// <summary>
 	/// It fills the datagrid with the list of copies of the same book and its details
