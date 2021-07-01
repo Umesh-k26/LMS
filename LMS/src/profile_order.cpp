@@ -37,6 +37,8 @@ System::Void LMS::profile_order::profile_order_Load(System::Object^ sender, Syst
 	//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
 	WindowState = FormWindowState::Maximized;
 	this->order_id_txt->Text = transfer_order_id;
+
+	//ENUM for columns in the database
 	enum column_id_for_order_history
 	{
 		column_order_id = 0,
@@ -47,15 +49,21 @@ System::Void LMS::profile_order::profile_order_Load(System::Object^ sender, Syst
 		column_fine_ = 5,
 		column_stat_ = 6,
 	};
+
+	//Creates connection with database
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.borrow_history\
+
+	//This command returns details of Order of that Order ID
+	MySqlCommand^ get_order_details_cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.borrow_history\
 		WHERE order_id = " + transfer_order_id + ";", conDataBase);
 	MySqlDataReader^ myReader;
 	//MessageBox::Show(transfer_order_id);
 
 	try {
+
+		//Opens Connection to DataBase
 		conDataBase->Open();
-		myReader = cmdDataBase->ExecuteReader();
+		myReader = get_order_details_cmdDataBase->ExecuteReader();
 
 		while (myReader->Read())
 		{
@@ -106,8 +114,12 @@ System::Void LMS::profile_order::profile_order_Load(System::Object^ sender, Syst
 		MessageBox::Show(ex->Message);
 
 	}
+
+	//Calls the functions to fill data of Member and Book
 	fill_user_data();
 	fill_book_data();
+
+	//Closes the connection with the Database
 	conDataBase->Close();
 }
 
@@ -116,13 +128,16 @@ System::Void LMS::profile_order::profile_order_Load(System::Object^ sender, Syst
 /// </summary>
 void LMS::profile_order::fill_user_data()
 {
+	//Creates connection with database
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.member_data WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
+	//This command returns details of the Member of that Order ID
+	MySqlCommand^ get_member_det_cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.member_data WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
 	MySqlDataReader^ myReader;
 	try {
+		//Opens connection with the DataBase
 		conDataBase->Open();
-		myReader = cmdDataBase->ExecuteReader();
+		myReader = get_member_det_cmdDataBase->ExecuteReader();
 
 		while (myReader->Read())
 		{
@@ -159,6 +174,8 @@ void LMS::profile_order::fill_user_data()
 	{
 		MessageBox::Show(ex->Message);
 	}
+
+	//Closes the Connection with the DataBase
 	conDataBase->Close();
 }
 
@@ -167,11 +184,15 @@ void LMS::profile_order::fill_user_data()
 /// </summary>
 void LMS::profile_order::fill_book_data()
 {
+	//Creates connection with database
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
+	//This command returns details of the Books of that Order ID
 	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.book_data WHERE book_id = " + this->book_id_txt->Text + ";", conDataBase);
+	
 	MySqlDataReader^ myReader;
 	try {
+		//Opens the connection with the database
 		conDataBase->Open();
 		myReader = cmdDataBase->ExecuteReader();
 
@@ -212,6 +233,8 @@ void LMS::profile_order::fill_book_data()
 	{
 		MessageBox::Show(ex->Message);
 	}
+
+	//Closes the connection with the database
 	conDataBase->Close();
 }
 

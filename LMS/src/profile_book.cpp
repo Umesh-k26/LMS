@@ -40,20 +40,24 @@ LMS::profile_book::~profile_book()
 /// <summary>
 /// It loads the Form in full screen mode and fills all the textboxes and fill the Data Grid
 /// </summary>
+/// @see filling_datagrid::fill_datagrid_book_profile()
 System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System::EventArgs^ e)
 {
 	CenterToScreen();
 	WindowState = FormWindowState::Maximized;
 
+	//Creating a connection to database
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.book_data\
+	//This command returns details of Book of that Book ID
+	MySqlCommand^ fill_data_cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.book_data\
 		WHERE book_id = " + transfer_id_book + ";", conDataBase);
 	MySqlDataReader^ myReader;
 
 	try {
+		//Opens the Database connection
 		conDataBase->Open();
-		myReader = cmdDataBase->ExecuteReader();
+		myReader = fill_data_cmdDataBase->ExecuteReader();
 
 		String^ printing_name;
 		String^ printing_id;
@@ -91,7 +95,11 @@ System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System
 
 		}
 		//fill_data_grid();
+
+		//Calls the function to fill datagrid with IDs of the copies of the book
 		filling_datagrid::fill_datagrid_book_profile(this->bookname_txt->Text, book_copies_dataGridView, this->edition_no_txt->Text);
+
+
 		int num_row = this->book_copies_dataGridView->RowCount;
 		this->no_copies_txt->Text = num_row.ToString();
 
@@ -100,7 +108,11 @@ System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System
 	{
 		MessageBox::Show(ex->Message);
 	}
+
+	//Close the connection to DataBase
 	conDataBase->Close();
+
+	this->numeric_updown_no_copies->Value = 0;
 }
 
 /// <summary>
@@ -117,6 +129,7 @@ System::Void LMS::profile_book::update_profile_button_Click(System::Object^ send
 /// <summary>
 /// Button OnClick To Switch the particular copy to Lost and removed from showing in the list
 /// </summary>
+/// @see delete_profile_func::delete_book_profile()
 System::Void LMS::profile_book::delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	MessageBox::Show("Delete Profile");
@@ -141,8 +154,15 @@ System::Void LMS::profile_book::delete_profile_button_Click(System::Object^ send
 		//	MessageBox::Show(ex->Message);
 		//}
 		//conDataBase->Close();
+
+		//Initializes the fine as price of book
 		int total_fine = Int32::Parse(this->price_txt->Text);
+
+		//Calculates the total fine to be paid
 		total_fine = total_fine * 2;
+
+		//IF block which checks that if the delete book profile function returns true then it shows message to pay the fine
+		//ELSE it shows an error message
 		if (delete_profile_func::delete_book_profile(this->book_id_txt->Text, this->bookname_txt->Text, this->author_txt->Text, this->publisher_txt->Text, this->edition_no_txt->Text, this->borrow_stat_txt->Text, System::Convert::ToString(total_fine)) == true)
 		{
 			MessageBox::Show("Profile is deleted");
@@ -152,6 +172,8 @@ System::Void LMS::profile_book::delete_profile_button_Click(System::Object^ send
 		{
 			MessageBox::Show("SOME ERROR HAS OCCURED IN DELETING BOOK PROFILE", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
+
+		//Closes the form and goes back to previous page
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
@@ -164,6 +186,7 @@ System::Void LMS::profile_book::delete_profile_button_Click(System::Object^ send
 /// <summary>
 /// Button OnClick function to switch back into Read-Only Mode and updating the profile of the Book and changing it in the databse as well
 /// </summary>
+/// @see update_profile_func::update_book_profile()
 System::Void LMS::profile_book::confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	this->numeric_updown_no_copies->Visible = false;
@@ -171,6 +194,7 @@ System::Void LMS::profile_book::confirm_change_button_Click(System::Object^ send
 	this->update_profile_button->Visible = true;
 
 	//updating_no_of_copies((int)this->numeric_updown_no_copies->Value);
+	//IF the number of books to be added is less than or equal to 0 then it shows message and nothing else
 	if ((int)this->numeric_updown_no_copies->Value <= 0)
 	{
 		MessageBox::Show("" + (int)this->numeric_updown_no_copies->Value + "");
@@ -179,6 +203,8 @@ System::Void LMS::profile_book::confirm_change_button_Click(System::Object^ send
 	{
 		MessageBox::Show("" + (int)this->numeric_updown_no_copies->Value + "");
 		//if (update_profile_func::update_book_profile(this->book_id_txt->Text, (int)this->numeric_updown_no_copies->Value, this->bookname_txt->Text, this->edition_no_txt->Text) == true)
+		//IF the update profile book successfully updates the profile of the book then it shows message of success
+		//ELSE it shows Error
 		if (update_profile_func::update_book_profile(this->book_id_txt->Text, (int)this->numeric_updown_no_copies->Value) == true)
 		{
 			MessageBox::Show("New copies are added");
@@ -188,53 +214,67 @@ System::Void LMS::profile_book::confirm_change_button_Click(System::Object^ send
 			MessageBox::Show("SOME ERROR HAS OCCURED IN UPDATING BOOK PROFILE", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
+
+	//Reload the form to show new additions if there are any
 	profile_book_Load(sender, e);
 }
 
-/// <summary>
-/// Function to fill the Data Grid with the list of copies of the same book with general details
-/// </summary>
-void LMS::profile_book::fill_data_grid()
-{
-
-	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS 'Book ID', book_name AS 'Name', book_author AS 'Author', book_edition_no AS 'Edition No', book_publisher AS 'Publisher', book_borrow_status AS 'Borrow Status' FROM library_system_db.book_data \
-			WHERE book_name = '" + this->bookname_txt->Text + "' AND book_edition_no = " + this->edition_no_txt->Text + " AND NOT book_borrow_status = 'LOST';", conDataBase);
-	try {
-		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
-		sda->SelectCommand = cmdDataBase;
-		DataTable^ dbdataset = gcnew DataTable();
-		sda->Fill(dbdataset);
-		BindingSource^ bSource = gcnew BindingSource();
-		bSource->DataSource = dbdataset;
-		book_copies_dataGridView->DataSource = bSource;
-		sda->Update(dbdataset);
-	}
-	catch (Exception^ ex)
-	{
-		MessageBox::Show(ex->Message);
-	}
-	conDataBase->Close();
-}
+///// <summary>
+///// Function to fill the Data Grid with the list of copies of the same book with general details
+///// </summary>
+//void LMS::profile_book::fill_data_grid()
+//{
+//
+//	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+//	MySqlCommand^ cmdDataBase = gcnew MySqlCommand("SELECT book_id AS 'Book ID', book_name AS 'Name', book_author AS 'Author', book_edition_no AS 'Edition No', book_publisher AS 'Publisher', book_borrow_status AS 'Borrow Status' FROM library_system_db.book_data \
+//			WHERE book_name = '" + this->bookname_txt->Text + "' AND book_edition_no = " + this->edition_no_txt->Text + " AND NOT book_borrow_status = 'LOST';", conDataBase);
+//	try {
+//		MySqlDataAdapter^ sda = gcnew MySqlDataAdapter();
+//		sda->SelectCommand = cmdDataBase;
+//		DataTable^ dbdataset = gcnew DataTable();
+//		sda->Fill(dbdataset);
+//		BindingSource^ bSource = gcnew BindingSource();
+//		bSource->DataSource = dbdataset;
+//		book_copies_dataGridView->DataSource = bSource;
+//		sda->Update(dbdataset);
+//	}
+//	catch (Exception^ ex)
+//	{
+//		MessageBox::Show(ex->Message);
+//	}
+//	conDataBase->Close();
+//}
 
 /// <summary>
 /// Button OnClick function to Open Profile of other copy of the book with more details
 /// </summary>
 System::Void LMS::profile_book::book_copies_dataGridView_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
 {
+	//if the cell selected is the first cell of the row then it carries out the following process
 	if (e->ColumnIndex == 0)
 	{
+		//=======================================================
+		//This section converts the ID from the second column to String form to open profile
+
 		int row_num = e->RowIndex;
 		int col_num = e->ColumnIndex + 1;
 		String^ str = this->book_copies_dataGridView->Rows[row_num]->Cells[col_num]->Value->ToString();
+
+		//=======================================================
+
 		MessageBox::Show("Your id is " + str);
+
+		//Constructing profile form by passing the Book ID along with it as well as if the user is librarian or not
 		LMS::profile_book^ profile_book_f = gcnew LMS::profile_book(str, transfer_isLibrarian);
 		this->Hide();
 		//profile_book_f->ShowDialog();
 
+		//Hiding the current Form and opening the profile form and waits till the time the user clicks on back button
 		if (profile_book_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
+			//When user clicks the back button in the Profile Form it closes that and then shows this form again and fills loads the form
 			this->Show();
+			filling_datagrid::fill_datagrid_book_profile(this->bookname_txt->Text, book_copies_dataGridView, this->edition_no_txt->Text);
 		}
 
 	}
@@ -249,52 +289,52 @@ System::Void LMS::profile_book::back_button_Click(System::Object^ sender, System
 	this->Close();
 }
 
-/// <summary>
-/// Function to be run after the Librarian wants to add more copies of the same book to the database
-/// </summary>
-
-void LMS::profile_book::updating_no_of_copies(int num_new_copies)
-{
-	if (num_new_copies <= 0)
-	{
-		MessageBox::Show("" + num_new_copies + "");
-		return;
-	}
-	else
-	{
-		MessageBox::Show("" + num_new_copies + "");
-
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-
-		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system_db.book_data \
-				(book_name, book_author, book_publisher, book_price,book_edition_no,no_of_copies, category) \
-				VALUES('" + this->bookname_txt->Text + "',\
-				'" + this->author_txt->Text + "',\
-				'" + this->publisher_txt->Text + "',\
-				'" + this->price_txt->Text + "',\
-				'" + this->edition_no_txt->Text + "',\
-				'" + this->no_copies_txt->Text + "',\
-				'" + this->category_txt->Text + "');", conDataBase);
-
-		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("UPDATE library_system_db.book_data SET \
-				no_of_copies = no_of_copies + '" + num_new_copies + "'\
-				WHERE book_name = '" + this->bookname_txt->Text + "' AND \
-				book_edition_no = '" + this->edition_no_txt->Text + "';", conDataBase);
-
-		try {
-			conDataBase->Open();
-			for (int i = 0; i < num_new_copies; i++)
-				cmdDataBase1->ExecuteNonQuery();
-
-			MessageBox::Show("cmdb1 executed");
-			cmdDataBase2->ExecuteNonQuery();
-			MessageBox::Show("cmdb2 executed");
-			conDataBase->Close();
-		}
-		catch (Exception^ ex)
-		{
-			MessageBox::Show(ex->Message);
-		}
-		conDataBase->Close();
-	}
-}
+///// <summary>
+///// Function to be run after the Librarian wants to add more copies of the same book to the database
+///// </summary>
+//
+//void LMS::profile_book::updating_no_of_copies(int num_new_copies)
+//{
+//	if (num_new_copies <= 0)
+//	{
+//		MessageBox::Show("" + num_new_copies + "");
+//		return;
+//	}
+//	else
+//	{
+//		MessageBox::Show("" + num_new_copies + "");
+//
+//		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+//
+//		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system_db.book_data \
+//				(book_name, book_author, book_publisher, book_price,book_edition_no,no_of_copies, category) \
+//				VALUES('" + this->bookname_txt->Text + "',\
+//				'" + this->author_txt->Text + "',\
+//				'" + this->publisher_txt->Text + "',\
+//				'" + this->price_txt->Text + "',\
+//				'" + this->edition_no_txt->Text + "',\
+//				'" + this->no_copies_txt->Text + "',\
+//				'" + this->category_txt->Text + "');", conDataBase);
+//
+//		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("UPDATE library_system_db.book_data SET \
+//				no_of_copies = no_of_copies + '" + num_new_copies + "'\
+//				WHERE book_name = '" + this->bookname_txt->Text + "' AND \
+//				book_edition_no = '" + this->edition_no_txt->Text + "';", conDataBase);
+//
+//		try {
+//			conDataBase->Open();
+//			for (int i = 0; i < num_new_copies; i++)
+//				cmdDataBase1->ExecuteNonQuery();
+//
+//			MessageBox::Show("cmdb1 executed");
+//			cmdDataBase2->ExecuteNonQuery();
+//			MessageBox::Show("cmdb2 executed");
+//			conDataBase->Close();
+//		}
+//		catch (Exception^ ex)
+//		{
+//			MessageBox::Show(ex->Message);
+//		}
+//		conDataBase->Close();
+//	}
+//}
