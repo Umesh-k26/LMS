@@ -39,133 +39,54 @@ System::Void LMS::ReturnBook::ReturnBook_Load(System::Object^ sender, System::Ev
 System::Void LMS::ReturnBook::return_button_Click(System::Object^ sender, System::EventArgs^ e)
 {
 
-	String^ connect_database = sql_connection_func::sql_user_pass_string();
-	MySqlConnection^ conDataBase = gcnew MySqlConnection(connect_database);
-
-	MySqlCommand^ Order_data = gcnew MySqlCommand("SELECT * FROM library_system_db.borrow_history WHERE\
-     order_id = '" + this->order_id_txt->Text + "';", conDataBase);
-
-	MySqlDataReader^ myReader;
-
-	int Book_id;
-	int Member_id;
-	String^ Book_name;
-	String^ Book_author;
-	String^ Book_publisher;
-	int Book_edition_no;
-
-	try {
-		conDataBase->Open();
-		myReader = Order_data->ExecuteReader();
-
-		int count = 0;
-		String^ Borrow_status;
-
-		while (myReader->Read())
+	try
+	{
+		if (Return_book_functions::check_Order_Id(this->order_id_txt->Text) == true)
 		{
-			count += 1;
-			Borrow_status = myReader->GetString("borrow_status");
-			Book_id = myReader->GetInt32("book_id");
-			Member_id = myReader->GetInt32("member_id");
-		}
-		myReader->Close();
-		if (count == 0)
-		{
-			MessageBox::Show("Order not found with given Order id .");
-		}
-		else if (count == 1)
-		{
-			if (Borrow_status == "RETURNED")
-				MessageBox::Show("Book with given Order id is already Returned! .Please resolve if any before updating");
 
-			else if (Borrow_status = "BORROWED")
+			if (Return_book_functions::Get_Borrow_status(this->order_id_txt->Text) == "BORROWED")
 			{
-				MySqlCommand^ Book_data = gcnew MySqlCommand("SELECT * FROM library_system_db.book_data WHERE book_id ='" + Book_id + "';", conDataBase);
+				int Order_id = Convert::ToInt32(this->order_id_txt->Text);
 
-				int count1 = 0;
-				myReader = Book_data->ExecuteReader();
-				while (myReader->Read())
-				{
-					count1 += 1;
-					Book_name = myReader->GetString("book_name");
-					Book_author = myReader->GetString("book_author");
-					Book_publisher = myReader->GetString("book_publisher");
-					Book_edition_no = myReader->GetInt32("book_edition_no");
-				}
-				myReader->Close();
-				if (count1 == 0)
-					MessageBox::Show("Book id of Borrowed book with given order_id is not found. Please resolve before updating.");
-				else if (count1 == 1)
-				{
+				int Book_Id = Return_book_functions::Get_Book_Id(this->order_id_txt->Text);
 
-					MySqlCommand^ Member_data = gcnew MySqlCommand("SELECT * FROM library_system_db.member_data \
-                    WHERE member_id ='" + Member_id + "';", conDataBase);
+				int Member_ID = Return_book_functions::Get_Member_Id(this->order_id_txt->Text);
 
+				String^ profession = Return_book_functions::Get_Profession(Member_ID);
 
-					myReader = Member_data->ExecuteReader();
+				Return_book_functions::Update_Book_data(Book_Id);
 
+				Return_book_functions::Updata_Borrow_history_data(this->order_id_txt->Text);
 
-					int count2 = 0;
-					String^ profession;
-					while (myReader->Read())
-					{
-						count2 += 1;
-						profession = myReader->GetString("member_profession");
-					}
-					myReader->Close();
-					if (count2 == 0)
-					{
-						MessageBox::Show("student who borrowed  book with given order_id is not found. Please resolve before updating.");
-					}
+				int fine = fine_func::calculate_fine(Order_id, Member_ID, profession);
 
-					else if (count2 == 1)
-					{
-						MySqlCommand^ Update_borrow_history_data = gcnew MySqlCommand("UPDATE library_system_db.borrow_history set \
-                       date_returned = CURDATE(),borrow_status = 'RETURNED'\
-		               WHERE order_id = '" + this->order_id_txt->Text + "';", conDataBase);
+				Return_book_functions::Update_Borrow_history_fine(this->order_id_txt->Text, fine);
 
+				Return_book_functions::Update_Member_data(Return_book_functions::Get_Member_Id(this->order_id_txt->Text));
 
-						//Below Query Updates Borrow_history (Table) except fine coloumn
-						Update_borrow_history_data->ExecuteNonQuery();
+				Return_book_functions::Message_Return_Successfully(this->order_id_txt->Text, Book_Id, Member_ID);
 
-						int order_id = Convert::ToInt32(this->order_id_txt->Text);
-						int fine = fine_func::calculate_fine(order_id, Member_id, profession);
-
-						MySqlCommand^ Update_book_data = gcnew MySqlCommand("UPDATE library_system_db.book_data \
-                       set book_borrow_status = 'AVAILABLE' \
-                       WHERE book_id = " + Book_id + " ;", conDataBase);
-
-						MySqlCommand^ Update_member_data = gcnew MySqlCommand("UPDATE  library_system_db.member_data\
-                       set member_no_book_stat = member_no_book_stat - 1,\
-					   member_fine = member_fine + '" + fine + "' \
-                       WHERE member_id ='" + Member_id + "';", conDataBase);
-
-						MySqlCommand^ Update_borrow_history_fine = gcnew MySqlCommand("UPDATE library_system_db.borrow_history set \
-                       borrow_fine= '" + fine + "'\
-		               WHERE order_id = '" + this->order_id_txt->Text + "';", conDataBase);
-
-
-						//Below Query Updates Book_data (Table) {increases copies_available by 1 for all copies and book_borrow_Status = AVAILABLE for partciular book id}
-						Update_book_data->ExecuteNonQuery();
-
-						//Below Query Updates member_data(Table)
-						Update_member_data->ExecuteNonQuery();
-
-						//Below Query Updates fine coloumn in borrow_history by using fine function
-						Update_borrow_history_fine->ExecuteNonQuery();
-
-						MessageBox::Show("Returned book successfully! \nBook_id = " + Book_id + " \nMember_id = " + Member_id + " \nOrder_id = " + this->order_id_txt->Text + " ");
-					}
-				}
 			}
-			else
-				MessageBox::Show("borrow_status is neither 'BORROWED' nor 'RETURNED' of given order_id, detected. Please resolve before updating.");
+
+			else if (Return_book_functions::Get_Borrow_status(this->order_id_txt->Text) == "RETURNED")
+			{
+				MessageBox::Show("Book with given Order Id is already returned.");
+			}
+
+			else if (Return_book_functions::Get_Borrow_status(this->order_id_txt->Text) == "LOST")
+			{
+				MessageBox::Show("Book with given Order Id is Lost.");
+			}
+		}
+
+		else
+		{
+			MessageBox::Show("Order with given Order Id Not found.");
 		}
 	}
 	catch (Exception^ ex)
 	{
 		MessageBox::Show(ex->Message);
-
 	}
 }
 
