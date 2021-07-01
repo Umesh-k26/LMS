@@ -208,6 +208,7 @@
     </ClInclude>
     <ClInclude Include="src\written_functions\delete_profile_func.h" />
     <ClInclude Include="src\written_functions\filling_datagrid.h" />
+    <ClInclude Include="src\written_functions\Return_book_functions.h" />
     <ClInclude Include="src\written_functions\update_profile_func.h" />
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +239,7 @@
     <ClCompile Include="src\ReturnBook.cpp" />
     <ClCompile Include="src\written_functions\delete_profile_func.cpp" />
     <ClCompile Include="src\written_functions\filling_datagrid.cpp" />
+    <ClCompile Include="src\written_functions\Return_book_functions.cpp" />
     <ClCompile Include="src\written_functions\update_profile_func.cpp" />
   </ItemGroup>
   <ItemGroup>

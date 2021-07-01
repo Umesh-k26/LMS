@@ -1,6 +1,7 @@
 #pragma once
 #include "fine_function.h"
 #include "connection_sql_func.h"
+#include "written_functions/Return_book_functions.h"
 
 namespace LMS {
 
