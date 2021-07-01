@@ -1,6 +1,6 @@
 #pragma once
 #include "connection_sql_func.h"
-#include "Borrow_book_functions.h"
+#include "written_functions/Borrow_book_functions.h"
 
 
 namespace LMS {
