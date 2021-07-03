@@ -53,8 +53,9 @@ namespace LMS {
 		/// </summary>
 		~RegisterMember();
 
+	public:
 		/// <summary>
-		/// Protected variables for storing Gender
+		/// Public variable for storing Gender
 		/// </summary>
 		String^ Gender;
 
@@ -122,7 +123,7 @@ namespace LMS {
 		/// </summary>
 		System::Windows::Forms::Button^ register_button;
 
-	
+
 	private:
 		/// <summary>
 		/// Button for navigating to HomePage

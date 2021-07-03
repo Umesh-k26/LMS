@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "AddBook.h"
 #include "connection_sql_func.h"
-
+#include <written_functions/AddBook_func.h>
 namespace LMS {
 
 	///Constructor calls for functions to Initialize all the components of the form
@@ -42,46 +42,36 @@ namespace LMS {
 	/// Button OnClick to Add Books into Library Database
 	/// </summary>
 	System::Void AddBook::AddBook_Click(System::Object^ sender, System::EventArgs^ e) {
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
-		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system_db.book_data \
-		(book_name, book_author, book_publisher, book_price,book_edition_no,category) \
-		VALUES('" + this->bookname_txt->Text + "',\
-		'" + this->author_txt->Text + "',\
-		'" + this->publisher_txt->Text + "',\
-		'" + this->price_txt->Text + "',\
-		'" + this->edition_no_txt->Text + "',\
-		'" + this->category_txt->Text + "');", conDataBase);
+		int editionNo = System::Convert::ToInt32(this->edition_no_txt->Text);
+		int noOfCopies = System::Convert::ToInt32(this->no_of_copies_txt->Text);
+		int price = System::Convert::ToInt32(this->price_txt->Text);
 
-		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system_db.book_data WHERE (book_name = '" + this->bookname_txt->Text + "' \
-		AND book_edition_no = " + this->edition_no_txt->Text + ");", conDataBase);
-		MySqlDataReader^ myReader;
-		try {
-			conDataBase->Open();
+		/*int firstBookId = LMS::Presenter::AddBook_func(this->bookname_txt->Text, this->author_txt->Text, this->publisher_txt->Text, \
+			this->category_txt->Text, editionNo, noOfCopies, price);*/
 
-			int copies_no = System::Convert::ToInt32(this->no_of_copies_txt->Text);
-			for (int i = 0; i < copies_no; i++)
-				cmdDataBase1->ExecuteNonQuery();
 
-			MessageBox::Show("Book(s) added successfully!");
+		MessageBox::Show("Books added Successfully!");
 
-			int db_count = 0;
-			myReader = cmdDataBase2->ExecuteReader();
-			while (myReader->Read())
+		try
+		{
+			int firstBookId = LMS::Presenter::AddBook_func(this->bookname_txt->Text, this->author_txt->Text, this->publisher_txt->Text, \
+				this->category_txt->Text, editionNo, noOfCopies, price);
+			int bookId = firstBookId;
+			MessageBox::Show("Books added Successfully!");
+			while (bookId <= firstBookId + noOfCopies - 1)
 			{
-				int book_id = myReader->GetInt32("book_id");
-				id_listbox->Items->Add(book_id);
-				db_count++;
+				id_listbox->Items->Add(bookId);
+				bookId++;
 			}
-			id_listbox->Items->Add("No. of books added = " + db_count);
-			myReader->Close();
+			id_listbox->Items->Add("No. of books added = " + noOfCopies);
 			this->id_listbox->Visible = true;
+
 		}
 		catch (Exception^ ex)
 		{
 			MessageBox::Show(ex->Message);
 		}
-		conDataBase->Close();
 	}
 
 
