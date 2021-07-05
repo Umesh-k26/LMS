@@ -209,6 +209,7 @@
     <ClInclude Include="src\written_functions\Borrow_book_functions.h" />
     <ClInclude Include="src\written_functions\delete_profile_func.h" />
     <ClInclude Include="src\written_functions\filling_datagrid.h" />
+    <ClInclude Include="src\written_functions\RegisterLibrarian_func.h" />
     <ClInclude Include="src\written_functions\RegisterMember_func.h" />
     <ClInclude Include="src\written_functions\Return_book_functions.h" />
     <ClInclude Include="src\written_functions\update_profile_func.h" />
@@ -242,6 +243,7 @@
     <ClCompile Include="src\written_functions\Borrow_book_functions.cpp" />
     <ClCompile Include="src\written_functions\delete_profile_func.cpp" />
     <ClCompile Include="src\written_functions\filling_datagrid.cpp" />
+    <ClCompile Include="src\written_functions\RegisterLibrarian_func.cpp" />
     <ClCompile Include="src\written_functions\RegisterMember_func.cpp" />
     <ClCompile Include="src\written_functions\Return_book_functions.cpp" />
     <ClCompile Include="src\written_functions\update_profile_func.cpp" />

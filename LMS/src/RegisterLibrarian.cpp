@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "RegisterLibrarian.h"
 #include "connection_sql_func.h"
-
+#include "written_functions/RegisterLibrarian_func.h"
 namespace LMS {
 
 	///Constructor calls for functions to Initialize all the components of the form
@@ -43,48 +43,26 @@ namespace LMS {
 	/// </summary>
 	System::Void RegisterLibrarian::RegisterLibrarian_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system_db.library_user_pass \
-		VALUES('" + this->librarian_username_txt->Text + "',\
-		'" + this->password_txt->Text + "',\
-		'" + this->name_txt->Text + "',\
-		'" + this->dateTimePicker->Text + "',\
-		'" + this->address_txt->Text + "',\
-		'" + this->email_id_txt->Text + "',\
-		'" + this->mobile_no_txt->Text + "',\
-		'" + Gender + "')	;", conDataBase);
-
-		MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system_db.library_user_pass \
-	    WHERE library_username = '" + this->librarian_username_txt->Text + "';", conDataBase);
-
-		MySqlDataReader^ myReader;
 		try {
-			conDataBase->Open();
-			while (true)
+
+			if (!String::Equals(this->password_txt->Text, this->re_password_txt->Text))
 			{
-				if (String::Equals(this->password_txt->Text, this->re_password_txt->Text))
-				{
-					cmdDataBase1->ExecuteNonQuery();
-					break;
-				}
-				else
-				{
-					MessageBox::Show("Re-enter same password");
-					this->password_txt->Text = "";
-					this->re_password_txt->Text = "";
-					return;
-				}
+				MessageBox::Show("Re-enter same password");
+				this->password_txt->Text = "";
+				this->re_password_txt->Text = "";
+				return;
 			}
 
-			MessageBox::Show("Librarian registered successfully!");
+			bool result = LMS::Presenter::RegisterLibrarian_func(this->librarian_username_txt->Text, this->password_txt->Text, this->name_txt->Text, \
+				this->dateTimePicker->Text, this->address_txt->Text, this->email_id_txt->Text, this->mobile_no_txt->Text, Gender);
 
-			myReader = cmdDataBase2->ExecuteReader();
 
-			if (myReader->Read())
+
+			if (result)
 			{
-				MessageBox::Show("Your username is " + myReader->GetString("library_username"));
+				MessageBox::Show("Librarian registered successfully!");
+				MessageBox::Show("Your username is " + this->librarian_username_txt->Text);
 			}
-			myReader->Close();
 
 			this->name_txt->Text = "";
 			this->librarian_username_txt->Text = "";
@@ -102,7 +80,6 @@ namespace LMS {
 		{
 			MessageBox::Show(ex->Message);
 		}
-		conDataBase->Close();
 	}
 
 	/// <summary>

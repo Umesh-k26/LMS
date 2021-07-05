@@ -52,9 +52,9 @@ namespace LMS {
 		/// Destructor function for the form
 		/// </summary>
 		~RegisterLibrarian();
-
+	public:
 		/// <summary>
-		/// Protected variables for storing Gender
+		/// Public variable for storing Gender
 		/// </summary>
 		String^ Gender;
 
