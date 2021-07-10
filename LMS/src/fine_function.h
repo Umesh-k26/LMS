@@ -30,4 +30,15 @@ namespace fine_func {
 	/// </returns>
 	int calculate_fine(int order_id_input, int member_id_input, String^ borrow_profession_input);
 
+	/// <summary>
+	/// This function just calculates the value of Fine for book being lost
+	/// </summary>
+	/// <param name="price_book_input">
+	/// int input for price of the book
+	/// </param>
+	/// <returns>
+	/// int value for fine to be paid
+	/// </returns>
+	int calculate_fine_lost_book(int price_book_input);
+
 }

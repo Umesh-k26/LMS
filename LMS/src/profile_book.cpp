@@ -2,7 +2,7 @@
 #include "profile_book.h"
 #include "written_functions/delete_profile_func.h"
 #include "written_functions/update_profile_func.h"
-
+#include "fine_function.h"
 /// <summary>
 ///Constructor calls for functions to Initialize all the components of the form
 /// </summary>
@@ -129,7 +129,7 @@ System::Void LMS::profile_book::update_profile_button_Click(System::Object^ send
 /// <summary>
 /// Button OnClick To Switch the particular copy to Lost and removed from showing in the list
 /// </summary>
-/// @see delete_profile_func::delete_book_profile()
+/// @see delete_profile_func::delete_book_profile(), fine_func::calculate_fine_lost_book()
 System::Void LMS::profile_book::delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	MessageBox::Show("Delete Profile");
@@ -158,15 +158,15 @@ System::Void LMS::profile_book::delete_profile_button_Click(System::Object^ send
 		//Initializes the fine as price of book
 		int total_fine = Int32::Parse(this->price_txt->Text);
 
-		//Calculates the total fine to be paid
-		total_fine = total_fine * 2;
+		//Calculates the total fine to be paid by calling the function
+		int fine_paid_lost_book = fine_func::calculate_fine_lost_book(total_fine);
 
 		//IF block which checks that if the delete book profile function returns true then it shows message to pay the fine
 		//ELSE it shows an error message
-		if (delete_profile_func::delete_book_profile(this->book_id_txt->Text, this->bookname_txt->Text, this->author_txt->Text, this->publisher_txt->Text, this->edition_no_txt->Text, this->borrow_stat_txt->Text, System::Convert::ToString(total_fine)) == true)
+		if (delete_profile_func::delete_book_profile(this->book_id_txt->Text, this->borrow_stat_txt->Text, System::Convert::ToString(fine_paid_lost_book)) == true)
 		{
 			MessageBox::Show("Profile is deleted");
-			MessageBox::Show("Pay Fine for the book: Rs " + System::Convert::ToString(total_fine));
+			MessageBox::Show("Pay Fine for the book: Rs " + System::Convert::ToString(fine_paid_lost_book));
 		}
 		else
 		{
