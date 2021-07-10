@@ -42,14 +42,6 @@ namespace fine_func {
 			}
 			myReader->Close();
 
-			/*MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT member_profession FROM library_system_db.member_data WHERE member_id = " + member_id_input + ";", conDataBase);
-			myReader = cmdDataBase2->ExecuteReader();
-			while (myReader->Read())
-			{
-				borrow_profession_input = myReader->GetString("member_profession");
-			}
-			myReader->Close();*/
-
 			//IF blocks check for each profession of the member and calculates fine based on that
 			if (borrow_profession_input == "Student")
 			{
@@ -105,5 +97,14 @@ namespace fine_func {
 		//Close the connection to DataBase
 		conDataBase->Close();
 		return 0;
+	}
+
+	/// <summary>
+	/// This function finds the value of Fine to be paid when the book is lost and is made to be 2 times the price of the book
+	/// </summary>
+	int calculate_fine_lost_book(int price_book_input)
+	{
+		int fine = price_book_input * 2;
+		return fine;
 	}
 }

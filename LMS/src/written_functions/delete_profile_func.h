@@ -27,21 +27,15 @@ namespace delete_profile_func {
 	/// <param name="input_id">
 	/// String input for ID of the book whose profile needs to be deleted
 	/// </param>
-	/// <param name="book_name_input">
-	/// String input for name of the book
+	/// <param name="borrow_status_input">
+	/// String input for checking the status of Book being borrowed or not
 	/// </param>
-	/// <param name="book_author_input">
-	/// String input for author of the book
-	/// </param>
-	/// <param name="book_pub_input">
-	/// String input for publisher of the book
-	/// </param>
-	/// <param name="book_edition_input">
-	/// String input for edition of the book
+	/// <param name="final_fine">
+	/// String input for Fine on the Book upon being Lost
 	/// </param>
 	/// <returns>
 	/// Returns true if it is successful in deleting
 	/// </returns>
-	bool delete_book_profile(String^ input_id, String^ book_name_input, String^ book_author_input, String^ book_pub_input, String^ book_edition_input, String^ borrow_status_input, String^ final_fine);
+	bool delete_book_profile(String^ input_id, String^ borrow_status_input, String^ final_fine);
 
 }
