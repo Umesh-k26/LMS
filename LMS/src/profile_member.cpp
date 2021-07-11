@@ -41,12 +41,15 @@ System::Void LMS::profile_member::profile_member_Load(System::Object^ sender, Sy
 	//FormBorderStyle = Windows::Forms::FormBorderStyle::None;
 	WindowState = FormWindowState::Maximized;
 
+	//IF block to check if User is a librarian or not
 	if (is_librarian == false)
 	{
+		//IF NOT then delete profile button is made invisible
 		this->delete_profile_button->Visible = false;
 	}
 	else
 	{
+		//IF YES then delete profile button is made visible
 		this->delete_profile_button->Visible = true;
 	}
 
@@ -56,12 +59,18 @@ System::Void LMS::profile_member::profile_member_Load(System::Object^ sender, Sy
 	//This command returns details of Book of that Member ID
 	MySqlCommand^ fill_data_cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.member_data\
 		WHERE member_id = " + transfer_id + ";", conDataBase);
+
 	MySqlDataReader^ myReader;
+
 	try {
+
 		//Opens the Database connection
 		conDataBase->Open();
+
+		//Execute the function to return details of the Member from Database
 		myReader = fill_data_cmdDataBase->ExecuteReader();
 
+		//Strings to signify each detail which would later inititialize the textboxes
 		String^ printing_name;
 		String^ printing_id;
 		String^ printing_profession;
@@ -70,9 +79,11 @@ System::Void LMS::profile_member::profile_member_Load(System::Object^ sender, Sy
 		String^ printing_address;
 		//String^ printing_dob;
 		String^ printing_member_stat;
+
+		//While loop to read the details from the Reader
 		while (myReader->Read())
 		{
-
+			//Getting the details in String Form
 			printing_id = myReader->GetString("member_id");
 			printing_name = myReader->GetString("member_name");
 			printing_profession = myReader->GetString("member_profession");
@@ -84,20 +95,21 @@ System::Void LMS::profile_member::profile_member_Load(System::Object^ sender, Sy
 
 			MySql::Data::Types::MySqlDateTime new_dob;
 			new_dob = myReader->GetMySqlDateTime("member_dob");
+
+			//Initialzing the Text Box
 			this->name_txt->Text = printing_name;
 			this->member_id_txt->Text = printing_id;
 			this->email_id_txt->Text = printing_email;
 			this->mobile_no_txt->Text = printing_mobile;
 			this->address_txt->Text = printing_address;
-
-			//this->dob_member_txt->Text = printing_dob;
+			this->member_stat_text->Text = printing_member_stat;
+			this->profession_txt->Text = printing_profession;
 			this->dob_member_txt->Text = new_dob.ToString();
 
-			this->profession_txt->Text = printing_profession;
+			//this->dob_member_txt->Text = printing_dob;
 			//listBox1->Items->Add(printing_names);
-
 			//this->dateTimePicker->Value = new_dob.GetDateTime();
-			this->member_stat_text->Text = printing_member_stat;
+			
 		}
 		
 		//Calls the function to fill the datagrid with Borrow History of the Member
@@ -119,11 +131,15 @@ System::Void LMS::profile_member::profile_member_Load(System::Object^ sender, Sy
 System::Void LMS::profile_member::update_profile_button_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	MessageBox::Show("Update profile");
+	//When Updating the profile it makes "Confirm Changes" button as visible and original "Update Profile" button as invisible
+	
 	//this->dob_member_txt->Visible = false;
 	this->update_profile_button->Visible = false;
 	this->confirm_change_button->Visible = true;
 	
 	//this->name_txt->ReadOnly = true;
+
+	//Other required elements are now made Editable and drop down for profession is also made visible
 	this->profession_txt->ReadOnly = true;
 	this->email_id_txt->ReadOnly = false;
 	this->mobile_no_txt->ReadOnly = false;
@@ -323,6 +339,7 @@ System::Void LMS::profile_member::member_borrow_history_dataGridView_CellContent
 /// </summary>
 System::Void LMS::profile_member::change_pass_btn_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	//When clicked certain buttons are made invisible and some are made visible
 	this->new_pass_lbl->Visible = true;
 	this->new_pass_txt->Visible = true;
 	this->confirm_newpass_btn->Visible = true;
@@ -360,6 +377,8 @@ System::Void LMS::profile_member::confirm_newpass_btn_Click(System::Object^ send
 		{
 			MessageBox::Show("SOME ERROR HAS OCCURED IN UPDATING PASSWORD", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
+
+		//Prevously buttons made visible are made invisible and vice versa
 		this->new_pass_lbl->Visible = false;
 		this->new_pass_txt->Visible = false;
 		this->confirm_newpass_btn->Visible = false;

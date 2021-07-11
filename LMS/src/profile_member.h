@@ -339,7 +339,7 @@ namespace LMS {
 			// 
 			this->profession_selector->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->profession_selector->FormattingEnabled = true;
-			this->profession_selector->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Student", L"Faculty", L"Alumini" });
+			this->profession_selector->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Student", L"Faculty", L"Alumni" });
 			this->profession_selector->Location = System::Drawing::Point(430, 228);
 			this->profession_selector->Name = L"profession_selector";
 			this->profession_selector->Size = System::Drawing::Size(146, 28);

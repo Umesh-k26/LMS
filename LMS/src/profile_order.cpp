@@ -56,6 +56,7 @@ System::Void LMS::profile_order::profile_order_Load(System::Object^ sender, Syst
 	//This command returns details of Order of that Order ID
 	MySqlCommand^ get_order_details_cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.borrow_history\
 		WHERE order_id = " + transfer_order_id + ";", conDataBase);
+
 	MySqlDataReader^ myReader;
 	//MessageBox::Show(transfer_order_id);
 
@@ -63,20 +64,27 @@ System::Void LMS::profile_order::profile_order_Load(System::Object^ sender, Syst
 
 		//Opens Connection to DataBase
 		conDataBase->Open();
+
+		//Execute the function to return details of the Order/Issue from Database
 		myReader = get_order_details_cmdDataBase->ExecuteReader();
 
 		while (myReader->Read())
 		{
+			//Strings to signify each detail which would later inititialize the textboxes
 			String^ printing_member_id;
 			String^ printing_book_id;
+			String^ printing_fine;
 			//String^ printing_date_issue;
 			//String^ printing_date_return;
-			String^ printing_fine;
+			
 
 			MySql::Data::Types::MySqlDateTime print_date_of_issue;
 			//MySql::Data::Types::MySqlDateTime print_date_of_return;
 			print_date_of_issue = myReader->GetMySqlDateTime("date_issue");
 			//print_date_of_return = myReader->GetMySqlDateTime("date_returned");
+
+			//IF the return column or fine column is empty then it initializes as empty character in the textbox
+			//ELSE it shows those details as well
 			if (myReader->IsDBNull(column_id_for_order_history::column_return_) || myReader->IsDBNull(column_id_for_order_history::column_fine_))
 			{
 				this->date_return_txt->Text = "";
@@ -137,10 +145,13 @@ void LMS::profile_order::fill_user_data()
 	try {
 		//Opens connection with the DataBase
 		conDataBase->Open();
+
+		//Execute the function to return details of the Member from Database
 		myReader = get_member_det_cmdDataBase->ExecuteReader();
 
 		while (myReader->Read())
 		{
+			//Strings to signify each detail which would later inititialize the textboxes
 			String^ printing_name;
 			//String^ printing_id;
 			String^ printing_profession;
@@ -194,10 +205,14 @@ void LMS::profile_order::fill_book_data()
 	try {
 		//Opens the connection with the database
 		conDataBase->Open();
+
+		//Execute the function to return details of the Book from Database
 		myReader = cmdDataBase->ExecuteReader();
 
 		while (myReader->Read())
 		{
+
+			//Strings to signify each detail which would later inititialize the textboxes
 			String^ printing_name;
 
 			String^ printing_author;
