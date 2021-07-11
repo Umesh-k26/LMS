@@ -67,6 +67,8 @@ bool LMS::dbInteract::delete_book_profile(String^ input_id, String^ borrow_statu
 	//This command updates the Last Issue/Order in which the particular book was borrowed and Sets the fine and Returned Date and changes Status to 'LOST'
 	MySqlCommand^ update_last_borrow_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.borrow_history SET borrow_fine = '"+ final_fine+"', date_returned = CURDATE(), borrow_status = 'LOST' WHERE order_id = (SELECT order_id FROM (SELECT * FROM library_system_db.borrow_history WHERE book_id = '"+ input_id+ "' ORDER BY order_id DESC Limit 1) as X);", conDataBase);
 	
+	//This command updates the number of Books Borrowed currently by the Member
+	MySqlCommand^ update_member_book_stat_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.member_data SET member_no_book_stat = member_no_book_stat - 1 WHERE member_id = (SELECT member_id FROM(SELECT * FROM library_system_db.borrow_history WHERE book_id = '" + input_id + "' ORDER BY order_id DESC Limit 1) as X);", conDataBase);
 
 	try {
 		//Open Database
@@ -81,6 +83,7 @@ bool LMS::dbInteract::delete_book_profile(String^ input_id, String^ borrow_statu
 		{
 			//IF the book was borrowed then it updates the Last Order along with the fine
 			update_last_borrow_cmdDataBase->ExecuteNonQuery();
+			update_member_book_stat_cmdDataBase->ExecuteNonQuery();
 		}
 
 		//MessageBox::Show("Profile is deleted");
