@@ -21,12 +21,14 @@ LMS::profile_book::profile_book(String^ label_book_id, bool isLibrarian)
 	InitializeComponent();
 	transfer_id_book = label_book_id;
 	transfer_isLibrarian = isLibrarian;
+
+	//IF statement to check if the User is a librarian or not
 	if (transfer_isLibrarian == false)
 	{
+		//IF not then the buttons for Update and Delete Profile are made invisible
 		this->update_profile_button->Visible = false;
 		this->delete_profile_button->Visible = false;
 	}
-	//fill_data_grid();
 }
 
 LMS::profile_book::~profile_book()
@@ -57,8 +59,11 @@ System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System
 	try {
 		//Opens the Database connection
 		conDataBase->Open();
+
+		//Execute the function to return details of the Book from Database
 		myReader = fill_data_cmdDataBase->ExecuteReader();
 
+		//Strings to signify each detail which would later inititialize the textboxes
 		String^ printing_name;
 		String^ printing_id;
 		String^ printing_author;
@@ -69,8 +74,11 @@ System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System
 		String^ printing_category;
 		//String^ printing_copies_avilable;
 		//String^ printing_lost_stat;
+		
+		//While loop to read the details from the Reader
 		while (myReader->Read())
 		{
+			//Getting the details in String Form
 			printing_id = myReader->GetString("book_id");
 			printing_name = myReader->GetString("book_name");
 			printing_author = myReader->GetString("book_author");
@@ -81,6 +89,8 @@ System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System
 			printing_category = myReader->GetString("category");
 			//printing_copies_avilable = myReader->GetString("copies_available");
 			//printing_lost_stat = myReader->GetString("book_lost");
+
+			//Initialzing the Text Box
 			this->bookname_txt->Text = printing_name;
 			this->book_id_txt->Text = printing_id;
 			this->author_txt->Text = printing_author;
@@ -94,12 +104,12 @@ System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System
 			//listBox1->Items->Add(printing_names);
 
 		}
-		//fill_data_grid();
+		
 
 		//Calls the function to fill datagrid with IDs of the copies of the book
 		filling_datagrid::fill_datagrid_book_profile(this->bookname_txt->Text, book_copies_dataGridView, this->edition_no_txt->Text);
 
-
+		//Counts the Number of rows to calculate the number of copies
 		int num_row = this->book_copies_dataGridView->RowCount;
 		this->no_copies_txt->Text = num_row.ToString();
 
@@ -112,6 +122,7 @@ System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System
 	//Close the connection to DataBase
 	conDataBase->Close();
 
+	//Initializes the numeric Up Down as 0
 	this->numeric_updown_no_copies->Value = 0;
 }
 
@@ -121,6 +132,8 @@ System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System
 System::Void LMS::profile_book::update_profile_button_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	MessageBox::Show("Update Profile");
+	//When Updating the profile it makes "Confirm Changes" and "Numeric Up Down" buttons as visible and original 
+	//"Update Profile" button as invisible
 	this->numeric_updown_no_copies->Visible = true;
 	this->confirm_change_button->Visible = true;
 	this->update_profile_button->Visible = false;
@@ -133,6 +146,7 @@ System::Void LMS::profile_book::update_profile_button_Click(System::Object^ send
 System::Void LMS::profile_book::delete_profile_button_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	MessageBox::Show("Delete Profile");
+	//IF block to give warning to User that Profile will be deleted
 	if (MessageBox::Show("The profile will be deleted. Do you want to contiue?", "Warning", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK)
 	{
 		//MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
@@ -155,6 +169,9 @@ System::Void LMS::profile_book::delete_profile_button_Click(System::Object^ send
 		//}
 		//conDataBase->Close();
 
+
+		//IF is YES then the profile will be deleted which actually means the book is now technically Lost
+		// 
 		//Initializes the fine as price of book
 		int total_fine = Int32::Parse(this->price_txt->Text);
 
@@ -189,11 +206,14 @@ System::Void LMS::profile_book::delete_profile_button_Click(System::Object^ send
 /// @see update_profile_func::update_book_profile()
 System::Void LMS::profile_book::confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	//Previuosly made visible elements are now made invisible and vice versa
 	this->numeric_updown_no_copies->Visible = false;
 	this->confirm_change_button->Visible = false;
 	this->update_profile_button->Visible = true;
 
 	//updating_no_of_copies((int)this->numeric_updown_no_copies->Value);
+	
+
 	//IF the number of books to be added is less than or equal to 0 then it shows message and nothing else
 	if ((int)this->numeric_updown_no_copies->Value <= 0)
 	{
