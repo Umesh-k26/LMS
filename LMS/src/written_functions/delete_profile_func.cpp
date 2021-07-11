@@ -6,7 +6,7 @@
 /// This function simply deactivates the membership of a member instead of completetly removing from the database
 /// </summary>
 /// If the book was orginally borrowed by a member then it updates the Borrow History with fine and changes Borrow Status to 'LOST'
-bool delete_profile_func::delete_member_profile(String^ input_id)
+bool LMS::dbInteract::delete_member_profile(String^ input_id)
 {
 	//Intitializing a boolean value to be returned
 	bool return_value = false;
@@ -53,7 +53,7 @@ bool delete_profile_func::delete_member_profile(String^ input_id)
 /// <summary>
 /// This function simply changes the status of the book as lost instead of completetly removing from the database
 /// </summary>
-bool delete_profile_func::delete_book_profile(String^ input_id, String^ borrow_status_input, String^ final_fine)
+bool LMS::dbInteract::delete_book_profile(String^ input_id, String^ borrow_status_input, String^ final_fine)
 {
 	//Intitializing a boolean value to be returned
 	bool return_val = false;

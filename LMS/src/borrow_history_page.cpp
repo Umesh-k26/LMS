@@ -6,7 +6,7 @@
 LMS::borrow_history_page::borrow_history_page(void)
 {
 	InitializeComponent();
-	filling_datagrid::fill_datagrid_borrow_history(borrow_history_dataGridView, is_librarian, transfer_id);
+	LMS::dbInteract::fill_datagrid_borrow_history(borrow_history_dataGridView, is_librarian, transfer_id);
 }
 
 /// <summary>
@@ -18,7 +18,7 @@ LMS::borrow_history_page::borrow_history_page(String^ input_transfer_id, bool is
 	transfer_id = input_transfer_id;
 	is_librarian = is_librarian_input;
 	InitializeComponent();
-	filling_datagrid::fill_datagrid_borrow_history(borrow_history_dataGridView, is_librarian, transfer_id);
+	LMS::dbInteract::fill_datagrid_borrow_history(borrow_history_dataGridView, is_librarian, transfer_id);
 }
 
 LMS::borrow_history_page::~borrow_history_page()
@@ -79,7 +79,7 @@ System::Void LMS::borrow_history_page::borrow_history_dataGridView_CellContentCl
 		{
 			//When user clicks the back button in the Profile Form it closes that and then shows this form again and fills loads the form
 			this->Show();
-			filling_datagrid::fill_datagrid_borrow_history(borrow_history_dataGridView, is_librarian, transfer_id);
+			LMS::dbInteract::fill_datagrid_borrow_history(borrow_history_dataGridView, is_librarian, transfer_id);
 		}
 
 	}
@@ -107,7 +107,7 @@ System::Void LMS::borrow_history_page::search_button_Click(System::Object^ sende
 	}
 
 	//Calls the filtering function to fill the datagrid with required search results
-	filling_datagrid::fill_datagrid_borrow_history_filtered(str_list_detail_search_order, this->search_bar->Text, borrow_history_dataGridView, is_librarian, transfer_id);
+	LMS::dbInteract::fill_datagrid_borrow_history_filtered(str_list_detail_search_order, this->search_bar->Text, borrow_history_dataGridView, is_librarian, transfer_id);
 }
 
 /// <summary>

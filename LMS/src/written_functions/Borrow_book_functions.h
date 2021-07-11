@@ -1,16 +1,14 @@
 #pragma once
-
-namespace Borrow_book_functions {
-
-	using namespace System;
-	using namespace System::ComponentModel;
-	using namespace System::Collections;
-	using namespace System::Windows::Forms;
-	using namespace System::Data;
-	using namespace System::Drawing;
-	using namespace MySql::Data::MySqlClient;
+using namespace System;
+using namespace System::ComponentModel;
+using namespace System::Collections;
+using namespace System::Windows::Forms;
+using namespace System::Data;
+using namespace System::Drawing;
+using namespace MySql::Data::MySqlClient;
 
 
+namespace LMS::dbInteract {
 
 	bool Check_book(String^ Book_Id);
 

@@ -2,7 +2,7 @@
 #include "RegisterMember_func.h"
 #include "connection_sql_func.h"
 
-int LMS::Presenter::RegisterMember_func(String^ Name, String^ DOB, String^ Address, String^ EmailId, \
+int LMS::dbInteract::RegisterMember_func(String^ Name, String^ DOB, String^ Address, String^ EmailId, \
 	String^ MobileNo, String^ Profession, String^ Gender, String^ Password)
 {
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());

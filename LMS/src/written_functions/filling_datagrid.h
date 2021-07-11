@@ -1,14 +1,15 @@
 #pragma once
 
-namespace filling_datagrid {
+using namespace System;
+using namespace System::ComponentModel;
+using namespace System::Collections;
+using namespace System::Windows::Forms;
+using namespace System::Data;
+using namespace System::Drawing;
+using namespace MySql::Data::MySqlClient;
 
-	using namespace System;
-	using namespace System::ComponentModel;
-	using namespace System::Collections;
-	using namespace System::Windows::Forms;
-	using namespace System::Data;
-	using namespace System::Drawing;
-	using namespace MySql::Data::MySqlClient;
+namespace LMS::dbInteract {
+
 
 	/// <summary>
 	/// Function for filling Member Datagrid in List of Member page

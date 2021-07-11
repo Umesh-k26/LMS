@@ -7,7 +7,7 @@ LMS::list_of_member_page::list_of_member_page(void)
 {
 	InitializeComponent();
 	//sql_connection_func::fill_datagrid_member(list_of_member_dataGridView);
-	filling_datagrid::fill_datagrid_member(list_of_member_dataGridView);
+	LMS::dbInteract::fill_datagrid_member(list_of_member_dataGridView);
 }
 
 /// <summary>
@@ -19,7 +19,7 @@ LMS::list_of_member_page::list_of_member_page(String^ input_id_transfer, bool is
 	InitializeComponent();
 	transfer_id = input_id_transfer;
 	is_librarian = is_librarian_input;
-	filling_datagrid::fill_datagrid_member(list_of_member_dataGridView);
+	LMS::dbInteract::fill_datagrid_member(list_of_member_dataGridView);
 }
 
 LMS::list_of_member_page::~list_of_member_page()
@@ -66,7 +66,7 @@ System::Void LMS::list_of_member_page::list_of_member_dataGridView_CellContentCl
 		{
 			//When user clicks the back button in the Profile Form it closes that and then shows this form again and fills loads the form
 			this->Show();
-			filling_datagrid::fill_datagrid_member(list_of_member_dataGridView);
+			LMS::dbInteract::fill_datagrid_member(list_of_member_dataGridView);
 		}
 
 	}
@@ -102,7 +102,7 @@ System::Void LMS::list_of_member_page::search_button_member_Click(System::Object
 	}
 
 	//Calls the filtering function to fill the datagrid with required search results
-	filling_datagrid::fill_datagrid_members_filtered(str_list_detail_search_member, this->search_bar_member->Text, list_of_member_dataGridView);
+	LMS::dbInteract::fill_datagrid_members_filtered(str_list_detail_search_member, this->search_bar_member->Text, list_of_member_dataGridView);
 
 }
 

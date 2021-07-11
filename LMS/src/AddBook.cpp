@@ -47,7 +47,7 @@ namespace LMS {
 		int noOfCopies = System::Convert::ToInt32(this->no_of_copies_txt->Text);
 		int price = System::Convert::ToInt32(this->price_txt->Text);
 
-		/*int firstBookId = LMS::Presenter::AddBook_func(this->bookname_txt->Text, this->author_txt->Text, this->publisher_txt->Text, \
+		/*int firstBookId = LMS::dbInteract::AddBook_func(this->bookname_txt->Text, this->author_txt->Text, this->publisher_txt->Text, \
 			this->category_txt->Text, editionNo, noOfCopies, price);*/
 
 
@@ -55,7 +55,7 @@ namespace LMS {
 
 		try
 		{
-			int firstBookId = LMS::Presenter::AddBook_func(this->bookname_txt->Text, this->author_txt->Text, this->publisher_txt->Text, \
+			int firstBookId = LMS::dbInteract::AddBook_func(this->bookname_txt->Text, this->author_txt->Text, this->publisher_txt->Text, \
 				this->category_txt->Text, editionNo, noOfCopies, price);
 			int bookId = firstBookId;
 			MessageBox::Show("Books added Successfully!");

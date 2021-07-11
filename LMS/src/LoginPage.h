@@ -4,6 +4,10 @@
 
 namespace LMS {
 
+	namespace dbInteract {
+
+	}
+
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;

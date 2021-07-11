@@ -2,7 +2,7 @@
 #include "RegisterLibrarian_func.h"
 #include <connection_sql_func.h>
 
-bool LMS::Presenter::RegisterLibrarian_func(String^ username, String^ password, String^ Name, \
+bool LMS::dbInteract::RegisterLibrarian_func(String^ username, String^ password, String^ Name, \
 						String^ DOB, String^ Address, String^ Email, String^ Mobile, String^ Gender)
 {
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());

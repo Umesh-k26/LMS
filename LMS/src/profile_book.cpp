@@ -107,7 +107,7 @@ System::Void LMS::profile_book::profile_book_Load(System::Object^ sender, System
 		
 
 		//Calls the function to fill datagrid with IDs of the copies of the book
-		filling_datagrid::fill_datagrid_book_profile(this->bookname_txt->Text, book_copies_dataGridView, this->edition_no_txt->Text);
+		LMS::dbInteract::fill_datagrid_book_profile(this->bookname_txt->Text, book_copies_dataGridView, this->edition_no_txt->Text);
 
 		//Counts the Number of rows to calculate the number of copies
 		int num_row = this->book_copies_dataGridView->RowCount;
@@ -180,7 +180,7 @@ System::Void LMS::profile_book::delete_profile_button_Click(System::Object^ send
 
 		//IF block which checks that if the delete book profile function returns true then it shows message to pay the fine
 		//ELSE it shows an error message
-		if (delete_profile_func::delete_book_profile(this->book_id_txt->Text, this->borrow_stat_txt->Text, System::Convert::ToString(fine_paid_lost_book)) == true)
+		if (LMS::dbInteract::delete_book_profile(this->book_id_txt->Text, this->borrow_stat_txt->Text, System::Convert::ToString(fine_paid_lost_book)) == true)
 		{
 			MessageBox::Show("Profile is deleted");
 			MessageBox::Show("Pay Fine for the book: Rs " + System::Convert::ToString(fine_paid_lost_book));
@@ -225,7 +225,7 @@ System::Void LMS::profile_book::confirm_change_button_Click(System::Object^ send
 		//if (update_profile_func::update_book_profile(this->book_id_txt->Text, (int)this->numeric_updown_no_copies->Value, this->bookname_txt->Text, this->edition_no_txt->Text) == true)
 		//IF the update profile book successfully updates the profile of the book then it shows message of success
 		//ELSE it shows Error
-		if (update_profile_func::update_book_profile(this->book_id_txt->Text, (int)this->numeric_updown_no_copies->Value) == true)
+		if (LMS::dbInteract::update_book_profile(this->book_id_txt->Text, (int)this->numeric_updown_no_copies->Value) == true)
 		{
 			MessageBox::Show("New copies are added");
 		}
@@ -294,7 +294,7 @@ System::Void LMS::profile_book::book_copies_dataGridView_CellContentClick(System
 		{
 			//When user clicks the back button in the Profile Form it closes that and then shows this form again and fills loads the form
 			this->Show();
-			filling_datagrid::fill_datagrid_book_profile(this->bookname_txt->Text, book_copies_dataGridView, this->edition_no_txt->Text);
+			LMS::dbInteract::fill_datagrid_book_profile(this->bookname_txt->Text, book_copies_dataGridView, this->edition_no_txt->Text);
 		}
 
 	}

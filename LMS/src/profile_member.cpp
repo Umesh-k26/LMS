@@ -113,7 +113,7 @@ System::Void LMS::profile_member::profile_member_Load(System::Object^ sender, Sy
 		}
 		
 		//Calls the function to fill the datagrid with Borrow History of the Member
-		filling_datagrid::fill_datagrid_member_profile(this->member_id_txt->Text, member_borrow_history_dataGridView);
+		LMS::dbInteract::fill_datagrid_member_profile(this->member_id_txt->Text, member_borrow_history_dataGridView);
 
 	}
 	catch (Exception^ ex)
@@ -238,7 +238,7 @@ System::Void LMS::profile_member::confirm_change_button_Click(System::Object^ se
 
 	//IF update profile function returns true then it shows message box
 	//ELSE it shows error message
-	if (update_profile_func::update_member_profile(this->member_id_txt->Text, this->profession_txt->Text, this->email_id_txt->Text, this->mobile_no_txt->Text, this->address_txt->Text) == true)
+	if (LMS::dbInteract::update_member_profile(this->member_id_txt->Text, this->profession_txt->Text, this->email_id_txt->Text, this->mobile_no_txt->Text, this->address_txt->Text) == true)
 	{
 		MessageBox::Show("Profile is updated");
 	}
@@ -328,7 +328,7 @@ System::Void LMS::profile_member::member_borrow_history_dataGridView_CellContent
 		{
 			//When user clicks the back button in the Profile Form it closes that and then shows this form again and fills loads the form
 			this->Show();
-			filling_datagrid::fill_datagrid_member_profile(this->member_id_txt->Text, member_borrow_history_dataGridView);
+			LMS::dbInteract::fill_datagrid_member_profile(this->member_id_txt->Text, member_borrow_history_dataGridView);
 		}
 
 	}
@@ -369,7 +369,7 @@ System::Void LMS::profile_member::confirm_newpass_btn_Click(System::Object^ send
 
 		//IF change password function return true it shows message box
 		//ELSE it shows error message
-		if (update_profile_func::change_pass_member(this->member_id_txt->Text, sql_connection_func::password_hasher(this->member_id_txt->Text, this->new_pass_txt->Text)) == true)
+		if (LMS::dbInteract::change_pass_member(this->member_id_txt->Text, sql_connection_func::password_hasher(this->member_id_txt->Text, this->new_pass_txt->Text)) == true)
 		{
 			MessageBox::Show("Password is updated");
 		}

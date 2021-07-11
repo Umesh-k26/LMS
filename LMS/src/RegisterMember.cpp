@@ -60,7 +60,7 @@ namespace LMS {
 				return;
 			}
 
-			memberId = LMS::Presenter::RegisterMember_func(this->name_txt->Text, this->dateTimePicker->Text, this->address_txt->Text, \
+			memberId = LMS::dbInteract::RegisterMember_func(this->name_txt->Text, this->dateTimePicker->Text, this->address_txt->Text, \
 				this->email_id_txt->Text, this->mobile_no_txt->Text, this->profession_comboBox->Text, Gender, this->password_txt->Text);
 
 			MessageBox::Show("Student registered successfully!");

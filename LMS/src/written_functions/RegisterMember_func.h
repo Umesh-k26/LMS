@@ -3,7 +3,7 @@
 using namespace System;
 using namespace MySql::Data::MySqlClient;
 
-namespace LMS::Presenter {
+namespace LMS::dbInteract {
 	int RegisterMember_func(String^ Name, String^ DOB, String^ Address, \
 		String^ EmailId, String^ MobileNo, String^ Profession, String^ Gender, String^ Password);
 }

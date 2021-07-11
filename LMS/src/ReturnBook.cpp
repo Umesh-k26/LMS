@@ -43,38 +43,38 @@ System::Void LMS::ReturnBook::return_button_Click(System::Object^ sender, System
 	{
 		int Order_id = Convert::ToInt32(this->order_id_txt->Text);
 
-		if (Return_book_functions::check_Order_Id(Order_id) == true)
+		if (LMS::dbInteract::check_Order_Id(Order_id) == true)
 		{
 
-			if (Return_book_functions::Get_Borrow_status(Order_id) == "BORROWED")
+			if (LMS::dbInteract::Get_Borrow_status(Order_id) == "BORROWED")
 			{
 
-				int Book_Id = Return_book_functions::Get_Book_Id(Order_id);
+				int Book_Id = LMS::dbInteract::Get_Book_Id(Order_id);
 
-				int Member_ID = Return_book_functions::Get_Member_Id(Order_id);
+				int Member_ID = LMS::dbInteract::Get_Member_Id(Order_id);
 
-				String^ profession = Return_book_functions::Get_Profession(Member_ID);
+				String^ profession = LMS::dbInteract::Get_Profession(Member_ID);
 
-				Return_book_functions::Update_Book_data(Book_Id);
+				LMS::dbInteract::Update_Book_data(Book_Id);
 
-				Return_book_functions::Updata_Borrow_history_data(Order_id);
+				LMS::dbInteract::Updata_Borrow_history_data(Order_id);
 
 				int fine = fine_func::calculate_fine(Order_id, Member_ID, profession);
 
-				Return_book_functions::Update_Borrow_history_fine(Order_id, fine);
+				LMS::dbInteract::Update_Borrow_history_fine(Order_id, fine);
 
-				Return_book_functions::Update_Member_data(Member_ID);
+				LMS::dbInteract::Update_Member_data(Member_ID);
 
-				Return_book_functions::Message_Return_Successfully(Order_id, Book_Id, Member_ID);
+				LMS::dbInteract::Message_Return_Successfully(Order_id, Book_Id, Member_ID);
 
 			}
 
-			else if (Return_book_functions::Get_Borrow_status(Order_id) == "RETURNED")
+			else if (LMS::dbInteract::Get_Borrow_status(Order_id) == "RETURNED")
 			{
 				MessageBox::Show("Book with given Order Id is already returned.");
 			}
 
-			else if (Return_book_functions::Get_Borrow_status(Order_id) == "LOST")
+			else if (LMS::dbInteract::Get_Borrow_status(Order_id) == "LOST")
 			{
 				MessageBox::Show("Book with given Order Id is Lost.");
 			}

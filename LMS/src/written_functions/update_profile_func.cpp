@@ -6,14 +6,14 @@
 /// <summary>
 /// This function updates details such as Profession, email, mobile number and address of the member whose ID is given as inout
 /// </summary>
-bool update_profile_func::update_member_profile(String^ input_id, String^ profession_input, String^ email_input, String^ mobile_input, String^ address_input)
+bool LMS::dbInteract::update_member_profile(String^ input_id, String^ profession_input, String^ email_input, String^ mobile_input, String^ address_input)
 {
 	//Intitializing a boolean value to be returned
 	bool return_val = false;
 
 	//Creating a connection to database
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-	
+
 	//This command updates the Profession, Email, Mobile, Address of the Member of that Memeber ID
 	MySqlCommand^ update_det_member_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.member_data set member_profession = '" + profession_input + "', member_email='" + email_input + "', member_mobile=" + mobile_input + ", member_address = '" + address_input + "'WHERE member_id = " + input_id + ";", conDataBase);
 
@@ -38,15 +38,15 @@ bool update_profile_func::update_member_profile(String^ input_id, String^ profes
 
 	//Close the connection to DataBase
 	conDataBase->Close();
-\
-	//Return the required return value based on success or fail
-	return return_val;
+	\
+		//Return the required return value based on success or fail
+		return return_val;
 }
 
 /// <summary>
 /// This function adds new copies to the database for the particular Book ID
 /// </summary>
-bool update_profile_func::update_book_profile(String^ input_id, int num_copies)//, String^ book_name_input, String^ book_edition_input)
+bool LMS::dbInteract::update_book_profile(String^ input_id, int num_copies)//, String^ book_name_input, String^ book_edition_input)
 {
 	//Intitializing a boolean value to be returned
 	bool return_val = false;
@@ -77,7 +77,7 @@ bool update_profile_func::update_book_profile(String^ input_id, int num_copies)/
 		{
 			duplicate_book_copies_cmdDataBase->ExecuteNonQuery();
 		}
-			
+
 
 		//MessageBox::Show("cmdb1 executed");
 		//cmdDataBase2->ExecuteNonQuery();
@@ -106,7 +106,7 @@ bool update_profile_func::update_book_profile(String^ input_id, int num_copies)/
 /// <summary>
 /// This function updates the password of the member by taking Password in hashed form as an input and ID of the member
 /// </summary>
-bool update_profile_func::change_pass_member(String^ input_id, String^ new_pass_input)
+bool LMS::dbInteract::change_pass_member(String^ input_id, String^ new_pass_input)
 {
 
 	//Intitializing a boolean value to be returned
@@ -115,7 +115,7 @@ bool update_profile_func::change_pass_member(String^ input_id, String^ new_pass_
 	//Creating a connection to database
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 	//MySqlCommand^ change_pass_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.user_pass set member_id = " + this->member_id_txt->Text + ", user_password = "+ this->new_pass_txt->Text +" WHERE member_id = " + this->member_id_txt->Text + ";", conDataBase);
-	
+
 	//This command updates the Password of the Member
 	MySqlCommand^ change_pass_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.user_pass set member_id = ' " + input_id + " ', user_password = '" + new_pass_input + "' WHERE member_id =' " + input_id + " ';", conDataBase);
 	try {

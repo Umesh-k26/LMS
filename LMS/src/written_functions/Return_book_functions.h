@@ -1,15 +1,13 @@
 #pragma once
+using namespace System;
+using namespace System::ComponentModel;
+using namespace System::Collections;
+using namespace System::Windows::Forms;
+using namespace System::Data;
+using namespace System::Drawing;
+using namespace MySql::Data::MySqlClient;
 
-namespace Return_book_functions {
-
-	using namespace System;
-	using namespace System::ComponentModel;
-	using namespace System::Collections;
-	using namespace System::Windows::Forms;
-	using namespace System::Data;
-	using namespace System::Drawing;
-	using namespace MySql::Data::MySqlClient;
-
+namespace LMS::dbInteract {
 
 	String^ Get_Borrow_status(int Order_Id);
 

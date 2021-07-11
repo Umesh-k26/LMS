@@ -5,7 +5,7 @@
 #include <chrono>
 
 
-int LMS::Presenter::AddBook_func(String^ Name, String^ Author, String^ Publisher, \
+int LMS::dbInteract::AddBook_func(String^ Name, String^ Author, String^ Publisher, \
 	String^ Category, const int EditionNo, const int NoOfCopies, const int Price)
 {
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());

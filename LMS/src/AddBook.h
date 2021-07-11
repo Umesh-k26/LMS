@@ -10,9 +10,6 @@ namespace LMS {
 	using namespace System::Drawing;
 	using namespace MySql::Data::MySqlClient;
 
-	namespace Presenter {
-
-	}
 	/// <summary>
 	/// Summary for AddBook
 	/// </summary>

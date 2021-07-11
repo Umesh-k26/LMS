@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "BorrowBook.h"
+#include <written_functions/Borrow_book_functions.h>
 
 /// <summary>
 /// Constructor calls for functions to Initialize all the components of the form
@@ -45,24 +46,24 @@ System::Void LMS::BorrowBook::borrow_button_Click(System::Object^ sender, System
 
 	try {
 
-		if (Borrow_book_functions::Check_Memeber(this->member_id_txt->Text) == true)
+		if (LMS::dbInteract::Check_Memeber(this->member_id_txt->Text) == true)
 		{
 
-			if (Borrow_book_functions::Check_book(this->book_id_txt->Text) == true)
+			if (LMS::dbInteract::Check_book(this->book_id_txt->Text) == true)
 			{
 
-				Borrow_book_functions::Update_Book_data(this->book_id_txt->Text);
+				LMS::dbInteract::Update_Book_data(this->book_id_txt->Text);
 
-				Borrow_book_functions::Take_New_order(this->book_id_txt->Text, this->member_id_txt->Text);
+				LMS::dbInteract::Take_New_order(this->book_id_txt->Text, this->member_id_txt->Text);
 
-				Borrow_book_functions::Update_member_data(this->member_id_txt->Text);
+				LMS::dbInteract::Update_member_data(this->member_id_txt->Text);
 
-				Borrow_book_functions::Message_Borrowed_succesfully(this->book_id_txt->Text, this->member_id_txt->Text);
+				LMS::dbInteract::Message_Borrowed_succesfully(this->book_id_txt->Text, this->member_id_txt->Text);
 
 			}
 			else
 			{
-				Borrow_book_functions::Check_copies_available(this->book_id_txt->Text);
+				LMS::dbInteract::Check_copies_available(this->book_id_txt->Text);
 			}
 
 		}

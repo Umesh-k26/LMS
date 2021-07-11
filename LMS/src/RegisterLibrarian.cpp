@@ -53,7 +53,7 @@ namespace LMS {
 				return;
 			}
 
-			bool result = LMS::Presenter::RegisterLibrarian_func(this->librarian_username_txt->Text, this->password_txt->Text, this->name_txt->Text, \
+			bool result = LMS::dbInteract::RegisterLibrarian_func(this->librarian_username_txt->Text, this->password_txt->Text, this->name_txt->Text, \
 				this->dateTimePicker->Text, this->address_txt->Text, this->email_id_txt->Text, this->mobile_no_txt->Text, Gender);
 
 

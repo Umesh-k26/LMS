@@ -6,7 +6,7 @@
 LMS::list_of_books_page::list_of_books_page(void)
 {
 	InitializeComponent();
-	filling_datagrid::fill_datagrid_book(list_of_books_dataGridView);
+	LMS::dbInteract::fill_datagrid_book(list_of_books_dataGridView);
 }
 
 /// <summary>
@@ -19,7 +19,7 @@ LMS::list_of_books_page::list_of_books_page(String^ input_transfer_id, bool is_l
 	is_librarian = is_librarian_input;
 	InitializeComponent();
 	//fill_data_grid();
-	filling_datagrid::fill_datagrid_book(list_of_books_dataGridView);
+	LMS::dbInteract::fill_datagrid_book(list_of_books_dataGridView);
 }
 
 LMS::list_of_books_page::~list_of_books_page()
@@ -89,7 +89,7 @@ System::Void LMS::list_of_books_page::list_of_books_dataGridView_CellContentClic
 		{
 			//When user clicks the back button in the Profile Form it closes that and then shows this form again and fills loads the form
 			this->Show();
-			filling_datagrid::fill_datagrid_book(list_of_books_dataGridView);
+			LMS::dbInteract::fill_datagrid_book(list_of_books_dataGridView);
 		}
 
 	}
@@ -122,7 +122,7 @@ System::Void LMS::list_of_books_page::search_button_book_Click(System::Object^ s
 	}
 
 	//Calls the filtering function to fill the datagrid with required search results
-	filling_datagrid::fill_datagrid_books_filtered(str_list_detail_search_book, this->search_bar_book->Text, list_of_books_dataGridView);
+	LMS::dbInteract::fill_datagrid_books_filtered(str_list_detail_search_book, this->search_bar_book->Text, list_of_books_dataGridView);
 
 }
 

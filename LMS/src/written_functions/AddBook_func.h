@@ -3,7 +3,7 @@
 using namespace System;
 using namespace MySql::Data::MySqlClient;
 
-namespace LMS::Presenter {
+namespace LMS::dbInteract {
 	int AddBook_func(String^ Name, String^ Author, String^ Publisher, \
 		String^ Category, const int EditionNo, const int NoOfCopies, const int Price);
 }
