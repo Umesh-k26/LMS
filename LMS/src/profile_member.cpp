@@ -185,7 +185,7 @@ System::Void LMS::profile_member::delete_profile_button_Click(System::Object^ se
 
 		//IF delete profile function return true then it shows message
 		//ELSE it shows message error
-		if (delete_profile_func::delete_member_profile(this->member_id_txt->Text) == true)
+		if (LMS::dbInteract::delete_member_profile(this->member_id_txt->Text) == true)
 		{
 			MessageBox::Show("Profile is deleted");
 		}
