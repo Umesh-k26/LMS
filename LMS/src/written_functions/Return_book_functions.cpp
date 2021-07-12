@@ -2,283 +2,317 @@
 #include "Return_book_functions.h"
 #include "connection_sql_func.h"
 
+namespace LMS::dbInteract {
 
-String^ LMS::dbInteract::Get_Borrow_status(int Order_Id)
-{
-	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-	MySqlDataReader^ myReader;
-
-	String^ Borrow_status;
-
-	try
+	String^ Get_Borrow_status(int Order_Id)
 	{
-		conDataBase->Open();
+		//Creating a connection to database
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+		MySqlDataReader^ myReader;
 
-		MySqlCommand^ Order_data = gcnew MySqlCommand("SELECT * FROM library_system_db.borrow_history WHERE\
+		String^ Borrow_status;
+
+		try
+		{
+			conDataBase->Open();
+
+			MySqlCommand^ Order_data = gcnew MySqlCommand("SELECT borrow_status FROM library_system_db.borrow_history WHERE\
                      order_id = '" + Order_Id + "';", conDataBase);
 
-		myReader = Order_data->ExecuteReader();
+			myReader = Order_data->ExecuteReader();
 
-		while (myReader->Read())
-		{
-			Borrow_status = myReader->GetString("borrow_status");
+			while (myReader->Read())
+			{
+				Borrow_status = myReader->GetString("borrow_status");
+			}
+			myReader->Close();
+
+			//Close the connection to DataBase
+			conDataBase->Close();
+
+			return Borrow_status;
 		}
-		myReader->Close();
-		conDataBase->Close();
+		catch (Exception^ ex)
+		{
+			//If any exception occurs then show messagebox
+			MessageBox::Show(ex->Message);
+		}
 
-		return Borrow_status;
-	}
-	catch (Exception^ ex)
-	{
-		MessageBox::Show(ex->Message);
 	}
 
-}
 
 
-
-bool LMS::dbInteract::check_Order_Id(int Order_Id)
-{
-
-	bool return_value = false;
-
-	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-	MySqlDataReader^ myReader;
-
-	String^ Borrow_status;
-
-	try
+	bool check_Order_Id(int Order_Id)
 	{
-		conDataBase->Open();
 
-		MySqlCommand^ Order_data = gcnew MySqlCommand("SELECT * FROM library_system_db.borrow_history WHERE\
+		bool return_value = false;
+
+		//Creating a connection to database
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+		MySqlDataReader^ myReader;
+
+		String^ Borrow_status;
+
+		try
+		{
+			conDataBase->Open();
+
+			MySqlCommand^ Order_data = gcnew MySqlCommand("SELECT borrow_status FROM library_system_db.borrow_history WHERE\
                      order_id = '" + Order_Id + "';", conDataBase);
 
-		myReader = Order_data->ExecuteReader();
+			myReader = Order_data->ExecuteReader();
 
-		while (myReader->Read())
-		{
-			Borrow_status = myReader->GetString("borrow_status");
+			while (myReader->Read())
+			{
+				Borrow_status = myReader->GetString("borrow_status");
+			}
+			myReader->Close();
+
+			//Close the connection to DataBase
+			conDataBase->Close();
+
+			if (Borrow_status == "BORROWED" || Borrow_status == "RETURNED" || Borrow_status == "LOST")
+			{
+				return_value = true;
+			}
+
+			return return_value;
 		}
-		myReader->Close();
-		conDataBase->Close();
-
-		if (Borrow_status == "BORROWED" || Borrow_status == "RETURNED" || Borrow_status == "LOST")
+		catch (Exception^ ex)
 		{
-			return_value = true;
+			//If any exception occurs then show messagebox
+			MessageBox::Show(ex->Message);
 		}
-
-		return return_value;
 	}
-	catch (Exception^ ex)
+
+	String^ Get_Profession(int Member_Id)
 	{
-		MessageBox::Show(ex->Message);
-	}
-}
+		String^ Profession;
 
-String^ LMS::dbInteract::Get_Profession(int Member_Id)
-{
-	String^ Profession;
-
-	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-	MySqlDataReader^ myReader;
+		//Creating a connection to database
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+		MySqlDataReader^ myReader;
 
 
-	try
-	{
-		conDataBase->Open();
-		MySqlCommand^ Member_data = gcnew MySqlCommand("SELECT * FROM library_system_db.member_data WHERE\
+		try
+		{
+			conDataBase->Open();
+			MySqlCommand^ Member_data = gcnew MySqlCommand("SELECT member_profession FROM library_system_db.member_data WHERE\
                           member_id = '" + Member_Id + "';", conDataBase);
 
-		myReader = Member_data->ExecuteReader();
+			myReader = Member_data->ExecuteReader();
 
-		while (myReader->Read())
-		{
-			Profession = myReader->GetString("member_profession");
+			while (myReader->Read())
+			{
+				Profession = myReader->GetString("member_profession");
+			}
+			myReader->Close();
+
+			//Close the connection to DataBase
+			conDataBase->Close();
+
+			return Profession;
 		}
-		myReader->Close();
-		conDataBase->Close();
 
-		return Profession;
+		catch (Exception^ ex)
+		{
+			//If any exception occurs then show messagebox
+			MessageBox::Show(ex->Message);
+		}
+
 	}
 
-	catch (Exception^ ex)
+	int Get_Member_Id(int Order_Id)
 	{
-		MessageBox::Show(ex->Message);
-	}
+		int Member_Id;
 
-}
+		//Creating a connection to database
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+		MySqlDataReader^ myReader;
 
-int LMS::dbInteract::Get_Member_Id(int Order_Id)
-{
-	int Member_Id;
-
-	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-	MySqlDataReader^ myReader;
-
-	try
-	{
-		conDataBase->Open();
-		MySqlCommand^ Order_data = gcnew MySqlCommand("SELECT * FROM library_system_db.borrow_history WHERE\
+		try
+		{
+			conDataBase->Open();
+			MySqlCommand^ Order_data = gcnew MySqlCommand("SELECT member_id FROM library_system_db.borrow_history WHERE\
                           order_id = '" + Order_Id + "';", conDataBase);
 
-		myReader = Order_data->ExecuteReader();
+			myReader = Order_data->ExecuteReader();
 
-		while (myReader->Read())
-		{
-			Member_Id = myReader->GetInt32("member_id");
+			while (myReader->Read())
+			{
+				Member_Id = myReader->GetInt32("member_id");
+			}
+			myReader->Close();
+
+			//Close the connection to DataBase
+			conDataBase->Close();
+
+			return Member_Id;
+
 		}
-		myReader->Close();
-		conDataBase->Close();
 
-		return Member_Id;
+		catch (Exception^ ex)
+		{
+			//If any exception occurs then show messagebox
+			MessageBox::Show(ex->Message);
+		}
 
 	}
 
-	catch (Exception^ ex)
+	int Get_Book_Id(int Order_Id)
 	{
-		MessageBox::Show(ex->Message);
-	}
+		int Book_Id;
 
-}
+		//Creating a connection to database
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+		MySqlDataReader^ myReader;
 
-int LMS::dbInteract::Get_Book_Id(int Order_Id)
-{
-	int Book_Id;
-
-	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-	MySqlDataReader^ myReader;
-
-	try
-	{
-		conDataBase->Open();
-		MySqlCommand^ Order_data = gcnew MySqlCommand("SELECT * FROM library_system_db.borrow_history WHERE\
+		try
+		{
+			conDataBase->Open();
+			MySqlCommand^ Order_data = gcnew MySqlCommand("SELECT book_id FROM library_system_db.borrow_history WHERE\
                           order_id = '" + Order_Id + "';", conDataBase);
 
-		myReader = Order_data->ExecuteReader();
+			myReader = Order_data->ExecuteReader();
 
-		while (myReader->Read())
-		{
-			Book_Id = myReader->GetInt32("book_id");
+			while (myReader->Read())
+			{
+				Book_Id = myReader->GetInt32("book_id");
+			}
+			myReader->Close();
+
+			//Close the connection to DataBase
+			conDataBase->Close();
+
+			return Book_Id;
+
 		}
-		myReader->Close();
-		conDataBase->Close();
 
-		return Book_Id;
+		catch (Exception^ ex)
+		{
+			//If any exception occurs then show messagebox
+			MessageBox::Show(ex->Message);
+		}
 
 	}
 
-	catch (Exception^ ex)
+	void Updata_Borrow_history_data(int Order_Id)
 	{
-		MessageBox::Show(ex->Message);
-	}
+		//Creating a connection to database
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
-}
+		try
+		{
+			conDataBase->Open();
 
-void LMS::dbInteract::Updata_Borrow_history_data(int Order_Id)
-{
-	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-
-	try
-	{
-		conDataBase->Open();
-
-		MySqlCommand^ Update_date_Borrow_status = gcnew MySqlCommand("UPDATE library_system_db.borrow_history set \
+			MySqlCommand^ Update_date_Borrow_status = gcnew MySqlCommand("UPDATE library_system_db.borrow_history set \
                        date_returned = CURDATE(),borrow_status = 'RETURNED'\
 		               WHERE order_id = '" + Order_Id + "';", conDataBase);
 
-		Update_date_Borrow_status->ExecuteNonQuery();
+			Update_date_Borrow_status->ExecuteNonQuery();
 
-		conDataBase->Close();
+			//Close the connection to DataBase
+			conDataBase->Close();
+		}
+		catch (Exception^ ex)
+		{
+			//If any exception occurs then show messagebox
+			MessageBox::Show(ex->Message);
+		}
 	}
-	catch (Exception^ ex)
+
+	void Update_Borrow_history_fine(int Order_Id, int fine)
 	{
-		MessageBox::Show(ex->Message);
-	}
-}
+		//Creating a connection to database
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
-void LMS::dbInteract::Update_Borrow_history_fine(int Order_Id, int fine)
-{
-	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+		try
+		{
+			conDataBase->Open();
 
-	try
-	{
-		conDataBase->Open();
-
-		MySqlCommand^ Update_borrow_history_fine = gcnew MySqlCommand("UPDATE library_system_db.borrow_history set \
+			MySqlCommand^ Update_borrow_history_fine = gcnew MySqlCommand("UPDATE library_system_db.borrow_history set \
                        borrow_fine= '" + fine + "'\
 		               WHERE order_id = '" + Order_Id + "';", conDataBase);
 
 
-		//Below Query Updates fine coloumn in borrow_history by using fine function
-		Update_borrow_history_fine->ExecuteNonQuery();
+			//Below Query Updates fine coloumn in borrow_history by using fine function
+			Update_borrow_history_fine->ExecuteNonQuery();
 
+			//Close the connection to DataBase
+			conDataBase->Close();
 
-		conDataBase->Close();
+		}
+
+		catch (Exception^ ex)
+		{
+			//If any exception occurs then show messagebox
+			MessageBox::Show(ex->Message);
+		}
 
 	}
-
-	catch (Exception^ ex)
+	void Update_Member_data(int Member_Id)
 	{
-		MessageBox::Show(ex->Message);
-	}
+		//Creating a connection to database
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
-}
-void LMS::dbInteract::Update_Member_data(int Member_Id)
-{
-	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+		try
+		{
+			conDataBase->Open();
 
-	try
-	{
-		conDataBase->Open();
-
-		MySqlCommand^ Update_books_borrowed = gcnew MySqlCommand("UPDATE  library_system_db.member_data\
+			MySqlCommand^ Update_books_borrowed = gcnew MySqlCommand("UPDATE  library_system_db.member_data\
                        set member_no_book_stat = member_no_book_stat - 1\
                        WHERE member_id ='" + Member_Id + "';", conDataBase);
 
 
-		Update_books_borrowed->ExecuteNonQuery();
+			Update_books_borrowed->ExecuteNonQuery();
 
-		conDataBase->Clone();
+			//Close the connection to DataBase
+			conDataBase->Clone();
+		}
+
+		catch (Exception^ ex)
+		{
+			//If any exception occurs then show messagebox
+			MessageBox::Show(ex->Message);
+		}
 	}
-
-	catch (Exception^ ex)
+	void Update_Book_data(int Book_Id)
 	{
-		MessageBox::Show(ex->Message);
-	}
-}
-void LMS::dbInteract::Update_Book_data(int Book_Id)
-{
-	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
+		//Creating a connection to database
+		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
-	try
-	{
-		conDataBase->Open();
+		try
+		{
+			conDataBase->Open();
 
-		MySqlCommand^ Update_book_borrow_status = gcnew MySqlCommand("UPDATE library_system_db.book_data set\
+			MySqlCommand^ Update_book_borrow_status = gcnew MySqlCommand("UPDATE library_system_db.book_data set\
                        book_borrow_status = 'AVAILABLE'\
                        WHERE book_id = " + Book_Id + " ;", conDataBase);
 
-		Update_book_borrow_status->ExecuteNonQuery();
+			Update_book_borrow_status->ExecuteNonQuery();
 
-		conDataBase->Close();
+			//Close the connection to DataBase
+			conDataBase->Close();
+		}
+
+		catch (Exception^ ex)
+		{
+			//If any exception occurs then show messagebox
+			MessageBox::Show(ex->Message);
+		}
 	}
 
-	catch (Exception^ ex)
-	{
-		MessageBox::Show(ex->Message);
-	}
-}
 
-
-void LMS::dbInteract::Message_Return_Successfully(int Order_id, int Book_Id, int Member_Id)
-{
-	try
+	void Message_Return_Successfully(int Order_id, int Book_Id, int Member_Id)
 	{
-		MessageBox::Show("Returned book successfully! \nBook_id = " + Book_Id + " \nMember_id = " + Member_Id + " \nOrder_id = " + Order_id + " ");
-	}
-	catch (Exception^ ex)
-	{
-		MessageBox::Show(ex->Message);
+		try
+		{
+			MessageBox::Show("Returned book successfully! \nBook_id = " + Book_Id + " \nMember_id = " + Member_Id + " \nOrder_id = " + Order_id + " ");
+		}
+		catch (Exception^ ex)
+		{
+			//If any exception occurs then show messagebox
+			MessageBox::Show(ex->Message);
+		}
 	}
 }
