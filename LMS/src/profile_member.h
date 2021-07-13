@@ -304,6 +304,7 @@ namespace LMS {
 			// 
 			this->new_pass_txt->Location = System::Drawing::Point(343, 667);
 			this->new_pass_txt->Name = L"new_pass_txt";
+			this->new_pass_txt->PasswordChar = '*';
 			this->new_pass_txt->Size = System::Drawing::Size(141, 26);
 			this->new_pass_txt->TabIndex = 23;
 			this->new_pass_txt->Visible = false;
