@@ -199,10 +199,10 @@ namespace LMS {
 			// search_button_book
 			// 
 			this->search_button_book->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->search_button_book->Location = System::Drawing::Point(826, 12);
+			this->search_button_book->Location = System::Drawing::Point(826, 10);
 			this->search_button_book->Name = L"search_button_book";
-			this->search_button_book->Size = System::Drawing::Size(93, 40);
-			this->search_button_book->TabIndex = 5;
+			this->search_button_book->Size = System::Drawing::Size(133, 40);
+			this->search_button_book->TabIndex = 4;
 			this->search_button_book->Text = L"Search";
 			this->search_button_book->UseVisualStyleBackColor = true;
 			this->search_button_book->Click += gcnew System::EventHandler(this, &list_of_books_page::search_button_book_Click);
@@ -210,10 +210,10 @@ namespace LMS {
 			// clear_all_button
 			// 
 			this->clear_all_button->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->clear_all_button->Location = System::Drawing::Point(926, 12);
+			this->clear_all_button->Location = System::Drawing::Point(965, 10);
 			this->clear_all_button->Name = L"clear_all_button";
-			this->clear_all_button->Size = System::Drawing::Size(122, 40);
-			this->clear_all_button->TabIndex = 6;
+			this->clear_all_button->Size = System::Drawing::Size(133, 40);
+			this->clear_all_button->TabIndex = 2;
 			this->clear_all_button->Text = L"Clear Search";
 			this->clear_all_button->UseVisualStyleBackColor = true;
 			this->clear_all_button->Click += gcnew System::EventHandler(this, &list_of_books_page::clear_all_button_Click);

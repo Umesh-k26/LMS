@@ -115,7 +115,6 @@ namespace LMS {
 		/// To Initialize all the components required to load the form
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(list_of_member_page::typeid));
 			this->list_of_member_dataGridView = (gcnew System::Windows::Forms::DataGridView());
 			this->Open_Profile = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
 			this->search_bar_member = (gcnew System::Windows::Forms::TextBox());
@@ -131,17 +130,20 @@ namespace LMS {
 			// 
 			this->list_of_member_dataGridView->AllowUserToAddRows = false;
 			this->list_of_member_dataGridView->AllowUserToDeleteRows = false;
+			this->list_of_member_dataGridView->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
 			this->list_of_member_dataGridView->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->list_of_member_dataGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->list_of_member_dataGridView->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Open_Profile });
-			this->list_of_member_dataGridView->Location = System::Drawing::Point(174, 148);
+			this->list_of_member_dataGridView->Location = System::Drawing::Point(174, 198);
 			this->list_of_member_dataGridView->MultiSelect = false;
 			this->list_of_member_dataGridView->Name = L"list_of_member_dataGridView";
 			this->list_of_member_dataGridView->ReadOnly = true;
 			this->list_of_member_dataGridView->RowHeadersWidth = 62;
 			this->list_of_member_dataGridView->RowTemplate->Height = 28;
 			this->list_of_member_dataGridView->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->list_of_member_dataGridView->Size = System::Drawing::Size(1439, 560);
+			this->list_of_member_dataGridView->Size = System::Drawing::Size(1060, 483);
 			this->list_of_member_dataGridView->TabIndex = 1;
 			this->list_of_member_dataGridView->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &list_of_member_page::list_of_member_dataGridView_CellContentClick);
 			// 
@@ -157,29 +159,29 @@ namespace LMS {
 			// 
 			// search_bar_member
 			// 
-			this->search_bar_member->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom));
-			this->search_bar_member->Location = System::Drawing::Point(198, 12);
+			this->search_bar_member->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->search_bar_member->Location = System::Drawing::Point(240, 12);
 			this->search_bar_member->Name = L"search_bar_member";
-			this->search_bar_member->Size = System::Drawing::Size(463, 26);
-			this->search_bar_member->TabIndex = 2;
+			this->search_bar_member->Size = System::Drawing::Size(427, 26);
+			this->search_bar_member->TabIndex = 3;
 			// 
 			// back_button_member_list
 			// 
 			this->back_button_member_list->Image = Image::FromFile("src\\back-icon.png");
 			this->back_button_member_list->Location = System::Drawing::Point(12, 12);
 			this->back_button_member_list->Name = L"back_button_member_list";
-			this->back_button_member_list->Size = System::Drawing::Size(75, 45);
-			this->back_button_member_list->TabIndex = 3;
+			this->back_button_member_list->Size = System::Drawing::Size(89, 51);
+			this->back_button_member_list->TabIndex = 1;
 			this->back_button_member_list->UseVisualStyleBackColor = true;
 			this->back_button_member_list->Click += gcnew System::EventHandler(this, &list_of_member_page::back_button_member_list_Click);
 			// 
 			// search_button_member
 			// 
 			this->search_button_member->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->search_button_member->Location = System::Drawing::Point(950, 12);
+			this->search_button_member->Location = System::Drawing::Point(956, 10);
 			this->search_button_member->Name = L"search_button_member";
-			this->search_button_member->Size = System::Drawing::Size(105, 30);
-			this->search_button_member->TabIndex = 6;
+			this->search_button_member->Size = System::Drawing::Size(133, 40);
+			this->search_button_member->TabIndex = 4;
 			this->search_button_member->Text = L"Search";
 			this->search_button_member->UseVisualStyleBackColor = true;
 			this->search_button_member->Click += gcnew System::EventHandler(this, &list_of_member_page::search_button_member_Click);
@@ -192,18 +194,18 @@ namespace LMS {
 				L"ID", L"Name", L"Phone", L"Email",
 					L"Number of books borrowed currently"
 			});
-			this->list_detail_search_member->Location = System::Drawing::Point(667, 12);
+			this->list_detail_search_member->Location = System::Drawing::Point(673, 12);
 			this->list_detail_search_member->Name = L"list_detail_search_member";
 			this->list_detail_search_member->Size = System::Drawing::Size(277, 28);
-			this->list_detail_search_member->TabIndex = 7;
+			this->list_detail_search_member->TabIndex = 4;
 			// 
 			// exit_button
 			// 
-			this->exit_button->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->exit_button->Location = System::Drawing::Point(1510, 12);
+			this->exit_button->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->exit_button->Location = System::Drawing::Point(1160, 12);
 			this->exit_button->Name = L"exit_button";
-			this->exit_button->Size = System::Drawing::Size(103, 46);
-			this->exit_button->TabIndex = 8;
+			this->exit_button->Size = System::Drawing::Size(75, 40);
+			this->exit_button->TabIndex = 2;
 			this->exit_button->Text = L"Exit";
 			this->exit_button->UseVisualStyleBackColor = true;
 			this->exit_button->Click += gcnew System::EventHandler(this, &list_of_member_page::exit_button_Click);
@@ -211,10 +213,10 @@ namespace LMS {
 			// clear_all_button
 			// 
 			this->clear_all_button->Anchor = System::Windows::Forms::AnchorStyles::Top;
-			this->clear_all_button->Location = System::Drawing::Point(1061, 12);
+			this->clear_all_button->Location = System::Drawing::Point(1095, 10);
 			this->clear_all_button->Name = L"clear_all_button";
-			this->clear_all_button->Size = System::Drawing::Size(115, 30);
-			this->clear_all_button->TabIndex = 9;
+			this->clear_all_button->Size = System::Drawing::Size(133, 40);
+			this->clear_all_button->TabIndex = 4;
 			this->clear_all_button->Text = L"Clear Search";
 			this->clear_all_button->UseVisualStyleBackColor = true;
 			this->clear_all_button->Click += gcnew System::EventHandler(this, &list_of_member_page::clear_all_button_Click);
@@ -223,7 +225,7 @@ namespace LMS {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1642, 955);
+			this->ClientSize = System::Drawing::Size(1401, 874);
 			this->Controls->Add(this->clear_all_button);
 			this->Controls->Add(this->exit_button);
 			this->Controls->Add(this->list_detail_search_member);
@@ -231,7 +233,7 @@ namespace LMS {
 			this->Controls->Add(this->back_button_member_list);
 			this->Controls->Add(this->search_bar_member);
 			this->Controls->Add(this->list_of_member_dataGridView);
-			this->MinimumSize = System::Drawing::Size(1664, 1011);
+			this->MinimumSize = System::Drawing::Size(1414, 907);
 			this->Name = L"list_of_member_page";
 			this->Text = L"Member List";
 			this->Load += gcnew System::EventHandler(this, &list_of_member_page::list_of_member_page_Load);
