@@ -534,7 +534,7 @@ namespace LMS {
 			// 
 			// back_button
 			// 
-			this->back_button->Location = System::Drawing::Point(12, 832);
+			this->back_button->Location = System::Drawing::Point(12, 890);
 			this->back_button->Name = L"back_button";
 			this->back_button->Size = System::Drawing::Size(81, 45);
 			this->back_button->TabIndex = 22;
