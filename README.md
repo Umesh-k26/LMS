@@ -12,6 +12,6 @@ LMS means Library Management System is a software, which can be used to manage d
 ### `Table of Contents`
 | SNo. | **Contents** |
 | ---  | ---------    |
-| 0.   | [LMS SOURCE FILES](#1-LMS SOURCE FILES) |
+| 0.   | [LMS SOURCE FILES](#1-LMS-SOURCE-FILES) |
 | 1.   | [INSTALLATION](#2-INSTALLATION) |
 | 2.   | [USAGE](#3-USAGE) |
