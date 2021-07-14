@@ -39,3 +39,16 @@ The 3 Tiers are:
 - All the Form files (.h and .cpp) and inside the "src" folder and all the other files in which the methods and functions are written are in another folder "written functions" which include .h and .cpp files
 - Each .h and .cpp file has comments to make the program very readable, as well as there, are Doxygen style comments in each file so that any developer can easily create documentation from source files
 - We have also implemented the principles of **MVP** which is a Model-View-Presenter type of Design Pattern that essentially separates all the business logic from the GUI part
+
+## Schema and Database
+- There is 1 schema:  ``` library_system_db```
+- There 5 tables inside this schema:
+```
+member_data
+user_pass
+book_data
+borrow_history
+library_user_pass
+```
+
+For relationship diagram and more details about the table: [Database Description]()
