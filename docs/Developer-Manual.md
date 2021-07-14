@@ -23,6 +23,7 @@
 
 ## Prerequisites and Installations
 1. It is important to be familiar with using Visual Studio as an Integrated Development Environment and install the following packages from Visual Studio Installer
+
 <img src="Screenshots/installation_package1.png" width="75%"></img> <img src="Screenshots/installation_package2.png" width="75%"></img>
 <img src="Screenshots/installation_package3.png" width="75%"></img> <img src="Screenshots/installation_package4.png" width="75%"></img>
 <img src="Screenshots/installation_package5.png" width="75%"></img>
@@ -43,13 +44,15 @@
 - The advantages of the libraries being used is that it was developed by Microsoft to enhance C++ to work with Windows API and GUI Framework
 - But developers may call ISO C++ Library for functions/methods which are independent of the application or for any other general purpose
 - This form of C++ is officially known as C++/CLI according to ECMA
-- There are a few minute differences from ISO C++ which the .NET libraries use, i.e. 
+- There are a few small differences from ISO C++ which the .NET libraries use, i.e. 
 
-System^
+```cpp
+System // this class provides access to the libraries for GUI framework and other data types used by the framework
 
-gcnew
+gcnew // this is an overloaded version of new which has access to garbage collector provided by framework
 
-public ref class 
+public ref class // It's a class whose object lifetime is administered automatically and supports the Windows Runtime type system.
+```
 
 ## Adding New Form
 1. To add a new Form, right-click on the project
