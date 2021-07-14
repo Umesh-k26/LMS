@@ -11,6 +11,7 @@
 |[Working Principle](#Working-Principle)|
 |[Prerequisites and Installations](#Prerequisites-and-Installations) |
 |[Writing Code](#Writing-Code)|
+|[Database Description](#Database-Description)|
 |[Adding New Form](Adding-New-Form)|
 |[Adding New Element](Adding-New-Element)|
 |[Adding Functions or Methods](Adding-Functions-or-Methods)|
@@ -54,6 +55,20 @@ gcnew // this is an overloaded version of new which has access to garbage collec
 public ref class // It's a class whose object lifetime is administered automatically and supports the Windows Runtime type system.
 ```
 
+## Database Description
+- There is 1 schema:  ``` library_system_db```
+- There 5 tables inside this schema:
+```
+member_data
+user_pass
+book_data
+borrow_history
+library_user_pass
+```
+Here is Entity Relationship Diagram of the Schema
+> **_NOTE:_**  Object Notation is Classic and Relationship Notation is Crow's Foot (IE)
+
+![ER](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Screenshots/ER%20diagram.png)
 ## Adding New Form
 1. To add a new Form, right-click on the project
 2. Click on Add → New Item
