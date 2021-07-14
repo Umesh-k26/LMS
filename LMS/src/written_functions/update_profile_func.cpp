@@ -57,8 +57,8 @@ bool LMS::dbInteract::update_book_profile(String^ input_id, int num_copies)//, S
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
 	//This command duplicates the entire row with new Book ID
-	MySqlCommand^ duplicate_book_copies_cmdDataBase = gcnew MySqlCommand("INSERT INTO library_system_db.book_data (book_name, book_author, book_publisher, book_price, book_edition_no, no_of_copies, category, copies_available)\
-		SELECT  book_name, book_author, book_publisher, book_price, book_edition_no, no_of_copies, category, copies_available\
+	MySqlCommand^ duplicate_book_copies_cmdDataBase = gcnew MySqlCommand("INSERT INTO library_system_db.book_data (book_name, book_author, book_publisher, book_price, book_edition_no, category)\
+		SELECT  book_name, book_author, book_publisher, book_price, book_edition_no, category\
 		FROM library_system_db.book_data\
 		WHERE book_id = '" + input_id + "'; ", conDataBase);
 

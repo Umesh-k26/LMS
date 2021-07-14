@@ -50,9 +50,6 @@ namespace LMS {
 		/*int firstBookId = LMS::dbInteract::AddBook_func(this->bookname_txt->Text, this->author_txt->Text, this->publisher_txt->Text, \
 			this->category_txt->Text, editionNo, noOfCopies, price);*/
 
-
-		MessageBox::Show("Books added Successfully!");
-
 		try
 		{
 			int firstBookId = LMS::dbInteract::AddBook_func(this->bookname_txt->Text, this->author_txt->Text, this->publisher_txt->Text, \

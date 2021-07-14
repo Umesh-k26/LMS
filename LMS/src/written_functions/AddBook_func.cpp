@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "AddBook_func.h"
 #include "../connection_sql_func.h"
-#include <thread>
-#include <chrono>
 
 
 int LMS::dbInteract::AddBook_func(String^ Name, String^ Author, String^ Publisher, \
@@ -30,7 +28,6 @@ int LMS::dbInteract::AddBook_func(String^ Name, String^ Author, String^ Publishe
 	for (int i = 0; i < copies_no; i++)
 		cmdDataBase1->ExecuteNonQuery();
 
-	//std::this_thread::sleep_for(std::chrono::seconds(20));
 	myReader = cmdDataBase2->ExecuteReader();
 	if (myReader->Read())
 	{
