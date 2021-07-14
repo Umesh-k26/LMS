@@ -66,6 +66,7 @@ bool LMS::dbInteract::Check_Memeber(String^ Member_Id)
 
 		conDataBase->Open();
 
+		//This command selects membership status from member data , Where member id is 'Member_Id'
 		MySqlCommand^ member_data = gcnew MySqlCommand("SELECT membership_stat FROM library_system_db.member_data \
 		         WHERE member_id = '" + Member_Id + \
 			"';", conDataBase);
@@ -113,6 +114,8 @@ void LMS::dbInteract::Update_Book_data(String^ Book_Id)
 
 		conDataBase->Open();
 
+		//This command Updates book data of the book by updating 
+		//Borrow status as 'BORROWED' of the book which is Borrowed
 		MySqlCommand^ Update_book_data_borrow_status = gcnew MySqlCommand("UPDATE  library_system_db.book_data set\
                      book_borrow_status = 'BORROWED' WHERE \
                      book_id ='" + Book_Id + "'\
@@ -143,7 +146,7 @@ Void LMS::dbInteract::Update_member_data(String^ Memeber_Id)
 	{
 		conDataBase->Open();
 
-
+		//This command Updates member data by Updating no of copies borrowed by member , where member id is 'Member_ID'
 		MySqlCommand^ Update_member_data = gcnew MySqlCommand("UPDATE library_system_db.member_data set\
                      member_no_book_stat = member_no_book_stat +1 WHERE \
                      member_id ='" + Memeber_Id + "' ;", conDataBase);
@@ -173,6 +176,8 @@ void LMS::dbInteract::Take_New_order(String^ Book_Id, String^ Member_Id)
 	{
 		conDataBase->Open();
 
+
+		//This command Inserts new row in borrow history table
 		MySqlCommand^ Insert_borrow_history = gcnew MySqlCommand("INSERT INTO library_system_db.borrow_history \
 	                 (book_id, member_id,date_issue) \
 	                 VALUES('" + Book_Id + "',\
@@ -204,6 +209,8 @@ void LMS::dbInteract::Message_Borrowed_succesfully(String^ Book_Id, String^ Memb
 	{
 		conDataBase->Open();
 
+		// This command selects all data from borrow history table ,
+		//where book id ,member id as 'Book_Id','Member_Id' respectively
 		MySqlCommand^ borrow_history_data = gcnew MySqlCommand("SELECT * FROM  library_system_db.borrow_history \
 	                 WHERE  book_id ='" + Book_Id + "'\
                      AND member_id = '" + Member_Id + "'\
@@ -254,6 +261,7 @@ void LMS::dbInteract::Check_copies_available(String^ Book_Id)
 	{
 		conDataBase->Open();
 
+		//This command selects all book data ,where  book id is 'Book_Id'
 		MySqlCommand^ book_data = gcnew MySqlCommand("SELECT * FROM library_system_db.book_data \
                           WHERE book_id = '" + Book_Id + \
 			"';", conDataBase);
