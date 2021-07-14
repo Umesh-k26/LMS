@@ -5,9 +5,9 @@ This application also uses MySQL Community Version to use the Database Managemen
 
 ## Table of Contents
 - [About](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/About.md)
-- [Screenshots](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/tree/main/docs/Screenshots)
+- [Screenshots](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Screenshots.md)
 - [Features](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Features.md)
-- [Installation](Installation)
+- [Installation]()
 - [User Manual (Librarian)](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/User-Manual-(Librarian).md)
 - [User Manual (Member)](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/User-Manual-(Member).md)
 - [Developer Manual](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Developer-Manual.md)
@@ -19,7 +19,7 @@ This application also uses MySQL Community Version to use the Database Managemen
 - [Tanmay Garg](https://www.github.com/tanmaygar) CS20BTECH11063
 
 ## References for Development
-- [Doxygen source code Documenation](add link for source code documentation)
+- [Doxygen source code Documenation]()
 - [Developer Manual](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Developer-Manual.md)
-- [Windows Forms Application Documentation](Add link for Winforms)
-- [Unit testing Framework](Add link for framework)
+- [Windows Forms Application Documentation](https://docs.microsoft.com/en-us/dotnet/desktop/winforms/windows-forms-overview?view=netframeworkdesktop-4.8)
+- [Unit testing Framework]()
