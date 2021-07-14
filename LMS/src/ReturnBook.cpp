@@ -43,23 +43,30 @@ System::Void LMS::ReturnBook::return_button_Click(System::Object^ sender, System
 	{
 		int Order_id = Convert::ToInt32(this->order_id_txt->Text);
 
-		if (LMS::dbInteract::check_Order_Id(Order_id) == true)
+		int Book_Id;
+
+		int Member_ID;
+
+		String^ Borrow_status;
+
+		String^ Profession;
+
+		LMS::dbInteract::Get_data_Order(Order_id, Member_ID, Book_Id, Borrow_status, Profession);
+
+		// Profession = LMS::dbInteract::Get_Profession(Member_ID);
+
+
+		if (Borrow_status)
 		{
 
-			if (LMS::dbInteract::Get_Borrow_status(Order_id) == "BORROWED")
+			if (Borrow_status == "BORROWED")
 			{
-
-				int Book_Id = LMS::dbInteract::Get_Book_Id(Order_id);
-
-				int Member_ID = LMS::dbInteract::Get_Member_Id(Order_id);
-
-				String^ profession = LMS::dbInteract::Get_Profession(Member_ID);
 
 				LMS::dbInteract::Update_Book_data(Book_Id);
 
 				LMS::dbInteract::Updata_Borrow_history_data(Order_id);
 
-				int fine = fine_func::calculate_fine(Order_id, Member_ID, profession);
+				int fine = fine_func::calculate_fine(Order_id, Member_ID, Profession);
 
 				LMS::dbInteract::Update_Borrow_history_fine(Order_id, fine);
 
@@ -69,15 +76,16 @@ System::Void LMS::ReturnBook::return_button_Click(System::Object^ sender, System
 
 			}
 
-			else if (LMS::dbInteract::Get_Borrow_status(Order_id) == "RETURNED")
+			else if (Borrow_status == "RETURNED")
 			{
 				MessageBox::Show("Book with given Order Id is already returned.");
 			}
 
-			else if (LMS::dbInteract::Get_Borrow_status(Order_id) == "LOST")
+			else if (Borrow_status == "LOST")
 			{
 				MessageBox::Show("Book with given Order Id is Lost.");
 			}
+
 		}
 
 		else
