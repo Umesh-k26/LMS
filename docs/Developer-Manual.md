@@ -129,3 +129,7 @@ namespace TestLibrary {
 ```
 
 6. From the menu select **Test** and **Run All tests**
+
+The reason for doing this procedure is to ensure that before adding the function to the application it is preferable to Test the function with certain inputs and check if it is giving the desired output.
+
+This not only saves the application from throwing build errors when you design a new function but also helps Test for any situations that may arise to give invalid output
