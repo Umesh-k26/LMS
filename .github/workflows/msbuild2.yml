@@ -35,7 +35,6 @@ jobs:
         #vswhere-path: # optional
     # Version of SQL Server to search; defaults to latest if not specified
           #sql-version: 8.0.23
-
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
