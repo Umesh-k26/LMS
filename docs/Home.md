@@ -19,7 +19,7 @@ This application also uses MySQL Community Version to use the Database Managemen
 - [Tanmay Garg](https://www.github.com/tanmaygar) CS20BTECH11063
 
 ## References for Development
-- [Doxygen source code Documenation]()
+- [Source Code Documenation (made using Doxygen)]()
 - [Developer Manual](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Developer-Manual.md)
 - [Windows Forms Application Documentation](https://docs.microsoft.com/en-us/dotnet/desktop/winforms/windows-forms-overview?view=netframeworkdesktop-4.8)
-- [Unit testing Framework]()
+- [Testing Framework (NUnit Testing)](https://docs.nunit.org/)
