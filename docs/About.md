@@ -33,7 +33,7 @@ The 3 Tiers are:
 - The Presentation Tier is written in C++/CLI and Windows Forms Library
 
 ## Developing the Application
-- The application was developed by thinking "What should the user see?", so the entire development process was more feature-driven with every single step being manually tested for different situations and cases
+- The application was developed by thinking _UI / Front End_ and making application as _interactive_ as possible, so the entire development process was more feature-driven with every single step being manually tested for different situations and cases
 - The entire Application is an event-driven application, that is, the flow of the program depends on how the User interacts with the Program such as when and where the user clicks the buttons and what text is being entered in textboxes
 - We have tried to implement the Single Responsibility Principle for each element and have separated UI elements with Non-UI elements so that each function and method can be tested separately
 - All the Form files (_.h_ and _.cpp_) and inside the "src" folder and all the other files in which the methods and functions are written are in another folder "written functions" which include _.h_ and _.cpp_ files

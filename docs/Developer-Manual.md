@@ -1,7 +1,7 @@
 # Library Management System
 
 ## Our Design Principle
-- Our methodology consists of being Feature-Driven and what should the "End User See or Look At" but with every new feature there also comes the responsibility that no new feature should break any other feature or tamper with the database
+- Our methodology consists of being _Feature-Driven_ and also making an _interactive_ application to the end user. But with every new feature there also comes the responsibility that no new feature should break any other feature or tamper with the database
 - So if any new feature that you are trying to add tries to add, modify, or remove data from the database then it is preferable to not directly use the main database upon which the entire application links with instead create some other test database and test all your functions on that
 - If you are adding a new form then do everything step by step and not rush into adding everything in the form at once
 
@@ -37,7 +37,8 @@
 ![references for LMS](Screenshots/references_LMS_new.png)
 ![references for UnitTesting framework](Screenshots/references_UnitTest_new.png)
 
-5. Install MySQL Community Version from the official website (link) and install for these configurations
+5. Install MySQL Community Version from the official website [MySQL installer for Windows](https://dev.mysql.com/downloads/windows/installer/). <br>
+Follow [How To Install MySQL on Windows 10 ](https://youtu.be/WuBcTJnIuzo?t=259) for detailed tutorial.
 
 ## Writing Code
 - The entire application is written in C++ and Windows Forms Application Libraries or else known as Microsoft .NET libraries

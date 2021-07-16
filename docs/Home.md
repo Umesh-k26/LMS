@@ -14,7 +14,7 @@ This application also uses MySQL Community Version to use the Database Managemen
 
 ## Authors
 - [Tanmay Garg](https://www.github.com/tanmaygar) CS20BTECH11063
-- [Tanmay Garg](https://www.github.com/tanmaygar) CS20BTECH11063
+- [Umesh Kalvakuntla](https://www.github.com/Umesh-k26) CS20BTECH11024
 - [Tanmay Garg](https://www.github.com/tanmaygar) CS20BTECH11063
 - [Tanmay Garg](https://www.github.com/tanmaygar) CS20BTECH11063
 
