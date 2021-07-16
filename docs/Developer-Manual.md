@@ -3,21 +3,20 @@
 ## Our Design Principle
 - Our methodology consists of being Feature-Driven and what should the "End User See or Look At" but with every new feature there also comes the responsibility that no new feature should break any other feature or tamper with the database
 - So if any new feature that you are trying to add tries to add, modify, or remove data from the database then it is preferable to not directly use the main database upon which the entire application links with instead create some other test database and test all your functions on that
-- Also while developing, it is preferable to keep things as simple and to the point as possible
 - If you are adding a new form then do everything step by step and not rush into adding everything in the form at once
 
 | Table of contents |
 |------------------|
-|[Working Principle](#Working-Principle)|
+|[File System](#File-System)|
 |[Prerequisites and Installations](#Prerequisites-and-Installations) |
 |[Writing Code](#Writing-Code)|
 |[Database Description](#Database-Description)|
 |[Adding New Form](Adding-New-Form)|
 |[Adding New Element](Adding-New-Element)|
 |[Adding Functions or Methods](Adding-Functions-or-Methods)|
-|[Unit Testing Framework](Unit-Testing-Framework)|
+|[Testing Framework](Testing-Framework)|
 
-## Working Principle
+## File System
 - According to File System for the source code, for every Form/Page, its _.h_ _.cpp_ files are saved in the _**src**_ folder
 - Specific to each button and form loading there is a specific function that should be in a separate _.h_ _.cpp_ file or some group of those similar functions should be in a separate _.h_ _.cpp_ file inside _**written_functions**_ folder
 - The entire application is based on the Event-Driven Application approach, i.e. the application will do something only on Click-Events such as Button Clicks
@@ -29,13 +28,13 @@
 <img src="Screenshots/installation_package3.png" width="75%"></img> <img src="Screenshots/installation_package4.png" width="75%"></img>
 <img src="Screenshots/installation_package5.png" width="75%"></img>
 
-2. Clone the GitHub Repository in a folder and open the .sln file i.e. LMS.sln (present at the top of the directory)
+2. Clone the GitHub Repository in a folder and open the .sln file i.e. LMS.sln (present at top level directory)
 3. Go to Extensions and Install the following extensions that would be needed to perform certain tasks
 [screenshot of extensions]()
 4. Make sure that all the NuGet Packages are also installed for the project and added into references for the project
 
-![references for LMS](Screenshots/references_LMS_new.png)
 ![NuGet Packages](Screenshots/NuGetPackages_new.png)
+![references for LMS](Screenshots/references_LMS_new.png)
 ![references for UnitTesting framework](Screenshots/references_UnitTest_new.png)
 
 5. Install MySQL Community Version from the official website (link) and install for these configurations
@@ -48,11 +47,13 @@
 - There are a few small differences from ISO C++ which the .NET libraries use, i.e. 
 
 ```cpp
-System // this class provides access to the libraries for GUI framework and other data types used by the framework
+System // this namespace provides access to the libraries for GUI framework and other data types used by the framework
 
 gcnew // this is an overloaded version of new which has access to garbage collector provided by framework
 
 public ref class // It's a class whose object lifetime is administered automatically and supports the Windows Runtime type system.
+
+^ operator // It is called handle declarator. It behaves like a pointer to the object which points to the entire object. It is provided by the framework
 ```
 
 ## Database Description
@@ -86,13 +87,13 @@ To add a function or a method, it is preferable to add the function in a new _**
 
 If you are adding a method similar to the one which has already been written inside a specific file then add your method to that file as well.
 
-DO NOT forget to include the header file which contains the function in which it is being called
+> :warning: DO NOT forget to include the header file which contains the function in which it is being called
 
-## Unit Testing Framework
+## Testing Framework
 In order to use the test framework, make sure that the required references and NuGet Packages are installed and added
 
-1. Copy Paste all the files that need to be tested inside a separate folder in **UnitTesting** (in solution directory)
-2. Right Click on _UnitTesting_ Project and then Click Add → Existing Item
+1. Copy Paste all the files that need to be tested inside a separate folder in **Testing** (in solution directory)
+2. Right Click on _Testing_ Project and then Click Add → Existing Item
 3. Choose the required files and click on add
 4. Include the files in the _.cpp_ file where all the tests are being written
 5. Write the test in this particular format so that the Test Framework can recognize the Test Class
@@ -116,10 +117,10 @@ namespace TestLibrary {
 	public:
 		[Test]
 		void methodclass() 
-    {
+    		{
 			// write expected variables
 
-      //write actual variables which calls the function to be tested
+      			//write actual variables which calls the function to be tested
 
 			NUnit::Framework::Assert::AreEqual(expected, actual);
 
