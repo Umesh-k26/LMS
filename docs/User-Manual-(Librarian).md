@@ -28,7 +28,7 @@
 - Click on Login Button and the application will authenticate if you are a Librarian or not
 - If either the Username does not exist or the Password is invalid then it shows an error Message
 - Upon successful authentication, the Home Page opens up with the required Interface for a Librarian
-![Screenshot of login page](Screenshots/login_page.png)
+![Screenshot of login page](Screenshots/login_page.PNG)
 
 ### Registering a New Member
 - To register a New Member, from Home Page click on the "Register a Member" Button.
@@ -41,7 +41,7 @@
 - Fill in all the fields properly and click on Add Book
 - If there is an error in any of the fields then an error message will be displayed
 - Upon successful operation, a box with all new IDs of the books added will be displayed, and please note the same
-![Screenshot of login page](Screenshots/Add_book.png)
+![Screenshot of login page](Screenshots/Add_book.PNG)
 
 ### Registering a New Librarian
 - To register a New Librarian, from Home Page click on the "Register a Librarian" Button.
@@ -53,7 +53,7 @@
 - To display the list of all books in the library, from Home Page click on the "List of Books" Button
 - This will open the page and send queries to SQL Database
 - A Datagrid with all the information about the books will be filled
-![Screenshot of login page](Screenshots/Book_list.png)
+![Screenshot of login page](Screenshots/Book_list.PNG)
 
 ### Display List of All Members
 - To display the list of all members in the library, from Home Page click on the "List of Members" Button
@@ -64,21 +64,21 @@
 - To display the history of all borrows by all the members, from Home Page click on the "Borrow History" Button
 - This will open the page and send queries to SQL Database
 - A Datagrid with all the information about the History will be filled
-![Screenshot of login page](Screenshots/Borrow_history.png)
+![Screenshot of login page](Screenshots/Borrow_history.PNG)
 
 ### Borrowing a Book from the Libary
 - To Borrow a Book, from Home Page click on the "Borrow A Book" Button.
 - Fill in the correct Member ID and Book ID and click on the "Borrow" Button
 - Upon any form of error such as Membership Status is Deactivated, or Book of the ID is not available for borrowing, or any other such situation, a Message Box will be displayed indicating the error
 - Upon successful operation, a Message Box with Member ID, Book ID, and Order ID (or you Issue ID) will be displayed
-![Screenshot of login page](Screenshots/Borrow_book.png)
+![Screenshot of login page](Screenshots/Borrow_book.PNG)
 
 ### Returning a Borrowed Book
 - To Return a Book, from Home Page click on the "Return A Book" Button.
 - Fill in the correct Order ID and click on the "Return" Button
 - Upon any form of error such as Book already being returned, or invalid Order ID, or any other such situation, a Message Box will be displayed indicating the error
 - Upon successful operation, a Message Box with Member ID, Book ID, and Order ID (or you Issue ID) will be displayed along with the Fine that needs to be paid if applicable
-![Screenshot of login page](Screenshots/Return_book.png)
+![Screenshot of login page](Screenshots/Return_book.PNG)
 
 ### Search for a Particular Book
 - To search for a Book, from the List of Books Page, search for the book in the Datagrid Table which has listed the information of all the books in the Library
