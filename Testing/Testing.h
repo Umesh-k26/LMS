@@ -12,17 +12,18 @@ using namespace NUnit::Framework;
 using namespace Microsoft::VisualStudio::TestTools::UnitTesting;
 using namespace Microsoft::VisualStudio::TestTools;
 
-namespace UnitTesting {
+namespace Test_Namespace1 {
 	[TestFixture]
 	public ref class TestClass1
 	{
 	public:
 		[Test]
-		void methodclass() {
-			int expected = 2420;
+		void fine_method_test() {
+			int expected = 2;
 			int actual = fine_func::calculate_fine(1,3,"Faculty");
 
 			NUnit::Framework::Assert::AreEqual(expected, actual);
+
 
 		}
 
