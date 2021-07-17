@@ -22,7 +22,7 @@ LMS means Library Management System is a software, which can be used to manage d
 
 ---
 
-#`Reference for development`
+# `Reference for development`
 - [Source Code Documenation (made using Doxygen)]()
 - [Developer Manual](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Developer-Manual.md)
 - [Windows Forms Application Documentation](https://docs.microsoft.com/en-us/dotnet/desktop/winforms/windows-forms-overview?view=netframeworkdesktop-4.8)
