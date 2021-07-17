@@ -27,3 +27,12 @@ LMS means Library Management System is a software, which can be used to manage d
 - [Developer Manual](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Developer-Manual.md)
 - [Windows Forms Application Documentation](https://docs.microsoft.com/en-us/dotnet/desktop/winforms/windows-forms-overview?view=netframeworkdesktop-4.8)
 - [Testing Framework (NUnit Testing)](https://docs.nunit.org/)
+
+---
+
+# `Contributors`
+- [Tanmay Garg](https://www.github.com/tanmaygar) CS20BTECH11063
+- [Umesh Kalvakuntla](https://www.github.com/Umesh-k26) CS20BTECH11024
+- [Muttareddy Sahil Chandra](https://github.com/SAHIL150602) CS20BTECH11033
+- [Tanmay Garg](https://www.github.com/tanmaygar) CS20BTECH11063
+
