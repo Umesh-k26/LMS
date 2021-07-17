@@ -20,7 +20,6 @@ namespace sql_connection_func {
 	/// </returns>
 	String^ sql_user_pass_string();
 
-	
 	/// <summary>
 	/// Function to implement for the password to be stored in a hashed format
 	/// </summary>

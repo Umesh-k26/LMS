@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "RegisterLibrarian.h"
-#include "connection_sql_func.h"
+//#include "connection_sql_func.h"
+#include "written_functions/connection_sql_func.h"
 #include "written_functions/RegisterLibrarian_func.h"
 namespace LMS {
 

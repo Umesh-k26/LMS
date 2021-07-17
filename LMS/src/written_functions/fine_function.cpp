@@ -24,10 +24,10 @@ namespace fine_func {
 
 		//Creating a connection to database
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-		
+
 		//This command calculates the difference between the dates of issue and return from borrow_history table
 		MySqlCommand^ datediff_cmdDataBase = gcnew MySqlCommand("SELECT DATEDIFF(date_returned, date_issue) AS fine_column FROM library_system_db.borrow_history WHERE order_id = " + order_id_input + ";", conDataBase);
-		
+
 		MySqlDataReader^ myReader;
 		try {
 

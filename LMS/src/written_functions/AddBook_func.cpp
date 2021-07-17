@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "AddBook_func.h"
-#include "../connection_sql_func.h"
-
+#include "connection_sql_func.h"
 
 int LMS::dbInteract::AddBook_func(String^ Name, String^ Author, String^ Publisher, \
 	String^ Category, const int EditionNo, const int NoOfCopies, const int Price)
