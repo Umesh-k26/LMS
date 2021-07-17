@@ -17,7 +17,7 @@ namespace sql_connection_func {
 		return constring;
 	}
 
-	
+
 	/// <summary>
 	/// This function hashes the password of the user and also salts it with ID of the user before being hashed
 	/// </summary>
@@ -36,10 +36,10 @@ namespace sql_connection_func {
 
 		//Convert the Byte Array into String
 		return BitConverter::ToString(byte_array_hash);
-		
+
 	}
 
-	
+
 
 
 }

@@ -2,7 +2,8 @@
 #include "profile_book.h"
 #include "written_functions/delete_profile_func.h"
 #include "written_functions/update_profile_func.h"
-#include "fine_function.h"
+//#include "fine_function.h"
+#include "written_functions/fine_function.h"
 /// <summary>
 ///Constructor calls for functions to Initialize all the components of the form
 /// </summary>

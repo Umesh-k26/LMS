@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "RegisterLibrarian_func.h"
-#include <connection_sql_func.h>
+#include "connection_sql_func.h"
 
 bool LMS::dbInteract::RegisterLibrarian_func(String^ username, String^ password, String^ Name, \
 						String^ DOB, String^ Address, String^ Email, String^ Mobile, String^ Gender)

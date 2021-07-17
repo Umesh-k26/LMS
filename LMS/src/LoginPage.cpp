@@ -1,8 +1,10 @@
 #include "pch.h"
 #include "LoginPage.h"
 #include "HomePage.h"
-#include "login_to_librarian_db.h"
-#include "connection_sql_func.h"
+//#include "login_to_librarian_db.h"
+//#include "connection_sql_func.h"
+#include "written_functions/login_to_librarian_db.h"
+#include "written_functions/connection_sql_func.h"
 namespace LMS {
 
 	///Constructor calls for functions to Initialize all the components of the form
