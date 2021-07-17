@@ -161,7 +161,9 @@ namespace LMS {
 			this->registerlibrarian_btn->Visible = false;
 			this->register_member_btn->Visible = false;
 			this->view_profile_member_btn->Visible = true;
+			//this->view_profile_member_btn->Location = System::Drawing::Point(400, 186);
 		}
+		
 	}
 
 	/// <summary>
