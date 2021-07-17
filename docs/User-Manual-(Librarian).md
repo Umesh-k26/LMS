@@ -28,13 +28,14 @@
 - Click on Login Button and the application will authenticate if you are a Librarian or not
 - If either the Username does not exist or the Password is invalid then it shows an error Message
 - Upon successful authentication, the Home Page opens up with the required Interface for a Librarian
-![Screenshot of login page](Screenshots/login_page.PNG)
+![Screenshot of login page](Screenshots/Login_Page.png)
 
 ### Registering a New Member
 - To register a New Member, from Home Page click on the "Register a Member" Button.
 - Fill in all the fields properly and click on Register
 - If there is an error in any of the fields then an error message will be displayed
 - Upon successful registration, a Message Box with your Username will be displayed, and please note the same
+![Screenshot of Register Member](Screenshots/AddMember.png)
 
 ### Adding a New Book to the Library
 - To Add a New Book, from Home Page click on the "Add Book to Library" Button.
@@ -48,6 +49,7 @@
 - Fill in all the fields properly and click on Register
 - If there is an error in any of the fields then an error message will be displayed
 - Upon successful registration, a Message Box with your Username will be displayed, and please note the same
+![Screenshot of Register Librarian](Screenshots/AddLibrarian.png)
 
 ### Display List of All Books
 - To display the list of all books in the library, from Home Page click on the "List of Books" Button
@@ -78,6 +80,7 @@
 - Fill in the correct Order ID and click on the "Return" Button
 - Upon any form of error such as Book already being returned, or invalid Order ID, or any other such situation, a Message Box will be displayed indicating the error
 - Upon successful operation, a Message Box with Member ID, Book ID, and Order ID (or you Issue ID) will be displayed along with the Fine that needs to be paid if applicable
+
 ![Screenshot of login page](Screenshots/Return_book.PNG)
 
 ### Search for a Particular Book
@@ -108,6 +111,7 @@
 - After clicking the profile page will load again and the Datagrid table inside the Profile page will show the updated copies and details
 - To Delete, click on the "Delete Profile" button, a Warning Box will be displayed
 - Click on "OK" to proceed, or "Cancel" if you wish to cancel, then a Message Box will be displayed to pay the fine, and the profile will be deleted
+![Screenshot of Book Profile](Screenshots/BookProfile.png)
 
 ### Update or Delete Profile of a Member
 - To update or delete the Profile of a Member, from the List of Members Page, Open the Profile of the Member you wish to update or delete
@@ -116,7 +120,7 @@
 - After clicking the profile page will load again with updated details
 - To Delete, click on the "Delete Profile" button, a Warning Box will be displayed
 - If the Member has not returned all the borrowed books then an error message will be displayed stating the error, else click on "OK" to proceed, or "Cancel" if you wish to cancel, and the profile will be deleted
-
+![Screenshot of Member Profile](Screenshots/MemberProfile.png)
 ### Change Password of a Member
 - To Change the Password of a Member, from the List of Members Page, Open the Profile of the Member you wish to change
 - Click on the Update Password button, and enter the new password
