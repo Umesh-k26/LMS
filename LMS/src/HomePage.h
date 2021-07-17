@@ -149,7 +149,8 @@ namespace LMS {
 			// 
 			// exit_button
 			// 
-			this->exit_button->Location = System::Drawing::Point(12, 632);
+			this->exit_button->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->exit_button->Location = System::Drawing::Point(913, 11);
 			this->exit_button->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->exit_button->Name = L"exit_button";
 			this->exit_button->Size = System::Drawing::Size(188, 69);
@@ -176,7 +177,7 @@ namespace LMS {
 			this->member_list_btn->Location = System::Drawing::Point(468, 335);
 			this->member_list_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->member_list_btn->Name = L"member_list_btn";
-			this->member_list_btn->Size = System::Drawing::Size(182, 66);
+			this->member_list_btn->Size = System::Drawing::Size(182, 68);
 			this->member_list_btn->TabIndex = 2;
 			this->member_list_btn->Text = L"List of Members";
 			this->member_list_btn->UseVisualStyleBackColor = true;
@@ -188,7 +189,7 @@ namespace LMS {
 			this->addbook_btn->Location = System::Drawing::Point(760, 335);
 			this->addbook_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->addbook_btn->Name = L"addbook_btn";
-			this->addbook_btn->Size = System::Drawing::Size(174, 66);
+			this->addbook_btn->Size = System::Drawing::Size(182, 68);
 			this->addbook_btn->TabIndex = 3;
 			this->addbook_btn->Text = L"Add Book to Library";
 			this->addbook_btn->UseVisualStyleBackColor = true;
@@ -200,7 +201,7 @@ namespace LMS {
 			this->register_member_btn->Location = System::Drawing::Point(189, 495);
 			this->register_member_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->register_member_btn->Name = L"register_member_btn";
-			this->register_member_btn->Size = System::Drawing::Size(166, 65);
+			this->register_member_btn->Size = System::Drawing::Size(182, 68);
 			this->register_member_btn->TabIndex = 4;
 			this->register_member_btn->Text = L"Register a Member";
 			this->register_member_btn->UseVisualStyleBackColor = true;
@@ -212,7 +213,7 @@ namespace LMS {
 			this->borrowhistory_btn->Location = System::Drawing::Point(760, 186);
 			this->borrowhistory_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->borrowhistory_btn->Name = L"borrowhistory_btn";
-			this->borrowhistory_btn->Size = System::Drawing::Size(174, 68);
+			this->borrowhistory_btn->Size = System::Drawing::Size(182, 68);
 			this->borrowhistory_btn->TabIndex = 5;
 			this->borrowhistory_btn->Text = L"Borrow History";
 			this->borrowhistory_btn->UseVisualStyleBackColor = true;
@@ -224,11 +225,10 @@ namespace LMS {
 			this->borrowbook_btn->Location = System::Drawing::Point(189, 186);
 			this->borrowbook_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->borrowbook_btn->Name = L"borrowbook_btn";
-			this->borrowbook_btn->Size = System::Drawing::Size(166, 68);
+			this->borrowbook_btn->Size = System::Drawing::Size(182, 68);
 			this->borrowbook_btn->TabIndex = 7;
 			this->borrowbook_btn->Text = L"Borrow A Book";
 			this->borrowbook_btn->UseVisualStyleBackColor = true;
-			//this->borrowbook_btn->UseWaitCursor = true;
 			this->borrowbook_btn->Click += gcnew System::EventHandler(this, &HomePage::borrowbook_btn_Click);
 			// 
 			// returnbook_btn
@@ -237,7 +237,7 @@ namespace LMS {
 			this->returnbook_btn->Location = System::Drawing::Point(189, 335);
 			this->returnbook_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->returnbook_btn->Name = L"returnbook_btn";
-			this->returnbook_btn->Size = System::Drawing::Size(166, 66);
+			this->returnbook_btn->Size = System::Drawing::Size(182, 68);
 			this->returnbook_btn->TabIndex = 8;
 			this->returnbook_btn->Text = L"Return A Book";
 			this->returnbook_btn->UseVisualStyleBackColor = true;
@@ -245,7 +245,7 @@ namespace LMS {
 			// 
 			// logout_button
 			// 
-			this->logout_button->Location = System::Drawing::Point(14, 45);
+			this->logout_button->Location = System::Drawing::Point(12, 14);
 			this->logout_button->Margin = System::Windows::Forms::Padding(3, 5, 3, 5);
 			this->logout_button->Name = L"logout_button";
 			this->logout_button->Size = System::Drawing::Size(146, 66);
@@ -260,7 +260,7 @@ namespace LMS {
 			this->registerlibrarian_btn->Location = System::Drawing::Point(468, 495);
 			this->registerlibrarian_btn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->registerlibrarian_btn->Name = L"registerlibrarian_btn";
-			this->registerlibrarian_btn->Size = System::Drawing::Size(166, 65);
+			this->registerlibrarian_btn->Size = System::Drawing::Size(182, 68);
 			this->registerlibrarian_btn->TabIndex = 10;
 			this->registerlibrarian_btn->Text = L"Register a Librarian";
 			this->registerlibrarian_btn->UseVisualStyleBackColor = true;
@@ -269,9 +269,9 @@ namespace LMS {
 			// view_profile_member_btn
 			// 
 			this->view_profile_member_btn->Anchor = System::Windows::Forms::AnchorStyles::None;
-			this->view_profile_member_btn->Location = System::Drawing::Point(760, 495);
+			this->view_profile_member_btn->Location = System::Drawing::Point(205, 186);
 			this->view_profile_member_btn->Name = L"view_profile_member_btn";
-			this->view_profile_member_btn->Size = System::Drawing::Size(174, 69);
+			this->view_profile_member_btn->Size = System::Drawing::Size(182, 68);
 			this->view_profile_member_btn->TabIndex = 11;
 			this->view_profile_member_btn->Text = L"View Profile";
 			this->view_profile_member_btn->UseVisualStyleBackColor = true;
