@@ -6,7 +6,9 @@ bool LMS::dbInteract::RegisterLibrarian_func(String^ username, String^ password,
 						String^ DOB, String^ Address, String^ Email, String^ Mobile, String^ Gender)
 {
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-	MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system_db.library_user_pass \
+
+	password = sql_connection_func::password_hasher(username, password);
+	MySqlCommand^ LibraryUserPassInsertQuery = gcnew MySqlCommand("INSERT INTO library_system_db.library_user_pass \
 		VALUES('" + username + "',\
 		'" + password + "',\
 		'" + Name + "',\
@@ -15,9 +17,9 @@ bool LMS::dbInteract::RegisterLibrarian_func(String^ username, String^ password,
 		'" + Email + "',\
 		'" + Mobile + "',\
 		'" + Gender + "')	;", conDataBase);
-
 	conDataBase->Open();
-	cmdDataBase1->ExecuteNonQuery();
+
+	LibraryUserPassInsertQuery->ExecuteNonQuery();
 	conDataBase->Close();
 	return true;
 }

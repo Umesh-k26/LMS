@@ -7,7 +7,7 @@ int LMS::dbInteract::AddBook_func(String^ Name, String^ Author, String^ Publishe
 {
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
-	MySqlCommand^ cmdDataBase1 = gcnew MySqlCommand("INSERT INTO library_system_db.book_data \
+	MySqlCommand^ BookDataInsertQuery = gcnew MySqlCommand("INSERT INTO library_system_db.book_data \
 		(book_name, book_author, book_publisher, book_price,book_edition_no,category) \
 		VALUES('" + Name + "',\
 		'" + Author + "',\
@@ -16,7 +16,7 @@ int LMS::dbInteract::AddBook_func(String^ Name, String^ Author, String^ Publishe
 		'" + EditionNo + "',\
 		'" + Category + "');", conDataBase);
 
-	MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("SELECT * FROM library_system_db.book_data WHERE (book_name = '" + Name + "' \
+	MySqlCommand^ BookIdSelectQuery = gcnew MySqlCommand("SELECT * FROM library_system_db.book_data WHERE (book_name = '" + Name + "' \
 		AND book_edition_no = " + EditionNo + ");", conDataBase);
 
 	MySqlDataReader^ myReader;
@@ -25,9 +25,9 @@ int LMS::dbInteract::AddBook_func(String^ Name, String^ Author, String^ Publishe
 
 	int copies_no = System::Convert::ToInt32(NoOfCopies);
 	for (int i = 0; i < copies_no; i++)
-		cmdDataBase1->ExecuteNonQuery();
+		BookDataInsertQuery->ExecuteNonQuery();
 
-	myReader = cmdDataBase2->ExecuteReader();
+	myReader = BookIdSelectQuery->ExecuteReader();
 	if (myReader->Read())
 	{
 		firstBookId = myReader->GetInt32("book_id");
