@@ -62,7 +62,7 @@ System::Void LMS::ReturnBook::return_button_Click(System::Object^ sender, System
 			if (Borrow_status == "BORROWED")
 			{
 
-				LMS::dbInteract::Update_Book_data(Book_Id);
+				LMS::dbInteract::Update_Book_data_Returned(Book_Id);
 
 				LMS::dbInteract::Updata_Borrow_history_data(Order_id);
 
@@ -70,7 +70,7 @@ System::Void LMS::ReturnBook::return_button_Click(System::Object^ sender, System
 
 				LMS::dbInteract::Update_Borrow_history_fine(Order_id, fine);
 
-				LMS::dbInteract::Update_Member_data(Member_ID);
+				LMS::dbInteract::Update_Member_data_Returned(Member_ID);
 
 				LMS::dbInteract::Message_Return_Successfully(Order_id, Book_Id, Member_ID);
 

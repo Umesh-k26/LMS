@@ -52,11 +52,11 @@ System::Void LMS::BorrowBook::borrow_button_Click(System::Object^ sender, System
 			if (LMS::dbInteract::Check_book(this->book_id_txt->Text) == true)
 			{
 
-				LMS::dbInteract::Update_Book_data(this->book_id_txt->Text);
+				LMS::dbInteract::Update_Book_data_Borrowed(this->book_id_txt->Text);
 
 				LMS::dbInteract::Take_New_order(this->book_id_txt->Text, this->member_id_txt->Text);
 
-				LMS::dbInteract::Update_member_data(this->member_id_txt->Text);
+				LMS::dbInteract::Update_member_data_Borrowed(this->member_id_txt->Text);
 
 				LMS::dbInteract::Message_Borrowed_succesfully(this->book_id_txt->Text, this->member_id_txt->Text);
 

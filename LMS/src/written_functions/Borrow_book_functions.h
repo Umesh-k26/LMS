@@ -38,7 +38,7 @@ namespace LMS::dbInteract {
 	/// <param name="Book_Id">
 	/// Input is Book Id of Book ,which is Borrowed
 	/// </param>
-	void Update_Book_data(String^ Book_Id);
+	void Update_Book_data_Borrowed(String^ Book_Id);
 
 	/// <summary>
 	/// Function to Update Member data ,when Book is Borrowed succesfully
@@ -46,10 +46,10 @@ namespace LMS::dbInteract {
 	/// <param name="Member_id">
 	/// Input is Member Id of Member ,who borrowed the book
 	/// </param>
-	void Update_member_data(String^ Member_id);
+	void Update_member_data_Borrowed(String^ Member_id);
 
 	/// <summary>
-	/// Function to UPdate Borrow History ,When Book is Borrowed succesfully
+	/// Function to Update Borrow History ,When Book is Borrowed succesfully
 	/// </summary>
 	/// <param name="Book_Id">
 	/// Input is Book Id of book ,which is Borrowed

@@ -43,7 +43,7 @@ namespace LMS::dbInteract {
 	/// <param name="Book_Id">
 	/// Input is book id of returned book
 	/// </param>
-	void Update_Book_data(int Book_Id);
+	void Update_Book_data_Returned(int Book_Id);
 
 	/// <summary>
 	/// Function to Update Borrow satus and Return Date in Borrow History table 
@@ -70,7 +70,7 @@ namespace LMS::dbInteract {
 	/// <param name="Member_Id">
 	/// Input is the Member Id of the Member, Who returned the book 
 	/// </param>
-	void Update_Member_data(int Member_Id);
+	void Update_Member_data_Returned(int Member_Id);
 
 	/// <summary>
 	///  Function to Show Message that Book is Returned Successfully with given Order Id 
