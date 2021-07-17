@@ -45,6 +45,7 @@ namespace LMS {
 	System::Void RegisterMember::RegisterMember_Click(System::Object^ sender, System::EventArgs^ e) {
 		int memberId;
 		try {
+			//Checks if profession is empty string and throws warning
 			if (this->profession_comboBox->Text == "")
 			{
 				MessageBox::Show(this, "Select your profession from the drop-down list",
@@ -53,6 +54,7 @@ namespace LMS {
 				return;
 			}
 
+			//Compares two password text fields whether they are matching or not
 			if (!String::Equals(this->password_txt->Text, this->re_password_txt->Text))
 			{
 				MessageBox::Show("Re-enter same password");

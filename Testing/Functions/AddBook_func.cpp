@@ -2,11 +2,16 @@
 #include "AddBook_func.h"
 #include "connection_sql_func.h"
 
+/// <summary>
+/// Adds new books into library database
+/// </summary>
 int LMS::dbInteract::AddBook_func(String^ Name, String^ Author, String^ Publisher, \
 	String^ Category, const int EditionNo, const int NoOfCopies, const int Price)
 {
+	//Database connection command
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
+	//Insert command to add books into library database
 	MySqlCommand^ BookDataInsertQuery = gcnew MySqlCommand("INSERT INTO library_system_db.book_data \
 		(book_name, book_author, book_publisher, book_price,book_edition_no,category) \
 		VALUES('" + Name + "',\
@@ -30,9 +35,12 @@ int LMS::dbInteract::AddBook_func(String^ Name, String^ Author, String^ Publishe
 	myReader = BookIdSelectQuery->ExecuteReader();
 	if (myReader->Read())
 	{
+		//Reads ID of first book added in the current transcation
 		firstBookId = myReader->GetInt32("book_id");
 	}
 	myReader->Close();
+
+	//Closing current session with the database
 	conDataBase->Close();
 
 	return firstBookId;

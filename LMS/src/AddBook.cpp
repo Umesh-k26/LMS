@@ -48,18 +48,17 @@ namespace LMS {
 		int noOfCopies = System::Convert::ToInt32(this->no_of_copies_txt->Text);
 		int price = System::Convert::ToInt32(this->price_txt->Text);
 
-		/*int firstBookId = LMS::dbInteract::AddBook_func(this->bookname_txt->Text, this->author_txt->Text, this->publisher_txt->Text, \
-			this->category_txt->Text, editionNo, noOfCopies, price);*/
-
 		try
 		{
 			int firstBookId = LMS::dbInteract::AddBook_func(this->bookname_txt->Text, this->author_txt->Text, this->publisher_txt->Text, \
 				this->category_txt->Text, editionNo, noOfCopies, price);
 			int bookId = firstBookId;
 			MessageBox::Show("Books added Successfully!");
+
+			//Iterates No. of copies times
 			while (bookId <= firstBookId + noOfCopies - 1)
 			{
-				id_listbox->Items->Add(bookId);
+				id_listbox->Items->Add(bookId); //Displays IDs of books addes in a List Box
 				bookId++;
 			}
 			id_listbox->Items->Add("No. of books added = " + noOfCopies);

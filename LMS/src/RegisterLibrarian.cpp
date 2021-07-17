@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "RegisterLibrarian.h"
-//#include "connection_sql_func.h"
 #include "written_functions/connection_sql_func.h"
 #include "written_functions/RegisterLibrarian_func.h"
 namespace LMS {
@@ -45,7 +44,7 @@ namespace LMS {
 	System::Void RegisterLibrarian::RegisterLibrarian_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		try {
-
+			//Compares two password text fields whether they are matching or not
 			if (!String::Equals(this->password_txt->Text, this->re_password_txt->Text))
 			{
 				MessageBox::Show("Re-enter same password");
@@ -56,8 +55,6 @@ namespace LMS {
 
 			bool result = LMS::dbInteract::RegisterLibrarian_func(this->librarian_username_txt->Text, this->password_txt->Text, this->name_txt->Text, \
 				this->dateTimePicker->Text, this->address_txt->Text, this->email_id_txt->Text, this->mobile_no_txt->Text, Gender);
-
-
 
 			if (result)
 			{
