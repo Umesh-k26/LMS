@@ -109,7 +109,7 @@ void LMS::dbInteract::Update_Borrow_history_fine(int Order_Id, int fine)
 }
 
 
-void LMS::dbInteract::Update_Member_data(int Member_Id)
+void LMS::dbInteract::Update_Member_data_Returned(int Member_Id)
 {
 	//Creating a connection to database
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
@@ -137,7 +137,7 @@ void LMS::dbInteract::Update_Member_data(int Member_Id)
 }
 
 
-void LMS::dbInteract::Update_Book_data(int Book_Id)
+void LMS::dbInteract::Update_Book_data_Returned(int Book_Id)
 {
 	//Creating a connection to database
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());

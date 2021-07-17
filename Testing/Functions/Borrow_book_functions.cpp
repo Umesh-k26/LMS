@@ -103,7 +103,7 @@ bool LMS::dbInteract::Check_Memeber(String^ Member_Id)
 
 
 //Updates Book status coloumn  in Book data Table 
-void LMS::dbInteract::Update_Book_data(String^ Book_Id)
+void LMS::dbInteract::Update_Book_data_Borrowed(String^ Book_Id)
 {
 
 	//Creating a connection to database
@@ -135,7 +135,7 @@ void LMS::dbInteract::Update_Book_data(String^ Book_Id)
 
 }
 
-Void LMS::dbInteract::Update_member_data(String^ Memeber_Id)
+Void LMS::dbInteract::Update_member_data_Borrowed(String^ Memeber_Id)
 {
 
 	//Creating a connection to database
