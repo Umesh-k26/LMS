@@ -12,6 +12,11 @@ LMS means Library Management System is a software, which can be used to manage d
 ### `Table of Contents`
 | SNo. | **Contents** |
 | ---  | ---------    |
-| 1.   | [LMS SOURCE FILES](#1-LMS-SOURCE-FILES) |
-| 2.   | [INSTALLATION](#2-INSTALLATION) |
-| 3.   | [USAGE](#3-USAGE) |
+| 1.   | [ABOUT](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/About.md)|
+| 2.   | [FEATURES](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Features.md)|
+| 3.   | [SCREENSHOTS](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Screenshots.md)|
+| 4.   | [INSTALLATION](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Installation.md)|
+| 5.   | [USER MANUAL(Librarian)](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/User-Manual-(Librarian).md)|
+| 6.   | [USER MANUAL (Member)](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/User-Manual-(Member).md)|
+| 7.   | [DEVELOPER MANUAL](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Developer-Manual.md)|
+
