@@ -70,7 +70,7 @@ library_user_pass
 Here is Entity Relationship Diagram of the Schema
 > **_NOTE:_**  Object Notation is Classic and Relationship Notation is Crow's Foot (IE)
 
-![ER](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Screenshots/ER%20diagram.png)
+![ER](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Screenshots/ER_diagram.png)
 ## Adding New Form
 1. To add a new Form, right-click on the project
 2. Click on Add → New Item
@@ -125,7 +125,7 @@ namespace TestLibrary {
 
 			NUnit::Framework::Assert::AreEqual(expected, actual);
 
-		}
+			}
 	};
 }
 ```
