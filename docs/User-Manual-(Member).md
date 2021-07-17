@@ -17,16 +17,19 @@
 - Click on Login Button and the application will authenticate if you are a Member or not
 - If either the Username does not exist or the Password is invalid then it shows an error Message
 - Upon successful authentication, the Home Page opens up with the required Interface for a Member
+- ![Screenshot of Login Page](Screenshots/Login_Page.png)
 
 ### Display List of All Books
 - To display the list of all books in the library, from Home Page click on the "List of Books" Button
 - This will open the page and send queries to SQL Database
 - A Datagrid with all the information about the books will be filled
+- ![Screenshot of Login Page](Screenshots/Book_list.PNG)
 
 ### Display History of Borrowing
 - To display the history of all borrows by you as a Member, from Home Page click on the "Borrow History" Button
 - This will open the page and send queries to SQL Database
 - A Datagrid with all the information about the History will be filled
+- ![Screenshot of Login Page](Screenshots/Borrow_history.PNG)
 
 ### Search for a Particular Book
 - To search for a Book, from the List of Books Page, search for the book in the Datagrid Table which has listed the information of all the books in the Library
@@ -34,6 +37,7 @@
 - The application will send a query to the Database and filtered results will be produced in the Datagrid
 - To open the profile of the book, click on the "Open" Button under Profile Column
 - To clear search results, click on the "Clear Search" Button
+- ![Screenshot of Login Page](Screenshots/Search_book.PNG)
 
 ### Search for a Particular Order ID (Issue ID)
 - To search for an Order ID, from Borrow History Page, search for the Order ID in the Datagrid Table which has listed the information of all the Order IDs of the Books Borrowed and Returned in the Library by your Member ID
@@ -41,6 +45,7 @@
 - The application will send a query to the Database and filtered results will be produced in the Datagrid
 - To open the profile of the Order ID, click on the "Open" Button under Profile Column
 - To clear search results, click on the "Clear Search" Button
+- ![Screenshot of Login Page](Screenshots/Order_search.PNG)
 
 ### Update Your Profile
 - To update your profile, from the Home Page, click on the "View Profile" Button
