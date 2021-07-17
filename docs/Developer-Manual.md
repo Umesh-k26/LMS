@@ -125,7 +125,7 @@ namespace TestLibrary {
 
 			NUnit::Framework::Assert::AreEqual(expected, actual);
 
-			}
+		}
 	};
 }
 ```
