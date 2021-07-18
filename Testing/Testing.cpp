@@ -5,6 +5,9 @@
 #include "Functions/delete_profile_func.h"
 #include "Functions/login_to_librarian_db.h"
 #include "Functions/update_profile_func.h"
+#include "Functions/RegisterLibrarian_func.h"
+#include "Functions/RegisterMember_func.h"
+#include "Functions/AddBook_func.h"
 
 namespace Test_Connection_SQL {
 	[TestFixture]
@@ -80,6 +83,37 @@ namespace Test_Update_Profile_func {
 		void update_book_profile_test() {
 			bool expected = true;
 			bool actual = LMS::dbInteract::update_book_profile("55", 1);
+			NUnit::Framework::Assert::AreEqual(expected, actual);
+		}
+	};
+}
+
+namespace Regsiter_Or_Add_Test {
+	[TestFixture]
+	public ref class InsertQueryTest {
+	public:
+		[Test]
+		void register_member_test() {
+			bool expected = true;
+			int memberId = -1;
+			bool actual = LMS::dbInteract::RegisterMember_func(memberId, "Sergio", "2002-10-20", "Hyderabad", "abc@libuser.in", "0401284050",\
+									"Student", "Male", "1234");
+			NUnit::Framework::Assert::AreEqual(expected, actual);
+		}
+
+		[Test]
+		void register_librarian_test() {
+			bool expected = true;
+			bool actual = LMS::dbInteract::RegisterLibrarian_func("testLibrarian", "1234", "Alfonsa", "2001-08-22", "Amberpet", "abc@librarian.in",\
+									"229333029", "Female");
+			NUnit::Framework::Assert::AreEqual(expected, actual);
+		}
+
+		[Test]
+		void add_book_test() {
+			bool expected = true;
+			int firstBookId = -1;
+			bool actual = LMS::dbInteract::AddBook_func(firstBookId, "Harry Potter", "JK Rowling", "ssls", "Adventure", 3, 4, 500);
 			NUnit::Framework::Assert::AreEqual(expected, actual);
 		}
 	};

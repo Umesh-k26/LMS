@@ -16,7 +16,7 @@ namespace LMS::dbInteract {
 	/// <param name="Profession"></param>
 	/// <param name="Gender"></param>
 	/// <param name="Password"></param>
-	/// <returns>Member Id(integer) of the member registered currently</returns>
-	int RegisterMember_func(String^ Name, String^ DOB, String^ Address, \
+	/// <returns>True if registration is successful, else false</returns>
+	bool RegisterMember_func(int& memberId, String^ Name, String^ DOB, String^ Address, \
 		String^ EmailId, String^ MobileNo, String^ Profession, String^ Gender, String^ Password);
 }

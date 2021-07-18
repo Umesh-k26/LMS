@@ -6,10 +6,9 @@
 /// <summary>
 /// Registers Student/Faculty/Alumini with given arugments/details
 /// </summary>
-int LMS::dbInteract::RegisterMember_func(String^ Name, String^ DOB, String^ Address, String^ EmailId, \
+bool LMS::dbInteract::RegisterMember_func(int& memberId, String^ Name, String^ DOB, String^ Address, String^ EmailId, \
 	String^ MobileNo, String^ Profession, String^ Gender, String^ Password)
 {
-	int memberId;
 	String^ hashedPassword;
 	MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
@@ -54,6 +53,7 @@ int LMS::dbInteract::RegisterMember_func(String^ Name, String^ DOB, String^ Addr
 
 	//Closing current session with the database
 	conDataBase->Close();
-	return memberId;
+	if (memberId != -1)
+		return true;
 }
 

@@ -5,7 +5,7 @@
 /// <summary>
 /// Adds new books into library database
 /// </summary>
-int LMS::dbInteract::AddBook_func(String^ Name, String^ Author, String^ Publisher, \
+bool LMS::dbInteract::AddBook_func(int& firstBookId, String^ Name, String^ Author, String^ Publisher, \
 	String^ Category, const int EditionNo, const int NoOfCopies, const int Price)
 {
 	//Database connection command
@@ -25,7 +25,7 @@ int LMS::dbInteract::AddBook_func(String^ Name, String^ Author, String^ Publishe
 		AND book_edition_no = " + EditionNo + ");", conDataBase);
 
 	MySqlDataReader^ myReader;
-	int firstBookId;
+
 	conDataBase->Open();
 
 	int copies_no = System::Convert::ToInt32(NoOfCopies);
@@ -43,5 +43,6 @@ int LMS::dbInteract::AddBook_func(String^ Name, String^ Author, String^ Publishe
 	//Closing current session with the database
 	conDataBase->Close();
 
-	return firstBookId;
+	if (firstBookId != -1)
+		return true;
 }

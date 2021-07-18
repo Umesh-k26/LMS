@@ -16,6 +16,6 @@ namespace LMS::dbInteract {
 	/// <param name="NoOfCopies">No of Copies to be added in the Current function call/Transcation</param>
 	/// <param name="Price"></param>
 	/// <returns>Book Id(integer) of the first book that is being added in the current transaction</returns>
-	int AddBook_func(String^ Name, String^ Author, String^ Publisher, \
+	bool AddBook_func(int& firstBookId, String^ Name, String^ Author, String^ Publisher, \
 		String^ Category, const int EditionNo, const int NoOfCopies, const int Price);
 }

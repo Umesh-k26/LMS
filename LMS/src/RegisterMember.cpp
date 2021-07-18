@@ -43,7 +43,7 @@ namespace LMS {
 	/// Button OnClick To Validate Member's details and confirm registration process
 	/// </summary>
 	System::Void RegisterMember::RegisterMember_Click(System::Object^ sender, System::EventArgs^ e) {
-		int memberId;
+		int memberId = -1;
 		try {
 			//Checks if profession is empty string and throws warning
 			if (this->profession_comboBox->Text == "")
@@ -63,13 +63,14 @@ namespace LMS {
 				return;
 			}
 
-			memberId = LMS::dbInteract::RegisterMember_func(this->name_txt->Text, this->dateTimePicker->Text, this->address_txt->Text, \
+			bool result = LMS::dbInteract::RegisterMember_func(memberId, this->name_txt->Text, this->dateTimePicker->Text, this->address_txt->Text, \
 				this->email_id_txt->Text, this->mobile_no_txt->Text, this->profession_comboBox->Text, Gender, this->password_txt->Text);
 
-			MessageBox::Show("Registered " + this->profession_comboBox->Text + " successfully!");
-
-			MessageBox::Show("Your id is " + memberId);
-
+			if (result)
+			{
+				MessageBox::Show("Registered " + this->profession_comboBox->Text + " successfully!");
+				MessageBox::Show("Your id is " + memberId);
+			}
 			this->name_txt->Text = "";
 			this->dateTimePicker->Text = "";
 			this->address_txt->Text = "";

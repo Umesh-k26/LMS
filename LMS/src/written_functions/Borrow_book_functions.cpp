@@ -97,8 +97,6 @@ bool LMS::dbInteract::Check_Memeber(String^ Member_Id)
 		//If any exception occurs then show messagebox
 		MessageBox::Show(ex->Message);
 	}
-
-
 }
 
 
@@ -111,7 +109,6 @@ void LMS::dbInteract::Update_Book_data_Borrowed(String^ Book_Id)
 
 	try
 	{
-
 		conDataBase->Open();
 
 		//This command Updates book data of the book by updating 
