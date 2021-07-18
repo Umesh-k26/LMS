@@ -206,7 +206,7 @@ namespace LMS {
 			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->MinimumSize = System::Drawing::Size(991, 758);
 			this->Name = L"BorrowBook";
-			this->Text = L"Borrow Book";
+			this->Text = L"LMS: Borrow Book";
 			this->Load += gcnew System::EventHandler(this, &BorrowBook::BorrowBook_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->fileSystemWatcher1))->EndInit();
 			this->BorrowBook_group->ResumeLayout(false);

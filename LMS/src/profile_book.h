@@ -538,7 +538,7 @@ namespace LMS {
 			this->Controls->Add(this->delete_profile_button);
 			this->Controls->Add(this->book_profile_group);
 			this->Name = L"profile_book";
-			this->Text = L"Book Profile";
+			this->Text = L"LMS: Book Profile";
 			this->Load += gcnew System::EventHandler(this, &profile_book::profile_book_Load);
 			this->book_profile_group->ResumeLayout(false);
 			this->book_profile_group->PerformLayout();

@@ -233,7 +233,7 @@ namespace LMS {
 			this->Controls->Add(this->list_of_books_dataGridView);
 			this->MinimumSize = System::Drawing::Size(1414, 904);
 			this->Name = L"list_of_books_page";
-			this->Text = L"Books List";
+			this->Text = L"LMS: Books List";
 			this->Load += gcnew System::EventHandler(this, &list_of_books_page::list_of_books_page_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->list_of_books_dataGridView))->EndInit();
 			this->ResumeLayout(false);

@@ -130,7 +130,7 @@ namespace LMS {
 			this->Controls->Add(this->order_id_lbl);
 			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->Name = L"ReturnBook";
-			this->Text = L"ReturnBook";
+			this->Text = L"LMS: Return Book";
 			this->Load += gcnew System::EventHandler(this, &ReturnBook::ReturnBook_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();

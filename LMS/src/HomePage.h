@@ -297,7 +297,7 @@ namespace LMS {
 			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->MinimumSize = System::Drawing::Size(1120, 722);
 			this->Name = L"HomePage";
-			this->Text = L"HomePage";
+			this->Text = L"LMS: Home Page";
 			this->Load += gcnew System::EventHandler(this, &HomePage::HomePage_Load);
 			this->ResumeLayout(false);
 

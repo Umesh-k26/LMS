@@ -233,7 +233,7 @@ namespace LMS {
 			this->Controls->Add(this->back_button_borrow_his);
 			this->MinimumSize = System::Drawing::Size(1414, 907);
 			this->Name = L"borrow_history_page";
-			this->Text = L"Borrow History";
+			this->Text = L"LMS: Borrow History";
 			this->Load += gcnew System::EventHandler(this, &borrow_history_page::borrow_history_page_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->borrow_history_dataGridView))->EndInit();
 			this->ResumeLayout(false);

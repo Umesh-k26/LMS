@@ -236,7 +236,7 @@ namespace LMS {
 			this->Controls->Add(this->list_of_member_dataGridView);
 			this->MinimumSize = System::Drawing::Size(1414, 907);
 			this->Name = L"list_of_member_page";
-			this->Text = L"Member List";
+			this->Text = L"LMS: Member List";
 			this->Load += gcnew System::EventHandler(this, &list_of_member_page::list_of_member_page_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->list_of_member_dataGridView))->EndInit();
 			this->ResumeLayout(false);

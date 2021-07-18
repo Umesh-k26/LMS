@@ -380,7 +380,7 @@ namespace LMS {
 			this->Controls->Add(this->back_button);
 			this->Controls->Add(this->add_button);
 			this->Name = L"AddBook";
-			this->Text = L"Add Book";
+			this->Text = L"LMS: Add Book";
 			this->Load += gcnew System::EventHandler(this, &AddBook::AddBook_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
