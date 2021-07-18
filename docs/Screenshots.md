@@ -6,11 +6,11 @@
 
 -Screenshot of Home Page (Librarian)
 
-![Screenshot of Login Page](Screenshots/Home_page.PNG)
+![Screenshot of Login Page](Screenshots/HomePage(Librarian).png)
 
 -Screenshot of Home Page (Member)
 
-![Screenshot of Login Page](Screenshots/Login_Page.png)
+![Screenshot of Login Page](Screenshots/HomePage(Member).png)
 
 -Screenshot of List of Books Page
 
@@ -32,7 +32,7 @@
 
 ![Screenshot of Login Page](Screenshots/Return_book.PNG)
 
--Screenshot of Register Student Page
+-Screenshot of Register Member Page
 
 ![Screenshot of Login Page](Screenshots/Register_member.PNG)
 
