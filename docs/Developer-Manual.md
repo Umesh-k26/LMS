@@ -28,7 +28,7 @@
 	<img src="Screenshots/InstallationPackage/installation_package3.png" width="75%"></img> <img src="Screenshots/InstallationPackage/installation_package4.png" width="75%"></img>
 	<img src="Screenshots/InstallationPackage/installation_package5.png" width="75%"></img>
 
-2. Clone the GitHub Repository in a folder and open the .sln file i.e. LMS.sln (present at top level directory)
+2. _Clone_ the GitHub Repository in a folder and open the **.sln** file i.e. **LMS.sln** (present at top level directory)
 3. Go to Extensions and Install the following extensions that would be needed to perform certain tasks
 [screenshot of extensions]()
 4. Make sure that all the NuGet Packages are also installed for the project and added into references for the project
@@ -98,17 +98,17 @@ Here is Entity Relationship Diagram of the Schema
 
 ![ER](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Screenshots/ER_database/ER_diagram.png)
 ## Adding New Form
-1. To add a new Form, right-click on the project
-2. Click on Add → New Item
-3. Choose Windows Form from UI
+1. To _add a new Form_, _right-click_ on the **project**
+2. Click on _Add_ → **New Item**
+3. Choose _Windows Form_ from UI
 4. Give Appropriate Name which signifies its function or purpose
 5. Save the Form in _**src**_ folder
 
 ## Adding Functions or Methods
 
 To add a function or a method, it is preferable to add the function in a new _**.h .cpp**_ file inside the folder **written functions**
-1. Right-Click on the Project
-2. Click on Add → New Item
+1. _Right-Click_ on the **Project**
+2. Click on _Add_ → **New Item**
 3. Choose Header File (_.h_) and name it appropriately and save it in the folder **written functions**
 4. Repeat the same for Adding Source File (_.cpp_)
 
@@ -119,8 +119,8 @@ If you are adding a method similar to the one which has already been written ins
 ## Testing Framework
 In order to use the test framework, make sure that the required references and NuGet Packages are installed and added
 
-1. Copy Paste all the files that need to be tested inside a separate folder in **Testing** (in solution directory)
-2. Right Click on _Testing_ Project and then Click Add → Existing Item
+1. _Copy Paste_ all the files that need to be tested inside a separate folder in **Testing** (in solution directory)
+2. _Right Click_ on **Testing_ Project** and then Click _Add_ → **Existing Item**
 3. Choose the required files and click on add
 4. Include the files in the _.cpp_ file where all the tests are being written
 5. Write the test in this particular format so that the Test Framework can recognize the Test Class
