@@ -24,22 +24,48 @@
 ## Prerequisites and Installations
 1. It is important to be familiar with using Visual Studio as an Integrated Development Environment and install the following packages from Visual Studio Installer
 
-<img src="Screenshots/installation_package1.png" width="75%"></img> <img src="Screenshots/installation_package2.png" width="75%"></img>
-<img src="Screenshots/installation_package3.png" width="75%"></img> <img src="Screenshots/installation_package4.png" width="75%"></img>
-<img src="Screenshots/installation_package5.png" width="75%"></img>
+	<img src="Screenshots/installation_package1.png" width="75%"></img> <img src="Screenshots/installation_package2.png" width="75%"></img>
+	<img src="Screenshots/installation_package3.png" width="75%"></img> <img src="Screenshots/installation_package4.png" width="75%"></img>
+	<img src="Screenshots/installation_package5.png" width="75%"></img>
 
 2. Clone the GitHub Repository in a folder and open the .sln file i.e. LMS.sln (present at top level directory)
 3. Go to Extensions and Install the following extensions that would be needed to perform certain tasks
 [screenshot of extensions]()
 4. Make sure that all the NuGet Packages are also installed for the project and added into references for the project
 
-![NuGet Packages](Screenshots/NuGetPackages_new.png)
-![references for LMS](Screenshots/references_LMS_new.png)
-![references for UnitTesting framework](Screenshots/references_UnitTest_new.png)
+	![NuGet Packages](Screenshots/NuGetPackages_new.png)
+	![references for LMS](Screenshots/references_LMS_new.png)
+	![references for UnitTesting framework](Screenshots/references_UnitTest_new.png)
 
 5. Install MySQL Community Version from the official website [MySQL installer for Windows](https://dev.mysql.com/downloads/windows/installer/). <br>
-Follow [How To Install MySQL on Windows 10 ](https://youtu.be/WuBcTJnIuzo?t=259) for detailed tutorial.
 
+	### Installation
+	- Download installer from above link and run the installer.
+	- Accept the license agreement.
+	- Choose **Developer Default** setup type and click next.
+	- Click **Execute** to install MySQL products.
+	- Click **Next** for _Product Configuration_ settings.
+
+		<img src="Screenshots/MySql/installation.png" alt="Execution Step" width="40%" height ="40%"></img>
+		<img src="Screenshots/MySql/product-configuration.png" alt="Configuration Page" width="40%" height="40%"></img>
+
+	### Configuration
+	- In _Type and Networking_, choose **Standalone MySQL Server/Classic MySQL Replication** and click **Next**.
+	- Leave it as default in _Server Configuration Type_ settings.
+	- Set a _Root Account Password_.
+	- Add a user with Database role as _DB Admin_ and click **Next**.
+	- Leave it as default in _Windows Service_ and _Plugins and Extensions_ settings.
+	- Now click **Execute** to _Apply Server Configuration_.
+
+		<img src="Screenshots/MySql/apply-configuration.png" alt="MySQL server Configuration" width="40%" height ="40%"></img>
+		<img src="Screenshots/MySql/product-configuration-2.png" alt="Configuration Page" width="40%" height ="40%"></img>
+	- For _Router Confiugration_, leave it as default and click next.
+	- For configuring _Samples and Examples_, choose server and check connection with **Check** Button.
+	- Click **Next** and **Execute** to finish confiugration settings.
+
+		<img src="Screenshots/MySql/connect-to-server.png" alt="Samples and Examples Configuration" width="40%" height ="40%"></img>
+		<img src="Screenshots/MySql/product-configuration-3.png" alt="Configuration Page" width="40%" height ="40%"></img>
+- > **_NOTE:_**  Follow [How To Install MySQL on Windows 10 ](https://youtu.be/WuBcTJnIuzo?t=259) for detailed tutorial on installation and configuration.
 ## Writing Code
 - The entire application is written in C++ and Windows Forms Application Libraries or else known as Microsoft .NET libraries
 - The advantages of the libraries being used is that it was developed by Microsoft to enhance C++ to work with Windows API and GUI Framework
@@ -99,36 +125,36 @@ In order to use the test framework, make sure that the required references and N
 4. Include the files in the _.cpp_ file where all the tests are being written
 5. Write the test in this particular format so that the Test Framework can recognize the Test Class
 
-```cpp
-using namespace System;
-using namespace System::ComponentModel;
-using namespace System::Collections;
-using namespace System::Windows::Forms;
-using namespace System::Data;
-using namespace System::Drawing;
-using namespace MySql::Data::MySqlClient;
-using namespace NUnit::Framework;
-using namespace Microsoft::VisualStudio::TestTools::UnitTesting;
-using namespace Microsoft::VisualStudio::TestTools;
+	```cpp
+	using namespace System;
+	using namespace System::ComponentModel;
+	using namespace System::Collections;
+	using namespace System::Windows::Forms;
+	using namespace System::Data;
+	using namespace System::Drawing;
+	using namespace MySql::Data::MySqlClient;
+	using namespace NUnit::Framework;
+	using namespace Microsoft::VisualStudio::TestTools::UnitTesting;
+	using namespace Microsoft::VisualStudio::TestTools;
 
-namespace TestLibrary {
-	[TestFixture]
-	public ref class TestClass1
-	{
-	public:
-		[Test]
-		void methodclass() 
-    		{
-			// write expected variables
+	namespace TestLibrary {
+		[TestFixture]
+		public ref class TestClass1
+		{
+		public:
+			[Test]
+			void methodclass() 
+				{
+				// write expected variables
 
-      			//write actual variables which calls the function to be tested
+					//write actual variables which calls the function to be tested
 
-			NUnit::Framework::Assert::AreEqual(expected, actual);
+				NUnit::Framework::Assert::AreEqual(expected, actual);
 
-		}
-	};
-}
-```
+			}
+		};
+	}
+	```
 
 6. From the menu select **Test** and **Run All tests**
 
