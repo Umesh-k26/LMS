@@ -158,7 +158,7 @@ namespace LMS {
 			this->Controls->Add(this->SignIn_box);
 			this->MinimumSize = System::Drawing::Size(725, 624);
 			this->Name = L"LoginPage";
-			this->Text = L"LoginPage";
+			this->Text = L"LMS: Login Page";
 			this->Load += gcnew System::EventHandler(this, &LoginPage::LoginPage_Load);
 			this->SignIn_box->ResumeLayout(false);
 			this->SignIn_box->PerformLayout();

@@ -422,7 +422,7 @@ namespace LMS {
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->register_button);
 			this->Name = L"RegisterLibrarian";
-			this->Text = L"RegisterLibrarian";
+			this->Text = L"LMS: Register Librarian";
 			this->Load += gcnew System::EventHandler(this, &RegisterLibrarian::RegisterLibrarian_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();

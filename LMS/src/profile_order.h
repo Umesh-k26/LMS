@@ -732,7 +732,7 @@ namespace LMS {
 			this->Controls->Add(this->book_profile_group);
 			this->Controls->Add(this->member_profile_group);
 			this->Name = L"profile_order";
-			this->Text = L"Order Profile";
+			this->Text = L"LMS: Order Profile";
 			this->Load += gcnew System::EventHandler(this, &profile_order::profile_order_Load);
 			this->member_profile_group->ResumeLayout(false);
 			this->member_profile_group->PerformLayout();
