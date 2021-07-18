@@ -132,7 +132,7 @@
 ### Logging Out
 - From the Home Page, click on the "Logout" button
 - You will be logged out and the Sign In page will be opened
-![Screenshot of login page](Screenshots/Home_page.PNG)
+![Screenshot of login page](Screenshots/HomePage(Librarian).PNG)
 
 ### Exiting the Application
 - If you are on the Sign In page then the Application can be directly closed by clicking on the top right corner "Close" button

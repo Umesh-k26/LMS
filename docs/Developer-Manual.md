@@ -24,18 +24,18 @@
 ## Prerequisites and Installations
 1. It is important to be familiar with using Visual Studio as an Integrated Development Environment and install the following packages from Visual Studio Installer
 
-	<img src="Screenshots/installation_package1.png" width="75%"></img> <img src="Screenshots/installation_package2.png" width="75%"></img>
-	<img src="Screenshots/installation_package3.png" width="75%"></img> <img src="Screenshots/installation_package4.png" width="75%"></img>
-	<img src="Screenshots/installation_package5.png" width="75%"></img>
+	<img src="Screenshots/InstallationPackage/installation_package1.png" width="75%"></img> <img src="Screenshots/InstallationPackage/installation_package2.png" width="75%"></img>
+	<img src="Screenshots/InstallationPackage/installation_package3.png" width="75%"></img> <img src="Screenshots/InstallationPackage/installation_package4.png" width="75%"></img>
+	<img src="Screenshots/InstallationPackage/installation_package5.png" width="75%"></img>
 
 2. Clone the GitHub Repository in a folder and open the .sln file i.e. LMS.sln (present at top level directory)
 3. Go to Extensions and Install the following extensions that would be needed to perform certain tasks
 [screenshot of extensions]()
 4. Make sure that all the NuGet Packages are also installed for the project and added into references for the project
 
-	![NuGet Packages](Screenshots/NuGetPackages_new.png)
-	![references for LMS](Screenshots/references_LMS_new.png)
-	![references for UnitTesting framework](Screenshots/references_UnitTest_new.png)
+	![NuGet Packages](Screenshots/InstallationPackage/NuGetPackages_new.png)
+	![references for LMS](Screenshots/DllReferences/references_LMS_new.png)
+	![references for UnitTesting framework](Screenshots/DllReferences/references_UnitTest_new.png)
 
 5. Install MySQL Community Version from the official website [MySQL installer for Windows](https://dev.mysql.com/downloads/windows/installer/). <br>
 
@@ -96,7 +96,7 @@ library_user_pass
 Here is Entity Relationship Diagram of the Schema
 > **_NOTE:_**  Object Notation is Classic and Relationship Notation is Crow's Foot (IE)
 
-![ER](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Screenshots/ER_diagram.png)
+![ER](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Screenshots/ER_database/ER_diagram.png)
 ## Adding New Form
 1. To add a new Form, right-click on the project
 2. Click on Add → New Item
@@ -137,17 +137,18 @@ In order to use the test framework, make sure that the required references and N
 	using namespace Microsoft::VisualStudio::TestTools::UnitTesting;
 	using namespace Microsoft::VisualStudio::TestTools;
 
-	namespace TestLibrary {
+	namespace TestLibrary 
+	{
 		[TestFixture]
 		public ref class TestClass1
 		{
 		public:
 			[Test]
 			void methodclass() 
-				{
+			{
 				// write expected variables
 
-					//write actual variables which calls the function to be tested
+				//write actual variables which calls the function to be tested
 
 				NUnit::Framework::Assert::AreEqual(expected, actual);
 

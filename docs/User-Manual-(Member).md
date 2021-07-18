@@ -29,7 +29,7 @@
 - To display the history of all borrows by you as a Member, from Home Page click on the "Borrow History" Button
 - This will open the page and send queries to SQL Database
 - A Datagrid with all the information about the History will be filled
-- ![Screenshot of Login Page](Screenshots/Borrow_history.PNG)
+- ![Screenshot of Login Page](Screenshots/borrow_history_member.png)
 
 ### Search for a Particular Book
 - To search for a Book, from the List of Books Page, search for the book in the Datagrid Table which has listed the information of all the books in the Library
@@ -45,7 +45,7 @@
 - The application will send a query to the Database and filtered results will be produced in the Datagrid
 - To open the profile of the Order ID, click on the "Open" Button under Profile Column
 - To clear search results, click on the "Clear Search" Button
-- ![Screenshot of Login Page](Screenshots/Order_search.PNG)
+- ![Screenshot of Login Page](Screenshots/borrow_history_member_search.png)
 
 ### Update Your Profile
 - To update your profile, from the Home Page, click on the "View Profile" Button
