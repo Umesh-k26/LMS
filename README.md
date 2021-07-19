@@ -46,5 +46,5 @@ User Manuals, Developer Manual, Source Code Documentation and Test Environment a
 - [Tanmay Garg](https://www.github.com/tanmaygar) CS20BTECH11063
 - [Umesh Kalvakuntla](https://www.github.com/Umesh-k26) CS20BTECH11024
 - [Muttareddy Sahil Chandra](https://github.com/SAHIL150602) CS20BTECH11033
-- [Tanmay Garg](https://www.github.com/tanmaygar) CS20BTECH11063
+- [Polneni Ganesh Nikhil Madhav](https://github.com/Nik123-cpp) CS20BTECH11036
 
