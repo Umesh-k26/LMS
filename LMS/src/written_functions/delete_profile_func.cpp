@@ -43,8 +43,6 @@ bool LMS::dbInteract::delete_member_profile(String^ input_id)
 
 	//Close the connection to DataBase
 	conDataBase->Close();
-	/*this->DialogResult = System::Windows::Forms::DialogResult::OK;
-	this->Close();*/
 
 	//Return the required return value based on success or fail
 	return return_value;

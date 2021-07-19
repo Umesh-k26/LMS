@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "RegisterMember.h"
-//#include "connection_sql_func.h"
 #include "written_functions/connection_sql_func.h"
 #include "written_functions/RegisterMember_func.h"
+
 namespace LMS {
 
 	///Constructor calls for functions to Initialize all the components of the form
@@ -44,7 +44,8 @@ namespace LMS {
 	/// </summary>
 	System::Void RegisterMember::RegisterMember_Click(System::Object^ sender, System::EventArgs^ e) {
 		int memberId = -1;
-		try {
+		try 
+		{
 			//Checks if profession is empty string and throws warning
 			if (this->profession_comboBox->Text == "")
 			{

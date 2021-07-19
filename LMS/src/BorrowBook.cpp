@@ -26,7 +26,6 @@ LMS::BorrowBook :: ~BorrowBook()
 /// </summary>
 /// <param name="sender"></param>
 /// <param name="e"></param>
-/// <returns></returns>
 System::Void LMS::BorrowBook::BorrowBook_Load(System::Object^ sender, System::EventArgs^ e)
 {
 	CenterToScreen();
@@ -39,7 +38,6 @@ System::Void LMS::BorrowBook::BorrowBook_Load(System::Object^ sender, System::Ev
 /// </summary>
 /// <param name="sender"></param>
 /// <param name="e"></param>
-/// <returns></returns>
 System::Void LMS::BorrowBook::borrow_button_Click(System::Object^ sender, System::EventArgs^ e)
 {
 

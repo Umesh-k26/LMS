@@ -38,9 +38,8 @@ bool LMS::dbInteract::update_member_profile(String^ input_id, String^ profession
 
 	//Close the connection to DataBase
 	conDataBase->Close();
-	\
-		//Return the required return value based on success or fail
-		return return_val;
+	//Return the required return value based on success or fail
+	return return_val;
 }
 
 /// <summary>
@@ -62,10 +61,6 @@ bool LMS::dbInteract::update_book_profile(String^ input_id, int num_copies)//, S
 		FROM library_system_db.book_data\
 		WHERE book_id = '" + input_id + "'; ", conDataBase);
 
-	/*MySqlCommand^ cmdDataBase2 = gcnew MySqlCommand("UPDATE library_system_db.book_data SET \
-				no_of_copies = no_of_copies + '" + num_copies + "', copies_available = copies_available + '" + num_copies + "'\
-				WHERE book_name = '" + book_name_input + "' AND \
-				book_edition_no = '" + book_edition_input + "';", conDataBase);*/
 
 	try {
 
@@ -77,12 +72,6 @@ bool LMS::dbInteract::update_book_profile(String^ input_id, int num_copies)//, S
 		{
 			duplicate_book_copies_cmdDataBase->ExecuteNonQuery();
 		}
-
-
-		//MessageBox::Show("cmdb1 executed");
-		//cmdDataBase2->ExecuteNonQuery();
-		//MessageBox::Show("cmdb2 executed");
-		//conDataBase->Close();
 
 		//Return true if everything is done
 		return_val = true;
@@ -118,7 +107,9 @@ bool LMS::dbInteract::change_pass_member(String^ input_id, String^ new_pass_inpu
 
 	//This command updates the Password of the Member
 	MySqlCommand^ change_pass_cmdDataBase = gcnew MySqlCommand("UPDATE library_system_db.user_pass set member_id = ' " + input_id + " ', user_password = '" + new_pass_input + "' WHERE member_id =' " + input_id + " ';", conDataBase);
-	try {
+	try 
+	{
+
 		//Open Database
 		conDataBase->Open();
 
@@ -129,6 +120,7 @@ bool LMS::dbInteract::change_pass_member(String^ input_id, String^ new_pass_inpu
 		//Return true if everything is done
 		return_val = true;
 	}
+
 	catch (Exception^ ex)
 	{
 		//MessageBox::Show(ex->Message);

@@ -18,7 +18,6 @@ LMS::list_of_books_page::list_of_books_page(String^ input_transfer_id, bool is_l
 	transfer_id = input_transfer_id;
 	is_librarian = is_librarian_input;
 	InitializeComponent();
-	//fill_data_grid();
 	LMS::dbInteract::fill_datagrid_book(list_of_books_dataGridView);
 }
 
@@ -49,9 +48,6 @@ System::Void LMS::list_of_books_page::back_button_book_list_Click(System::Object
 {
 	this->DialogResult = System::Windows::Forms::DialogResult::OK;
 	this->Close();
-	/*LMS::Form2^ f2 = gcnew LMS::Form2;
-	this->Hide();
-	f2->ShowDialog();*/
 }
 
 /// <summary>
@@ -82,7 +78,6 @@ System::Void LMS::list_of_books_page::list_of_books_dataGridView_CellContentClic
 		//Constructing profile form by passing the Book ID along with it as well as if the user is librarian or not
 		LMS::profile_book^ profile_book_f = gcnew LMS::profile_book(str, is_librarian);
 		this->Hide();
-		//testing_f->ShowDialog();
 
 		//Hiding the current Form and opening the profile form and waits till the time the user clicks on back button
 		if (profile_book_f->ShowDialog() == System::Windows::Forms::DialogResult::OK)
