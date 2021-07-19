@@ -317,7 +317,7 @@ namespace LMS {
 
 	private:
 		/// <summary>
-		/// System::Void function to view Book List
+		/// System::Void function to Navigate to Books List page
 		/// </summary>
 		/// <param name="sender">
 		///Provides a reference to the object that raised the event
@@ -329,7 +329,7 @@ namespace LMS {
 
 	private:
 		/// <summary>
-		/// System::Void function to view Borrow History
+		/// System::Void function to Navigate to Borrow History page
 		/// </summary>
 		/// <param name="sender">
 		///Provides a reference to the object that raised the event
@@ -354,7 +354,7 @@ namespace LMS {
 	private:
 
 		/// <summary>
-		/// System::Void function to view Member List
+		/// System::Void function to Navigate to Member List page
 		/// </summary>
 		/// <param name="sender">
 		///Provides a reference to the object that raised the event
@@ -410,6 +410,7 @@ namespace LMS {
 		/// <param name="e">
 		///Passes an object specific to the event that is being handled.
 		/// </param>
+		/// This function works only when the User is not a Librarian but a Member
 		System::Void view_profile_member_btn_Click(System::Object^ sender, System::EventArgs^ e);
 
 	private:
@@ -438,7 +439,7 @@ namespace LMS {
 
 	private:
 		/// <summary>
-		/// System::Void function to load the form
+		/// System::Void function to load the Home Page
 		/// </summary>
 		/// <param name="sender">
 		///Provides a reference to the object that raised the event

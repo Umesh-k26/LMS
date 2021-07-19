@@ -517,7 +517,8 @@ namespace LMS {
 		/// <param name="e">
 		///Passes an object specific to the event that is being handled.
 		/// </param>
-		System::Void male_rbtn_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		System::Void male_rbtn_CheckedChanged(System::Object^ sender, System::EventArgs^ e)
+		{
 			Gender = "Male";
 		}
 	private:
@@ -530,7 +531,8 @@ namespace LMS {
 		/// <param name="e">
 		///Passes an object specific to the event that is being handled.
 		/// </param>
-		System::Void female_rbtn_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		System::Void female_rbtn_CheckedChanged(System::Object^ sender, System::EventArgs^ e) 
+		{
 			Gender = "Female";
 		}
 	};

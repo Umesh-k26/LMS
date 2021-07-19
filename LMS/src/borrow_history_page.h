@@ -1,6 +1,5 @@
 #pragma once
 #include "profile_order.h"
-//#include "connection_sql_func.h"
 #include "written_functions/filling_datagrid.h"
 #include "written_functions/connection_sql_func.h"
 

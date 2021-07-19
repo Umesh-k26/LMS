@@ -23,7 +23,7 @@ namespace fine_func {
 	/// input for the member who has borrowed the book
 	/// </param>
 	/// <param name="borrow_profession_input">
-	/// profession of the borrower
+	/// Profession of the Borrower
 	/// </param>
 	/// <returns>
 	/// int value of fine

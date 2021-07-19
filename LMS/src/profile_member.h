@@ -1,8 +1,8 @@
 #pragma once
-//#include "connection_sql_func.h"
 #include "written_functions/connection_sql_func.h"
 #include "profile_order.h"
 #include "written_functions/filling_datagrid.h"
+
 namespace LMS {
 
 	using namespace System;
@@ -636,12 +636,6 @@ namespace LMS {
 		///Passes an object specific to the event that is being handled.
 		/// </param>
 		System::Void confirm_change_button_Click(System::Object^ sender, System::EventArgs^ e);
-
-	private:
-		/// <summary>
-		/// Void Function to Fill the Data Grid
-		/// </summary>
-		//void fill_data_grid();
 
 	private:
 		/// <summary>

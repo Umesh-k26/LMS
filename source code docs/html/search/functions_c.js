@@ -1,10 +1,17 @@
 var searchData=
 [
-  ['password_5fhasher_438',['password_hasher',['../namespacesql__connection__func.html#abb2f7488627372469887e4d139575fee',1,'sql_connection_func']]],
-  ['profile_5fbook_439',['profile_book',['../class_l_m_s_1_1profile__book.html#aba83e471fdfa7cda2c145a943ec8929f',1,'LMS::profile_book::profile_book(void)'],['../class_l_m_s_1_1profile__book.html#a2714f4f5ebfe58ba23fd6466f59286c6',1,'LMS::profile_book::profile_book(String^ label_book_id, bool isLibrarian)']]],
-  ['profile_5fbook_5fload_440',['profile_book_Load',['../class_l_m_s_1_1profile__book.html#ace290c242ce24ffd3d39f937870b153d',1,'LMS::profile_book']]],
-  ['profile_5fmember_441',['profile_member',['../class_l_m_s_1_1profile__member.html#afb077806e0dc30c84912ce63e1857654',1,'LMS::profile_member::profile_member(void)'],['../class_l_m_s_1_1profile__member.html#aaa8d1371eddb75e288cd71356fdd3111',1,'LMS::profile_member::profile_member(String^ input_id_transfer, bool is_librarian_input)']]],
-  ['profile_5fmember_5fload_442',['profile_member_Load',['../class_l_m_s_1_1profile__member.html#a87c6c398d1e3f19bfcf5f56896d63886',1,'LMS::profile_member']]],
-  ['profile_5forder_443',['profile_order',['../class_l_m_s_1_1profile__order.html#a8f61dd40f6b5cb6df20e0cae512a5ff1',1,'LMS::profile_order::profile_order(void)'],['../class_l_m_s_1_1profile__order.html#a2532c5b94f4cd62e1c776aa13a0aa5a2',1,'LMS::profile_order::profile_order(String^ input_for_orderid)']]],
-  ['profile_5forder_5fload_444',['profile_order_Load',['../class_l_m_s_1_1profile__order.html#a0ef0f4cb44fb8d55a111cf59eae957b2',1,'LMS::profile_order']]]
+  ['register_5fmember_5fbtn_5fclick_443',['register_member_btn_Click',['../class_l_m_s_1_1_home_page.html#adb799250fe319fee0d7452c68ac87d04',1,'LMS::HomePage']]],
+  ['registerlibrarian_444',['RegisterLibrarian',['../class_l_m_s_1_1_register_librarian.html#ac5768a2570742efdd6445b960a66320a',1,'LMS::RegisterLibrarian::RegisterLibrarian(void)'],['../class_l_m_s_1_1_register_librarian.html#af4d7d2694d5432260403e7f879683d6d',1,'LMS::RegisterLibrarian::RegisterLibrarian(String^ input_transfer_id, bool is_librarian_input)']]],
+  ['registerlibrarian_5fbtn_5fclick_445',['registerlibrarian_btn_Click',['../class_l_m_s_1_1_home_page.html#a3357f3b81cfae9e4b4668363d971e6d3',1,'LMS::HomePage']]],
+  ['registerlibrarian_5fclick_446',['RegisterLibrarian_Click',['../class_l_m_s_1_1_register_librarian.html#ae23f199fe977200ffacfe0517231f8d5',1,'LMS::RegisterLibrarian']]],
+  ['registerlibrarian_5ffunc_447',['RegisterLibrarian_func',['../namespace_l_m_s_1_1db_interact.html#aaea84841d9351b370177107aaa1cf222',1,'LMS::dbInteract']]],
+  ['registerlibrarian_5fload_448',['RegisterLibrarian_Load',['../class_l_m_s_1_1_register_librarian.html#a94040efdefb99fbc32966146a3597597',1,'LMS::RegisterLibrarian']]],
+  ['registermember_449',['RegisterMember',['../class_l_m_s_1_1_register_member.html#acf86d715853f3b2c92b2b1ad602c0213',1,'LMS::RegisterMember::RegisterMember(void)'],['../class_l_m_s_1_1_register_member.html#acaa52e9c41f73276927c0bf309abee59',1,'LMS::RegisterMember::RegisterMember(String^ input_transfer_id, bool is_librarian_input)']]],
+  ['registermember_5fclick_450',['RegisterMember_Click',['../class_l_m_s_1_1_register_member.html#a7e4d791f298b310490ae2d9668fb3559',1,'LMS::RegisterMember']]],
+  ['registermember_5ffunc_451',['RegisterMember_func',['../namespace_l_m_s_1_1db_interact.html#a370b30047e0cc41c2e7fb037d92f4bb9',1,'LMS::dbInteract']]],
+  ['registermember_5fload_452',['RegisterMember_Load',['../class_l_m_s_1_1_register_member.html#aca5ece24269c846aeaf7a5d5edaee14f',1,'LMS::RegisterMember']]],
+  ['return_5fbutton_5fclick_453',['return_button_Click',['../class_l_m_s_1_1_return_book.html#aec53a956bf0b1f302a42b5c91b7e29bd',1,'LMS::ReturnBook']]],
+  ['returnbook_454',['ReturnBook',['../class_l_m_s_1_1_return_book.html#a827c6576f511c41835fc3bd560e94e1d',1,'LMS::ReturnBook']]],
+  ['returnbook_5fbtn_5fclick_455',['returnbook_btn_Click',['../class_l_m_s_1_1_home_page.html#a4d6b2b001f21dbca817c64850e2ceeb6',1,'LMS::HomePage']]],
+  ['returnbook_5fload_456',['ReturnBook_Load',['../class_l_m_s_1_1_return_book.html#a0dad61778f16c4729cbe925e32da2e75',1,'LMS::ReturnBook']]]
 ];

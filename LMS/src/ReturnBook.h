@@ -1,7 +1,5 @@
 #pragma once
-//#include "fine_function.h"
 #include "written_functions/fine_function.h"
-//#include "connection_sql_func.h"
 #include "written_functions/connection_sql_func.h"
 #include "written_functions/Return_book_functions.h"
 
@@ -18,6 +16,8 @@ namespace LMS {
 	/// <summary>
 	/// Summary for ReturnBook
 	/// </summary>
+	///This is a public ref class whose object lifetime is administered automatically. When the object is no longer accessible or goes out of scope, the memory is released.
+	/// It supports the Windows Runtime type system.
 	public ref class ReturnBook : public System::Windows::Forms::Form
 	{
 	public:
@@ -95,7 +95,6 @@ namespace LMS {
 			this->order_id_txt->Name = L"order_id_txt";
 			this->order_id_txt->Size = System::Drawing::Size(148, 26);
 			this->order_id_txt->TabIndex = 1;
-			this->order_id_txt->TextChanged += gcnew System::EventHandler(this, &ReturnBook::order_id_txt_TextChanged);
 			// 
 			// return_button
 			// 
@@ -137,18 +136,39 @@ namespace LMS {
 
 		}
 #pragma endregion
+		/// <summary>
+		/// System::Void function to load the form
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
 	private: System::Void ReturnBook_Load(System::Object^ sender, System::EventArgs^ e);
 
 
+		/// <summary>
+		/// System::Void function to Execute the Function to return the Book Borrowed
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
 	private: System::Void return_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-
+		/// <summary>
+		/// System::Void function for OnClick of back button
+		/// </summary>
+		/// <param name="sender">
+		///Provides a reference to the object that raised the event
+		/// </param>
+		/// <param name="e">
+		///Passes an object specific to the event that is being handled.
+		/// </param>
 	private: System::Void Back_button_Click(System::Object^ sender, System::EventArgs^ e);
-
-
-	private: System::Void order_id_txt_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-
 
 
 	};
