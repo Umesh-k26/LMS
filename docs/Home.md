@@ -1,5 +1,5 @@
 # Library Management System
-This application was made using Visual Studio Windows Forms Application in C++ which uses Graphical User Interface System in .NET
+This is a Windows Desktop application made using Visual Studio Windows Forms Application in C++, which uses Graphical User Interface System in .NET
 
 This application also uses MySQL Community Version to use the Database Management System to store details of Members, Librarians, Books, History of Borrowing and Username - Passwords.
 

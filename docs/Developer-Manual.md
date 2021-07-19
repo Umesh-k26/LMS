@@ -30,7 +30,8 @@
 
 2. _Clone_ the GitHub Repository in a folder and open the **.sln** file i.e. **LMS.sln** (present at top level directory)
 3. Go to Extensions and Install the following extensions that would be needed to perform certain tasks
-[screenshot of extensions]()
+![screenshot of extensions](Screenshots/InstallationPackage/extension.png)
+
 4. Make sure that all the NuGet Packages are also installed for the project and added into references for the project
 
 	![NuGet Packages](Screenshots/InstallationPackage/NuGetPackages_new.png)
@@ -96,7 +97,7 @@ library_user_pass
 Here is Entity Relationship Diagram of the Schema
 > **_NOTE:_**  Object Notation is Classic and Relationship Notation is Crow's Foot (IE)
 
-![ER](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Screenshots/ER_database/ER_diagram.png)
+![ER](Screenshots/ER_database/ER_diagram.png)
 ## Adding New Form
 1. To _add a new Form_, _right-click_ on the **project**
 2. Click on _Add_ → **New Item**
@@ -158,7 +159,9 @@ In order to use the test framework, make sure that the required references and N
 	```
 
 6. From the menu select **Test** and **Run All tests**
+![Screenshot of Test](Screenshots/TestFramework.png)
 
-The reason for doing this procedure is to ensure that before adding the function to the application it is preferable to Test the function with certain inputs and check if it is giving the desired output.
+The Reasons for doing this Procedure:
+- Before adding the function to the application, it is preferable to Test the function with certain inputs and check if it is giving the desired output.
 
-This not only saves the application from throwing build errors when you design a new function but also helps Test for any situations that may arise to give invalid output
+- This not only saves the application from throwing build errors, but also helps Test for any situations that may arise to give invalid output
