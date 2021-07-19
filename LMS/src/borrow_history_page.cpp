@@ -2,7 +2,7 @@
 #include "borrow_history_page.h"
 
 ///Constructor calls for functions to Initialize all the components of the form and to fill the Data Grid with list of history of Book Borrowing
-	///@see InitializeComponent(), filling_datagrid::fill_datagrid_borrow_history()
+///@see InitializeComponent(), filling_datagrid::fill_datagrid_borrow_history()
 LMS::borrow_history_page::borrow_history_page(void)
 {
 	InitializeComponent();

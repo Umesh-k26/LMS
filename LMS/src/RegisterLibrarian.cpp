@@ -43,7 +43,8 @@ namespace LMS {
 	/// </summary>
 	System::Void RegisterLibrarian::RegisterLibrarian_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		try {
+		try 
+		{
 			//Compares two password text fields whether they are matching or not
 			if (!String::Equals(this->password_txt->Text, this->re_password_txt->Text))
 			{

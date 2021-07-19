@@ -49,7 +49,7 @@ System::Void LMS::ReturnBook::return_button_Click(System::Object^ sender, System
 
 		LMS::dbInteract::Get_data_Order(Order_id, Member_ID, Book_Id, Borrow_status, Profession);
 
-		// Profession = LMS::dbInteract::Get_Profession(Member_ID);
+		
 
 
 		if (Borrow_status)

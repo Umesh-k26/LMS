@@ -13,8 +13,6 @@ namespace connection_to_librarian_db {
 		MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
 
 		//This command find whether the user is a librarian or not
-		/*MySqlCommand^ is_librarian_cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.library_user_pass WHERE \
-	    library_username='" + username_input + "' and library_password = '" + password_input + "' ;", conDataBase);*/
 		MySqlCommand^ is_librarian_cmdDataBase = gcnew MySqlCommand("SELECT * FROM library_system_db.library_user_pass WHERE \
 		library_username='" + username_input + "' and library_password = '" + sql_connection_func::password_hasher(username_input, password_input) + "' ;", conDataBase);
 
@@ -32,7 +30,7 @@ namespace connection_to_librarian_db {
 			if (count == 1)
 			{
 				//
-				//	IN FORM 1 IF THIS IS TRUE THEN OPEN FORM 2 WITH ALL BUTTONS ALLOWED FOR LIBRARAIN
+				//	IN Login Page IF THIS IS TRUE THEN OPEN Home Page WITH ALL BUTTONS ALLOWED FOR LIBRARAIN
 				//
 				MessageBox::Show("You are librarian");
 

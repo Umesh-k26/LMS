@@ -1,10 +1,9 @@
 #include "pch.h"
 #include "LoginPage.h"
 #include "HomePage.h"
-//#include "login_to_librarian_db.h"
-//#include "connection_sql_func.h"
 #include "written_functions/login_to_librarian_db.h"
 #include "written_functions/connection_sql_func.h"
+
 namespace LMS {
 
 	///Constructor calls for functions to Initialize all the components of the form
@@ -43,8 +42,6 @@ namespace LMS {
 		else
 		{
 			MySqlConnection^ conDataBase = gcnew MySqlConnection(sql_connection_func::sql_user_pass_string());
-			/*MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from library_system_db.user_pass WHERE \
-				member_id='" + this->username_txt->Text + "' and user_password = '" + this->password_txt->Text + "' ;", conDataBase);*/
 			MySqlCommand^ cmdDataBase = gcnew MySqlCommand("select * from library_system_db.user_pass WHERE \
 				member_id='" + this->username_txt->Text + "' and user_password = '" + sql_connection_func::password_hasher(this->username_txt->Text, this->password_txt->Text) + "' ;", conDataBase);
 

@@ -44,7 +44,7 @@ namespace LMS::dbInteract {
 	/// <returns>
 	/// Returns true if it is successful in updating
 	/// </returns>
-	bool update_book_profile(String^ input_id, int num_copies);//, String^ book_name_input, String^ book_edition_input);
+	bool update_book_profile(String^ input_id, int num_copies);
 
 	/// <summary>
 	/// Function to update password of the member

@@ -41,16 +41,10 @@ namespace LMS::dbInteract {
 	/// <param name="num_copies">
 	/// String input for number of copies of the book to be added
 	/// </param>
-	/// <param name="book_name_input">
-	/// String input for name of the book
-	/// </param>
-	/// <param name="book_edition_input">
-	/// String input for edition of the book
-	/// </param>
 	/// <returns>
 	/// Returns true if it is successful in updating
 	/// </returns>
-	bool update_book_profile(String^ input_id, int num_copies);//, String^ book_name_input, String^ book_edition_input);
+	bool update_book_profile(String^ input_id, int num_copies);
 
 	/// <summary>
 	/// Function to update password of the member

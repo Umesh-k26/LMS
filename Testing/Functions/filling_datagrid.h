@@ -17,6 +17,7 @@ namespace LMS::dbInteract {
 	/// <param name="dataGridView">
 	/// Passing the dataGridView in which data needs to be presented
 	/// </param>
+	/// @see fill_datagrid_members_filtered()
 	void fill_datagrid_member(System::Windows::Forms::DataGridView^ dataGridView);
 
 	/// <summary>
@@ -31,6 +32,7 @@ namespace LMS::dbInteract {
 	/// <param name="dataGridView">
 	/// Passing the dataGridView in which data needs to be presented
 	/// </param>
+	/// @see fill_datagrid_member()
 	void fill_datagrid_members_filtered(String^ str_list_detail_search_person, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView);
 
 	/// <summary>
@@ -39,6 +41,7 @@ namespace LMS::dbInteract {
 	/// <param name="dataGridView">
 	/// Passing the dataGridView in which data needs to be presented
 	/// </param>
+	/// @see fill_datagrid_books_filtered()
 	void fill_datagrid_book(System::Windows::Forms::DataGridView^ dataGridView);
 
 	/// <summary>
@@ -53,6 +56,7 @@ namespace LMS::dbInteract {
 	/// <param name="dataGridView">
 	/// Passing the dataGridView in which data needs to be presented
 	/// </param>
+	/// @see fill_datagrid_book()
 	void fill_datagrid_books_filtered(String^ str_list_detail_search_book, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView);
 
 	/// <summary>
@@ -67,6 +71,7 @@ namespace LMS::dbInteract {
 	/// <param name="transfer_id_input">
 	/// It is the input argument for the ID to be transfered for presenting data if needed
 	/// </param>
+	/// @see fill_datagrid_borrow_history_filtered()
 	void fill_datagrid_borrow_history(System::Windows::Forms::DataGridView^ dataGridView, bool is_librarian_input, String^ transfer_id_input);
 
 	/// <summary>
@@ -87,6 +92,7 @@ namespace LMS::dbInteract {
 	/// <param name="transfer_id_input">
 	/// It is the input argument for the ID to be transfered for presenting data if needed
 	/// </param>
+	/// @see fill_datagrid_borrow_history()
 	void fill_datagrid_borrow_history_filtered(String^ str_list_detail_search_order, String^ search_bar_text, System::Windows::Forms::DataGridView^ dataGridView, bool is_librarian_input, String^ transfer_id_input);
 
 	/// <summary>
