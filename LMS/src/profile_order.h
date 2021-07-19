@@ -1,6 +1,6 @@
 #pragma once
-//#include "connection_sql_func.h"
 #include "written_functions/connection_sql_func.h"
+
 namespace LMS {
 
 	using namespace System;
@@ -11,20 +11,21 @@ namespace LMS {
 	using namespace System::Drawing;
 	using namespace MySql::Data::MySqlClient;
 
-	// <summary>
+	/// <summary>
 	/// Summary for profile_order
 	/// </summary>
-	///This is a public ref class whose object lifetime is administered automatically. When the object is no longer accessible or goes out of scope, the memory is released.
+	/// This is a public ref class whose object lifetime is administered automatically. When the object is no longer accessible or goes out of scope, the memory is released.
 	/// It supports the Windows Runtime type system.
 	public ref class profile_order : public System::Windows::Forms::Form
-	{/// <summary>
+	{
+		/// <summary>
 		/// Public variable for transfering the ID of the Order
 		/// </summary>
 		/// It transfers the ID of the user as String which is part of the public ref class and a member of System.
 		String^ transfer_order_id;
 
 	public:
-		// <summary>
+		/// <summary>
 		/// Constructor function for the form
 		/// </summary>
 		/// <param name="void"></param>
@@ -241,16 +242,6 @@ namespace LMS {
 		/// Back Button to navigate backward
 		/// </summary>
 		System::Windows::Forms::Button^ back_button;
-	private:
-		/// <summary>
-		/// Label for Number of Copies Currently Available
-		/// </summary>
-
-	private:
-		/// <summary>
-		/// A Read-Only TextBox with Number of Copies Currently Available
-		/// </summary>
-
 
 	private:
 		/// <summary>

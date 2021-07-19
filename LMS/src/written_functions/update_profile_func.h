@@ -41,12 +41,6 @@ namespace LMS::dbInteract {
 	/// <param name="num_copies">
 	/// String input for number of copies of the book to be added
 	/// </param>
-	/// <param name="book_name_input">
-	/// String input for name of the book
-	/// </param>
-	/// <param name="book_edition_input">
-	/// String input for edition of the book
-	/// </param>
 	/// <returns>
 	/// Returns true if it is successful in updating
 	/// </returns>

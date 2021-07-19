@@ -158,7 +158,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:aaea84841d9351b370177107aaa1cf222"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers new librarian with the given arguments/details  <a href="namespace_l_m_s_1_1db_interact.html#aaea84841d9351b370177107aaa1cf222">More...</a><br /></td></tr>
 <tr class="separator:aaea84841d9351b370177107aaa1cf222"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a370b30047e0cc41c2e7fb037d92f4bb9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_l_m_s_1_1db_interact.html#a370b30047e0cc41c2e7fb037d92f4bb9">RegisterMember_func</a> (int &amp;memberId, String^ Name, String^ DOB, String^ Address, String^ EmailId, String^ MobileNo, String^ Profession, String^ Gender, String^ Password)</td></tr>
-<tr class="memdesc:a370b30047e0cc41c2e7fb037d92f4bb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers Student/Faculty/Alumini with given arugments/details  <a href="namespace_l_m_s_1_1db_interact.html#a370b30047e0cc41c2e7fb037d92f4bb9">More...</a><br /></td></tr>
+<tr class="memdesc:a370b30047e0cc41c2e7fb037d92f4bb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers Student/Faculty/Alumini with given arugments/details as a Member of Librarian  <a href="namespace_l_m_s_1_1db_interact.html#a370b30047e0cc41c2e7fb037d92f4bb9">More...</a><br /></td></tr>
 <tr class="separator:a370b30047e0cc41c2e7fb037d92f4bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf0d8c336025544a60ee682ccf2524a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_l_m_s_1_1db_interact.html#aaf0d8c336025544a60ee682ccf2524a1">Get_data_Order</a> (int Order_Id, int &amp;Member_Id, int &amp;Book_Id, String^&amp;Borrow_status, String^&amp;Profession)</td></tr>
 <tr class="memdesc:aaf0d8c336025544a60ee682ccf2524a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get data of Member id , Book id ,Borrow status of the given Order Id and to get profession of the member who borrowed the book with given Order id  <a href="namespace_l_m_s_1_1db_interact.html#aaf0d8c336025544a60ee682ccf2524a1">More...</a><br /></td></tr>
@@ -486,6 +486,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespace_l_m_s_1_1db_interact.html#ac770e7cdd83bd67a4b8bcde43cff49c2" title="Function for filling Book Datagrid in List of Books page with filtered results">fill_datagrid_books_filtered()</a></dd></dl>
 
 </div>
 </div>
@@ -576,6 +577,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespace_l_m_s_1_1db_interact.html#a585dc7999cec006fdd0065ec196feea1" title="Function for filling Book Datagrid in List of Books page">fill_datagrid_book()</a></dd></dl>
 
 </div>
 </div>
@@ -621,6 +623,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespace_l_m_s_1_1db_interact.html#a8e7d4d7ff64e81fa10288e5dc77f795f" title="Function for filling Borrow History Datagrid in Borrow History page with filtered results">fill_datagrid_borrow_history_filtered()</a></dd></dl>
 <p>IF the user is a librarian then it shows all history associated with each book and member</p>
 <p>IF the user is not librarian then it shows borrow history associated with that particular member only</p>
 
@@ -682,6 +685,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespace_l_m_s_1_1db_interact.html#afbde3ff1fc00ce4a103f3904323f574c" title="Function for filling Borrow History Datagrid in Borrow History page">fill_datagrid_borrow_history()</a></dd></dl>
 <p>IF the user is a librarian then it shows all history associated with each book and member</p>
 <p>IF the user is not librarian then it shows borrow history associated with that particular member only</p>
 
@@ -711,6 +715,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespace_l_m_s_1_1db_interact.html#a716b93521ab2855a5783f04fc310a087" title="Function for filling Member Datagrid in List of Member page with filtered results">fill_datagrid_members_filtered()</a></dd></dl>
 
 </div>
 </div>
@@ -794,6 +799,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespace_l_m_s_1_1db_interact.html#ad4ab24d7f67157485315dccf09c3149a" title="Function for filling Member Datagrid in List of Member page">fill_datagrid_member()</a></dd></dl>
 
 </div>
 </div>
@@ -1002,13 +1008,13 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">username</td><td>Unique identifier for a librarian</td></tr>
-    <tr><td class="paramname">password</td><td></td></tr>
-    <tr><td class="paramname">Name</td><td></td></tr>
-    <tr><td class="paramname">DOB</td><td></td></tr>
-    <tr><td class="paramname">Address</td><td></td></tr>
-    <tr><td class="paramname">Email</td><td></td></tr>
-    <tr><td class="paramname">Mobile</td><td></td></tr>
-    <tr><td class="paramname">Gender</td><td></td></tr>
+    <tr><td class="paramname">password</td><td>Password String</td></tr>
+    <tr><td class="paramname">Name</td><td>Name of the Librarian</td></tr>
+    <tr><td class="paramname">DOB</td><td>Date of Birth of Librarian</td></tr>
+    <tr><td class="paramname">Address</td><td>Address of the Librarian</td></tr>
+    <tr><td class="paramname">Email</td><td>Email of the Librarian</td></tr>
+    <tr><td class="paramname">Mobile</td><td>Mobile No of the Librarian</td></tr>
+    <tr><td class="paramname">Gender</td><td>Gender of the Librarian</td></tr>
   </table>
   </dd>
 </dl>
@@ -1084,17 +1090,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Registers Student/Faculty/Alumini with given arugments/details </p>
+<p>Registers Student/Faculty/Alumini with given arugments/details as a Member of Librarian </p>
+<p>Registers Student/Faculty/Alumini with given arugments/details</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Name</td><td></td></tr>
-    <tr><td class="paramname">DOB</td><td></td></tr>
-    <tr><td class="paramname">Address</td><td></td></tr>
-    <tr><td class="paramname">EmailId</td><td></td></tr>
-    <tr><td class="paramname">MobileNo</td><td></td></tr>
-    <tr><td class="paramname">Profession</td><td></td></tr>
-    <tr><td class="paramname">Gender</td><td></td></tr>
-    <tr><td class="paramname">Password</td><td></td></tr>
+    <tr><td class="paramname">Name</td><td>Name of Member</td></tr>
+    <tr><td class="paramname">DOB</td><td>Date of Birth of Member</td></tr>
+    <tr><td class="paramname">Address</td><td>Address of Member</td></tr>
+    <tr><td class="paramname">EmailId</td><td>Email of Member</td></tr>
+    <tr><td class="paramname">MobileNo</td><td>Mobile No of Member</td></tr>
+    <tr><td class="paramname">Profession</td><td>Profession of Member</td></tr>
+    <tr><td class="paramname">Gender</td><td>Gender of Member</td></tr>
+    <tr><td class="paramname">Password</td><td>Password of Member</td></tr>
   </table>
   </dd>
 </dl>
@@ -1249,8 +1256,6 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">input_id</td><td>String input for ID of the book </td></tr>
     <tr><td class="paramname">num_copies</td><td>String input for number of copies of the book to be added </td></tr>
-    <tr><td class="paramname">book_name_input</td><td>String input for name of the book </td></tr>
-    <tr><td class="paramname">book_edition_input</td><td>String input for edition of the book </td></tr>
   </table>
   </dd>
 </dl>

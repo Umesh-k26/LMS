@@ -12,7 +12,7 @@ namespace LMS {
 	/// <summary>
 	/// Summary for RegisterLibrarian
 	/// </summary>
-	/// /// This is a public ref class whose object lifetime is administered automatically. When the object is no longer accessible or goes out of scope, the memory is released.
+	/// This is a public ref class whose object lifetime is administered automatically. When the object is no longer accessible or goes out of scope, the memory is released.
 	/// It supports the Windows Runtime type system.
 	public ref class RegisterLibrarian : public System::Windows::Forms::Form
 	{
@@ -166,8 +166,6 @@ namespace LMS {
 		/// Label for Librarian's username
 		/// </summary>
 		System::Windows::Forms::Label^ librarian_username_lbl;
-
-
 
 	private:
 		/// <summary>
@@ -476,7 +474,8 @@ namespace LMS {
 		/// <param name="e">
 		///Passes an object specific to the event that is being handled.
 		/// </param>
-		System::Void male_rbtn_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		System::Void male_rbtn_CheckedChanged(System::Object^ sender, System::EventArgs^ e) 
+		{
 			Gender = "Male";
 		}
 
@@ -490,7 +489,8 @@ namespace LMS {
 		/// <param name="e">
 		///Passes an object specific to the event that is being handled.
 		/// </param>
-		System::Void female_rbtn_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		System::Void female_rbtn_CheckedChanged(System::Object^ sender, System::EventArgs^ e)
+		{
 			Gender = "Female";
 		}
 

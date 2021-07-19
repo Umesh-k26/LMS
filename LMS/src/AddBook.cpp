@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "AddBook.h"
-//#include "connection_sql_func.h"
 #include "written_functions/connection_sql_func.h"
 #include <written_functions/AddBook_func.h>
 namespace LMS {

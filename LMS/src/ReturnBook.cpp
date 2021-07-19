@@ -32,10 +32,6 @@ System::Void LMS::ReturnBook::ReturnBook_Load(System::Object^ sender, System::Ev
 /// <summary>
 /// Function to return Book by checking order_id and borrow_Status of Book
 /// </summary>
-/// <param name="sender"></param>
-/// <param name="e"></param>
-/// <returns></returns>
-
 System::Void LMS::ReturnBook::return_button_Click(System::Object^ sender, System::EventArgs^ e)
 {
 

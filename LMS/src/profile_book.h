@@ -1,5 +1,4 @@
 #pragma once
-//#include "connection_sql_func.h"
 #include "written_functions/connection_sql_func.h"
 #include "written_functions/filling_datagrid.h"
 
@@ -598,12 +597,6 @@ namespace LMS {
 
 	private:
 		/// <summary>
-		/// Void Function to Fill the Data Grid
-		/// </summary>
-		//void fill_data_grid();
-
-	private:
-		/// <summary>
 		/// System::Void function for OnClick cell in the Data Grid
 		/// </summary>
 		/// <param name="sender">
@@ -626,13 +619,5 @@ namespace LMS {
 		/// </param>
 		System::Void back_button_Click(System::Object^ sender, System::EventArgs^ e);
 
-	private:
-		/// <summary>
-		/// Void function to add new copies to the database
-		/// </summary>
-		/// <param name="num_new_copies">
-		/// Argument passed for how many number of copies to be added
-		/// </param>
-		//void updating_no_of_copies(int num_new_copies);
 	};
 }
