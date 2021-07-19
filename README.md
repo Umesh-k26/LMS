@@ -5,25 +5,37 @@
 
 ---
 
-# `The LMS`
+# `Library Management System`
 
-LMS means Library Management System is a software, which can be used to manage data of huge libraries. Libraries with large number of classifications of books,editions of each book and large number of students to borrow these books need more planned mode of managing data. This is where LMS is very useful. LMS manages the data using 'MYSQL' database. LMS uses the '.NET Framework version 4.7.2' and it is the library for making the applications involving User-Interface elements. This software is made of a Visual studio solution file which is connected with various header and cpp source files alos present in it. These header and cpp files contain the declaration and defintion of various namespaces and functions of the software. There is also a github workflow file. Most of code is written in C++ language.  
+**Library Management System** or **_LMS_** is a _Windows Desktop Application_, which can be used to manage data of huge libraries. 
+
+Libraries with large number of books and its editions as well as large number of students and members to borrow these books, need more planned mode of managing data. 
+
+This is where LMS is very useful. LMS manages the data using **MySQL** database. The _User Interface_ has been designed using **Microsoft's .NET Framework** to make the application more interactive. The entire application is written in **C++**
+
+This repository contains a Visual Studio solution file (_.sln_) which is connected with various _Header_ and _C++ Source files_. 
+
+These files contain the declaration and defintion of various namespaces and functions used in developing the software. 
+
+There is also a Github Workflow File which uses MSBuild for automated build.
+
+User Manuals, Developer Manual, Source Code Documentation and Test Environment are also present in this repository
 
 ### `Table of Contents`
 | SNo. | **Contents** |
 | ---  | ---------    |
-| 1.   | [ABOUT](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/About.md)|
-| 2.   | [FEATURES](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Features.md)|
-| 3.   | [SCREENSHOTS](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Screenshots.md)|
-| 4.   | [INSTALLATION](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Installation.md)|
-| 5.   | [USER MANUAL(Librarian)](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/User-Manual-(Librarian).md)|
-| 6.   | [USER MANUAL (Member)](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/User-Manual-(Member).md)|
-| 7.   | [DEVELOPER MANUAL](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Developer-Manual.md)|
+| 1.   | [About](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/About.md)|
+| 2.   | [Features](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Features.md)|
+| 3.   | [Screenshots](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Screenshots.md)|
+| 4.   | [Installation](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Installation.md)|
+| 5.   | [User Manual (Librarian)](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/User-Manual-(Librarian).md)|
+| 6.   | [User Manual (Member)](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/User-Manual-(Member).md)|
+| 7.   | [Developer Manual](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Developer-Manual.md)|
 
 ---
 
-# `Reference for development`
-- [Source Code Documenation (made using Doxygen)]()
+# `References for development`
+- [Source Code Documenation (made using Doxygen)](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/tree/main/source%20code%20docs/html)
 - [Developer Manual](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Developer-Manual.md)
 - [Windows Forms Application Documentation](https://docs.microsoft.com/en-us/dotnet/desktop/winforms/windows-forms-overview?view=netframeworkdesktop-4.8)
 - [Testing Framework (NUnit Testing)](https://docs.nunit.org/)
