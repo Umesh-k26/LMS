@@ -85,15 +85,20 @@ public ref class // It's a class whose object lifetime is administered automatic
 ```
 
 ## Database Description
-- There is 1 schema:  ``` library_system_db```
+- There is 1 schema:  
+```sql
+library_system_db
+```
+
 - There 5 tables inside this schema:
+```sql
+member_data		# This stores all details associated with Members
+user_pass		# This stores the UserName and Passwords (Hashed) of All the Members
+book_data		# This stores all details associated with Books
+borrow_history		# This stores all details associated with Borrowing of Books
+library_user_pass	# This stores all details of Librarians as well as their UserName and Password (Hashed)
 ```
-member_data
-user_pass
-book_data
-borrow_history
-library_user_pass
-```
+
 Here is Entity Relationship Diagram of the Schema
 > **_NOTE:_**  Object Notation is Classic and Relationship Notation is Crow's Foot (IE)
 
