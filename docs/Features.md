@@ -11,17 +11,16 @@
 - A Page for Returning Books
 - A Page to see the Profile of Member along with their Borrow History
 - A Page to see the Profile of the Book along with its Copies
-- A Page to see the Profile of the Issue Details
-- A way to add more copies of the same Book through its profile
-- A way to update details of Members through their profile
 - A Page to see the details of the Book Borrowed and Associated Member along with Issue Date, Return Date, and Fine
+- A way to add more copies of the same Book through its profile
+- A way to Update details or Delete Members through their profile
 
 ### As a Member
 - A Page to see your own profile and see your Borrow History and Edit Profile and Password
 - A Page to see the List of All the Books and their Profiles
 - A Page to see the List of your own Borrow History
 - A way to update your details through your profile
-- A Page to see the details of the Book Borrowed and Associated Member along with Issue Date, Return Date, and Fine
+- A Page to see the details of the Book Borrowed and Issue Date, Return Date, and Fine
 
 ### General Features
 - Secure Connection with MySQL Database
