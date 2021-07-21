@@ -38,7 +38,7 @@ The 3 Tiers are:
 - The application was developed by thinking _UI / Front End_ and making application as _interactive_ as possible, so the entire development process was more **feature-driven** with every single step being manually **tested** for different situations and cases
 - The entire Application is an event-driven application, that is, the flow of the program depends on how the User interacts with the Program such as when and where the user clicks the buttons and what text is being entered in textboxes
 - We have tried to implement the Single Responsibility Principle for each element and have separated _UI elements_ with _Non-UI elements_ so that each function and method can be **tested** separately
-- All the Form files (_.h_ and _.cpp_) and inside the "**src**" folder and all the other files in which the methods and functions are written are in another folder "**written functions**" which include _.h_ and _.cpp_ files
+- All the Form files (_.h_ and _.cpp_) are inside the "**src**" folder and all the other files in which the methods and functions are written are in another folder "**written functions**" which include _.h_ and _.cpp_ files
 - Each _.h_ and _.cpp_ file has comments to make the program very readable, as well as there, are _Doxygen style comments_ in each file so that any developer can easily create documentation from source files
 - We have also implemented the principles of **MVP** which is a Model-View-Presenter type of Design Pattern that essentially separates all the business logic from the GUI part
 - We have also used _Test Framework_ provided by NUnit to help test the functions and forms. The **Testing** project is a separate project inside the Main Solution
