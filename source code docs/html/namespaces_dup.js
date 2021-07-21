@@ -8,8 +8,5 @@ var namespaces_dup =
       [ "calculate_fine_lost_book", "namespacefine__func.html#a6eece460b99639cf69a6ae065085a9a3", null ]
     ] ],
     [ "LMS", "namespace_l_m_s.html", "namespace_l_m_s" ],
-    [ "sql_connection_func", "namespacesql__connection__func.html", [
-      [ "password_hasher", "namespacesql__connection__func.html#abb2f7488627372469887e4d139575fee", null ],
-      [ "sql_user_pass_string", "namespacesql__connection__func.html#a2433fbf4b60a9314b6e0e386406ad6e1", null ]
-    ] ]
+    [ "sql_connection_func", "namespacesql__connection__func.html", "namespacesql__connection__func" ]
 ];
