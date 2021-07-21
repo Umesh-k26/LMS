@@ -14,5 +14,9 @@ var annotated_dup =
       [ "RegisterLibrarian", "class_l_m_s_1_1_register_librarian.html", "class_l_m_s_1_1_register_librarian" ],
       [ "RegisterMember", "class_l_m_s_1_1_register_member.html", "class_l_m_s_1_1_register_member" ],
       [ "ReturnBook", "class_l_m_s_1_1_return_book.html", "class_l_m_s_1_1_return_book" ]
+    ] ],
+    [ "sql_connection_func", "namespacesql__connection__func.html", [
+      [ "Global", "classsql__connection__func_1_1_global.html", "classsql__connection__func_1_1_global" ],
+      [ "my_encdec", "classsql__connection__func_1_1my__encdec.html", "classsql__connection__func_1_1my__encdec" ]
     ] ]
 ];

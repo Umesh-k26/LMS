@@ -14,5 +14,7 @@ var hierarchy =
       [ "LMS::profile_book", "class_l_m_s_1_1profile__book.html", null ],
       [ "LMS::profile_member", "class_l_m_s_1_1profile__member.html", null ],
       [ "LMS::profile_order", "class_l_m_s_1_1profile__order.html", null ]
-    ] ]
+    ] ],
+    [ "sql_connection_func::Global", "classsql__connection__func_1_1_global.html", null ],
+    [ "sql_connection_func::my_encdec", "classsql__connection__func_1_1my__encdec.html", null ]
 ];
