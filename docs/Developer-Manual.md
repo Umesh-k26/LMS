@@ -17,9 +17,10 @@
 |[Testing Framework](Testing-Framework)|
 
 ## File System
-- According to File System for the source code, for every Form/Page, its _.h_ _.cpp_ files are saved in the _**src**_ folder
+- According to File System for the Main Project i.e. **LMS**, the source code for every Form/Page, its _.h_ _.cpp_ files are saved in the _**src**_ folder
 - Specific to each button and form loading there is a specific function that should be in a separate _.h_ _.cpp_ file or some group of those similar functions should be in a separate _.h_ _.cpp_ file inside _**written_functions**_ folder
 - The entire application is based on the Event-Driven Application approach, i.e. the application will do something only on Click-Events such as Button Clicks
+- For **Testing**, a separate Project has been created in the solution directory by the name **Testing** and in that all the _.h_ _.cpp_ files must be in one folder and all the tests should be written in _Testing.cpp_ or you may add more files for the same
 
 ## Prerequisites and Installations
 1. It is important to be familiar with using Visual Studio as an Integrated Development Environment and install the following packages from Visual Studio Installer
