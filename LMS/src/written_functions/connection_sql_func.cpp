@@ -8,8 +8,10 @@ namespace sql_connection_func {
 
 	bool is_xml_file_exist()
 	{
+
 		bool return_val = false;
 		String^ fileName = "LMS.xml";
+		//Tries to find the file if any error then it throws exception
 		try
 		{
 			StreamReader^ din = File::OpenText(fileName);
@@ -24,9 +26,12 @@ namespace sql_connection_func {
 
 	void Global::create_xml(String^ username_in, String^ password_in)
 	{
+		//Pointer to Encryption Class
 		my_encdec^ encdec;
 		XmlTextWriter^ write_xml_file;
 		String^ txtFilename = "LMS.xml";
+
+		//Writing into xml File
 		write_xml_file = gcnew XmlTextWriter(txtFilename, System::Text::Encoding::UTF8);
 		write_xml_file->WriteStartDocument(true);
 		write_xml_file->WriteWhitespace("\n");
@@ -47,42 +52,15 @@ namespace sql_connection_func {
 		write_xml_file->WriteEndDocument();
 		write_xml_file->Close();
 
-		MessageBox::Show("File Generated",
+		/*MessageBox::Show("File Generated",
 			"XML Generation Results",
 			MessageBoxButtons::OK,
-			MessageBoxIcon::Information);
+			MessageBoxIcon::Information);*/
 	}
 
 	String^ Global::read_xml_return_constring()
 	{
-		/*String^ filename = "LMS.xml";
-		String^ username;
-		String^ password;
-		XmlTextReader^ xreader = gcnew XmlTextReader(filename);
-		int count = 0;
-		while (xreader->Read())
-		{
-			switch (xreader->NodeType)
-			{
-			case XmlNodeType::Text:
-				if (count == 1)
-				{
-					password = xreader->Value;
-				}
-				if (count == 0)
-				{
-					username = xreader->Value;
-					count++;
-				}
-			}
-
-		}
-		xreader->Close();
-
-		String^ constring = L"datasource=localhost;port=3306;username=" + username + "; password =" + password + "; SslMode = Required";
-
-		return constring;*/
-
+		//Pointer to Encryption Class
 		my_encdec^ encdec;
 		String^ filename = "LMS.xml";
 		String^ usrname;
@@ -90,6 +68,8 @@ namespace sql_connection_func {
 		XmlTextReader^ xreader = gcnew XmlTextReader(filename);
 		int count = 0;
 		int num_user, num_pass;
+
+		//Read from XML File
 		while (xreader->Read())
 		{
 			switch (xreader->NodeType)
@@ -129,6 +109,7 @@ namespace sql_connection_func {
 		MessageBox::Show(Global::password);
 		xreader->Close();
 
+		//Return Constring
 		String^ constring = L"datasource=localhost;port=3306;username=" + Global::username + "; password =" + Global::password + "; SslMode = Required";
 
 		return constring;
@@ -181,6 +162,80 @@ namespace sql_connection_func {
 		}
 
 		Global::constring = Global::read_xml_return_constring();
+	}
+
+
+	String^ my_encdec::enc_str(String^ str, MyEnum num)
+	{
+		//switch case to go through each Enum value
+		switch (num)
+		{
+		case sql_connection_func::my_encdec::MyEnum::USER:
+			str = str + "_server_usr";
+			break;
+		case sql_connection_func::my_encdec::MyEnum::PASS:
+			str = str + "$45@";
+			break;
+		default:
+			break;
+		}
+
+		//Return String after encryption
+		return str;
+	}
+
+	int my_encdec::enc_num(String^ str, MyEnum num)
+	{
+		//switch case to go through each Enum value
+		int new_num = str->Length;
+		switch (num)
+		{
+		case sql_connection_func::my_encdec::MyEnum::USER:
+			new_num = new_num + 8;
+			break;
+		case sql_connection_func::my_encdec::MyEnum::PASS:
+			new_num = new_num + 12;
+			break;
+		default:
+			break;
+		}
+
+		//Return new Number
+		return new_num;
+
+	}
+
+	String^ my_encdec::dec_num(String^ str, MyEnum num)
+	{
+		//switch case to go through each Enum value
+		int new_num = Int32::Parse(str);
+		switch (num)
+		{
+		case sql_connection_func::my_encdec::MyEnum::USER:
+			new_num = new_num - 8;
+			break;
+		case sql_connection_func::my_encdec::MyEnum::PASS:
+			new_num = new_num - 12;
+			break;
+		default:
+			break;
+		}
+
+		//Return Decrypted number in string form
+		return new_num.ToString();
+	}
+
+	String^ my_encdec::dec_str(String^ str, int length)
+	{
+		//Removes unnecessary part of string to give original string
+		String^ new_str = str;
+		new_str = new_str->Remove(length, str->Length - length);
+
+
+		//MessageBox::Show("Decrypted string : " + new_str);
+
+		//Returns Decrypted string
+		return new_str;
 	}
 }
 
