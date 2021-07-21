@@ -80,6 +80,7 @@
 - Fill in the correct _Order ID_ and click on the **Return** Button
 - Upon any form of error such as Book already being returned, or invalid Order ID, or any other such situation, a Message Box will be displayed indicating the error
 - Upon successful operation, a Message Box with Member ID, Book ID, and Order ID (or you Issue ID) will be displayed along with the Fine that needs to be paid if applicable
+
 ![Screenshot of Return page](Screenshots/Return_book.PNG)
 
 ### Search for a Particular Book
@@ -113,6 +114,7 @@
 - After clicking the profile page will load again and the Datagrid table inside the Profile page will show the updated copies and details
 - To Delete, click on the **Delete Profile** button, a Warning Box will be displayed
 - Click on **OK** to proceed, or **Cancel** if you wish to cancel, then a Message Box will be displayed to pay the fine, and the profile will be deleted
+
 ![Screenshot of Profile](Screenshots/Upd_del_book.PNG)
 
 ### Update or Delete Profile of a Member
