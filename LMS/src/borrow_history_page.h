@@ -127,7 +127,7 @@ namespace LMS {
 			// 
 			// back_button_borrow_his
 			// 
-			this->back_button_borrow_his->Image = Image::FromFile("src\\back-icon.png");
+			this->back_button_borrow_his->Image = Image::FromFile("images\\back-icon.png");
 			this->back_button_borrow_his->Location = System::Drawing::Point(12, 12);
 			this->back_button_borrow_his->Name = L"back_button_borrow_his";
 			this->back_button_borrow_his->Size = System::Drawing::Size(89, 51);

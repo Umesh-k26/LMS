@@ -78,26 +78,21 @@ namespace sql_connection_func {
 				if (count == 3)
 				{
 					num_pass = Int32::Parse(encdec->dec_num(xreader->Value, my_encdec::MyEnum::PASS));
-					MessageBox::Show(encdec->dec_num(xreader->Value, my_encdec::MyEnum::PASS));
 					count++;
 				}
 				if (count == 2)
 				{
 					num_user = Int32::Parse(encdec->dec_num(xreader->Value, my_encdec::MyEnum::USER));
-					MessageBox::Show(encdec->dec_num(xreader->Value, my_encdec::MyEnum::USER));
 					count++;
 				}
 				if (count == 1)
 				{
 					passwor = xreader->Value;
-					//MessageBox::Show("password "+passwor);
 					count++;
 				}
 				if (count == 0)
 				{
 					usrname = xreader->Value;
-
-					//MessageBox::Show(usrname);
 					count++;
 				}
 			}
@@ -105,8 +100,6 @@ namespace sql_connection_func {
 		}
 		Global::username = encdec->dec_str(usrname, num_user);
 		Global::password = encdec->dec_str(passwor, num_pass);
-		MessageBox::Show(Global::username);
-		MessageBox::Show(Global::password);
 		xreader->Close();
 
 		//Return Constring

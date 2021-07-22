@@ -329,7 +329,7 @@ namespace LMS {
 			// 
 			// back_button
 			// 
-			this->back_button->Image = Image::FromFile("src\\back-icon.png");
+			this->back_button->Image = Image::FromFile("images\\back-icon.png");
 			this->back_button->Location = System::Drawing::Point(52, 51);
 			this->back_button->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->back_button->Name = L"back_button";

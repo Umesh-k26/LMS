@@ -158,7 +158,7 @@ namespace LMS {
 			// 
 			// back_button_book_list
 			// 
-			this->back_button_book_list->Image = Image::FromFile("src\\back-icon.png");
+			this->back_button_book_list->Image = Image::FromFile("images\\back-icon.png");
 			this->back_button_book_list->Location = System::Drawing::Point(12, 12);
 			this->back_button_book_list->Name = L"back_button_book_list";
 			this->back_button_book_list->Size = System::Drawing::Size(89, 51);

@@ -167,7 +167,7 @@ namespace LMS {
 			// 
 			// back_button_member_list
 			// 
-			this->back_button_member_list->Image = Image::FromFile("src\\back-icon.png");
+			this->back_button_member_list->Image = Image::FromFile("images\\back-icon.png");
 			this->back_button_member_list->Location = System::Drawing::Point(12, 12);
 			this->back_button_member_list->Name = L"back_button_member_list";
 			this->back_button_member_list->Size = System::Drawing::Size(89, 51);

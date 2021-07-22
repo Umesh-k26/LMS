@@ -541,7 +541,7 @@ namespace LMS {
 			this->back_button->TabIndex = 22;
 			this->back_button->UseVisualStyleBackColor = true;
 			this->back_button->Click += gcnew System::EventHandler(this, &profile_member::back_button_Click);
-			this->back_button->Image = Image::FromFile("src\\back-icon.png");
+			this->back_button->Image = Image::FromFile("images\\back-icon.png");
 			// 
 			// change_pass_btn
 			// 
