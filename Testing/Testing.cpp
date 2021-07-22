@@ -16,6 +16,7 @@ namespace Test_Connection_SQL {
 	public:
 		[Test]
 		void hash_function_test() {
+			sql_connection_func::InitializeConstring();
 			String^ expected = "A8-2D-54-E8-1D-57-E6-A2-B4-6E-73-0E-01-F7-CA-47";
 			String^ actual = sql_connection_func::password_hasher("kevin", "P@ssword");
 
@@ -33,6 +34,7 @@ namespace Test_Delete_Func {
 
 		[Test]
 		void delete_member_profile_test() {
+			sql_connection_func::InitializeConstring();
 			bool expected = true;
 			bool actual = LMS::dbInteract::delete_member_profile("8");
 			NUnit::Framework::Assert::AreEqual(expected, actual);
@@ -40,6 +42,7 @@ namespace Test_Delete_Func {
 
 		[Test]
 		void delete_book_profile_test() {
+			sql_connection_func::InitializeConstring();
 			bool expected = true;
 			bool actual = LMS::dbInteract::delete_book_profile("49", "BORROWED", "900");
 			NUnit::Framework::Assert::AreEqual(expected, actual);
