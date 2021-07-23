@@ -40,8 +40,8 @@ Install MySQL Community Version from the official website [MySQL installer for W
 - Click **Execute** to install MySQL products.
 - Click **Next** for _Product Configuration_ settings.
 
-    <img src="Screenshots/MySql/installation.png" alt="Execution Step" width="40%" height ="40%"></img>
-    <img src="Screenshots/MySql/product-configuration.png" alt="Configuration Page" width="40%" height="40%"></img>
+    <img src="Screenshots/MySql/installation.png" alt="Execution Step"></img>
+    <img src="Screenshots/MySql/product-configuration.png" alt="Configuration Page"></img>
 
 #### Configuration
 - In _Type and Networking_, choose **Standalone MySQL Server/Classic MySQL Replication** and click **Next**.
@@ -51,14 +51,14 @@ Install MySQL Community Version from the official website [MySQL installer for W
 - Leave it as default in _Windows Service_ and _Plugins and Extensions_ settings.
 - Now click **Execute** to _Apply Server Configuration_.
 
-    <img src="Screenshots/MySql/apply-configuration.png" alt="MySQL server Configuration" width="40%" height ="40%"></img>
-    <img src="Screenshots/MySql/product-configuration-2.png" alt="Configuration Page" width="40%" height ="40%"></img>
+    <img src="Screenshots/MySql/apply-configuration.png" alt="MySQL server Configuration"></img>
+    <img src="Screenshots/MySql/product-configuration-2.png" alt="Configuration Page"></img>
 - For _Router Confiugration_, leave it as default and click next.
 - For configuring _Samples and Examples_, choose server and check connection with **Check** Button.
 - Click **Next** and **Execute** to finish confiugration settings.
 
-    <img src="Screenshots/MySql/connect-to-server.png" alt="Samples and Examples Configuration" width="40%" height ="40%"></img>
-    <img src="Screenshots/MySql/product-configuration-3.png" alt="Configuration Page" width="40%" height ="40%"></img>
+    <img src="Screenshots/MySql/connect-to-server.png" alt="Samples and Examples Configuration"></img>
+    <img src="Screenshots/MySql/product-configuration-3.png" alt="Configuration Page"></img>
     
 - > **_NOTE:_**  Follow [How To Install MySQL on Windows 10 ](https://youtu.be/WuBcTJnIuzo?t=259) for detailed tutorial on installation and configuration.
 
@@ -68,13 +68,13 @@ To set up the database follow the steps
 
 1. Open _MySql WorkBench_ and click on the highlighted button and login with the _password_ you gave while adding user during _MySql Configuration_
 
-    <img src="Screenshots/DB setup/connection.png" alt="" width="40%" height ="40%"></img>
+    <img src="Screenshots/DB setup/connection.png"></img>
 2. Now go to **File -> Open SQL Script** and navigate to ```MySQL Library Database\library_system_db.sql``` from the installation directory shown above and click _Open_
 
-    <img src="Screenshots/DB setup/open-sql-script.png" alt="" width="40%" height ="40%"></img>
+    <img src="Screenshots/DB setup/open-sql-script.png"></img>
 3. Now click on the highlighted button to _Run_ the script
 
-    <img src="Screenshots/DB setup/run-button.png" alt="" width="40%" height ="40%"></img>
+    <img src="Screenshots/DB setup/run-button.png"></img>
 4. Database is setup successfully
 
 ## Running the Application
@@ -86,4 +86,4 @@ To set up the database follow the steps
     <img src="Screenshots/Running Application/username.png" alt="" ></img>
 
     <img src="Screenshots/Running Application/password.png" alt="" ></img>
-- Now _Sign In_ into the application with the credentials shown in the information shown just after installing **LMS** application.
+- Now _Sign In_ into the application with the credentials shown in "
