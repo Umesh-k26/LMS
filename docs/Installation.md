@@ -37,10 +37,11 @@ Install MySQL Community Version from the official website [MySQL installer for W
 - Download installer from above link and run the installer.
 - Accept the license agreement.
 - Choose **Developer Default** setup type and click next.
-- Click **Execute** to install MySQL products.
-- Click **Next** for _Product Configuration_ settings.
+- Click **Execute** to install MySQL products
 
     <img src="Screenshots/MySql/installation.png" alt="Execution Step"></img>
+- Click **Next** for _Product Configuration_ settings.
+
     <img src="Screenshots/MySql/product-configuration.png" alt="Configuration Page"></img>
 
 #### Configuration
@@ -52,12 +53,14 @@ Install MySQL Community Version from the official website [MySQL installer for W
 - Now click **Execute** to _Apply Server Configuration_.
 
     <img src="Screenshots/MySql/apply-configuration.png" alt="MySQL server Configuration"></img>
-    <img src="Screenshots/MySql/product-configuration-2.png" alt="Configuration Page"></img>
 - For _Router Confiugration_, leave it as default and click next.
-- For configuring _Samples and Examples_, choose server and check connection with **Check** Button.
-- Click **Next** and **Execute** to finish confiugration settings.
+
+    <img src="Screenshots/MySql/product-configuration-2.png" alt="Configuration Page"></img>
+- For configuring _Samples and Examples_, choose server and check connection with **Check** Button
 
     <img src="Screenshots/MySql/connect-to-server.png" alt="Samples and Examples Configuration"></img>
+- Click **Next** and **Execute** to finish confiugration settings.
+
     <img src="Screenshots/MySql/product-configuration-3.png" alt="Configuration Page"></img>
     
 - > **_NOTE:_**  Follow [How To Install MySQL on Windows 10 ](https://youtu.be/WuBcTJnIuzo?t=259) for detailed tutorial on installation and configuration.
@@ -83,7 +86,15 @@ To set up the database follow the steps
 - In the installation directory, click ```LMS.exe``` to run the application
 - Enter _MySQL user credentials_ in the highlighted input boxes so that application can access the database locally before logging in as a _Librarian_
 
-    <img src="Screenshots/Running Application/username.png" alt="" ></img>
+    <img src="Screenshots/Running Application/username.png"></img>
 
-    <img src="Screenshots/Running Application/password.png" alt="" ></img>
-- Now _Sign In_ into the application with the credentials shown in "
+    <img src="Screenshots/Running Application/password.png"></img>
+- Now _Sign In_ into the application with the credentials shown in the information shown just after installing **LMS** application.
+
+### After Installation Guide
+Now the application has been installed.
+- Refer [User Manual (Librarian)](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/User-Manual-(Librarian).md) to learn more about using the application.
+
+- Refer [Features](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Features.md) for features provided by the application.
+
+Thank you!! 
