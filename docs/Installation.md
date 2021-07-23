@@ -69,7 +69,9 @@ Install MySQL Community Version from the official website [MySQL installer for W
 
 To set up the database follow the steps
 
-1. Open _MySql WorkBench_ and click on the highlighted button and login with the _password_ you gave while adding user during _MySql Configuration_
+1. Open _MySql WorkBench_ and click on the highlighted button and login with the _root password_ you have set during _MySql Configuration_ to make a database connection with username being _root_, host as _localhost_ and port no. _3306_.
+
+    You can always make a new connection in **Database -> Manage Connections**.
 
     <img src="Screenshots/DB setup/connection.png"></img>
 2. Now go to **File -> Open SQL Script** and navigate to ```MySQL Library Database\library_system_db.sql``` from the installation directory shown above and click _Open_
