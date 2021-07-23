@@ -3,7 +3,7 @@
 ## Installation Procedure
 
 ### Downloading the Application
-1. Download the _setup_ file which is **LMS-setup.exe** from the [Release](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/releases) Section
+1. Download the _setup_ file which is ```LMS-setup.exe``` from the [Release](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/releases) Section
     - If your system shows a Warning Box then just click on _Run Anyway_ or change settings to Run any application
 2. Run the Application
 3. Choose the required setting
@@ -17,6 +17,18 @@
 ![desktop_icon](Screenshots/Installation/desktop_shortcut.png)
 8. Click on _Install_
 9. After the application is installed your SuperUser username and password will be displayed along with other information
+
+Note that the installation directory looks like this: 
+```
+images
+MySQL Library Database
+LMS.exe
+LMS.exe.metagen
+LMS.pdb
+MySql.Data.dll
+unins000.dat
+unins000.exe
+```
 
 ### Downloading MySQL Database
 Install MySQL Community Version from the official website [MySQL installer for Windows](https://dev.mysql.com/downloads/windows/installer/). <br>
@@ -52,8 +64,26 @@ Install MySQL Community Version from the official website [MySQL installer for W
 
 ### Setting up Database
 
-To set up the database and server follow the steps
+To set up the database follow the steps
+
+1. Open _MySql WorkBench_ and click on the highlighted button and login with the _password_ you gave while adding user during _MySql Configuration_
+
+    <img src="Screenshots/DB setup/connection.png" alt="" width="40%" height ="40%"></img>
+2. Now go to **File -> Open SQL Script** and navigate to ```MySQL Library Database\library_system_db.sql``` from the installation directory shown above and click _Open_
+
+    <img src="Screenshots/DB setup/open-sql-script.png" alt="" width="40%" height ="40%"></img>
+3. Now click on the highlighted button to _Run_ the script
+
+    <img src="Screenshots/DB setup/run-button.png" alt="" width="40%" height ="40%"></img>
+4. Database is setup successfully
 
 ## Running the Application
 
-- When running the application the first time, you will be required to input your UserName and Password for MySQL Database
+> **_NOTE:_** When running the application for the first time, you will be required to input your UserName and Password for MySQL Database
+- In the installation directory, click ```LMS.exe``` to run the application
+- Enter _MySQL user credentials_ in the highlighted input boxes so that application can access the database locally before logging in as a _Librarian_
+
+    <img src="Screenshots/Running Application/username.png" alt="" ></img>
+
+    <img src="Screenshots/Running Application/password.png" alt="" ></img>
+- Now _Sign In_ into the application with the credentials shown in the information shown just after installing **LMS** application.
