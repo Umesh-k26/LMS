@@ -35,7 +35,7 @@ User Manuals, Developer Manual, Source Code Documentation and Test Environment a
 ---
 
 # `References for development`
-- [Source Code Documenation (made using Doxygen)](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/tree/main/source%20code%20docs/html)
+- [Source Code Documenation (made using Doxygen)](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/tree/main/source%20code%20docs)
 - [Developer Manual](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Developer-Manual.md)
 - [Windows Forms Application Documentation](https://docs.microsoft.com/en-us/dotnet/desktop/winforms/windows-forms-overview?view=netframeworkdesktop-4.8)
 - [Testing Framework (NUnit Testing)](https://docs.nunit.org/)
