@@ -3,10 +3,20 @@
 ## Installation Procedure
 
 ### Downloading the Application
-- Download the _setup_ file which is LMS_setup.exe from the Release Section
-- Run the Application and allow **Admin Rights** 
-- Choose the required settings 
-- Click on _Install_
+1. Download the _setup_ file which is **LMS-setup.exe** from the [Release](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/releases) Section
+    - If your system shows a Warning Box then just click on _Run Anyway_ or change settings to Run any application
+2. Run the Application
+3. Choose the required setting
+![setup_mode](Screenshots/Installation/setup_mode.png)
+3. Read the **Disclaimer** and other information provided
+![before_install](Screenshots/Installation/before_install.png)
+4. Install [MySQL Database](#Downloading-MySQL-Database) by following the intructions
+5. After reading the **Disclaimer**, Click on _Next_
+6. The application will be installed by default on _Desktop_ and click on _Next_
+7. If you need to create a _Desktop Icon_ click on the checkbox and click on _Next_
+![desktop_icon](Screenshots/Installation/desktop_shortcut.png)
+8. Click on _Install_
+9. After the application is installed your SuperUser username and password will be displayed along with other information
 
 ### Downloading MySQL Database
 Install MySQL Community Version from the official website [MySQL installer for Windows](https://dev.mysql.com/downloads/windows/installer/). <br>
