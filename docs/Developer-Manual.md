@@ -171,3 +171,6 @@ The Reasons for doing this Procedure:
 - Before adding the function to the application, it is preferable to Test the function with certain inputs and check if it is giving the desired output.
 
 - This not only saves the application from throwing build errors, but also helps Test for any situations that may arise to give invalid output
+
+## Setup File
+The setup file for this Project has been built using [Inno Setup](https://jrsoftware.org/isinfo.php)
