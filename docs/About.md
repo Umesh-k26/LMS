@@ -58,4 +58,4 @@ borrow_history
 library_user_pass
 ```
 
-For relationship diagram and more details about the table: [Database Description](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Developer-Manual.md#database-description)
+For relationship diagram and more details about the table: [Database Description](https://github.com/Umesh-k26/LMS/blob/main/docs/Developer-Manual.md#database-description)

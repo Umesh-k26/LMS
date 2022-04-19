@@ -3,7 +3,7 @@
 ## Installation Procedure
 
 ### Downloading the Application
-1. Download the _setup_ file which is ```LMS-setup.exe``` from the [Release](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/releases) Section
+1. Download the _setup_ file which is ```LMS-setup.exe``` from the [Release](https://github.com/Umesh-k26/LMS/releases) Section
     - If your system shows a Warning Box then just click on _Run Anyway_ or change settings to Run any application
 2. Run the Application
 3. Choose the required setting
@@ -95,8 +95,8 @@ To set up the database follow the steps
 
 ### After Installation Guide
 Now the application has been installed.
-- Refer [User Manual (Librarian)](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/User-Manual-(Librarian).md) to learn more about using the application.
+- Refer [User Manual (Librarian)](https://github.com/Umesh-k26/LMS/blob/main/docs/User-Manual-(Librarian).md) to learn more about using the application.
 
-- Refer [Features](https://github.com/IITH-CS1023/cs1023-sdf-project-team-4/blob/main/docs/Features.md) for features provided by the application.
+- Refer [Features](https://github.com/Umesh-k26/LMS/blob/main/docs/Features.md) for features provided by the application.
 
 Thank you!! 
